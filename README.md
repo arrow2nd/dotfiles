@@ -1,8 +1,12 @@
 # dotfiles
-zsh導入済みが前提
+ubuntu前提
 
 ## メモ
 ```
+# zsh
+sudo apt install zsh
+chsh -s $(which zsh)
+
 # zinit
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 source ~/.zshrc
