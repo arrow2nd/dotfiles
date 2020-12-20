@@ -14,12 +14,14 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 #
-# プラグイン
+# プラグインとか
 #
 
-zinit for \
-    light-mode zsh-users/zsh-autosuggestions \
-    light-mode zdharma/fast-syntax-highlighting
+zinit light supercrabtree/k
+
+zinit light-mode for \
+    zsh-users/zsh-autosuggestions \
+    zdharma/fast-syntax-highlighting
 
 #
 # プロンプト系
@@ -30,7 +32,7 @@ zinit light subnixr/minimal
 
 # ランダムな絵文字をプロンプトに設定
 () {
-    local emoji=('🐑' '🐙' '🐬' '🦐' '🍣' '🍞' '🦈' '🍙' '🐧' '🐌')
+    local emoji=('🐑' '🐙' '🐬' '🐧' '🐌' '☕' '🍷' '🍮' '🍤' '🍣' '🍞' '🧀' '🍙' '🌮')
     MNML_USER_CHAR=$emoji[($RANDOM % $#emoji + 1)]
 }
 
