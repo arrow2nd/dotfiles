@@ -34,7 +34,10 @@ exec $SHELL -l
 nodenv install [version]
 nodenv global [version]
 
-# なんかいい感じの方法でyarnを導入する！
+# yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt install --no-install-recommends yarn
 
 # go
 goenv install [version]
