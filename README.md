@@ -25,6 +25,7 @@ git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-upda
 exec $SHELL -l
 
 # install *env runtime
+anyenv install --init
 anyenv install nodenv
 anyenv install goenv
 exec $SHELL -l
@@ -33,14 +34,12 @@ exec $SHELL -l
 nodenv install [version]
 nodenv global [version]
 
+# なんかいい感じの方法でyarnを導入する！
+
 # go
 goenv install [version]
 goenv global [version]
 
 exec $SHELL -l
 
-# yarn
-curl -o- -L https://yarnpkg.com/install.sh | bash
-
 ```
-
