@@ -41,31 +41,11 @@ zinit light subnixr/minimal
 #
 
 # anyenv
-if [ -d $HOME/.anyenv ]; then
-  export PATH="$HOME/.anyenv/bin:$PATH"
-  for D in `command ls $HOME/.anyenv/envs`
-  do
-    export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-  done
-fi
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init - --no-rehash)"
 
-function anyenv_init() {
-  eval "$(anyenv init - --no-rehash)"
-}
-function anyenv_unset() {
-  unset -f nodenv
-  unset -f goenv
-}
-function nodenv() {
-  anyenv_unset
-  anyenv_init
-  nodenv "$@"
-}
-function goenv() {
-  anyenv_unset
-  anyenv_init
-  goenv "$@"
-}
+# GO
+export PATH="$GOPATH/bin:$PATH"
 
 # yarn
 export PATH="$PATH:`yarn global bin`"
