@@ -14,16 +14,6 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 #
-# プラグインとか
-#
-
-zinit light supercrabtree/k
-
-zinit light-mode for \
-    zsh-users/zsh-autosuggestions \
-    zdharma/fast-syntax-highlighting
-
-#
 # プロンプト系
 #
 
@@ -37,15 +27,29 @@ zinit light subnixr/minimal
 }
 
 #
-# パス
+# プラグインとか
 #
 
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init - --no-rehash)"
+# k
+zinit light supercrabtree/k
 
-# GO
-export PATH="$GOPATH/bin:$PATH"
+# 補完とシンタックスハイライト
+zinit light-mode for \
+    zsh-users/zsh-autosuggestions \
+    zdharma/fast-syntax-highlighting
+
+# asdf
+. $HOME/.asdf/asdf.sh
+fpath=($HOME/.asdf/completions $fpath)
+
+skip_global_compinit=1
+autoload -Uz compinit && compinit
+
+zinit cdreplay -q
+
+#
+# パス
+#
 
 # yarn
 export PATH="$PATH:`yarn global bin`"
@@ -93,3 +97,7 @@ setopt hist_ignore_dups
 # 重複するコマンドは履歴に残さない
 setopt hist_ignore_all_dups
 
+# 自動再コンパイル
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+   zcompile ~/.zshrc
+fi
