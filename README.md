@@ -23,6 +23,8 @@ rm ~/.zshrc
 git clone --recursive git@github.com:arrow2nd/dotfiles.git
 cd dotfiles
 ./setup.sh
+cd ~
+zcompile ~/.zshrc
 
 # asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
