@@ -14,10 +14,10 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 #
-# プロンプト系
+# プロンプト
 #
 
-# テーマ読み込み
+# テーマ
 zinit light subnixr/minimal
 
 # ランダムな絵文字をプロンプトに設定
@@ -27,25 +27,26 @@ zinit light subnixr/minimal
 }
 
 #
-# プラグインとか
+# プラグイン
 #
 
-# k
-zinit light supercrabtree/k
-
-# 補完とシンタックスハイライト
-zinit light-mode for \
-    zsh-users/zsh-autosuggestions \
-    zdharma/fast-syntax-highlighting
+skip_global_compinit=1
 
 # asdf
 . $HOME/.asdf/asdf.sh
 fpath=($HOME/.asdf/completions $fpath)
 
-skip_global_compinit=1
-autoload -Uz compinit && compinit
+# k
+zinit light supercrabtree/k
 
-zinit cdreplay -q
+# https://zdharma.org/zinit/wiki/Example-Minimal-Setup/
+zinit wait lucid light-mode for \
+    atinit"zicompinit; zicdreplay" \
+        zdharma/fast-syntax-highlighting \
+    atload"_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions \
+    blockf atpull'zinit creinstall -q .' \
+        zsh-users/zsh-completions
 
 #
 # パス
@@ -53,6 +54,26 @@ zinit cdreplay -q
 
 # yarn
 export PATH="$PATH:`yarn global bin`"
+
+#
+# エイリアス
+#
+
+alias g='git'
+alias ga='git add'
+alias gd='git diff'
+alias gs='git status'
+alias gp='git push'
+alias gb='git branch'
+alias gc='git commit'
+alias gco='git checkout'
+
+alias dot='cd ~/dotfiles'
+alias zshrc='vim ~/dotfiles/.zshrc'
+
+alias la='ls -a'
+alias cls='clear'
+alias y='yarn'
 
 #
 # 設定いろいろ
@@ -98,6 +119,7 @@ setopt hist_ignore_dups
 setopt hist_ignore_all_dups
 
 # 自動再コンパイル
-if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+if [ ~/dotfiles/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
+
