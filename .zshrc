@@ -75,6 +75,9 @@ alias la='ls -a'
 alias cls='clear'
 alias y='yarn'
 
+# 天気予報みたいので…
+alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
+
 #
 # 設定いろいろ
 #
