@@ -85,6 +85,8 @@ alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:
 # 環境
 export LANG="ja_JP.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
+# ベル無効
+setopt no_beep
 # 補完候補を方向キーで選択可能にする
 zstyle ':completion:*:default' menu select=2
 # 入力ミスを指摘
