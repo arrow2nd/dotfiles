@@ -1,9 +1,9 @@
 # dotfiles
-ubuntu前提
+ubuntu用
 
-## メモ
+## 手順メモ
 ```
-# zsh, git
+# zsh / git
 sudo apt update && sudo apt upgrade
 sudo apt install zsh git
 chsh -s $(which zsh)
@@ -30,13 +30,13 @@ zcompile ~/.zshrc
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 exec $SHELL -l
 
-# node.js
+# Node.js
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
 asdf install nodejs [version]
 asdf global nodejs [version]
 
-# go
+# Go lang
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 asdf install golang [version]
 asdf global golang [version]
@@ -45,7 +45,7 @@ exec $SHELL -l
 
 ```
 
-## ngrok
+## ngrokも忘れずに
 ```
 wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 unzip ngrok-stable-linux-amd64.zip
