@@ -22,19 +22,15 @@ zinit light subnixr/minimal
 
 # ランダムな絵文字をプロンプトに設定
 () {
-    local emoji=('🐑' '🐙' '🐬' '🐧' '🐌' '☕' '🍷' '🍮' '🍤' '🍣' '🍞' '🧀' '🍙' '🌮')
+    local emoji=('🐶' '🐴' '🦕' '🐌' '☕' '🍷' '🍡' '🍉' '🥝' '🍤' '🍣' '🍞' '🧀' '🌮')
     MNML_USER_CHAR=$emoji[($RANDOM % $#emoji + 1)]
 }
 
 #
-# プラグイン
+# プラグインとか
 #
 
 skip_global_compinit=1
-
-# asdf
-. $HOME/.asdf/asdf.sh
-fpath=($HOME/.asdf/completions $fpath)
 
 # k
 zinit light supercrabtree/k
@@ -48,14 +44,21 @@ zinit wait lucid light-mode for \
     blockf atpull'zinit creinstall -q .' \
         zsh-users/zsh-completions
 
+# zmv
+autoload -Uz zmv
+
 #
 # パス
 #
 
+# asdf
+. $HOME/.asdf/asdf.sh
+fpath=($HOME/.asdf/completions $fpath)
+
 # yarn
 export PATH="$PATH:`yarn global bin`"
-
 #
+
 # エイリアス
 #
 
@@ -74,8 +77,10 @@ alias zshrc='vim ~/dotfiles/.zshrc'
 alias la='ls -a'
 alias cls='clear'
 alias y='yarn'
+alias zmv='noglob zmv -W'
+alias zmvn='noglob zmv -n -W'
 
-# 天気予報みたいので…
+# 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
 
 #
@@ -93,8 +98,6 @@ zstyle ':completion:*:default' menu select=2
 setopt correct
 # 日本語ファイル名に対応
 setopt print_eight_bit
-# 拡張表記に対応(オプションで^を使う際は\^)
-setopt print_eight_bit
 # ディレクトリ末尾に/を自動付与
 setopt auto_param_slash
 # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
@@ -110,7 +113,10 @@ setopt complete_in_word
 # .指定無しで隠しファイルをマッチさせる
 setopt globdots
 
-# 履歴
+#
+# 履歴とか
+#
+
 HISTFILE=~/.zhistory
 HISTSIZE=1000
 SAVEHIST=500
@@ -124,8 +130,8 @@ setopt hist_ignore_dups
 # 重複するコマンドは履歴に残さない
 setopt hist_ignore_all_dups
 
+
 # 自動再コンパイル
 if [ ~/dotfiles/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
-
