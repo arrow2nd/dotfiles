@@ -30,19 +30,15 @@ zinit light subnixr/minimal
 # プラグインとか
 #
 
-skip_global_compinit=1
-
-# k
-zinit light supercrabtree/k
-
-# https://zdharma.org/zinit/wiki/Example-Minimal-Setup/
+# https://zdharma.github.io/zinit/wiki/Example-Minimal-Setup/
 zinit wait lucid light-mode for \
     atinit"zicompinit; zicdreplay" \
         zdharma/fast-syntax-highlighting \
     atload"_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions \
     blockf atpull'zinit creinstall -q .' \
-        zsh-users/zsh-completions
+        zsh-users/zsh-completions \
+    supercrabtree/k
 
 # zmv
 autoload -Uz zmv
