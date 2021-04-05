@@ -14,7 +14,7 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 #
-# プロンプト
+# プロンプトとか
 #
 
 # テーマ
@@ -53,8 +53,8 @@ fpath=($HOME/.asdf/completions $fpath)
 
 # yarn
 export PATH="$PATH:`yarn global bin`"
-#
 
+#
 # エイリアス
 #
 
@@ -67,30 +67,29 @@ alias gb='git branch'
 alias gc='git commit'
 alias gco='git checkout'
 
-alias dot='cd ~/dotfiles'
-alias zshrc='vim ~/dotfiles/.zshrc'
+alias dotfiles='cd ~/dotfiles'
 
 alias la='ls -a'
 alias cls='clear'
 alias y='yarn'
 alias zmv='noglob zmv -W'
-alias zmvn='noglob zmv -n -W'
 
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
 
 #
-# 設定いろいろ
+# 一般設定
 #
 
 # 環境
 export LANG="ja_JP.UTF-8"
+# tviewの表示崩れ対策
 export LC_CTYPE="en_US.UTF-8"
 # ベル無効
 setopt no_beep
 # 補完候補を方向キーで選択可能にする
 zstyle ':completion:*:default' menu select=2
-# 入力ミスを指摘
+# 入力ミスを訂正
 setopt correct
 # 日本語ファイル名に対応
 setopt print_eight_bit
@@ -100,30 +99,30 @@ setopt auto_param_slash
 setopt mark_dirs
 # ファイルの種類を示すマークを表示
 setopt list_types
-# キー連打で候補を切り替え
+# Tab連打で候補を切り替え
 setopt auto_menu
 # =以降も補完する
 setopt magic_equal_subst
 # 入力途中でも補完する
 setopt complete_in_word
-# .指定無しで隠しファイルをマッチさせる
+# ドット無しで隠しファイルをマッチさせる
 setopt globdots
+# Ctrl+Dでログアウトしない
+unsetopt IGNORE_EOF
 
 #
-# 履歴とか
+# 履歴
 #
 
-HISTFILE=~/.zhistory
-HISTSIZE=1000
-SAVEHIST=500
+export HISTFILE=${HOME}/.zhistory
+export HISTSIZE=1000
+export SAVEHIST=1000
 
-# スペースをで始まるコマンドは履歴に残さない
+# スペースで始まるコマンドを除外
 setopt hist_ignore_space
-
-# 直前と同じコマンドは履歴に残さない
+# 重複するコマンドを除外
 setopt hist_ignore_dups
-
-# 重複するコマンドは履歴に残さない
+# ヒストリに同じコマンドがあるなら古い方を削除
 setopt hist_ignore_all_dups
 
 
@@ -131,3 +130,4 @@ setopt hist_ignore_all_dups
 if [ ~/dotfiles/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
+
