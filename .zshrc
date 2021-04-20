@@ -125,11 +125,6 @@ setopt hist_ignore_dups
 # ヒストリに同じコマンドがあるなら古い方を削除
 setopt hist_ignore_all_dups
 
-#
-# Display設定
-#
-export DISPLAY=`ip route | grep 'default via' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'`:0
-
 # 自動再コンパイル
 if [ ~/dotfiles/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
