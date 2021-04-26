@@ -77,6 +77,9 @@ alias zmv='noglob zmv -W'
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
 
+# rdflint
+alias rdflint='java -jar ~/rdflint-*.jar'
+
 #
 # 一般設定
 #
