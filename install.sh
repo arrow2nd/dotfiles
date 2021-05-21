@@ -40,10 +40,10 @@ rm -rf ngrok-stable-linux-amd64
 
 # link
 echo "### create symbolic link ###"
-for f (.??*) {
-    [[ "$f" == ".git" ]] && continue
-    ln -sf $HOME/dotfiles/$f $HOME/$f
-}
+for f in .??*; do
+  [[ "$f" == ".git" ]] && continue
+  ln -sf $HOME/dotfiles/$f $HOME/$f
+done
 
 # zcompile
 zcompile $HOME/.zshrc
