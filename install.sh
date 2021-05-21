@@ -3,10 +3,13 @@
 # passwd
 read -sp "password : " passwd
 
+# update
+echo "$passwd" | sudo -S apt update
+
 # zsh
 if [ -z "$ZSH_VERSION" ]; then
   echo "### zsh ###"
-  echo "$passwd" | sudo -S apt install zsh
+  sudo -S apt install zsh
   chsh -s $(which zsh)
 fi
 
@@ -22,7 +25,7 @@ git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
 
 # yarn
 echo "### yarn ###"
-echo "$passwd" | sudo -S apt install --no-install-recommends yarn
+sudo -S apt install --no-install-recommends yarn
 
 # unzip
 if !(type "unzip" > /dev/null 2>&1); then
