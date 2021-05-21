@@ -40,9 +40,6 @@ zinit wait lucid light-mode for \
         zsh-users/zsh-completions \
     supercrabtree/k
 
-# zmv
-autoload -Uz zmv
-
 #
 # パス
 #
@@ -67,51 +64,65 @@ alias gb='git branch'
 alias gc='git commit'
 alias gco='git checkout'
 
-alias dotfiles='cd ~/dotfiles'
-
 alias la='ls -a'
 alias cls='clear'
 alias y='yarn'
 alias zmv='noglob zmv -W'
+alias rdflint='java -jar rdflint-*.jar'
+
+alias dotfiles='cd ~/dotfiles'
 
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
 
-# rdflint
-alias rdflint='java -jar rdflint-*.jar'
 
 #
 # 一般設定
 #
 
-# 環境
 export LANG="ja_JP.UTF-8"
+
 # tviewの表示崩れ対策
 export LC_CTYPE="en_US.UTF-8"
+
 # ベル無効
 setopt no_beep
+
 # 補完候補を方向キーで選択可能にする
 zstyle ':completion:*:default' menu select=2
+
 # 入力ミスを訂正
 setopt correct
+
 # 日本語ファイル名に対応
 setopt print_eight_bit
+
 # ディレクトリ末尾に/を自動付与
 setopt auto_param_slash
+
 # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
 setopt mark_dirs
+
 # ファイルの種類を示すマークを表示
 setopt list_types
+
 # Tab連打で候補を切り替え
 setopt auto_menu
-# =以降も補完する
+
+# =以降も補完
 setopt magic_equal_subst
-# 入力途中でも補完する
+
+# 入力途中でも補完
 setopt complete_in_word
-# ドット無しで隠しファイルをマッチさせる
+
+# ドット無しで隠しファイルをマッチ
 setopt globdots
+
 # Ctrl+Dでログアウトしない
-unsetopt IGNORE_EOF
+setopt IGNORE_EOF
+
+# zmv
+autoload -Uz zmv
 
 #
 # 履歴
@@ -123,13 +134,17 @@ export SAVEHIST=1000
 
 # スペースで始まるコマンドを除外
 setopt hist_ignore_space
+
 # 重複するコマンドを除外
 setopt hist_ignore_dups
+
 # ヒストリに同じコマンドがあるなら古い方を削除
 setopt hist_ignore_all_dups
 
+#
 # 自動再コンパイル
+#
+
 if [ ~/dotfiles/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
-
