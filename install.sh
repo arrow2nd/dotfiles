@@ -7,7 +7,7 @@ read -sp "password : " passwd
 echo "$passwd" | sudo -S apt update
 
 # zsh
-if [ -z "$ZSH_VERSION" ]; then
+if !(type "zsh" > /dev/null 2>&1); then
   echo "### install zsh ###"
   sudo apt install -y zsh
   chsh -s $(which zsh)
@@ -33,6 +33,7 @@ fi
 echo "### install yarn ###"
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
 sudo apt install -y --no-install-recommends yarn
 
 # unzip
@@ -45,8 +46,8 @@ fi
 echo "### install ngrok ###"
 wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 unzip ngrok-stable-linux-amd64.zip
-sudo mv ngrok /usr/bin/ngrok/
-rm ngrok-stable-linux-amd64.zip ngrok
+sudo mv ngrok /usr/bin
+rm ngrok-stable-linux-amd64.zip
 
 # link
 echo "### create symbolic link ###"
@@ -57,26 +58,6 @@ done
 
 # zcompile
 zcompile $HOME/.zshrc
-
-source $HOME/.zshrc
-
-# asdf plugin
-echo "### add asdf plugin (nodejs) ###"
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
-
-echo "### add asdf plugin (golang) ###"
-asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
-
-# node.js
-echo "### install node.js ###"
-asdf install nodejs lts
-asdf global nodejs lts
-
-# golang
-echo "### install golang ###"
-asdf install golang latest
-asdf global golang latest
 
 echo "--- finish! ----"
 

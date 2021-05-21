@@ -10,4 +10,5 @@ git clone --recursive git@github.com:arrow2nd/dotfiles.git
 git clone --recursive https://github.com/arrow2nd/dotfiles.git
 
 ./dotfiles/install.sh
+./dotfiles/install-lang.sh
 ```
