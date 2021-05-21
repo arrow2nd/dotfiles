@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/bash
 
 # passwd
 read -sp "password : " passwd
