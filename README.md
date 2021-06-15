@@ -1,8 +1,11 @@
 # dotfiles
 
-Ubuntu 用
+## 環境
 
-## メモ
+- Ubuntu (18.04 ~) / macOS (10.15 Catalina ~)
+- git 導入済み
+
+## 導入メモ
 
 ```
 git clone --recursive git@github.com:arrow2nd/dotfiles.git
