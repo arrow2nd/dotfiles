@@ -75,7 +75,6 @@ alias dotfiles='cd ~/dotfiles'
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
 
-
 #
 # 一般設定
 #
