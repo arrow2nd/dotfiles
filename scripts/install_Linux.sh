@@ -1,33 +1,40 @@
 #!/bin/bash
 
+install() {
+  echo_title "Install $1"
+
+  if type "$1" > /dev/null 2>&1; then
+    echo "$1 exist!"
+  else
+    sudo apt install -y "$1"
+  fi
+
+  echo
+}
+
 # passwd
 read -sp "password : " passwd
 
 # update
 echo "$passwd" | sudo -S apt update
+echo
 
 # zsh
 if [ -z "$ZSH_VERSION" ]; then
-  echo "### install zsh ###"
+  echo_title "Install zsh"
   sudo apt install -y zsh
   chsh -s $(which zsh)
-fi
-
-# unzip
-if !(type "unzip" > /dev/null 2>&1); then
-  echo_title "Install unzip"
-  sudo apt install -y unzip
   echo
 fi
 
+# vim
+install "vim"
+
+# unzip
+install "unzip"
+
 # curl
-if type "curl" > /dev/null 2>&1; then
-  echo "curl exist!"
-else
-  echo_title "Install curl"
-  sudo apt install -y curl
-fi
-echo
+install "curl"
 
 # ngrok
 echo_title "Install ngrok"

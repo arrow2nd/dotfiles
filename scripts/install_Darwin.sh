@@ -1,25 +1,30 @@
 #!/bin/bash
 
+install() {
+  echo_title "Install $1"
+
+  if type "$1" > /dev/null 2>&1; then
+    echo "$1 exist!"
+  else
+    brew install "$1"
+  fi
+
+  echo
+}
+
 # Homebrew
 echo_title "Install Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo
 
+# vim
+install "vim"
+
 # curl
-if type "curl" > /dev/null 2>&1; then
-  echo "curl exist!"
-else
-  echo_title "Install curl"
-  brew install curl
-fi
-echo
+install "curl"
 
 # ngrok
-echo_title "Install ngrok"
-brew install ngrok
-echo
+install "ngrok"
 
 # yarn
-echo_title "Install yarn"
-brew install yarn
-echo
+install "yarn"
