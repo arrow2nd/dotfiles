@@ -28,3 +28,6 @@ install "ngrok"
 
 # yarn
 install "yarn"
+
+# gpg
+install "gpg"
