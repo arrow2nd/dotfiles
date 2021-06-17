@@ -31,3 +31,6 @@ install "yarn"
 
 # gpg
 install "gpg"
+
+# gh
+install "gh"

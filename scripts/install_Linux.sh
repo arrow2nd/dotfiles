@@ -51,3 +51,6 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update
 sudo apt install -y --no-install-recommends yarn
 echo
+
+# gh
+install "gh"
