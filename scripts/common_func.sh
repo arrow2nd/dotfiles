@@ -2,7 +2,9 @@
 
 echo_title() {
   local len=$((${#1} + 2))
-  seq -s "-" 0 $len | tr -d '[0-9]'
-  echo " $1 "
-  seq -s "-" 0 $len | tr -d '[0-9]'
+
+  printf "=%.0s" $(seq $len)
+  echo -e "\n $1 "
+  printf "=%.0s" $(seq $len)
+  echo
 }
