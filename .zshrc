@@ -117,6 +117,9 @@ setopt complete_in_word
 # ドット無しで隠しファイルをマッチ
 setopt globdots
 
+# 大文字・小文字を区別しない
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
 # Ctrl+Dでログアウトしない
 setopt IGNORE_EOF
 
