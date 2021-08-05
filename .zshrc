@@ -22,7 +22,7 @@ zinit light subnixr/minimal
 
 # ランダムな絵文字をプロンプトに設定
 () {
-    local emoji=('🦊' '🐴' '🐌' '🦀' '☕' '🍷' '🍮' '🍉' '🥝' '🍤' '🍣' '🍛' '🍟' '🍨')
+    local emoji=('🦊' '🐴' '🐌' '🦀' '☕' '🍷' '🍮' '🍉' '🥝' '🍤' '🍣' '🍛' '🍟' '🌵')
     MNML_USER_CHAR=$emoji[($RANDOM % $#emoji + 1)]
 }
 
