@@ -48,6 +48,9 @@ zinit wait lucid light-mode for \
 . $HOME/.asdf/asdf.sh
 fpath=($HOME/.asdf/completions $fpath)
 
+# cargo
+. $HOME/.cargo/env
+
 # yarn
 export PATH="$PATH:`yarn global bin`"
 
