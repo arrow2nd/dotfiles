@@ -8,9 +8,9 @@
 ## 導入メモ
 
 ```
-git clone --recursive git@github.com:arrow2nd/dotfiles.git
+git clone git@github.com:arrow2nd/dotfiles.git
 # or
-git clone --recursive https://github.com/arrow2nd/dotfiles.git
+git clone https://github.com/arrow2nd/dotfiles.git
 
 cd dotfiles
 
