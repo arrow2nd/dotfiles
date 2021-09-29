@@ -48,9 +48,6 @@ zinit wait lucid light-mode for \
 . $HOME/.asdf/asdf.sh
 fpath=($HOME/.asdf/completions $fpath)
 
-# cargo
-. $HOME/.cargo/env
-
 # yarn
 export PATH="$PATH:`yarn global bin`"
 
@@ -153,3 +150,9 @@ setopt hist_ignore_all_dups
 if [ ~/dotfiles/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
+
+#
+# 個別設定
+#
+
+[ -f ~/.zshrc_local ] && . ~/.zshrc_local
