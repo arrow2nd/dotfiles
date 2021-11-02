@@ -14,17 +14,10 @@ install() {
 echo_title "Install Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# vim
-install "vim"
+# clone .Brewfile
+git clone git@gist.github.com:22e12dad29f29ed308a9acf2e54cfd90.git
+mv 22e12dad29f29ed308a9acf2e54cfd90/.Brewfile $HOME
+rm -r 22e12dad29f29ed308a9acf2e54cfd90
 
-# curl
-install "curl"
-
-# ngrok
-install "ngrok"
-
-# gpg
-install "gpg"
-
-# gh
-install "gh"
+# install
+brew bundle --global
