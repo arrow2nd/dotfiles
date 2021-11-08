@@ -2,15 +2,15 @@
 
 . scripts/common_func.sh
 
+# OS別
+[ -f scripts/install_`uname`.sh ] && . scripts/install_`uname`.sh
+
 # symbolic link
 echo_title "Create symbolic links"
 for f in .??*; do
   [[ "$f" == ".git" ]] && continue
   ln -sf $HOME/dotfiles/$f $HOME/$f
 done
-
-# OS別
-[ -f scripts/install_`uname`.sh ] && . scripts/install_`uname`.sh
 
 # zinit
 echo_title "Install zinit"

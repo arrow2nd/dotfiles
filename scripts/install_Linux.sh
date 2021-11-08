@@ -5,6 +5,8 @@ sudo apt update && sudo apt upgrade -y
 
 # keychain
 sudo apt install keychain
+/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
+source $HOME/.keychain/$HOST-sh
 
 echo "# For Loading the SSH key
 /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
@@ -15,7 +17,6 @@ if [ -z "$ZSH_VERSION" ]; then
     echo_title "Install zsh"
     sudo apt install -y zsh
     chsh -s $(which zsh)
-    source $HOME/.zshrc
 fi
 
 # Homebrew
