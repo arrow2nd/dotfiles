@@ -3,15 +3,6 @@
 # apt update
 sudo apt update && sudo apt upgrade -y
 
-# keychain
-sudo apt install keychain
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
-source $HOME/.keychain/$HOST-sh
-
-echo "# For Loading the SSH key
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
-source $HOME/.keychain/$HOST-sh" >> $HOME/.zshrc_local
-
 # zsh
 if [ -z "$ZSH_VERSION" ]; then
     echo_title "Install zsh"
