@@ -14,7 +14,7 @@ fi
 echo_title "Install Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/arrow2nd/.profile
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/arrow2nd/.zprofile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 sudo apt install build-essential
