@@ -2,6 +2,13 @@
 
 . scripts/common_func.sh
 
+# symbolic link
+echo_title "Create symbolic links"
+for f in .??*; do
+  [[ "$f" == ".git" ]] && continue
+  ln -sf $HOME/dotfiles/$f $HOME/$f
+done
+
 # OS別
 [ -f scripts/install_`uname`.sh ] && . scripts/install_`uname`.sh
 
@@ -14,13 +21,6 @@ zinit self-update
 # asdf
 echo_title "Install asdf"
 git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-
-# symbolic link
-echo_title "Create symbolic links"
-for f in .??*; do
-  [[ "$f" == ".git" ]] && continue
-  ln -sf $HOME/dotfiles/$f $HOME/$f
-done
 
 # zcompile
 zcompile $HOME/.zshrc
