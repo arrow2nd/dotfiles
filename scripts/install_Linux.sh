@@ -8,7 +8,7 @@ sudo apt install keychain
 
 echo "# For Loading the SSH key
 /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
-source $HOME/.keychain/$HOST-sh" >> .zshrc_local
+source $HOME/.keychain/$HOST-sh" >> $HOME/.zshrc_local
 
 # zsh
 if [ -z "$ZSH_VERSION" ]; then
