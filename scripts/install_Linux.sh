@@ -14,6 +14,11 @@ fi
 echo_title "Install Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/arrow2nd/.profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+sudo apt install build-essential
+
 # clone .Brewfile
 git clone git@gist.github.com:7f2a32839bd48084969d48b8aabda0e2.git
 mv 7f2a32839bd48084969d48b8aabda0e2/.Brewfile $HOME
