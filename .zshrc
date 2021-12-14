@@ -21,7 +21,7 @@ zinit light subnixr/minimal
 
 # ランダムな絵文字をプロンプトに設定
 () {
-    local emoji=('🐶' '🦕' '🐌' '🦀' '🥕' '🍷' '🥙' '🍿' '🥝' '🍤' '🍣' '🍛' '🍺' '🌵')
+    local emoji=('🐶' '🐱' '🦕' '🐌' '🍹' '🍷' '🍺' '🥙' '🍿' '🥝' '🍤' '🍣' '🍛' '🌵')
     MNML_USER_CHAR=$emoji[($RANDOM % $#emoji + 1)]
 }
 
@@ -60,7 +60,6 @@ alias gb='git branch'
 alias gc='git commit'
 alias gco='git checkout'
 
-alias la='ls -a'
 alias cls='clear'
 alias y='yarn'
 alias zmv='noglob zmv -W'
