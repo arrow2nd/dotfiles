@@ -59,6 +59,7 @@ alias gp='git push'
 alias gb='git branch'
 alias gc='git commit'
 alias gco='git checkout'
+alias gsw='git switch'
 
 alias cls='clear'
 alias y='yarn'
