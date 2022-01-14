@@ -8,7 +8,7 @@
 # symbolic link
 echo_title "Create symbolic links"
 for f in .??*; do
-  [[ "$f" == ".git" ]] && continue
+  [[ "$f" =~ ^\.git.*$ ]] && continue
   ln -sf $HOME/dotfiles/$f $HOME/$f
 done
 
