@@ -11,17 +11,6 @@ asdf install nodejs lts
 asdf global nodejs lts
 
 # deno
-echo_title "Add deno"
-asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git
-
-asdf install deno latest
-asdf global deno latest
-
-# golang
-echo_title "Add golang plugin"
-asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
-
-asdf install golang latest
-asdf global golang latest
+deno upgrade
 
 echo "--- finish! ----"
