@@ -26,7 +26,7 @@ zinit light subnixr/minimal
 }
 
 #
-# プラグインとか
+# プラグイン
 #
 
 # https://zdharma.github.io/zinit/wiki/Example-Minimal-Setup/
@@ -40,17 +40,22 @@ zinit wait lucid light-mode for \
     supercrabtree/k
 
 #
-# asdf
+# パス
 #
 
+# asdf
 . $HOME/.asdf/asdf.sh
 fpath=($HOME/.asdf/completions $fpath)
 autoload -Uz compinit && compinit
+
+# deno
+export PATH="$HOME/.deno/bin:$PATH"
 
 #
 # エイリアス
 #
 
+# git
 alias g='git'
 alias ga='git add'
 alias gd='git diff'
@@ -61,6 +66,7 @@ alias gc='git commit'
 alias gco='git checkout'
 alias gsw='git switch'
 
+# 雑多
 alias cls='clear'
 alias y='yarn'
 alias zmv='noglob zmv -W'
