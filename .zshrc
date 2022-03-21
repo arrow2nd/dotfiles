@@ -63,8 +63,13 @@ alias gs='git status'
 alias gp='git push'
 alias gb='git branch'
 alias gc='git commit'
-alias gco='git checkout'
 alias gsw='git switch'
+
+# todo
+alias todo='gh issue list -R arrow2nd/todo'
+alias todo-add='gh issue create -a @me -l todo -p my-to-do -R arrow2nd/todo'
+alias todo-done='gh issue close -R arrow2nd/todo'
+alias todo-browse='gh browse -R arrow2nd/todo -p'
 
 # 雑多
 alias cls='clear'
