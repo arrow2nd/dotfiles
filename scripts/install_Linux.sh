@@ -29,7 +29,6 @@ yay -S \
  pastel \
  tree \
  xsel \
- yarn \
  ngrok
 
 # zshに切り替え
