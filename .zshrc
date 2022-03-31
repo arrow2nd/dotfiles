@@ -29,7 +29,6 @@ zinit light subnixr/minimal
 # プラグイン
 #
 
-# https://zdharma.github.io/zinit/wiki/Example-Minimal-Setup/
 zinit wait lucid light-mode for \
     atinit"zicompinit; zicdreplay" \
         zdharma-continuum/fast-syntax-highlighting \
@@ -40,12 +39,27 @@ zinit wait lucid light-mode for \
     supercrabtree/k
 
 #
+# 個別設定
+#
+
+[ -f ~/.zshrc_local ] && . ~/.zshrc_local
+
+#
 # パス
 #
 
 # asdf
-. $HOME/.asdf/asdf.sh
-fpath=($HOME/.asdf/completions $fpath)
+case ${OSTYPE} in
+  darwin*)
+    . $HOME/.asdf/asdf.sh
+    ;;
+  linux*)
+    . /opt/asdf-vm/asdf.sh
+    ;;
+esac
+
+# asdf補完設定
+fpath=($HOME/.asdf/completions $fpath)    
 autoload -Uz compinit && compinit
 
 # deno
@@ -55,7 +69,7 @@ export PATH="$HOME/.deno/bin:$PATH"
 # エイリアス
 #
 
-# git
+# Git
 alias g='git'
 alias ga='git add'
 alias gd='git diff'
@@ -65,7 +79,7 @@ alias gb='git branch'
 alias gc='git commit'
 alias gsw='git switch'
 
-# todo
+# ToDo
 alias todo='gh issue list -R arrow2nd/todo'
 alias todo-add='gh issue create -a @me -l todo -p my-to-do -R arrow2nd/todo'
 alias todo-done='gh issue close -R arrow2nd/todo'
@@ -86,10 +100,8 @@ alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:
 # 一般設定
 #
 
+# 言語
 export LANG="ja_JP.UTF-8"
-
-# tviewの表示崩れ対策
-export LC_CTYPE="en_US.UTF-8"
 
 # ベル無効
 setopt no_beep
@@ -157,9 +169,3 @@ setopt hist_ignore_all_dups
 if [ ~/dotfiles/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
-
-#
-# 個別設定
-#
-
-[ -f ~/.zshrc_local ] && . ~/.zshrc_local

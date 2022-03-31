@@ -10,7 +10,4 @@ bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-ke
 asdf install nodejs lts
 asdf global nodejs lts
 
-# deno
-deno upgrade
-
 echo "--- finish! ----"
