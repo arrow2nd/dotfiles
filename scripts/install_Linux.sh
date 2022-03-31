@@ -11,7 +11,7 @@ else
   echo_title "Install yay"
   git clone https://aur.archlinux.org/yay-bin yay
   cd yay
-  makepkg -si --noconfirm
+  sudo makepkg -si --noconfirm
   cd ..
   rm -rf yay
 fi
