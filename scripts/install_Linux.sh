@@ -7,7 +7,6 @@
 # 諸々インストール
 yay -S \
  zsh \
- asdf-vm \
  unzip \
  deno \
  ffmpeg \
@@ -21,4 +20,4 @@ yay -S \
  ngrok
 
 # zshに切り替え
-sudo chsh -s $(which zsh)
+sudo chsh -s $(which zsh) $(whoami)

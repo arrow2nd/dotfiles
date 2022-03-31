@@ -49,17 +49,10 @@ zinit wait lucid light-mode for \
 #
 
 # asdf
-case ${OSTYPE} in
-  darwin*)
-    . $HOME/.asdf/asdf.sh
-    ;;
-  linux*)
-    . /opt/asdf-vm/asdf.sh
-    ;;
-esac
+. $HOME/.asdf/asdf.sh
 
 # asdf補完設定
-fpath=($HOME/.asdf/completions $fpath)    
+fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 
 # deno

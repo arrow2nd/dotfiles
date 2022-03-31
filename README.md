@@ -2,7 +2,7 @@
 
 ## 環境
 
-- Ubuntu (18.04 ~) / macOS (10.15 Catalina ~)
+- Arch Linux / macOS (10.15 Catalina ~)
 - git 導入済み
 
 ## 導入メモ
@@ -14,6 +14,9 @@ git clone https://github.com/arrow2nd/dotfiles.git
 
 cd dotfiles
 
+# 初期設定
 ./install.sh
+
+# 言語をインストール (asdf)
 ./install-lang.sh
 ```
