@@ -94,7 +94,9 @@ alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:
 #
 
 # 言語
-export LANG="ja_JP.UTF-8"
+export LC_ALL=ja_JP.UTF-8
+export LANG=ja_JP.UTF-8
+export LANGUAGE=ja_JP.UTF-8
 
 # ベル無効
 setopt no_beep
