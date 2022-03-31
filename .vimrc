@@ -2,7 +2,7 @@ syntax on
 colorscheme desert
 
 " 文字コード
-set fenc=utf-8
+set encoding=utf-8
 " バックアップを作らない
 set nobackup
 " スワップファイルを作らない
