@@ -159,7 +159,7 @@ endfunction
 nnoremap <leader>ga <cmd>Git add %:p<cr>
 nnoremap <leader>gc <cmd>Git commit<cr>
 nnoremap <leader>gs <cmd>Git<cr>
-nnoremap <leader>gp <cmd>Gpush<cr>
+nnoremap <leader>gp <cmd>Git push<cr>
 nnoremap <leader>gd <cmd>Gdiffsplit<cr>
 nnoremap <leader>gl <cmd>Gclog<cr>
 
