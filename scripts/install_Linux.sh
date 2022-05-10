@@ -31,7 +31,8 @@ yay -S \
  xsel \
  ngrok \
  ripgrep \
- stow
+ stow \
+ rustup
 
 # zshに切り替え
 echo_title "Switch to zsh"
