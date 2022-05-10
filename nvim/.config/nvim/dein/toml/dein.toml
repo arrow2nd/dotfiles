@@ -63,6 +63,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+hook_add = 'set updatetime=250'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
