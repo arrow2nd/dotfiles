@@ -6,6 +6,8 @@
 asdf install nodejs lts
 asdf global nodejs lts
 
+source $HOME/.zshrc
+
 # yarn
 echo_title "Add yarn"
 npm install -g yarn
