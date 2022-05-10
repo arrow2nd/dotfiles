@@ -29,8 +29,11 @@ yay -S \
  pastel \
  tree \
  xsel \
- ngrok
+ ngrok \
+ ripgrep \
+ stow
 
 # zshに切り替え
 echo_title "Switch to zsh"
 sudo chsh -s $(which zsh) $(whoami)
+

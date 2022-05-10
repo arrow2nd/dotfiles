@@ -5,12 +5,9 @@
 # OS別
 [ -f scripts/install_`uname`.sh ] && . scripts/install_`uname`.sh
 
-# symbolic link
+# create symbolic links
 echo_title "Create symbolic links"
-for f in .??*; do
-  [[ "$f" =~ ^\.git.*$ ]] && continue
-  ln -sf $HOME/dotfiles/$f $HOME/$f
-done
+stow -v joplin kitty nvim twnyan zsh
 
 # zinit
 echo_title "Install zinit"
@@ -21,6 +18,13 @@ zinit self-update
 # asdf
 echo_title "Install asdf"
 git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.9.0
+
+# dein.vim
+echo_title "Install dein.vim"
+mkdir -p ~/.cache/dein
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+sh ./installer.sh ~/.cache/dein
+rm installer.sh
 
 # zcompile
 zcompile $HOME/.zshrc

@@ -1,0 +1,8 @@
+# ref: https://zenn.dev/mkobayashime/articles/nvim-treesitter-dein
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+merged = 0
+on_event = 'BufRead'
+hook_post_update = 'TSUpdate'
+hook_source = 'source ~/.config/nvim/dein/plugins/nvim-treesitter.lua'
+
