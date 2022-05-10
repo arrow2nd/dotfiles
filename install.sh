@@ -27,19 +27,9 @@ echo_title "Install asdf"
 git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.9.0
 . $HOME/.asdf/asdf.sh
 
-# nodejs
+# plugin nodejs
 echo_title "Add nodejs"
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-
-asdf install nodejs lts
-asdf global nodejs lts
-
-# yarn
-echo_title "Add yarn"
-npm install -g yarn
-
-# yarnでインストールしてるツール
-yarn global add joplin
 
 # zcompile
 zcompile $HOME/.zshrc
