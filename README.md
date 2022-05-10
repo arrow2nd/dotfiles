@@ -20,4 +20,7 @@ cd dotfiles
 
 # 初期設定
 ./install.sh
+
+# nodejs / yarn インストール
+./install-node.sh
 ```
