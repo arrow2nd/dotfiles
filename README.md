@@ -5,6 +5,10 @@
 - Arch Linux / macOS (10.15 Catalina ~)
 - git 導入済み
 
+## フォント
+
+[PlemolJP (Nerd Fonts)](https://github.com/yuru7/PlemolJP)
+
 ## 導入メモ
 
 ```
@@ -16,7 +20,4 @@ cd dotfiles
 
 # 初期設定
 ./install.sh
-
-# 言語をインストール (asdf)
-./install-lang.sh
 ```
