@@ -25,7 +25,7 @@ rm installer.sh
 # asdf
 echo_title "Install asdf"
 git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.9.0
-source $HOME/.zshrc
+. $HOME/.asdf/asdf.sh
 
 # nodejs
 echo_title "Add nodejs"
