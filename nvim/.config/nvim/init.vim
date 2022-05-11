@@ -60,6 +60,9 @@ autocmd BufWritePost ~/.cache/init.vim so ~/.config/nvim/init.vim
 set encoding=utf-8
 scriptencoding utf-8
 
+" buffer切り替え時の未保存警告をオフ
+set hidden
+
 " helpを日本語化
 set helplang=ja
 
@@ -140,6 +143,10 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" 診断を選択
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
 " 定義元ジャンプ
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -156,6 +163,20 @@ function! s:show_documentation()
     call feedkeys('K', 'in')
   endif
 endfunction
+
+" シンボルをリネーム
+nmap <leader>rn <Plug>(coc-rename)
+
+" 選択した領域にCodeActionを適応
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" 現在の行にCode Lens Actionを実行
+nmap <leader>cl  <Plug>(coc-codelens-action)
+
+" CTRL-Sで範囲を選択
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " vim-fugitive
 nnoremap <leader>gc <cmd>Git commit<cr>
