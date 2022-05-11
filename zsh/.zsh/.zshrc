@@ -39,7 +39,7 @@ zinit wait lucid light-mode for \
     supercrabtree/k
 
 #
-# 個別設定
+# ローカル設定
 #
 
 [ -f ~/.zshrc_local ] && . ~/.zshrc_local
@@ -92,9 +92,6 @@ alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:
 #
 # 一般設定
 #
-
-# 言語
-export LANG=ja_JP.UTF-8
 
 # ベル無効
 setopt no_beep
