@@ -21,6 +21,5 @@ cd dotfiles
 # 初期設定
 ./install.sh
 
-# nodejs / yarn インストール
-./install-node.sh
+# 各環境に合った方法で言語等をインストール
 ```
