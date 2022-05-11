@@ -5,3 +5,8 @@ merged = 0
 on_event = 'BufRead'
 hook_post_update = 'TSUpdate'
 hook_source = 'source ~/.config/nvim/dein/plugins/nvim-treesitter.lua'
+
+[[plugins]]
+repo = 'iamcco/markdown-preview.nvim'
+on_ft = ['markdown', 'pandoc.markdown', 'rmd']
+build = 'sh -c "cd app && yarn install"'
