@@ -12,7 +12,7 @@ stow -v joplin kitty nvim twnyan zsh
 # zinit
 echo_title "Install zinit"
 sh -c "$(curl -fsSL https://git.io/zinit-install)"
-source $HOME/.zshrc
+source $HOME/.zsh/.zshrc
 zinit self-update
 
 # dein.vim
@@ -32,7 +32,7 @@ echo_title "Add nodejs"
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 
 # zcompile
-zcompile $HOME/.zshrc
+zcompile $HOME/.zsh/.zshrc
 
 echo "--- finish! ----"
 
