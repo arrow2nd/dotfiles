@@ -79,7 +79,7 @@ alias gsw='git switch'
 alias todo='gh issue list -R arrow2nd/todo'
 alias todo-add='gh issue create -a @me -l todo -p my-todo -R arrow2nd/todo'
 alias todo-done='gh issue close -R arrow2nd/todo'
-alias todo-list='gh issue list -R arrow2nd/todo'
+alias todo-view='gh issue view -R arrow2nd/todo'
 
 # 雑多
 alias cls='clear'
