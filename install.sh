@@ -7,7 +7,7 @@
 
 # create symbolic links
 echo_title "Create symbolic links"
-stow -v joplin kitty nvim twnyan zsh
+stow -v --no-folding  joplin kitty nvim twnyan zsh
 
 # zinit
 echo_title "Install zinit"
