@@ -32,9 +32,13 @@ yay -S \
  ngrok \
  ripgrep \
  stow \
- rustup
+ rustup \
+ openssh \
+ wget \
+ keychain \
+ neovim \
+ github-cli
 
 # zshに切り替え
 echo_title "Switch to zsh"
 sudo chsh -s $(which zsh) $(whoami)
-

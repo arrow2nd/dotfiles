@@ -162,4 +162,3 @@ nnoremap <leader>gs <cmd>Git<cr>
 nnoremap <leader>gp <cmd>Git push<cr>
 nnoremap <leader>gd <cmd>Gdiffsplit<cr>
 nnoremap <leader>gl <cmd>Gclog<cr>
-
