@@ -42,7 +42,7 @@ zinit wait lucid light-mode for \
 # ローカル設定
 #
 
-[ -f ~/.zshrc_local ] && . ~/.zshrc_local
+[ -f $ZDOTDIR/.zshrc_local ] && . $ZDOTDIR/.zshrc_local
 
 #
 # パス
