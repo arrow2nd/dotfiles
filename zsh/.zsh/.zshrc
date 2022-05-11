@@ -58,6 +58,9 @@ autoload -Uz compinit && compinit
 # deno
 export PATH="$HOME/.deno/bin:$PATH"
 
+# golang
+export PATH="$HOME/go/bin:$PATH"
+
 #
 # エイリアス
 #
