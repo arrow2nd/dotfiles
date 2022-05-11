@@ -124,6 +124,8 @@ nnoremap <C-n> :Fern . -drawer -toggle<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fc <cmd>Telescope git_commits<cr>
+nnoremap <leader>fs <cmd>Telescope git_status<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " tabで補完候補を選択
@@ -156,7 +158,6 @@ function! s:show_documentation()
 endfunction
 
 " vim-fugitive
-nnoremap <leader>ga <cmd>Git add %:p<cr>
 nnoremap <leader>gc <cmd>Git commit<cr>
 nnoremap <leader>gs <cmd>Git<cr>
 nnoremap <leader>gp <cmd>Git push<cr>
