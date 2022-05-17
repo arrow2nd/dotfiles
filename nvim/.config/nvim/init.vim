@@ -113,13 +113,6 @@ nnoremap <silent> <C-k> :bnext<cr>
 " esc2度押しで検索のハイライトを解除
 nnoremap <ESC><ESC> :nohlsearch<cr>
 
-" 自動で括弧を閉じる
-inoremap { {}<LEFT>
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-
 " fern.vim
 nnoremap <C-n> :Fern . -drawer -toggle<cr>
 
