@@ -10,3 +10,8 @@ hook_source = 'source ~/.config/nvim/dein/plugins/nvim-treesitter.lua'
 repo = 'iamcco/markdown-preview.nvim'
 on_ft = ['markdown', 'pandoc.markdown', 'rmd']
 build = 'sh -c "cd app && yarn install"'
+
+[[plugins]]
+repo = 'windwp/nvim-autopairs'
+on_event = ['InsertEnter']
+hook_post_source = 'source ~/.config/nvim/dein/plugins/nvim-autopairs.lua'
