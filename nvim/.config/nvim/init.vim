@@ -87,9 +87,6 @@ set expandtab
 set shiftwidth=2
 set smartindent
 
-" カーソル形状をターミナルデフォルトから変更しない
-set guicursor=
-
 " 全ての値を10進数として扱う
 set nrformats=
 
