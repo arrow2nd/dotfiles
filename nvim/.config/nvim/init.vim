@@ -102,6 +102,9 @@ set smartcase
 " インクリメンタルサーチ
 set incsearch
 
+" vimを終了・サスペンド時にカーソルスタイルをアンダースコアに変更
+au VimLeave,VimSuspend * set guicursor=a:hor20
+
 " Leaderキー
 let mapleader = "\<Space>"
 
