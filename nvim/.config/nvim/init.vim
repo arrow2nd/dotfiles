@@ -78,6 +78,9 @@ set nowrap
 " 行末までカーソルを移動可能にする
 set virtualedit=onemore
 
+" マウス操作を有効化
+set mouse=a
+
 " タブ・インデント
 set tabstop=2
 set expandtab
