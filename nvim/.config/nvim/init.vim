@@ -105,6 +105,9 @@ set incsearch
 " vimを終了・サスペンド時にカーソルスタイルをアンダースコアに変更
 au VimLeave,VimSuspend * set guicursor=a:hor20
 
+" ヒストリの上限
+set history=255
+
 " Leaderキー
 let mapleader = "\<Space>"
 
@@ -118,6 +121,10 @@ nnoremap <silent> <C-k> :bnext<cr>
 
 " esc2度押しで検索のハイライトを解除
 nnoremap <ESC><ESC> :nohlsearch<cr>
+
+" C-p, C-n でヒストリを選択
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 " fern.vim
 nnoremap <C-n> :Fern . -drawer -toggle<cr>
