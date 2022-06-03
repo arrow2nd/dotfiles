@@ -68,3 +68,5 @@ hook_add = 'set updatetime=250'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
+[[plugins]]
+repo = 'tpope/vim-surround'
