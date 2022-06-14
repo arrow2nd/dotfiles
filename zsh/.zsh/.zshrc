@@ -83,9 +83,9 @@ alias gsw='git switch'
 
 # ToDo
 alias todo='gh issue list -R arrow2nd/todo'
-alias todo-add='gh issue create -a @me -l todo -p my-todo -R arrow2nd/todo'
-alias todo-done='gh issue close -R arrow2nd/todo'
-alias todo-view='gh issue view -R arrow2nd/todo'
+alias todoadd='gh issue create -a @me -l todo -p my-todo -R arrow2nd/todo'
+alias tododone='gh issue close -R arrow2nd/todo'
+alias todoview='gh issue view -R arrow2nd/todo'
 
 # 雑多
 alias cls='clear'
@@ -93,6 +93,7 @@ alias y='yarn'
 alias zmv='noglob zmv -W'
 alias rdflint='java -jar rdflint-*.jar'
 alias tw='twnyan tw'
+alias fzfupd='cd ~/.fzf && git pull && ./install'
 
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
