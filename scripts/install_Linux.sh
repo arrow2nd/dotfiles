@@ -37,7 +37,8 @@ yay -S \
  wget \
  keychain \
  neovim \
- github-cli
+ github-cli \
+ ghq
 
 # zshに切り替え
 echo_title "Switch to zsh"
