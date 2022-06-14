@@ -10,9 +10,9 @@ echo_title "Create symbolic links"
 stow -v --no-folding  joplin kitty nvim twnyan zsh vsvim
 
 # git config
-git config --global core.editor=nvim
+git config --global core.editor nvim
 git config --global url.git@github.com:.insteadOf https://github.com/
-git config --global pull.rebase=false
+git config --global pull.rebase false
 
 # zinit
 echo_title "Install zinit"
