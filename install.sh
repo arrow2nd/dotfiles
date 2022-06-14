@@ -13,12 +13,16 @@ stow -v --no-folding  joplin kitty nvim twnyan zsh vsvim
 git config --global core.editor nvim
 git config --global url.git@github.com:.insteadOf https://github.com/
 git config --global pull.rebase false
+git config --global ghq.root '~/workspace'
 
 # zinit
 echo_title "Install zinit"
 sh -c "$(curl -fsSL https://git.io/zinit-install)"
 source $HOME/.zsh/.zshrc
 zinit self-update
+
+# gh extention
+gh extension install kawarimidoll/gh-q
 
 # dein.vim
 echo_title "Install dein.vim"

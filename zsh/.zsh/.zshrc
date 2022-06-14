@@ -81,6 +81,9 @@ alias gb='git branch'
 alias gc='git commit'
 alias gsw='git switch'
 
+# ghq + fzf
+alias gcd='cd $(ghq list -p | fzf)'
+
 # ToDo
 alias todo='gh issue list -R arrow2nd/todo'
 alias todoadd='gh issue create -a @me -l todo -p my-todo -R arrow2nd/todo'
