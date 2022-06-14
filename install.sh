@@ -22,6 +22,11 @@ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >
 sh ./installer.sh ~/.cache/dein
 rm installer.sh
 
+# fzf
+echo_title "Install fzf"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 # asdf
 echo_title "Install asdf"
 git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.9.0

@@ -39,6 +39,12 @@ zinit wait lucid light-mode for \
     supercrabtree/k
 
 #
+# fzf
+# 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#
 # ローカル設定
 #
 
