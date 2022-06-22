@@ -82,7 +82,7 @@ alias gc='git commit'
 alias gsw='git switch'
 
 # ghq + fzf
-alias gcd='cd $(ghq list -p | fzf)'
+alias q='cd $(ghq list -p | fzf)'
 
 # ToDo
 alias todo='gh issue list -R arrow2nd/todo'
