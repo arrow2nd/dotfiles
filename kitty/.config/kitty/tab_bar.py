@@ -1,3 +1,4 @@
+# pyright: reportMissingImports=false
 # https://github.com/kovidgoyal/kitty/discussions/4447#discussion-3781380
 
 import datetime
@@ -59,14 +60,27 @@ def _draw_left_status(
     return end
 
 
-def _get_battery_status() -> str:
+def _get_battery_status(default: Color) -> tuple[Color, str]:
+    warn = Color(249, 213, 117)
+    danger = Color(212, 128, 126)
+
+    # バッテリー残量を取得
     try:
         batt = int(subprocess.getoutput("pmset -g batt | grep -Eo \"\d+%\" | cut -d% -f1"))
     except Exception:
-        return " unknown "
+        return danger, " unknown "
 
+    # 残量から表示色を決定
+    color = default
+    if batt < 10:
+        color = danger
+    elif batt < 20:
+        color = warn
+
+    # 残量に合ったアイコンを選択
     i = int(Decimal(batt).quantize(Decimal('1E1'), rounding=ROUND_HALF_UP)) // 10
-    return f"{''[i]} {batt}% "
+
+    return color, f"{''[i]} {batt}% "
 
 
 def _draw_right_status(screen: Screen, is_last: bool) -> int:
@@ -75,7 +89,7 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
 
     cells = [
         (Color(161, 125, 101), " "),
-        (Color(81, 86, 103), _get_battery_status()),
+        _get_battery_status(Color(81, 86, 103)),
         (Color(81, 86, 103), datetime.datetime.now().strftime(" %H:%M ")),
     ]
 
