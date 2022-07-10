@@ -74,6 +74,7 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
         return
 
     cells = [
+        (Color(161, 125, 101), " "),
         (Color(81, 86, 103), _get_battery_status()),
         (Color(81, 86, 103), datetime.datetime.now().strftime(" %H:%M ")),
     ]
