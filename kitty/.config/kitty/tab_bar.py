@@ -72,9 +72,9 @@ def _get_battery_status(default: Color) -> tuple[Color, str]:
 
     # 残量から表示色を決定
     color = default
-    if batt < 10:
+    if batt <= 10:
         color = danger
-    elif batt < 20:
+    elif batt <= 20:
         color = warn
 
     # 残量に合ったアイコンを選択
