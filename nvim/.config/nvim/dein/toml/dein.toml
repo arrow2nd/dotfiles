@@ -59,6 +59,7 @@ hook_add = '''
     \'coc-prettier',
     \'coc-tsserver',
     \'coc-rls',
+    \'coc-pyright',
   \]
 '''
 
