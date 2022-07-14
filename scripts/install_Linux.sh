@@ -23,11 +23,8 @@ yay -S \
  unzip \
  deno \
  ffmpeg \
- gh \
  go \
  goreleaser \
- pastel \
- tree \
  xsel \
  ngrok \
  ripgrep \
@@ -38,7 +35,9 @@ yay -S \
  keychain \
  neovim \
  github-cli \
- ghq
+ ghq \
+ sheldon \
+ fzf
 
 # zshに切り替え
 echo_title "Switch to zsh"

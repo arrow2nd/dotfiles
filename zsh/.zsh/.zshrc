@@ -1,48 +1,17 @@
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
-
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
-
 #
-# プロンプトとか
+# sheldon
 #
 
-# テーマ
-zinit light subnixr/minimal
+eval "$(sheldon source)"
 
-# ランダムな絵文字をプロンプトに設定
+#
+# プロンプト
+#
+
 () {
     local emoji=('🐶' '🐱' '🦕' '🐌' '🍹' '🍷' '🍺' '🥙' '🍿' '🥝' '🍤' '🍣' '🍛' '🌵')
     MNML_USER_CHAR=$emoji[($RANDOM % $#emoji + 1)]
 }
-
-#
-# プラグイン
-#
-
-zinit wait lucid light-mode for \
-    atinit"zicompinit; zicdreplay" \
-        zdharma-continuum/fast-syntax-highlighting \
-    atload"_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions \
-    blockf atpull'zinit creinstall -q .' \
-        zsh-users/zsh-completions \
-    supercrabtree/k
-
-#
-# fzf
-# 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #
 # ローカル設定
@@ -53,13 +22,6 @@ zinit wait lucid light-mode for \
 #
 # パス
 #
-
-# asdf
-. $HOME/.asdf/asdf.sh
-
-# asdf補完設定
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit && compinit
 
 # deno
 export PATH="$HOME/.deno/bin:$PATH"
@@ -92,11 +54,11 @@ alias todoview='gh issue view -R arrow2nd/todo'
 
 # 雑多
 alias cls='clear'
+alias l="exa"
 alias y='yarn'
 alias zmv='noglob zmv -W'
 alias rdflint='java -jar rdflint-*.jar'
-alias tw='twnyan tw'
-alias fzfupd='cd ~/.fzf && git pull && ./install'
+alias tw='nekome tweet'
 
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
