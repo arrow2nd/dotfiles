@@ -37,7 +37,8 @@ yay -S \
  github-cli \
  ghq \
  sheldon \
- fzf
+ fzf \
+ exa
 
 # zshに切り替え
 echo_title "Switch to zsh"
