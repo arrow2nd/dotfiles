@@ -25,6 +25,8 @@ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >
 sh ./installer.sh ~/.cache/dein
 rm installer.sh
 
+source $HOME/.zsh/.zshrc
+
 # plugin nodejs
 echo_title "Add nodejs"
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
