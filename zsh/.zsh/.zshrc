@@ -46,6 +46,11 @@ alias gsw='git switch'
 # ghq + fzf
 alias q='cd $(ghq list -p | fzf)'
 
+# exa
+alias l='exa -l'
+alias la='exa -a'
+alias lt='exa -T'
+
 # ToDo
 alias todo='gh issue list -R arrow2nd/todo'
 alias todoadd='gh issue create -a @me -l todo -p my-todo -R arrow2nd/todo'
@@ -54,7 +59,6 @@ alias todoview='gh issue view -R arrow2nd/todo'
 
 # 雑多
 alias cls='clear'
-alias l="exa"
 alias y='yarn'
 alias zmv='noglob zmv -W'
 alias rdflint='java -jar rdflint-*.jar'
