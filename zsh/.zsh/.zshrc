@@ -47,7 +47,7 @@ alias gsw='git switch'
 alias q='cd $(ghq list -p | fzf)'
 
 # exa
-alias l='exa -l'
+alias l='exa -la'
 alias la='exa -a'
 alias lt='exa -T'
 
