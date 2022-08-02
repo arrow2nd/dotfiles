@@ -63,6 +63,7 @@ alias y='yarn'
 alias zmv='noglob zmv -W'
 alias rdflint='java -jar rdflint-*.jar'
 alias tw='nekome tweet'
+alias dot='cd ~/dotfiles'
 
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
