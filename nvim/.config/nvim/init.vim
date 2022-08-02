@@ -1,7 +1,9 @@
-" 24bitカラー
-set termguicolors
+set encoding=utf-8
 
-"dein Scripts-----------------------------
+scriptencoding utf-8
+
+" dein -----------------------------
+
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -42,29 +44,13 @@ if dein#check_install()
   call dein#install()
 endif
 
-"End dein Scripts-------------------------
+" 外観 -----------------------------
+
+" 24bitカラー
+set termguicolors
 
 " カラースキーム
 colorscheme iceberg
-
-" バックアップファイルを作成しない
-set nobackup
-
-" スワップファイルを作成しない
-set noswapfile
-
-" init.vimを自動で反映
-autocmd BufWritePost ~/.cache/init.vim so ~/.config/nvim/init.vim
-
-" デフォルトエンコード
-set encoding=utf-8
-scriptencoding utf-8
-
-" buffer切り替え時の未保存警告をオフ
-set hidden
-
-" helpを日本語化
-set helplang=ja
 
 " 行番号を表示
 set number 
@@ -74,6 +60,20 @@ set signcolumn=yes
 
 " 行を折り返さない
 set nowrap
+
+" helpを日本語化
+set helplang=ja
+
+" 機能 -----------------------------
+
+" バックアップファイルを作成しない
+set nobackup
+
+" スワップファイルを作成しない
+set noswapfile
+
+" buffer切り替え時の未保存警告をオフ
+set hidden
 
 " 行末までカーソルを移動可能にする
 set virtualedit=onemore
@@ -90,7 +90,7 @@ set smartindent
 " 全ての値を10進数として扱う
 set nrformats=
 
-" ヤンクするとクリップボードに保存される
+" ヤンクした内容をクリップボードに書込む
 set clipboard+=unnamed
 
 " 検索時に大文字小文字を区別しない
@@ -102,21 +102,26 @@ set smartcase
 " インクリメンタルサーチ
 set incsearch
 
-" vimを終了・サスペンド時にカーソルスタイルをアンダースコアに変更
-au VimLeave,VimSuspend * set guicursor=a:hor20
-
 " ヒストリの上限
 set history=255
 
-" rdfファイルをxmlファイルとして扱う
-autocmd BufNewFile,BufRead *.rdf  set filetype=xml
+" autocmd -----------------------------
+
+augroup vimrc
+  autocmd!
+  " init.vimを自動で反映
+  autocmd BufWritePost ~/.cache/init.vim so ~/.config/nvim/init.vim
+  " rdfファイルをxmlファイルとして扱う
+  autocmd BufNewFile,BufRead *.rdf  set filetype=xml
+augroup END
+
+" キーマップ -----------------------------
 
 " Leaderキー
 let mapleader = "\<Space>"
 
 " jキーを2度押しでESC
 inoremap <silent> jj <ESC>
-inoremap <silent> っj <ESC>
 
 " C-j, C-k でバッファを切替
 nnoremap <silent> <C-j> :bprev<cr>
@@ -193,6 +198,8 @@ nnoremap <leader>gs <cmd>Git<cr>
 nnoremap <leader>gp <cmd>Git push<cr>
 nnoremap <leader>gd <cmd>Gdiffsplit<cr>
 nnoremap <leader>gl <cmd>Gclog<cr>
+
+" コマンド -----------------------------
 
 " Dex (https://github.com/kawarimidoll/deno-dex)
 command! -nargs=* -bang Dex silent only! | botright 12 split |
