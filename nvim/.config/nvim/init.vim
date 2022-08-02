@@ -108,6 +108,9 @@ au VimLeave,VimSuspend * set guicursor=a:hor20
 " ヒストリの上限
 set history=255
 
+" rdfファイルをxmlファイルとして扱う
+autocmd BufNewFile,BufRead *.rdf  set filetype=xml
+
 " Leaderキー
 let mapleader = "\<Space>"
 

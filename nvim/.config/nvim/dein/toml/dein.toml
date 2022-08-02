@@ -60,6 +60,7 @@ hook_add = '''
     \'coc-tsserver',
     \'coc-rls',
     \'coc-pyright',
+    \'coc-xml',
   \]
 '''
 
