@@ -7,7 +7,7 @@
 
 # create symbolic links
 echo_title "Create symbolic links"
-stow -v --no-folding  joplin kitty nvim twnyan zsh vsvim sheldon
+stow -v --no-folding  joplin kitty nvim twnyan zsh vsvim sheldon nekome
 
 # git config
 git config --global core.editor nvim
