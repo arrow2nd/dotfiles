@@ -28,7 +28,6 @@ require('nvim-treesitter.configs').setup {
     'rust',
     'scss',
     'sparql',
-    'sql',
     'toml',
     'tsx',
     'typescript',
