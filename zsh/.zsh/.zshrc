@@ -65,6 +65,9 @@ alias rdflint='java -jar rdflint-*.jar'
 alias tw='nekome tweet'
 alias dot='cd ~/dotfiles'
 
+# kitty
+alias icat='kitty +kitten icat'
+
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
 
