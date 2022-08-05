@@ -53,9 +53,9 @@ alias lt='exa -T'
 
 # ToDo
 alias todo='gh issue list -R arrow2nd/todo'
-alias todoadd='gh issue create -a @me -l todo -p my-todo -R arrow2nd/todo'
-alias tododone='gh issue close -R arrow2nd/todo'
-alias todoview='gh issue view -R arrow2nd/todo'
+alias todoa='gh issue create -a @me -l todo -p my-todo -R arrow2nd/todo'
+alias todod='gh issue close -R arrow2nd/todo'
+alias todov='gh issue view -R arrow2nd/todo'
 
 # 雑多
 alias cls='clear'
