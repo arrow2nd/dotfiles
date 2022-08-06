@@ -58,9 +58,6 @@ set number
 " gitgutter用の列を予め表示
 set signcolumn=yes
 
-" 行を折り返さない
-set nowrap
-
 " helpを日本語化
 set helplang=ja
 
