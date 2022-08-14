@@ -64,11 +64,15 @@ def _get_battery_status(default: Color) -> tuple[Color, str]:
     warn = Color(249, 213, 117)
     danger = Color(212, 128, 126)
 
-    # バッテリー残量を取得
+    # バッテリー残量を取得 (macOS)
     try:
-        batt = int(subprocess.getoutput("pmset -g batt | grep -Eo \"\d+%\" | cut -d% -f1"))
+        batt = int(subprocess.getoutput("pmset -g batt | grep -Eo \"\d+%\" | cut -d % -f 1"))
+        power = subprocess.getoutput("pmset -g batt | grep -Eo \"'.+ Power'\"")
     except Exception:
         return danger, " unknown "
+
+    # 電源供給元に合わせてアイコンの種類を決定
+    icons = "" if power == "'AC Power'" else "'"
 
     # 残量から表示色を決定
     color = default
@@ -80,7 +84,7 @@ def _get_battery_status(default: Color) -> tuple[Color, str]:
     # 残量に合ったアイコンを選択
     i = int(Decimal(batt).quantize(Decimal('1E1'), rounding=ROUND_HALF_UP)) // 10
 
-    return color, f"{''[i]} {batt}% "
+    return color, f"{icons[i]} {batt}% "
 
 
 def _draw_right_status(screen: Screen, is_last: bool) -> int:
