@@ -160,7 +160,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " 定義元ジャンプ
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
@@ -190,9 +190,9 @@ nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " vim-fugitive
-nnoremap <leader>gc <cmd>Git commit<cr>
 nnoremap <leader>gs <cmd>Git<cr>
-nnoremap <leader>gp <cmd>Git push<cr>
+nnoremap <leader>gc <cmd>Git commit<cr>
+nnoremap <leader>gb <cmd>Git blame<cr>
 nnoremap <leader>gd <cmd>Gdiffsplit<cr>
 nnoremap <leader>gl <cmd>Gclog<cr>
 
