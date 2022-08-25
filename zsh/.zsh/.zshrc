@@ -54,7 +54,7 @@ alias lt='exa -T'
 # ToDo
 alias todo='gh issue list -S "label:todo,\"want to do\"" -R arrow2nd/todo'
 alias todow='gh issue list -l "want to buy" -R arrow2nd/todo'
-alias todoa='gh issue create -a @me -l todo -R arrow2nd/todo'
+alias todoa='gh issue create -R arrow2nd/todo'
 alias todoc='gh issue comment -R arrow2nd/todo'
 alias todoe='gh issue edit -R arrow2nd/todo'
 alias todod='gh issue close -R arrow2nd/todo'
