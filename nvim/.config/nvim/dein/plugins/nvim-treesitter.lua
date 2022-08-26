@@ -23,6 +23,7 @@ require('nvim-treesitter.configs').setup {
     'lua',
     'markdown',
     'php',
+    'prisma',
     'python',
     'regex',
     'rust',
