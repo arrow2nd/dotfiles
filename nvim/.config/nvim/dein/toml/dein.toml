@@ -33,10 +33,15 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+[[plugins]]
 repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
 repo = 'nvim-telescope/telescope.nvim'
+rev = '0.1.x'
+hook_add = 'source ~/.config/nvim/dein/plugins/telescope.lua'
 
 [[plugins]]
 repo = 'tpope/vim-commentary'
@@ -49,20 +54,7 @@ hook_add = 'source ~/.config/nvim/dein/plugins/lualine.lua'
 repo = 'neoclide/coc.nvim'
 rev = 'release'
 merged = '0'
-hook_add = '''
-  let g:coc_global_extensions = [
-    \'@yaegassy/coc-tailwindcss3',
-    \'coc-deno',
-    \'coc-eslint',
-    \'coc-go',
-    \'coc-json',
-    \'coc-prettier',
-    \'coc-tsserver',
-    \'coc-rls',
-    \'coc-pyright',
-    \'coc-xml',
-  \]
-'''
+hook_add = 'source ~/.config/nvim/dein/plugins/coc.lua'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
