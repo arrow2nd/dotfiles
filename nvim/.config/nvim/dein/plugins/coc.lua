@@ -59,7 +59,7 @@ vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', silent)
 vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', silent)
 
 -- リネーム
-vim.api.nvim_set_keymap('n', 'rn', '<Plug>(coc-rename)', {})
+vim.api.nvim_set_keymap('n', '<Leader>rn', '<Plug>(coc-rename)', {})
 
 -- CodeAction適応
 vim.api.nvim_set_keymap('n', '<Leader>ca', '<Plug>(coc-codeaction-selected)', silent)
