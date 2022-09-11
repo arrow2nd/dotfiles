@@ -15,9 +15,6 @@ vim.api.nvim_set_keymap('n', '<ESC><ESC>', '<CMD>nohlsearch<CR>', silent)
 vim.api.nvim_set_keymap('c', '<C-p>', '<Up>', {})
 vim.api.nvim_set_keymap('c', '<C-n>', '<Down>', {})
 
--- Fren
-vim.api.nvim_set_keymap('n', '<C-n>', '<CMD>Fern . -drawer -toggle<CR>', {})
-
 -- vim-fugitive
 vim.api.nvim_set_keymap('n', '<Leader>gs', '<CMD>Git<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>gc', '<CMD>Git commit<CR>', {})
