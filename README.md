@@ -5,6 +5,26 @@
 - Arch Linux / macOS (10.15 Catalina ~)
 - git 導入済み
 
+## 中身
+
+### エディタ
+
+- nvim
+  - dein
+- vsvim
+
+### ターミナル
+
+- kitty
+- zsh
+- sheldon
+
+### ツール
+
+- joplin (GUI / CLI)
+- nekome
+- twnyan
+
 ## フォント
 
 [PlemolJP (Nerd Fonts)](https://github.com/yuru7/PlemolJP)
