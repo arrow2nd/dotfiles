@@ -9,7 +9,7 @@ telescope.setup{
   defaults = {
     mappings = {
       n = {
-        ["q"] = actions.close,
+        ['q'] = actions.close,
       },
     },
     layout_config = {
@@ -19,29 +19,36 @@ telescope.setup{
     },
     file_ignore_patterns = {
       '^.git/',
-    }
+    },
+    extensions = {
+      file_browser = {
+        hijack_netrw = true,
+      },
+    },
   },
+}
+
+telescope.load_extension "file_browser"
+
+local commonOptions = {
+ hidden = true,
 }
 
 vim.keymap.set('n', '<Leader>ff',
   function()
-    builtin.find_files({
-      hidden = true,
-    })
+    builtin.find_files(commonOptions)
   end
 )
 
 vim.keymap.set('n', '<Leader>fg',
   function()
-    builtin.live_grep({
-      hidden = true,
-    })
+    builtin.live_grep(commonOptions)
   end
 )
 
 vim.keymap.set('n', '<Leader>fb',
   function()
-    builtin.buffers()
+   telescope.extensions.file_browser.file_browser(commonOptions)
   end
 )
 
