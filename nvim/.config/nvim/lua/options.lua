@@ -1,6 +1,5 @@
--- 外観
+-- 24bitカラー
 vim.opt.termguicolors = true
-vim.api.nvim_command('colorscheme iceberg')
 
 -- 行
 vim.opt.number = true
