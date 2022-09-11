@@ -9,22 +9,6 @@ repo = 'vim-jp/vimdoc-ja'
 repo = 'antoinemadec/FixCursorHold.nvim'
 
 [[plugins]]
-repo = 'lambdalisue/fern-git-status.vim'
-
-[[plugins]]
-repo = 'lambdalisue/nerdfont.vim'
-
-[[plugins]]
-repo = 'lambdalisue/fern-renderer-nerdfont.vim'
-
-[[plugins]]
-repo = 'lambdalisue/glyph-palette.vim'
-
-[[plugins]]
-repo = 'lambdalisue/fern.vim'
-hook_add = 'source ~/.config/nvim/dein/plugins/fern.lua'
-
-[[plugins]]
 repo = 'kyazdani42/nvim-web-devicons'
 
 [[plugins]]

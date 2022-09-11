@@ -28,8 +28,6 @@ telescope.setup{
   },
 }
 
-telescope.load_extension "file_browser"
-
 local commonOptions = {
  hidden = true,
 }
@@ -46,12 +44,6 @@ vim.keymap.set('n', '<Leader>fg',
   end
 )
 
-vim.keymap.set('n', '<Leader>fb',
-  function()
-   telescope.extensions.file_browser.file_browser(commonOptions)
-  end
-)
-
 vim.keymap.set('n', '<Leader>fc',
   function()
     builtin.git_commits()
@@ -61,6 +53,15 @@ vim.keymap.set('n', '<Leader>fc',
 vim.keymap.set('n', '<Leader>fs',
   function()
     builtin.git_status()
+  end
+)
+
+-- file_browser
+telescope.load_extension "file_browser"
+
+vim.keymap.set('n', '<C-n>',
+  function()
+   telescope.extensions.file_browser.file_browser(commonOptions)
   end
 )
 
