@@ -1,5 +1,5 @@
 -- 24bitカラー
-vim.opt.termguicolors = true
+vim. opt.termguicolors = true
 
 -- 行
 vim.opt.number = true

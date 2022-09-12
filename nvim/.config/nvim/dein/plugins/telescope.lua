@@ -34,7 +34,7 @@ telescope.setup{
 }
 
 local commonOptions = {
- hidden = true,
+  hidden = true,
 }
 
 vim.keymap.set('n', '<Leader>ff',
@@ -66,7 +66,7 @@ telescope.load_extension "file_browser"
 
 vim.keymap.set('n', '<C-n>',
   function()
-   telescope.extensions.file_browser.file_browser({
+    telescope.extensions.file_browser.file_browser({
       hidden = true,
       cwd = vim.fn.expand('%:p:h'),
     })

@@ -7,11 +7,11 @@ if vim.call('dein#load_state', dein_dir) == 1 then
   local toml_dir = vim.env.HOME .. '/.config/nvim/dein/toml'
   local toml = toml_dir .. '/dein.toml'
   local lazy_toml = toml_dir .. '/dein_lazy.toml'
-  
+
   vim.api.nvim_set_var('dein#cache_directory', dein_dir)
   vim.call('dein#begin', dein_dir)
   vim.call('dein#add', dein_repo_dir)
-  
+
   -- Load Plugins
   vim.call('dein#load_toml', toml, { lazy =  0 })
   vim.call('dein#load_toml', lazy_toml, { lazy = 1 })

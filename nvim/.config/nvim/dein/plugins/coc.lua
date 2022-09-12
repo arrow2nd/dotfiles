@@ -1,9 +1,11 @@
+-- 拡張
 vim.api.nvim_set_var('coc_global_extensions', {
   '@yaegassy/coc-tailwindcss3',
   'coc-deno',
   'coc-eslint',
   'coc-go',
   'coc-json',
+  'coc-lua',
   'coc-prettier',
   'coc-tsserver',
   'coc-rls',
@@ -28,7 +30,6 @@ vim.api.nvim_set_keymap('n', 'K', ':lua ShowDocumentation()<CR>', silent)
 function _G.CheckBackspace()
   local col = vim.fn.col(".") - 1
   local line = vim.fn.getline(".")
-
   return col == 0 or string.match(string.sub(line, col, col), '%c') == nil
 end
 
@@ -59,7 +60,7 @@ vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', silent)
 vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', silent)
 
 -- リネーム
-vim.api.nvim_set_keymap('n', '<Leader>rn', '<Plug>(coc-rename)', {})
+vim.api.nvim_set_keymap('n', '<Leader>rn', '<Plug>(coc-rename)', silent)
 
 -- CodeAction適応
 vim.api.nvim_set_keymap('n', '<Leader>ca', '<Plug>(coc-codeaction-selected)', silent)
