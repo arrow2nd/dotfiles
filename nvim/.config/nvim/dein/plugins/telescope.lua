@@ -2,14 +2,19 @@ local ok, telescope = pcall(require, 'telescope')
 
 if (not ok) then return end
 
-local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
 
 telescope.setup{
   defaults = {
     mappings = {
+      i = {
+        ['<C-j>'] = 'move_selection_next',
+        ['<C-k>'] = 'move_selection_previous',
+        ['<C-l>'] = 'select_default',
+        ['<ESC><ESC>'] = 'close',
+      },
       n = {
-        ['q'] = actions.close,
+        ['<ESC><ESC>'] = 'close',
       },
     },
     layout_config = {
@@ -25,7 +30,7 @@ telescope.setup{
         hijack_netrw = true,
       },
     },
-  },
+  }
 }
 
 local commonOptions = {
