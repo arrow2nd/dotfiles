@@ -44,3 +44,10 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'skanehira/denops-translate.vim'
+
