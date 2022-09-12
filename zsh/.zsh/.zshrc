@@ -62,6 +62,7 @@ alias todov='gh issue view -R arrow2nd/todo'
 
 # 雑多
 alias cls='clear'
+alias v="nvim"
 alias y='yarn'
 alias zmv='noglob zmv -W'
 alias rdflint='java -jar rdflint-*.jar'
