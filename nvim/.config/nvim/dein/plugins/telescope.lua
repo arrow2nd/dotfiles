@@ -55,16 +55,16 @@ vim.keymap.set('n', '<Leader>fc',
   end
 )
 
-vim.keymap.set('n', '<Leader>fs',
-  function()
-    builtin.git_status()
-  end
-)
-
 -- file_browser
 telescope.load_extension "file_browser"
 
-vim.keymap.set('n', '<C-n>',
+vim.keymap.set('n', '<C-f>',
+  function()
+    telescope.extensions.file_browser.file_browser(commonOptions)
+  end
+)
+
+vim.keymap.set('n', '<C-c>',
   function()
     telescope.extensions.file_browser.file_browser({
       hidden = true,
@@ -72,4 +72,3 @@ vim.keymap.set('n', '<C-n>',
     })
   end
 )
-
