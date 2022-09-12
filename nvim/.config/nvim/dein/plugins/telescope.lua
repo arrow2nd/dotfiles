@@ -3,6 +3,7 @@ local ok, telescope = pcall(require, 'telescope')
 if (not ok) then return end
 
 local builtin = require('telescope.builtin')
+local helper = require('helper')
 
 telescope.setup{
   defaults = {
@@ -37,19 +38,19 @@ local commonOptions = {
   hidden = true,
 }
 
-vim.keymap.set('n', '<Leader>ff',
+helper.nmap('<Leader>ff',
   function()
     builtin.find_files(commonOptions)
   end
 )
 
-vim.keymap.set('n', '<Leader>fg',
+helper.nmap('<Leader>fg',
   function()
     builtin.live_grep(commonOptions)
   end
 )
 
-vim.keymap.set('n', '<Leader>fc',
+helper.nmap('<Leader>fc',
   function()
     builtin.git_commits()
   end
@@ -58,13 +59,13 @@ vim.keymap.set('n', '<Leader>fc',
 -- file_browser
 telescope.load_extension "file_browser"
 
-vim.keymap.set('n', '<C-f>',
+helper.nmap('<C-f>',
   function()
     telescope.extensions.file_browser.file_browser(commonOptions)
   end
 )
 
-vim.keymap.set('n', '<C-n>',
+helper.nmap('<C-n>',
   function()
     telescope.extensions.file_browser.file_browser({
       hidden = true,

@@ -1,24 +1,26 @@
-local silent = { silent = true }
+local helper = require('helper')
 
 vim.g.mapleader = " "
 
-vim.api.nvim_set_keymap('i', 'jj', '<ESC>', silent)
+helper.imap('jj', '<ESC>')
 
 -- バッファ切り替え
-vim.api.nvim_set_keymap('n', '<C-j>', '<CMD>bprev<CR>', silent)
-vim.api.nvim_set_keymap('n', '<C-k>', '<CMD>bnext<CR>', silent)
+helper.nmap('<C-j>', '<CMD>bprev<CR>')
+helper.nmap('<C-k>', '<CMD>bnext<CR>')
 
 -- ハイライト解除
-vim.api.nvim_set_keymap('n', '<ESC><ESC>', '<CMD>nohlsearch<CR>', silent)
+helper.nmap('<ESC><ESC>', '<CMD>nohlsearch<CR>')
 
 -- ヒストリ選択
-vim.api.nvim_set_keymap('c', '<C-p>', '<Up>', {})
-vim.api.nvim_set_keymap('c', '<C-n>', '<Down>', {})
+helper.cmap('<C-p>', '<Up>')
+helper.cmap('<C-n>', '<Down>')
 
 -- vim-fugitive
-vim.api.nvim_set_keymap('n', '<Leader>gs', '<CMD>Git<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gc', '<CMD>Git commit<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gb', '<CMD>Git blame<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gd', '<CMD>Gdiffsplit<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gl', '<CMD>Gclog<CR>', {})
+helper.nmap('<Leader>gs', '<CMD>Git<CR>')
+helper.nmap('<Leader>gc', '<CMD>Git commit<CR>')
+helper.nmap('<Leader>gb', '<CMD>Git blame<CR>')
+helper.nmap('<Leader>gd', '<CMD>Gdiffsplit<CR>')
+helper.nmap('<Leader>gl', '<CMD>Gclog<CR>')
 
+-- translate.vim
+helper.vmap('t', '<Plug>(Translate)')

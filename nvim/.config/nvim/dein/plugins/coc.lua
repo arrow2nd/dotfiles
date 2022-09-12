@@ -1,3 +1,5 @@
+local helper = require('helper')
+
 -- 拡張
 vim.api.nvim_set_var('coc_global_extensions', {
   '@yaegassy/coc-tailwindcss3',
@@ -13,8 +15,6 @@ vim.api.nvim_set_var('coc_global_extensions', {
   'coc-xml',
 })
 
-local silent = { silent = true }
-
 -- ホバー表示
 function ShowDocumentation()
   if vim.fn.CocAction('hasProvider', 'hover') then
@@ -24,7 +24,7 @@ function ShowDocumentation()
   end
 end
 
-vim.api.nvim_set_keymap('n', 'K', ':lua ShowDocumentation()<CR>', silent)
+helper.nmap('K', ':lua ShowDocumentation()<CR>')
 
 -- 補完候補選択
 function _G.CheckBackspace()
@@ -33,39 +33,39 @@ function _G.CheckBackspace()
   return col == 0 or string.match(string.sub(line, col, col), '%c') == nil
 end
 
-vim.api.nvim_set_keymap('i', '<Tab>', 'coc#pum#visible() ? coc#pum#next(1) : v:lua.CheckBackspace() ? "\\<Tab>" : coc#refresh()', {
+helper.imap('<Tab>', 'coc#pum#visible() ? coc#pum#next(1) : v:lua.CheckBackspace() ? "\\<Tab>" : coc#refresh()', {
   silent = true,
   expr = true,
   noremap = true
 })
 
-vim.api.nvim_set_keymap('i', '<S-TAB>', 'coc#pum#visible() ? coc#pum#prev(1) : "\\<C-h>"', {
+helper.imap('<S-TAB>', 'coc#pum#visible() ? coc#pum#prev(1) : "\\<C-h>"', {
   silent = true,
   expr = true,
   noremap = true
 })
 
 -- 範囲選択
-vim.api.nvim_set_keymap('n', '<C-s>', '<Plug>(coc-range-selected)', silent)
-vim.api.nvim_set_keymap('x', '<C-s>', '<Plug>(coc-range-selected)', silent)
+helper.nmap('<C-s>', '<Plug>(coc-range-selected)')
+helper.xmap('<C-s>', '<Plug>(coc-range-selected)')
 
 -- 診断選択
-vim.api.nvim_set_keymap('n', '[g', '<Plug>(coc-diagnostic-prev)', silent)
-vim.api.nvim_set_keymap('n', ']g', '<Plug>(coc-diagnostic-next)', silent)
+helper.nmap('[g', '<Plug>(coc-diagnostic-prev)')
+helper.nmap(']g', '<Plug>(coc-diagnostic-next)')
 
 -- 定義元ジャンプ
-vim.api.nvim_set_keymap('n', 'gd', '<Plug>(coc-definition)', silent)
-vim.api.nvim_set_keymap('n', 'gt', '<Plug>(coc-type-definition)', silent)
-vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', silent)
-vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', silent)
+helper.nmap('gd', '<Plug>(coc-definition)')
+helper.nmap('gt', '<Plug>(coc-type-definition)')
+helper.nmap('gi', '<Plug>(coc-implementation)')
+helper.nmap('gr', '<Plug>(coc-references)')
 
 -- リネーム
-vim.api.nvim_set_keymap('n', '<Leader>rn', '<Plug>(coc-rename)', silent)
+helper.nmap('<Leader>rn', '<Plug>(coc-rename)')
 
 -- CodeAction適応
-vim.api.nvim_set_keymap('n', '<Leader>ca', '<Plug>(coc-codeaction-selected)', silent)
-vim.api.nvim_set_keymap('x', '<Leader>ca', '<Plug>(coc-codeaction-selected)', silent)
+helper.nmap('<Leader>ca', '<Plug>(coc-codeaction-selected)')
+helper.xmap('<Leader>ca', '<Plug>(coc-codeaction-selected)')
 
 -- CodeLensAction実行
-vim.api.nvim_set_keymap('n', '<Leader>cl', '<Plug>(coc-codelens-action)', silent)
+helper.nmap('<Leader>cl', '<Plug>(coc-codelens-action)')
 
