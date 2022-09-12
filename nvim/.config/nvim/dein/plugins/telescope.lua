@@ -64,7 +64,7 @@ vim.keymap.set('n', '<C-f>',
   end
 )
 
-vim.keymap.set('n', '<C-c>',
+vim.keymap.set('n', '<C-n>',
   function()
     telescope.extensions.file_browser.file_browser({
       hidden = true,
