@@ -1,4 +1,10 @@
 [[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
 repo = 'cocopon/iceberg.vim'
 hook_add = 'colorscheme iceberg'
 
@@ -10,9 +16,6 @@ repo = 'antoinemadec/FixCursorHold.nvim'
 
 [[plugins]]
 repo = 'kyazdani42/nvim-web-devicons'
-
-[[plugins]]
-repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
 repo = 'nvim-telescope/telescope-file-browser.nvim'
@@ -36,17 +39,15 @@ merged = '0'
 hook_add = 'source ~/.config/nvim/dein/plugins/coc.lua'
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = 'set updatetime=250'
+repo = 'lewis6991/gitsigns.nvim'
+hook_add = 'source ~/.config/nvim/dein/plugins/gitsigns.lua'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
+repo = 'lambdalisue/gin.vim'
+hook_add = 'source ~/.config/nvim/dein/plugins/gin.lua'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
-
-[[plugins]]
-repo = 'vim-denops/denops.vim'
 
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'

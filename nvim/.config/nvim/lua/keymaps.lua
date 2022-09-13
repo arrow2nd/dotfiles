@@ -15,12 +15,5 @@ helper.nmap('<ESC><ESC>', '<CMD>nohlsearch<CR>')
 helper.cmap('<C-p>', '<Up>')
 helper.cmap('<C-n>', '<Down>')
 
--- vim-fugitive
-helper.nmap('<Leader>gs', '<CMD>Git<CR>')
-helper.nmap('<Leader>gc', '<CMD>Git commit<CR>')
-helper.nmap('<Leader>gb', '<CMD>Git blame<CR>')
-helper.nmap('<Leader>gd', '<CMD>Gdiffsplit<CR>')
-helper.nmap('<Leader>gl', '<CMD>Gclog<CR>')
-
 -- translate.vim
 helper.vmap('t', '<Plug>(Translate)')
