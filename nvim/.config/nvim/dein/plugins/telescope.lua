@@ -46,7 +46,14 @@ helper.nmap('<Leader>ff',
 
 helper.nmap('<Leader>fg',
   function()
-    builtin.live_grep(commonOptions)
+    builtin.live_grep({
+      glob_pattern = {
+        '*',
+        '!.git/*',
+        '!.yarn/*',
+        '!node_modules/*',
+      }
+    })
   end
 )
 
