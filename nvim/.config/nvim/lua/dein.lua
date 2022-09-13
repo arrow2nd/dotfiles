@@ -10,7 +10,6 @@ if vim.call('dein#load_state', dein_dir) == 1 then
 
   vim.api.nvim_set_var('dein#cache_directory', dein_dir)
   vim.call('dein#begin', dein_dir)
-  vim.call('dein#add', dein_repo_dir)
 
   -- Load Plugins
   vim.call('dein#load_toml', toml, { lazy =  0 })
