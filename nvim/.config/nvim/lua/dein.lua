@@ -23,6 +23,14 @@ end
 vim.api.nvim_command('filetype plugin indent on')
 vim.api.nvim_command('syntax enable')
 
+-- Remove unnecessary plugins
+local unnecessary_plugins = vim.call('dein#check_clean')
+
+if vim.fn.len(unnecessary_plugins) > 0 then
+	vim.fn.map(unnecessary_plugins, "delete(v:val, 'rf')")
+	vim.call('dein#recache_runtimepath')
+end
+
 -- If you want to install not installed plugins on startup.
 if vim.call('dein#check_install') ~= 0 then
   vim.call('dein#install')
