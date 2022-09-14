@@ -41,7 +41,17 @@ telescope.setup{
   },
   extensions = {
     file_browser = {
-      hijack_netrw = true,
+      hidden = true,
+      mappings = {
+        i = {
+          ['<C-n>'] = 'close',
+        },
+        n = {
+          ['<C-n>'] = 'close',
+        },
+      },
     },
   }
 }
+
+telescope.load_extension("file_browser")

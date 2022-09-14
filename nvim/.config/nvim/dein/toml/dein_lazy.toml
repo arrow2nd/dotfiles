@@ -17,33 +17,33 @@ on_cmd = ['Gin', 'GinBuffer', 'GinBranch', 'GinChaperon', 'GinDiff', 'GinEdit', 
 [[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
 depends = ['plenary.nvim']
-on_event = 'BufRead'
 hook_add = 'source ~/.config/nvim/dein/plugins/gitsigns.lua'
+on_event = 'BufRead'
 
 # ref: https://zenn.dev/mkobayashime/articles/nvim-treesitter-dein
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 merged = 0
-on_event = 'BufRead'
 hook_post_update = 'TSUpdate'
 hook_source = 'source ~/.config/nvim/dein/plugins/nvim-treesitter.lua'
-
-[[plugins]]
-repo = 'iamcco/markdown-preview.nvim'
-on_ft = ['markdown', 'pandoc.markdown', 'rmd']
-build = 'sh -c "cd app && yarn install"'
+on_event = 'BufRead'
 
 [[plugins]]
 repo = 'nvim-telescope/telescope.nvim'
 rev = '0.1.x'
 depends = ['plenary.nvim', 'nvim-web-devicons']
-on_cmd = 'Telescope'
 hook_post_source = 'source ~/.config/nvim/dein/plugins/telescope.lua'
+on_cmd = 'Telescope'
+
+[[plugins]]
+repo = 'nvim-telescope/telescope-file-browser.nvim'
+depends = ['telescope.nvim']
+on_source = 'telescope.nvim'
 
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
-on_event = 'InsertEnter'
 hook_post_source = 'source ~/.config/nvim/dein/plugins/nvim-autopairs.lua'
+on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'tpope/vim-commentary'
@@ -57,3 +57,8 @@ on_event = 'ModeChanged'
 repo = 'skanehira/denops-translate.vim'
 depends = ['denops.vim']
 on_event = 'ModeChanged'
+
+[[plugins]]
+repo = 'iamcco/markdown-preview.nvim'
+build = 'sh -c "cd app && yarn install"'
+on_ft = ['markdown', 'pandoc.markdown', 'rmd']
