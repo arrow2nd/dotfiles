@@ -57,7 +57,10 @@ vim.opt.smartindent = true
 vim.opt.nrformats = ''
 
 -- ヤンクした内容をクリップボードへ
-vim.opt.clipboard:append('unnamedplus')
+-- NOTE: Win / WSL で起動時間の妨げになる & たいして使わないので mac のみにしてる
+if (vim.fn.has('mac') == 1) then
+  vim.opt.clipboard = 'unnamedplus'
+end
 
 -- 検索
 vim.opt.ignorecase = true
