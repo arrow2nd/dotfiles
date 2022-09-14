@@ -18,17 +18,17 @@ local h = require('helper')
 -- mason.nvim
 mason.setup({
   ui = {
-     icons = {
-       package_installed = '✓',
-       package_pending = '➜',
-       package_uninstalled = '✗'
-     }
+    icons = {
+      package_installed = '✓',
+      package_pending = '➜',
+      package_uninstalled = '✗'
+    }
   }
 })
 
 -- mason-lspconfig.nvim
 local on_attach = function(client, bufnr)
-  -- keymaps
+  -- キーマップ
   h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>')
   h.nmap('gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
   h.nmap('gr', '<CMD>lua vim.lsp.buf.references()<CR>')
@@ -42,7 +42,7 @@ local on_attach = function(client, bufnr)
   h.nmap('g]', '<CMD>lua vim.diagnostic.goto_next()<CR>')
   h.nmap('g[', '<CMD>lua vim.diagnostic.goto_prev()<CR>')
 
-  -- auto format when save the file
+  -- 保存時に自動でフォーマット
   -- ref: https://github.com/skanehira/dotfiles/blob/master/vim/init.lua
   local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
   if client.supports_method('textDocument/formatting') then
@@ -58,12 +58,26 @@ end
 
 mason_lspconfig.setup()
 mason_lspconfig.setup_handlers({ function(server)
-  local opts = {}
+  local node_root_dir = lspconfig.util.root_pattern("package.json")
+  local is_node_repo = node_root_dir(vim.fn.getcwd()) ~= nil
+  local opts = {
+    on_attach = on_attach
+  }
 
-  opts.on_attach = on_attach
-  opts.capabilities = cmp_nvim_lsp.update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  )
+  -- denols と tsserver を出し分ける
+  -- ref: https://zenn.dev/kawarimidoll/articles/2b57745045b225
+  if server == 'denols' then
+    if is_node_repo then return end
+
+    opts.cmd = { 'deno', 'lsp', '--unstable' }
+    opts.root_dir = lspconfig.util.root_pattern('deps.ts', 'deno.json', 'import_map.json')
+    opts.init_options = {
+      lint = true,
+      unstable = true
+    }
+  elseif server == 'tsserver' then
+    opts.root_dir = lspconfig.util.root_pattern('package.json', 'node_modules', '.yarn')
+  end
 
   lspconfig[server].setup(opts)
 end })
