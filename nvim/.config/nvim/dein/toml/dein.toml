@@ -9,11 +9,4 @@ hook_add = 'colorscheme iceberg'
 repo = 'antoinemadec/FixCursorHold.nvim'
 
 [[plugins]]
-repo = 'nvim-lualine/lualine.nvim'
-hook_add = 'source ~/.config/nvim/dein/plugins/lualine.lua'
-
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-merged = 0
-hook_add = 'source ~/.config/nvim/dein/plugins/coc.lua'
+repo = 'vim-jp/vimdoc-ja'

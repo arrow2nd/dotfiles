@@ -8,7 +8,42 @@ repo = 'nvim-lua/plenary.nvim'
 repo = 'kyazdani42/nvim-web-devicons'
 
 [[plugins]]
-repo = 'vim-jp/vimdoc-ja'
+repo = 'neovim/nvim-lspconfig'
+depends = ['mason-lspconfig.nvim', 'nvim-cmp']
+hook_source = 'source ~/.config/nvim/dein/plugins/lsp.lua'
+on_event = 'InsertEnter'
+
+[[plugins]]
+repo = 'williamboman/mason.nvim'
+
+[[plugins]]
+repo = 'williamboman/mason-lspconfig.nvim'
+depends = ['mason.nvim']
+
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'
+depends = ['cmp-nvim-lsp', 'vim-vsnip', 'cmp-path', 'cmp-buffer']
+
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp'
+on_source = 'nvim-cmp'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+on_source = 'nvim-cmp'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-path'
+on_source = 'nvim-cmp'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+on_source = 'nvim-cmp'
+
+[[plugins]]
+repo = 'jose-elias-alvarez/null-ls.nvim'
+depends = ['plenary.nvim']
+hook_source = 'source ~/.config/nvim/dein/plugins/null-ls.lua'
 
 [[plugins]]
 repo = 'lambdalisue/gin.vim'
@@ -19,6 +54,11 @@ repo = 'lewis6991/gitsigns.nvim'
 depends = ['plenary.nvim']
 hook_source = 'source ~/.config/nvim/dein/plugins/gitsigns.lua'
 on_event = 'BufRead'
+
+[[plugins]]
+repo = 'nvim-lualine/lualine.nvim'
+hook_source = 'source ~/.config/nvim/dein/plugins/lualine.lua'
+on_event = 'VimEnter'
 
 # ref: https://zenn.dev/mkobayashime/articles/nvim-treesitter-dein
 [[plugins]]
