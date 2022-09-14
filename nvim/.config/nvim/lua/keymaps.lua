@@ -19,7 +19,9 @@ helper.omap('<C-n>', '<Down>')
 helper.nmap('<Leader>ff', '<CMD>Telescope find_files<CR>')
 helper.nmap('<Leader>fg', '<CMD>Telescope live_grep<CR>')
 helper.nmap('<Leader>fc', '<CMD>Telescope git_commits<CR>')
-helper.nmap('<C-n>', '<CMD>Telescope file_browser<CR>')
+helper.nmap('<C-n>', function ()
+  return '<CMD>Telescope file_browser cwd=' .. vim.fn.expand("%:p:h") .. '<CR>'
+end, { silent = true, expr = true })
 
 -- gin.vim
 helper.nmap('<Leader>gs', '<CMD>GinStatus ++opener=split<CR>')
