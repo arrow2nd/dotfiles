@@ -2,9 +2,6 @@ local ok, telescope = pcall(require, 'telescope')
 
 if (not ok) then return end
 
-local builtin = require('telescope.builtin')
-local helper = require('helper')
-
 telescope.setup{
   defaults = {
     mappings = {
@@ -12,6 +9,8 @@ telescope.setup{
         ['<C-j>'] = 'move_selection_next',
         ['<C-k>'] = 'move_selection_previous',
         ['<C-l>'] = 'select_default',
+        ['<C-n>'] = 'cycle_history_next',
+        ['<C-p>'] = 'cycle_history_prev',
         ['<ESC><ESC>'] = 'close',
       },
       n = {
@@ -26,57 +25,23 @@ telescope.setup{
     file_ignore_patterns = {
       '^.git/',
     },
-    extensions = {
-      file_browser = {
-        hijack_netrw = true,
-      },
+  },
+  pickers = {
+    find_files = {
+      hidden = true,
     },
-  }
-}
-
-local commonOptions = {
-  hidden = true,
-}
-
-helper.nmap('<Leader>ff',
-  function()
-    builtin.find_files(commonOptions)
-  end
-)
-
-helper.nmap('<Leader>fg',
-  function()
-    builtin.live_grep({
+    live_grep = {
       glob_pattern = {
         '*',
         '!.git/*',
         '!.yarn/*',
         '!node_modules/*',
-      }
-    })
-  end
-)
-
-helper.nmap('<Leader>fc',
-  function()
-    builtin.git_commits()
-  end
-)
-
--- file_browser
-telescope.load_extension "file_browser"
-
-helper.nmap('<C-f>',
-  function()
-    telescope.extensions.file_browser.file_browser(commonOptions)
-  end
-)
-
-helper.nmap('<C-n>',
-  function()
-    telescope.extensions.file_browser.file_browser({
-      hidden = true,
-      cwd = vim.fn.expand('%:p:h'),
-    })
-  end
-)
+      },
+    },
+  },
+  extensions = {
+    file_browser = {
+      hijack_netrw = true,
+    },
+  }
+}

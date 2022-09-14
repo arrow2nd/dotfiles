@@ -11,7 +11,12 @@ repo = 'kyazdani42/nvim-web-devicons'
 repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
+repo = 'lambdalisue/gin.vim'
+on_cmd = ['Gin', 'GinBuffer', 'GinBranch', 'GinChaperon', 'GinDiff', 'GinEdit', 'GinPatch', 'GinStatus']
+
+[[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
+depends = ['plenary.nvim']
 on_event = 'BufRead'
 hook_add = 'source ~/.config/nvim/dein/plugins/gitsigns.lua'
 
@@ -32,17 +37,8 @@ build = 'sh -c "cd app && yarn install"'
 repo = 'nvim-telescope/telescope.nvim'
 rev = '0.1.x'
 depends = ['plenary.nvim', 'nvim-web-devicons']
-
-[[plugins]]
-repo = 'nvim-telescope/telescope-file-browser.nvim'
-depends = ['telescope.nvim']
-on_event = 'VimEnter'
+on_cmd = 'Telescope'
 hook_post_source = 'source ~/.config/nvim/dein/plugins/telescope.lua'
-
-[[plugins]]
-repo = 'lambdalisue/gin.vim'
-on_cmd = ['Gin', 'GinStatus', 'GinBuffer', 'GinDiff', 'GinPatch']
-hook_add = 'source ~/.config/nvim/dein/plugins/gin.lua'
 
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
