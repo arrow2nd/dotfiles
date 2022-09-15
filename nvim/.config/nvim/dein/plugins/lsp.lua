@@ -77,7 +77,10 @@ mason_lspconfig.setup_handlers({ function(server)
   local is_node_repo = node_root_dir(vim.api.nvim_buf_get_name(0)) ~= nil
 
   local opts = {
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = cmp_nvim_lsp.update_capabilities(
+      vim.lsp.protocol.make_client_capabilities()
+    )
   }
 
   -- denols と tsserver を出し分ける
