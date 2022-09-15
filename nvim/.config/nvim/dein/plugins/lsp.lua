@@ -13,6 +13,9 @@ if (not cmp_ok) then return end
 local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if (not cmp_nvim_lsp_ok) then return end
 
+local null_ls_ok, null_ls = pcall(require, 'null-ls')
+if (not null_ls_ok) then return end
+
 local h = require('helper')
 
 -- mason.nvim
@@ -27,7 +30,7 @@ mason.setup({
 })
 
 -- mason-lspconfig.nvim
-local on_attach = function(client, bufnr)
+local common_on_attach = function(client, bufnr)
   -- キーマップ
   h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>')
   h.nmap('gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
@@ -56,6 +59,10 @@ local on_attach = function(client, bufnr)
   end
 end
 
+local commom_capabilities = cmp_nvim_lsp.update_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
+
 mason_lspconfig.setup({
   ensure_installed = {
     'denols',
@@ -77,10 +84,8 @@ mason_lspconfig.setup_handlers({ function(server)
   local is_node_repo = node_root_dir(vim.api.nvim_buf_get_name(0)) ~= nil
 
   local opts = {
-    on_attach = on_attach,
-    capabilities = cmp_nvim_lsp.update_capabilities(
-      vim.lsp.protocol.make_client_capabilities()
-    )
+    on_attach = common_on_attach,
+    capabilities = commom_capabilities,
   }
 
   -- denols と tsserver を出し分ける
@@ -96,10 +101,30 @@ mason_lspconfig.setup_handlers({ function(server)
     }
   elseif server == 'tsserver' then
     opts.root_dir = node_root_dir
+    opts.on_attach = function(client, bufnr)
+      client.resolved_capabilities.document_formatting = false
+      common_on_attach(client, bufnr)
+    end
   end
 
   lspconfig[server].setup(opts)
 end })
+
+-- null-ls.nvim
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.prettier.with {
+      prefer_local = 'node_modules/.bin',
+      condition = function(utils)
+        local type = vim.bo.filetype
+        return type == 'markdown' or type == 'html' or type == 'css' or type == 'scss' or
+            utils.has_file({ '.prettierrc', '.prettierrc.js' })
+      end,
+    },
+  },
+  on_attach = common_on_attach,
+  capabilities = commom_capabilities,
+})
 
 -- lsp
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(

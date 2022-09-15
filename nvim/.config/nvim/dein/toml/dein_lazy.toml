@@ -9,7 +9,7 @@ repo = 'kyazdani42/nvim-web-devicons'
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-depends = ['mason-lspconfig.nvim', 'nvim-cmp']
+depends = ['mason-lspconfig.nvim', 'nvim-cmp', 'null-ls.nvim']
 hook_source = 'source ~/.config/nvim/dein/plugins/lsp.lua'
 on_event = 'InsertEnter'
 
@@ -40,10 +40,9 @@ on_source = 'nvim-cmp'
 repo = 'hrsh7th/cmp-buffer'
 on_source = 'nvim-cmp'
 
-# [[plugins]]
-# repo = 'jose-elias-alvarez/null-ls.nvim'
-# depends = ['plenary.nvim']
-# hook_source = 'source ~/.config/nvim/dein/plugins/null-ls.lua'
+[[plugins]]
+repo = 'jose-elias-alvarez/null-ls.nvim'
+depends = ['plenary.nvim']
 
 [[plugins]]
 repo = 'lambdalisue/gin.vim'
