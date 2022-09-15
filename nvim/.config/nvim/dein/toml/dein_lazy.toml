@@ -11,7 +11,7 @@ repo = 'kyazdani42/nvim-web-devicons'
 repo = 'neovim/nvim-lspconfig'
 depends = ['mason-lspconfig.nvim', 'nvim-cmp', 'null-ls.nvim']
 hook_source = 'source ~/.config/nvim/dein/plugins/lsp.lua'
-on_event = 'InsertEnter'
+on_event = 'BufRead'
 
 [[plugins]]
 repo = 'williamboman/mason.nvim'
