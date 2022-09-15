@@ -56,10 +56,26 @@ local on_attach = function(client, bufnr)
   end
 end
 
-mason_lspconfig.setup()
+mason_lspconfig.setup({
+  ensure_installed = {
+    'denols',
+    'gopls',
+    'tsserver',
+    'sumneko_lua',
+    'eslint',
+    'yamlls',
+    'jsonls',
+    'python-lsp-server',
+    'rust-analyzer',
+    'tailwindcss-language-server',
+  },
+  automatic_installation = true,
+})
+
 mason_lspconfig.setup_handlers({ function(server)
-  local node_root_dir = lspconfig.util.root_pattern("package.json")
-  local is_node_repo = node_root_dir(vim.fn.getcwd()) ~= nil
+  local node_root_dir = lspconfig.util.root_pattern('package.json')
+  local is_node_repo = node_root_dir(vim.api.nvim_buf_get_name(0)) ~= nil
+
   local opts = {
     on_attach = on_attach
   }
@@ -76,7 +92,7 @@ mason_lspconfig.setup_handlers({ function(server)
       unstable = true
     }
   elseif server == 'tsserver' then
-    opts.root_dir = lspconfig.util.root_pattern('package.json', 'node_modules', '.yarn')
+    opts.root_dir = node_root_dir
   end
 
   lspconfig[server].setup(opts)
