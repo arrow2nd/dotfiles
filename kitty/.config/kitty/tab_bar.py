@@ -66,7 +66,7 @@ def _get_battery_status(default: Color) -> tuple[Color, str]:
 
     # バッテリー残量を取得 (macOS)
     try:
-        batt = int(subprocess.getoutput("pmset -g batt | grep -Eo \"\d+%\" | cut -d % -f 1"))
+        batt = int(subprocess.getoutput("pmset -g batt | grep -Eo \"\\d+%\" | cut -d % -f 1"))
         power = subprocess.getoutput("pmset -g batt | grep -Eo \"'.+ Power'\"")
     except Exception:
         return danger, " unknown "
