@@ -43,7 +43,7 @@ def _draw_left_status(
     if extra > 0:
         screen.cursor.x -= extra + 1
         screen.draw("…")
-    
+
     if trailing_spaces:
         screen.draw(" " * trailing_spaces)
 
@@ -66,7 +66,8 @@ def _get_battery_status(default: Color) -> tuple[Color, str]:
 
     # バッテリー残量を取得 (macOS)
     try:
-        batt = int(subprocess.getoutput("pmset -g batt | grep -Eo \"\\d+%\" | cut -d % -f 1"))
+        batt = int(subprocess.getoutput(
+            "pmset -g batt | grep -Eo \"\\d+%\" | cut -d % -f 1"))
         power = subprocess.getoutput("pmset -g batt | grep -Eo \"'.+ Power'\"")
     except Exception:
         return danger, " unknown "
@@ -82,7 +83,8 @@ def _get_battery_status(default: Color) -> tuple[Color, str]:
         color = warn
 
     # 残量に合ったアイコンを選択
-    i = int(Decimal(batt).quantize(Decimal('1E1'), rounding=ROUND_HALF_UP)) // 10
+    i = int(Decimal(batt).quantize(
+        Decimal('1E1'), rounding=ROUND_HALF_UP)) // 10
 
     return color, f"{icons[i]} {batt}% "
 
