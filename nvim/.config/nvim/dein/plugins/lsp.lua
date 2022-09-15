@@ -80,8 +80,9 @@ mason_lspconfig.setup({
 })
 
 mason_lspconfig.setup_handlers({ function(server)
+  local buf_full_filename = vim.api.nvim_buf_get_name(0)
   local node_root_dir = lspconfig.util.root_pattern('package.json')
-  local is_node_repo = node_root_dir(vim.api.nvim_buf_get_name(0)) ~= nil
+  local is_node_repo = node_root_dir(buf_full_filename) ~= nil
 
   local opts = {
     on_attach = common_on_attach,
@@ -94,7 +95,7 @@ mason_lspconfig.setup_handlers({ function(server)
     if is_node_repo then return end
 
     opts.cmd = { 'deno', 'lsp', '--unstable' }
-    opts.root_dir = lspconfig.util.root_pattern('deps.ts', 'deno.json', 'import_map.json')
+    opts.root_dir = lspconfig.util.root_pattern('deps.[jt]s', 'deno.json', 'import_map.json')
     opts.init_options = {
       lint = true,
       unstable = true
@@ -105,6 +106,9 @@ mason_lspconfig.setup_handlers({ function(server)
       client.resolved_capabilities.document_formatting = false
       common_on_attach(client, bufnr)
     end
+  elseif server == 'tailwindcss' then
+    local tailwind_root_dir = lspconfig.util.root_pattern('tailwind.config.[jt]s', 'twind.config.[jt]s')
+    if tailwind_root_dir(buf_full_filename) == nil then return end
   end
 
   lspconfig[server].setup(opts)
