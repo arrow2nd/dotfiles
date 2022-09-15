@@ -1,4 +1,4 @@
-local dein_dir =  vim.env.HOME .. '/.cache/dein'
+local dein_dir = vim.env.HOME .. '/.cache/dein'
 local dein_repo_dir = dein_dir .. '/repos/github.com/Shougo/dein.vim'
 
 vim.opt.runtimepath:append(dein_repo_dir)
@@ -12,7 +12,7 @@ if vim.call('dein#load_state', dein_dir) == 1 then
   vim.call('dein#begin', dein_dir)
 
   -- Load Plugins
-  vim.call('dein#load_toml', toml, { lazy =  0 })
+  vim.call('dein#load_toml', toml, { lazy = 0 })
   vim.call('dein#load_toml', lazy_toml, { lazy = 1 })
 
   vim.call('dein#end')
@@ -26,8 +26,8 @@ vim.api.nvim_command('syntax enable')
 local unnecessary_plugins = vim.call('dein#check_clean')
 
 if vim.fn.len(unnecessary_plugins) > 0 then
-	vim.fn.map(unnecessary_plugins, "delete(v:val, 'rf')")
-	vim.call('dein#recache_runtimepath')
+  vim.fn.map(unnecessary_plugins, "delete(v:val, 'rf')")
+  vim.call('dein#recache_runtimepath')
 end
 
 -- If you want to install not installed plugins on startup.

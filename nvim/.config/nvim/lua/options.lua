@@ -25,7 +25,7 @@ for _, name in ipairs(disable_plugins) do
 end
 
 -- 24bitカラー
-vim. opt.termguicolors = true
+vim.opt.termguicolors = true
 
 -- 行
 vim.opt.number = true
@@ -69,4 +69,3 @@ vim.opt.incsearch = true
 
 -- ヒストリの上限
 vim.opt.history = 255
-

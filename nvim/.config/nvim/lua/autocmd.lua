@@ -8,4 +8,3 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
     vim.opt.filetype = 'xml'
   end,
 })
-
