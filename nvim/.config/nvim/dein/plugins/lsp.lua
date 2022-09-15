@@ -126,12 +126,7 @@ null_ls.setup({
   capabilities = commom_capabilities,
 })
 
--- lsp
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
-)
-
--- 補完
+-- nvim-cmp
 cmp.setup({
   snippet = {
     expand = function(args)
