@@ -47,7 +47,7 @@ local common_on_attach = function(client, bufnr)
 
   -- 保存時に自動でフォーマット
   -- ref: https://github.com/skanehira/dotfiles/blob/master/vim/init.lua
-  local augroup = vim.api.nvim_create_augroup('LspAutoFmt', {})
+  local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
   if client.supports_method('textDocument/formatting') then
     vim.api.nvim_create_autocmd('BufWritePre', {
       callback = function()
