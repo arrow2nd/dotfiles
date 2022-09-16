@@ -38,7 +38,8 @@ yay -S \
  ghq \
  sheldon \
  fzf \
- exa
+ exa \
+ fd
 
 # zshに切り替え
 echo_title "Switch to zsh"
