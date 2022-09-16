@@ -46,7 +46,7 @@ depends = ['plenary.nvim']
 
 [[plugins]]
 repo = 'lambdalisue/gin.vim'
-on_cmd = ['Gin', 'GinBuffer', 'GinBranch', 'GinChaperon', 'GinDiff', 'GinEdit', 'GinPatch', 'GinStatus']
+on_event = 'BufRead'
 
 [[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
