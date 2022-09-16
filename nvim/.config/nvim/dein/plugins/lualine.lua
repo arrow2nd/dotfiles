@@ -1,6 +1,15 @@
 local ok, lualine = pcall(require, 'lualine')
-
 if (not ok) then return end
+
+local function get_lsp_progress()
+  local prog = vim.lsp.util.get_progress_messages()[1]
+  if not prog then return '' end
+
+  local title = prog.title or ""
+  local per = prog.percentage or 0
+
+  return string.format('%s (%s%%%%)', title, per)
+end
 
 lualine.setup {
   options = {
@@ -14,9 +23,16 @@ lualine.setup {
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_b = {
+      'branch',
+      'diff',
+      { 'diagnostics',
+        sources = { 'nvim_lsp' }
+      },
+      get_lsp_progress,
+    },
     lualine_c = { 'filename' },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_x = { 'encoding', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
   },
@@ -24,8 +40,8 @@ lualine.setup {
     lualine_a = {},
     lualine_b = {},
     lualine_c = { 'filename' },
-    lualine_x = { 'location' },
-    lualine_y = {},
+    lualine_x = {},
+    lualine_y = { 'encoding', 'location' },
     lualine_z = {}
   },
   tabline = {},
