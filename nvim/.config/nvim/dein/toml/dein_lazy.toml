@@ -76,7 +76,6 @@ on_cmd = 'Telescope'
 
 [[plugins]]
 repo = 'nvim-telescope/telescope-file-browser.nvim'
-depends = ['telescope.nvim']
 on_source = 'telescope.nvim'
 
 [[plugins]]
