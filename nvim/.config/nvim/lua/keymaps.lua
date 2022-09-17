@@ -26,11 +26,10 @@ h.nmap('<C-n>', function()
 end, { silent = true, expr = true })
 
 -- gin.vim
-h.nmap('<Leader>gs', '<CMD>GinStatus ++opener=split<CR>')
-h.nmap('<Leader>gl', '<CMD>GinBuffer ++opener=split log<CR>')
-h.nmap('<Leader>gd', '<CMD>GinDiff ++opener=vsplit<CR>')
-h.nmap('<Leader>gc', '<CMD>Gin commit -v<CR>')
-h.nmap('<Leader>gp', '<CMD>GinPatch ++opener=vsplit<CR>')
+h.nmap('<Leader>gs', '<CMD>Git<CR>')
+h.nmap('<Leader>gl', '<CMD>Gclog<CR>')
+h.nmap('<Leader>gd', '<CMD>Gdiffsplit<CR>')
+h.nmap('<Leader>gc', '<CMD>Git commit<CR>')
 
 -- translate.vim
 h.vmap('t', '<Plug>(Translate)')

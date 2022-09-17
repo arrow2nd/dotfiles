@@ -1,7 +1,4 @@
 [[plugins]]
-repo = 'vim-denops/denops.vim'
-
-[[plugins]]
 repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
@@ -45,8 +42,8 @@ repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = ['plenary.nvim']
 
 [[plugins]]
-repo = 'lambdalisue/gin.vim'
-on_event = 'BufRead'
+repo = 'tpope/vim-fugitive'
+on_cmd = ['Git', 'Gdiffsplit', 'Gclog']
 
 [[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
@@ -90,12 +87,12 @@ on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
-on_event = 'ModeChanged'
+on_event = 'BufRead'
 
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'
-depends = ['denops.vim']
-on_event = 'ModeChanged'
+on_cmd = ["Translate"]
+on_map = '<Plug>(Translate)'
 
 [[plugins]]
 repo = 'iamcco/markdown-preview.nvim'

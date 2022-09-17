@@ -10,3 +10,6 @@ repo = 'antoinemadec/FixCursorHold.nvim'
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
