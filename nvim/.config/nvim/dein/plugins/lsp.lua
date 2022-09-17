@@ -97,11 +97,10 @@ mason_lspconfig.setup_handlers({ function(server)
 
     opts.cmd = { 'deno', 'lsp', '--unstable' }
     opts.root_dir = lspconfig.util.root_pattern('deps.[jt]s', 'deno.json', 'import_map.json')
-    opts.init_options = {
-      lint = true,
-      unstable = true
-    }
+    opts.init_options = { lint = true, unstable = true }
   elseif server == 'tsserver' then
+    if not is_node_repo then return end
+
     opts.root_dir = node_root_dir
     opts.on_attach = function(client, bufnr)
       client.resolved_capabilities.document_formatting = false
@@ -116,11 +115,20 @@ mason_lspconfig.setup_handlers({ function(server)
 end })
 
 -- null-ls.nvim
+local deno_config_files = { 'deps.js', 'deps.ts', 'deno.json', 'import_map.json' }
+
 null_ls.setup({
   sources = {
-    null_ls.builtins.formatting.prettierd.with {
+    null_ls.builtins.formatting.deno_fmt.with {
+      disabled_filetypes = { "json", "jsonc" },
       condition = function(utils)
-        return not utils.has_file({ 'deps.js', 'deps.ts', 'deno.json', 'import_map.json' })
+        return utils.has_file(deno_config_files)
+      end
+    },
+    null_ls.builtins.formatting.prettierd.with {
+      disabled_filetypes = { "json", "jsonc" },
+      condition = function(utils)
+        return not utils.has_file(deno_config_files)
       end,
     },
   },
