@@ -27,6 +27,9 @@ end
 -- 24bitカラー
 vim.opt.termguicolors = true
 
+-- intro を非表示
+vim.opt.shortmess = 'I'
+
 -- 行
 vim.opt.number = true
 vim.opt.signcolumn = 'yes'
