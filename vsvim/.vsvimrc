@@ -25,11 +25,10 @@ set smartcase
 set incsearch
 
 " Leaderキー
-let mapleader = "\<Space>"
+let mapleader = '\<Space>'
 
 " jキーを2度押しでESC
 inoremap <silent> jj <ESC>
-inoremap <silent> っj <ESC>
 
 " C-j, C-k でバッファを切替
 nnoremap <silent> <C-j> :bprev<cr>
