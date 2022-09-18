@@ -2,43 +2,39 @@
 
 ## 環境
 
-- Arch Linux / macOS (10.15 Catalina ~)
-- git 導入済み
-
-## 中身
+- Arch Linux or macOS (10.15 Catalina ~)
+- Git 導入済み
 
 ### エディタ
 
-- nvim
-- vsvim
+- Neovim
+- VSCode / Visual Studio (拡張機能: VSCode Vim / VsVim)
 
 ### ターミナル
 
-- kitty
+- kitty (macOS のみ)
 - zsh
 - sheldon
 
-### ツール
+### 言語 / ランタイム
 
-- joplin (GUI / CLI)
-- nekome
-- twnyan
+- Node.js
+- Deno
+- Golang
+- Rust
 
-## フォント
+### フォント
 
-[PlemolJP (Nerd Fonts)](https://github.com/yuru7/PlemolJP)
+- [PlemolJP (Nerd Fonts)](https://github.com/yuru7/PlemolJP)
+  - macOS の場合は `./install.sh` で brew から自動でインストールされる
 
 ## 導入メモ
 
-```
-git clone git@github.com:arrow2nd/dotfiles.git
-# or
+```sh
+cd ~
 git clone https://github.com/arrow2nd/dotfiles.git
-
 cd dotfiles
-
-# 初期設定
 ./install.sh
-
-# 各環境に合った方法で言語等をインストール
 ```
+
+- Node.js に関しては自動でインストールされないので、`asdf install nodejs latest` とかすること
