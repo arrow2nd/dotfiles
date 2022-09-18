@@ -23,11 +23,14 @@ eval "$(sheldon source)"
 # パス
 #
 
-# deno
+# Deno
 export PATH="$HOME/.deno/bin:$PATH"
 
-# golang
+# Golang
 export PATH="$HOME/go/bin:$PATH"
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
 #
 # エイリアス
