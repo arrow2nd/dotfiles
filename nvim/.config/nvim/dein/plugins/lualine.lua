@@ -29,9 +29,8 @@ lualine.setup {
       { 'diagnostics',
         sources = { 'nvim_lsp' }
       },
-      get_lsp_progress,
     },
-    lualine_c = { 'filename' },
+    lualine_c = { 'filename', get_lsp_progress },
     lualine_x = { 'encoding', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
