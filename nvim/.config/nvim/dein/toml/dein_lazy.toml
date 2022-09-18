@@ -1,4 +1,7 @@
 [[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
 repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
@@ -91,6 +94,7 @@ on_event = 'BufRead'
 
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'
+on_depends = ['denops.vim']
 on_cmd = ["Translate"]
 on_map = '<Plug>(Translate)'
 
