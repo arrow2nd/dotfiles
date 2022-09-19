@@ -29,14 +29,7 @@ telescope.setup {
     find_files = {
       hidden = true,
     },
-    live_grep = {
-      glob_pattern = {
-        '*',
-        '!.git/*',
-        '!.yarn/*',
-        '!node_modules/*',
-      },
-    },
+    live_grep = {},
   },
   extensions = {
     file_browser = {
