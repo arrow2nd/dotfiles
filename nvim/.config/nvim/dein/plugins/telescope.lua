@@ -34,6 +34,7 @@ telescope.setup {
   extensions = {
     file_browser = {
       hidden = true,
+      respect_gitignore = false,
       mappings = {
         i = {
           ['<C-n>'] = 'close',
