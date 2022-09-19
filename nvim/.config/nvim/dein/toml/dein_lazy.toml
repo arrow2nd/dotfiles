@@ -85,6 +85,10 @@ hook_post_source = 'source ~/.config/nvim/dein/plugins/nvim-autopairs.lua'
 on_event = 'InsertEnter'
 
 [[plugins]]
+repo = 'windwp/nvim-ts-autotag'
+on_event = 'InsertEnter'
+
+[[plugins]]
 repo = 'tpope/vim-commentary'
 on_event = 'InsertEnter'
 
