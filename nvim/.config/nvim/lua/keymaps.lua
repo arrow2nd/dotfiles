@@ -17,6 +17,9 @@ h.nmap('<ESC><ESC>', '<CMD>nohlsearch<CR>')
 h.omap('<C-p>', '<Up>')
 h.omap('<C-n>', '<Down>')
 
+-- ESCでターミナルを抜ける
+h.tmap('<ESC>', '<C-\\><C-n>')
+
 -- telescope.vim
 h.nmap('<Leader>ff', '<CMD>Telescope find_files<CR>')
 h.nmap('<Leader>fg', '<CMD>Telescope live_grep<CR>')
