@@ -11,7 +11,7 @@ repo = 'kyazdani42/nvim-web-devicons'
 repo = 'neovim/nvim-lspconfig'
 depends = ['mason-lspconfig.nvim', 'nvim-cmp', 'null-ls.nvim']
 hook_source = 'source ~/.config/nvim/dein/plugins/lsp.lua'
-on_event = 'BufRead'
+on_event = 'BufReadPost'
 
 [[plugins]]
 repo = 'williamboman/mason.nvim'
@@ -52,7 +52,7 @@ on_cmd = ['Git', 'Gdiffsplit', 'Gclog']
 repo = 'lewis6991/gitsigns.nvim'
 depends = ['plenary.nvim']
 hook_source = 'source ~/.config/nvim/dein/plugins/gitsigns.lua'
-on_event = 'BufRead'
+on_event = 'BufReadPost'
 
 [[plugins]]
 repo = 'nvim-lualine/lualine.nvim'
@@ -94,7 +94,7 @@ on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
-on_event = 'BufRead'
+on_event = 'BufReadPost'
 
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'
