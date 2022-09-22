@@ -9,11 +9,6 @@
 echo_title "Create symbolic links"
 stow -v --no-folding  joplin kitty nvim twnyan zsh vsvim sheldon nekome
 
-# git config
-git config --global core.editor nvim
-git config --global pull.rebase false
-git config --global ghq.root '~/workspace'
-
 # dein.vim
 echo_title "Install dein.vim"
 mkdir -p ~/.cache/dein

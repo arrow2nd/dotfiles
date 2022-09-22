@@ -35,6 +35,7 @@ cd ~
 git clone https://github.com/arrow2nd/dotfiles.git
 cd dotfiles
 ./install.sh
+./setup_git.sh
 ```
 
 ### gh extension
