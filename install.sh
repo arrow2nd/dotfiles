@@ -11,7 +11,6 @@ stow -v --no-folding  joplin kitty nvim twnyan zsh vsvim sheldon nekome
 
 # git config
 git config --global core.editor nvim
-git config --global url.git@github.com:.insteadOf https://github.com/
 git config --global pull.rebase false
 git config --global ghq.root '~/workspace'
 
