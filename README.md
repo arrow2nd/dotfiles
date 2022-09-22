@@ -28,13 +28,20 @@
 - [PlemolJP (Nerd Fonts)](https://github.com/yuru7/PlemolJP)
   - macOS の場合は `./install.sh` で brew から自動でインストールされる
 
-## 導入メモ
+## 手順
 
 ```sh
 cd ~
 git clone https://github.com/arrow2nd/dotfiles.git
 cd dotfiles
 ./install.sh
+```
+
+### gh extension
+
+```
+gh auth login
+gh extension install kawarimidoll/gh-q
 ```
 
 - Node.js に関しては自動でインストールされないので、`asdf install nodejs latest` とかすること

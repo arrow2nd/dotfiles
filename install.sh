@@ -14,9 +14,6 @@ git config --global core.editor nvim
 git config --global pull.rebase false
 git config --global ghq.root '~/workspace'
 
-# gh extention
-gh extension install kawarimidoll/gh-q
-
 # dein.vim
 echo_title "Install dein.vim"
 mkdir -p ~/.cache/dein
