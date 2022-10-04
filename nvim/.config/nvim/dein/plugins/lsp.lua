@@ -33,7 +33,7 @@ mason.setup({
 local common_on_attach = function(client, bufnr)
   -- キーマップ
   h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>')
-  h.nmap('gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+  h.nmap('gf', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>')
   h.nmap('gr', '<CMD>lua vim.lsp.buf.references()<CR>')
   h.nmap('gd', '<CMD>lua vim.lsp.buf.definition()<CR>')
   h.nmap('gD', '<CMD>lua vim.lsp.buf.declaration()<CR>')
@@ -51,7 +51,7 @@ local common_on_attach = function(client, bufnr)
   if client.supports_method('textDocument/formatting') then
     vim.api.nvim_create_autocmd('BufWritePre', {
       callback = function()
-        vim.lsp.buf.formatting()
+        vim.lsp.buf.format({ async = true })
       end,
       group = augroup,
       buffer = bufnr,
