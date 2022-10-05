@@ -7,7 +7,7 @@
 
 # create symbolic links
 echo_title "Create symbolic links"
-stow -v --no-folding  joplin kitty nvim twnyan zsh vsvim sheldon nekome
+stow -v --no-folding  joplin kitty nvim zsh vsvim sheldon nekome
 
 # dein.vim
 echo_title "Install dein.vim"
