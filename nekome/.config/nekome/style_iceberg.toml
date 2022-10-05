@@ -11,8 +11,8 @@
 
 [autocomplete]
   text_color = "#c6c8d1"
-  background_color = "#3e4359"
-  selected_background_color = "#5c6586"
+  background_color = "#3d425b"
+  selected_background_color = "#5b6389"
 
 [statusbar]
   text = "#6b7089:-:-"
