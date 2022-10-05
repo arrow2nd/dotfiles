@@ -60,7 +60,7 @@ local common_on_attach = function(client, bufnr)
 end
 
 local disable_fmt_on_attach = function(client, bufnr)
-  client.resolved_capabilities.document_formatting = false
+  client.server_capabilities.documentFormattingProvider = false
   common_on_attach(client, bufnr)
 end
 
