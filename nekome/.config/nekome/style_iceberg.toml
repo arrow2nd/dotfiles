@@ -1,0 +1,45 @@
+[app]
+  background_color = "#161821"
+  border_color = "#c6c8d1"
+  text_color = "#c6c8d1"
+  sub_text_color = "#979797"
+  emphasis_text = "#84a0c6:-:bi"
+
+[tab]
+  text = "#c6c8d1:-:-"
+  background_color = "#0f1117"
+
+[autocomplete]
+  text_color = "#c6c8d1"
+  background_color = "#3e4359"
+  selected_background_color = "#5c6586"
+
+[statusbar]
+  text = "#6b7089:-:-"
+  background_color = "#0f1117"
+
+[tweet]
+  annotation = "#84a0c6:-:-"
+  detail = "#6b6f89:-:-"
+  like = "#ddb2cd:-:-"
+  retweet = "#b4be82:-:-"
+  hashtag = "#84a0c6:-:-"
+  mention = "#84a0c6:-:-"
+  poll_graph = "#84a0c6:-:-"
+  poll_detail = "#6b6f89:-:-"
+  separator = "#6b6f89:-:-"
+
+[user]
+  name = "#c6c8d1:-:b"
+  user_name = "#6b6f89:-:i"
+  detail = "#6b6f89:-:-"
+  verified = "#84a0c6:-:-"
+  private = "#6b6f89:-:-"
+
+[metrics]
+  tweets_text = "#161821:-:-"
+  tweets_background_color = "#a094c7"
+  following_text = "#161821:-:-"
+  following_background_color = "#84a0c6"
+  followers_text = "#161821:-:-"
+  followers_background_color = "#89b8c2"
