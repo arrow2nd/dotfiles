@@ -39,7 +39,8 @@ yay -S \
  sheldon \
  fzf \
  exa \
- fd
+ fd \
+ bat
 
 # zshに切り替え
 echo_title "Switch to zsh"
