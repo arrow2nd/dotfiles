@@ -66,12 +66,12 @@ repo = 'nvim-treesitter/nvim-treesitter'
 merged = 0
 hook_post_update = 'TSUpdate'
 hook_source = 'source ~/.config/nvim/dein/plugins/nvim-treesitter.lua'
-on_event = 'BufEnter'
+on_event = 'BufRead'
 
 [[plugins]]
 repo = 'nvim-telescope/telescope.nvim'
 rev = '0.1.x'
-depends = ['plenary.nvim', 'nvim-web-devicons']
+depends = ['plenary.nvim', 'nvim-web-devicons', 'nvim-treesitter']
 hook_post_source = 'source ~/.config/nvim/dein/plugins/telescope.lua'
 on_cmd = 'Telescope'
 
