@@ -3,7 +3,7 @@
 ## 環境
 
 - Arch Linux or macOS (10.15 Catalina ~)
-- Git 導入済み
+- git, curl 導入済み
 
 ### エディタ
 
@@ -30,15 +30,14 @@
 
 ## 手順
 
+### PC
+
 ```sh
-cd ~
-git clone https://github.com/arrow2nd/dotfiles.git
-cd dotfiles
-./install.sh
-./setup_git.sh
+curl https://github.com/arrow2nd/dotfiles/blob/main/setup.sh > setup.sh
+./setup.sh
 ```
 
-### gh extension
+#### gh extension
 
 ```
 gh auth login
@@ -46,3 +45,10 @@ gh extension install kawarimidoll/gh-q
 ```
 
 - Node.js に関しては自動でインストールされないので、`asdf install nodejs latest` とかすること
+
+### Termux
+
+```sh
+curl https://github.com/arrow2nd/dotfiles/blob/main/setup_termux.sh > setup.sh
+./setup.sh
+```

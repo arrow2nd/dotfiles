@@ -1,5 +1,9 @@
 #!/bin/bash
 
+cd ~
+git clone https://github.com/arrow2nd/dotfiles.git
+cd dotfiles
+
 . scripts/common_func.sh
 
 # OS別
