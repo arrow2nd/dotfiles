@@ -28,7 +28,7 @@ h.nmap('<C-n>', function()
   return '<CMD>Telescope file_browser cwd=' .. vim.fn.expand("%:p:h") .. '<CR>'
 end, { silent = true, expr = true })
 
--- gin.vim
+-- vim-fugitive
 h.nmap('<Leader>gs', '<CMD>Git<CR>')
 h.nmap('<Leader>gl', '<CMD>Gclog<CR>')
 h.nmap('<Leader>gd', '<CMD>Gdiffsplit<CR>')
