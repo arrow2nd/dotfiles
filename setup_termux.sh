@@ -28,6 +28,7 @@ rm installer.sh
 # フォントを設定
 wget https://github.com/yuru7/PlemolJP/releases/download/v1.2.7/PlemolJP_NF_v1.2.7.zip
 unzip PlemolJP_NF_*.zip
-mv ./PlemolJP_NF_v*/PlemolJPConsole_NF/PlemolJPConsoleNF-Regular.ttf ./.termux/font.ttf
+mv ./PlemolJP_NF_v*/PlemolJPConsole_NF/PlemolJPConsoleNF-Regular.ttf ./.termux/
+mv ./.termux/PlemolJPConsoleNF-Regular.ttf ./termux/font.ttf
 rm -rf PlemolJP_NF_v1*
 
