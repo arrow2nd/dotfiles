@@ -30,25 +30,29 @@
 
 ## 手順
 
-### PC
+### 1. 初期設定
+
+#### PC
 
 ```sh
-curl https://github.com/arrow2nd/dotfiles/blob/main/setup.sh > setup.sh
+curl https://raw.githubusercontent.com/arrow2nd/dotfiles/main/setup.sh > setup.sh
 ./setup.sh
 ```
 
-#### gh extension
+#### Termux
+
+```sh
+curl https://raw.githubusercontent.com/arrow2nd/dotfiles/main/setup_termux.sh > setup.sh
+./setup.sh
+```
+
+### 2. `gh` を設定
 
 ```
 gh auth login
 gh extension install kawarimidoll/gh-q
 ```
 
+### 追記
+
 - Node.js に関しては自動でインストールされないので、`asdf install nodejs latest` とかすること
-
-### Termux
-
-```sh
-curl https://github.com/arrow2nd/dotfiles/blob/main/setup_termux.sh > setup.sh
-./setup.sh
-```
