@@ -13,8 +13,8 @@ h.nmap('<C-k>', '<CMD>bnext<CR>')
 -- タブ
 h.nmap('<C-h>', '<CMD>tabprevious<CR>')
 h.nmap('<C-l>', '<CMD>tabnext<CR>')
-h.nmap('tn', '<CMD>tabnew<CR>')
-h.nmap('tc', '<CMD>tabclose<CR>')
+h.nmap('st', '<CMD>tabnew<CR>')
+h.nmap('sc', '<CMD>tabclose<CR>')
 
 -- ハイライト解除
 h.nmap('<ESC><ESC>', '<CMD>nohlsearch<CR>')
