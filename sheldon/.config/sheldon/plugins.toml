@@ -12,16 +12,11 @@
 
 shell = "zsh"
 
-# For example:
-#
-# [plugins.base16]
-# github = "chriskempson/base16-shell"
-
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
 [templates]
-defer = { value = 'zsh-defer source "{{ file }}"', each = true }
+defer = '{% for file in files %}zsh-defer source "{{ file }}"{% endfor %}'
 fpath_comp = 'fpath=("{{ dir }}/completions" $fpath)'
 
 [plugins.compinit]
