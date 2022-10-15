@@ -81,6 +81,7 @@ on_source = 'telescope.nvim'
 
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
+depends = ['nvim-treesitter']
 hook_post_source = 'source ~/.config/nvim/dein/plugins/nvim-autopairs.lua'
 on_event = 'InsertEnter'
 
