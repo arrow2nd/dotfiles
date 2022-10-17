@@ -64,7 +64,7 @@ local disable_fmt_on_attach = function(client, bufnr)
   common_on_attach(client, bufnr)
 end
 
-local commom_capabilities = cmp_nvim_lsp.update_capabilities(
+local commom_capabilities = cmp_nvim_lsp.default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
