@@ -38,7 +38,6 @@ end, { silent = true, expr = true })
 
 -- vim-fugitive
 h.nmap('<Leader>gs', '<CMD>Git<CR>')
-h.nmap('<Leader>gl', '<CMD>Gclog<CR>')
 h.nmap('<Leader>gd', '<CMD>Gdiffsplit<CR>')
 h.nmap('<Leader>gc', '<CMD>Git commit<CR>')
 
