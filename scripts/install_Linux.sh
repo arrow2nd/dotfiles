@@ -17,7 +17,7 @@ else
 fi
 
 # n
-curl -L https://bit.ly/n-install | bash
+curl -L https://bit.ly/n-install | bash -s -- -n latest
 
 # 諸々インストール
 echo_title "Install all the usual tools"
