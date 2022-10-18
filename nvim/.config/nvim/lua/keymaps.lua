@@ -41,5 +41,12 @@ h.nmap('<Leader>gs', '<CMD>Git<CR>')
 h.nmap('<Leader>gd', '<CMD>Gdiffsplit<CR>')
 h.nmap('<Leader>gc', '<CMD>Git commit<CR>')
 
+-- gitsigns.nvim
+h.nmap('<leader>hb', '<CMD>Gitsigns blame_line<CR>')
+h.nmap('<leader>hs', '<CMD>Gitsigns stage_hunk<CR>')
+h.nmap('<leader>hu', '<CMD>Gitsigns undo_stage_hunk<CR>')
+h.nmap('<leader>hr', '<CMD>Gitsigns reset_hunk<CR>')
+h.nmap('<leader>hp', '<CMD>Gitsigns preview_hunk<CR>')
+
 -- translate.vim
 h.vmap('t', '<Plug>(Translate)')
