@@ -77,10 +77,9 @@ mason_lspconfig.setup({
     'eslint',
     'yamlls',
     'jsonls',
-    'python-lsp-server',
-    'rust-analyzer',
-    'tailwindcss-language-server',
-    'prettierd',
+    'pylsp',
+    'rust_analyzer',
+    'tailwindcss',
   },
   automatic_installation = true,
 })
