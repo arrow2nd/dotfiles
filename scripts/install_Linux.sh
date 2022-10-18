@@ -16,6 +16,9 @@ else
   rm -rf yay
 fi
 
+# n
+curl -L https://bit.ly/n-install | bash
+
 # 諸々インストール
 echo_title "Install all the usual tools"
 yay -S \
