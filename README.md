@@ -55,4 +55,4 @@ gh extension install kawarimidoll/gh-q
 
 ### 追記
 
-- nodeは自動で入らないので `n latest` とかすること
+- node は自動で入らないので `n latest` とかすること
