@@ -33,17 +33,15 @@ mason.setup({
 local common_on_attach = function(client, bufnr)
   -- キーマップ
   h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>')
-  h.nmap('gf', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>')
-  h.nmap('gr', '<CMD>lua vim.lsp.buf.references()<CR>')
-  h.nmap('gd', '<CMD>lua vim.lsp.buf.definition()<CR>')
-  h.nmap('gD', '<CMD>lua vim.lsp.buf.declaration()<CR>')
-  h.nmap('gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
-  h.nmap('gt', '<CMD>lua vim.lsp.buf.type_definition()<CR>')
   h.nmap('gn', '<CMD>lua vim.lsp.buf.rename()<CR>')
   h.nmap('ga', '<CMD>lua vim.lsp.buf.code_action()<CR>')
   h.nmap('ge', '<CMD>lua vim.diagnostic.open_float()<CR>')
   h.nmap('g]', '<CMD>lua vim.diagnostic.goto_next()<CR>')
   h.nmap('g[', '<CMD>lua vim.diagnostic.goto_prev()<CR>')
+  h.nmap('gr', '<CMD>Telescope lsp_references<CR>')
+  h.nmap('gi', '<CMD>Telescope lsp_implementations<CR>')
+  h.nmap('gd', '<CMD>Telescope lsp_definitions<CR>')
+  h.nmap('gt', '<CMD>Telescope lsp_type_definitions<CR>')
 
   -- 保存時に自動でフォーマット
   -- ref: https://github.com/skanehira/dotfiles/blob/master/vim/init.lua
