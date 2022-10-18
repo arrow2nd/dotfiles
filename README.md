@@ -8,7 +8,7 @@
 ### エディタ
 
 - Neovim
-- VSCode / Visual Studio (拡張機能: VSCode Vim / VsVim)
+- VSCode Vim
 
 ### ターミナル
 
@@ -32,17 +32,8 @@
 
 ### 1. 初期設定
 
-#### PC
-
 ```sh
 curl https://raw.githubusercontent.com/arrow2nd/dotfiles/main/setup.sh > setup.sh
-./setup.sh
-```
-
-#### Termux
-
-```sh
-curl https://raw.githubusercontent.com/arrow2nd/dotfiles/main/setup_termux.sh > setup.sh
 ./setup.sh
 ```
 
