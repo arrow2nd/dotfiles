@@ -36,7 +36,3 @@ apply = ["defer"]
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 apply = ["defer"]
-
-[plugins.asdf]
-github = "asdf-vm/asdf"
-apply = ["defer", "fpath_comp"]

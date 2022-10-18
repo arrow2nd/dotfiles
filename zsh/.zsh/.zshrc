@@ -22,6 +22,11 @@ eval "$(sheldon source)"
 #
 # パス
 #
+#
+
+# Node.js (n)
+export N_PREFIX="$HOME/.n"
+export PATH="$N_PREFIX/bin:$PATH"
 
 # Deno
 export PATH="$HOME/.deno/bin:$PATH"

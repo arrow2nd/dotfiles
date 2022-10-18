@@ -55,4 +55,4 @@ gh extension install kawarimidoll/gh-q
 
 ### 追記
 
-- Node.js に関しては自動でインストールされないので、`asdf install nodejs latest` とかすること
+- nodeは自動で入らないので `n latest` とかすること
