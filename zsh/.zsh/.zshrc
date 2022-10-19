@@ -59,6 +59,9 @@ alias l='exa -la'
 alias la='exa -a'
 alias lt='exa -T'
 
+# trash-cli
+alias put='trash-put'
+
 # ToDo
 alias todo='gh issue list -S "label:todo,\"want to do\"" -R arrow2nd/todo'
 alias todow='gh issue list -l "want to buy" -R arrow2nd/todo'

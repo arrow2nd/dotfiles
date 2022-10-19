@@ -43,7 +43,8 @@ yay -S \
  fzf \
  exa \
  fd \
- bat
+ bat \
+ trash-cli
 
 # zshに切り替え
 echo_title "Switch to zsh"
