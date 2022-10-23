@@ -28,8 +28,10 @@ h.tmap('<ESC>', '<C-\\><C-n>')
 
 -- telescope.vim
 h.nmap('<Leader>ff', '<CMD>Telescope find_files<CR>')
-h.nmap('<Leader>fb', '<CMD>Telescope buffers<CR>')
 h.nmap('<Leader>fg', '<CMD>Telescope live_grep<CR>')
+h.nmap('<Leader>fb', '<CMD>Telescope buffers<CR>')
+h.nmap('<Leader>fr', '<CMD>Telescope registers<CR>')
+h.nmap('<Leader>fk', '<CMD>Telescope keymaps<CR>')
 h.nmap('<Leader>fh', '<CMD>Telescope help_tags<CR>')
 h.nmap('<Leader>fc', '<CMD>Telescope git_commits<CR>')
 h.nmap('<C-n>', function()
