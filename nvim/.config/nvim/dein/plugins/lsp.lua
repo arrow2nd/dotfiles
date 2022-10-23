@@ -34,17 +34,16 @@ local common_on_attach = function(client, bufnr)
   -- キーマップ
   h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>')
   h.nmap('gn', '<CMD>lua vim.lsp.buf.rename()<CR>')
-  h.nmap('ga', '<CMD>lua vim.lsp.buf.code_action()<CR>')
   h.nmap('ge', '<CMD>lua vim.diagnostic.open_float()<CR>')
   h.nmap('g]', '<CMD>lua vim.diagnostic.goto_next()<CR>')
   h.nmap('g[', '<CMD>lua vim.diagnostic.goto_prev()<CR>')
-  h.nmap('gr', '<CMD>Telescope lsp_references<CR>')
-  h.nmap('gi', '<CMD>Telescope lsp_implementations<CR>')
-  h.nmap('gd', '<CMD>Telescope lsp_definitions<CR>')
-  h.nmap('gt', '<CMD>Telescope lsp_type_definitions<CR>')
+  h.nmap('ga', '<CMD>lua vim.lsp.buf.code_action()<CR>', { desc = "Show available code actions" })
+  h.nmap('gr', '<CMD>Telescope lsp_references<CR>', { desc = "Lists all the references" })
+  h.nmap('gi', '<CMD>Telescope lsp_implementations<CR>', { desc = "Lists all the implementations" })
+  h.nmap('gd', '<CMD>Telescope lsp_definitions<CR>', { desc = "Lists all the definitions" })
+  h.nmap('gt', '<CMD>Telescope lsp_type_definitions<CR>', { desc = "Lists all the type definitions" })
 
   -- 保存時に自動でフォーマット
-  -- ref: https://github.com/skanehira/dotfiles/blob/master/vim/init.lua
   local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
   if client.supports_method('textDocument/formatting') then
     vim.api.nvim_create_autocmd('BufWritePre', {
