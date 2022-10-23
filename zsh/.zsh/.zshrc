@@ -68,8 +68,9 @@ alias v="nvim"
 alias y='yarn'
 alias zmv='noglob zmv -W'
 alias rdflint='java -jar rdflint-*.jar'
-alias tw='nekome tweet'
 alias dot='cd ~/dotfiles'
+alias tw='nekome tweet'
+alias todo='gh todo'
 
 # kitty
 alias icat='kitty +kitten icat'
