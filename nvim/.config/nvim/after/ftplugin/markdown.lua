@@ -1,8 +1,8 @@
 local h = require('helper')
 local optl = vim.opt_local
 
--- 参考: Vimでmarkdownの箇条書き（kawarimidoll）
--- ref: https://zenn.dev/vim_jp/articles/4564e6e5c2866d
+-- ref: Vimでmarkdownの箇条書き（kawarimidoll）
+--      https://zenn.dev/vim_jp/articles/4564e6e5c2866d
 
 -- 引用符
 optl.comments = 'nb:>'
@@ -24,7 +24,7 @@ local markdown_checkbox = function()
     -- not list -> nothing to do
     return
   elseif vim.regex(list_pattern .. '\\[ \\]\\s+'):match_str(line) then
-    -- checked box -> uncheck
+    -- blank box -> check
     line, _ = line:gsub('%[ %]', '[x]', 1)
   elseif vim.regex(list_pattern .. '\\[x\\]\\s+'):match_str(line) then
     -- checked box -> uncheck
@@ -44,5 +44,9 @@ vim.api.nvim_buf_create_user_command(
 )
 
 for _, mode in pairs({ 'n', 'i', 'x' }) do
-  h[mode .. 'map']('<C-CR>', '<CMD>MarkdownCheckbox<CR>', { buffer = true, desc = "Toggle checkbox" })
+  h[mode .. 'map'](
+    '<C-CR>',
+    '<CMD>MarkdownCheckbox<CR>',
+    { buffer = true, desc = "Toggle checkbox" }
+  )
 end
