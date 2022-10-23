@@ -5,28 +5,11 @@
 - Arch Linux or macOS (10.15 Catalina ~)
 - git, curl 導入済み
 
-### エディタ
-
-- Neovim
-- VSCode Vim
-
-### ターミナル
-
-- kitty (macOS のみ)
-- zsh
-- sheldon
-
-### 言語 / ランタイム
-
-- Node.js
-- Deno
-- Golang
-- Rust
-
 ### フォント
 
-- [PlemolJP (Nerd Fonts)](https://github.com/yuru7/PlemolJP)
-  - macOS の場合は `./install.sh` で brew から自動でインストールされる
+[PlemolJP (Nerd Fonts)](https://github.com/yuru7/PlemolJP)
+
+- macOS の場合は `./install.sh` で brew から自動でインストールされます
 
 ## 手順
 
@@ -42,6 +25,7 @@ curl https://raw.githubusercontent.com/arrow2nd/dotfiles/main/setup.sh > setup.s
 ```
 gh auth login
 gh extension install kawarimidoll/gh-q
+gh extension install arrow2nd/gh-todo
 ```
 
 ### 追記
