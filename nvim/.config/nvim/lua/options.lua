@@ -59,12 +59,6 @@ vim.opt.smartindent = true
 -- 全ての値を10進数として扱う
 vim.opt.nrformats = ''
 
--- ヤンクした内容をクリップボードへ
--- NOTE: Win / WSL で起動時間の妨げになる & たいして使わないので mac のみにしてる
-if (vim.fn.has('mac') == 1) then
-  vim.opt.clipboard = 'unnamedplus'
-end
-
 -- 検索
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
