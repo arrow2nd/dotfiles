@@ -1,5 +1,5 @@
 local ok, treesitter = pcall(require, 'nvim-treesitter.configs')
-if (not ok) then return end
+if not ok then return end
 
 treesitter.setup {
   autotag = {
@@ -19,6 +19,7 @@ treesitter.setup {
     'cpp',
     'css',
     'dart',
+    'dockerfile',
     'go',
     'gomod',
     'html',
@@ -27,6 +28,7 @@ treesitter.setup {
     'json',
     'jsonc',
     'lua',
+    'make',
     'markdown',
     'php',
     'prisma',
