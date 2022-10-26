@@ -2,8 +2,13 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'cocopon/iceberg.vim'
+# repo = 'cocopon/iceberg.vim'
+repo = 'arrow2nd/iceberg.vim'
+rev = 'fix-treesitter'
 hook_add = 'colorscheme iceberg'
+
+[[plugins]]
+repo = 'cocopon/pgmnt.vim'
 
 [[plugins]]
 repo = 'antoinemadec/FixCursorHold.nvim'
