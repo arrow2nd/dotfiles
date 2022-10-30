@@ -9,7 +9,7 @@
 
 [PlemolJP (Nerd Fonts)](https://github.com/yuru7/PlemolJP)
 
-- macOS の場合は `./install.sh` で brew から自動でインストールされます
+- macOS の場合は brew 経由で自動でインストールされます
 
 ## 手順
 
