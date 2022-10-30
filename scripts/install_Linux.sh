@@ -15,8 +15,10 @@ if ! type -p yay >/dev/null; then
   rm -rf yay
 fi
 
-echo "=== install n (node version manager) ==="
-curl -L https://bit.ly/n-install | bash -s -- -n latest
+if ! type -p n >/dev/null; then
+  echo "=== install n (node version manager) ==="
+  curl -L https://bit.ly/n-install | bash -s -- -n latest
+fi
 
 echo "=== install all the usual tools ==="
 yay -S \
