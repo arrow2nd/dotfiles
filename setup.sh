@@ -18,12 +18,10 @@ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >
 sh ./installer.sh ~/.cache/dein
 rm installer.sh
 
-echo "=== setup git ==="
-read -p "run? (Y/n)" yn
+read -p "=== setup Git? (Y/n) ===" yn
 case "$yn" in [nN]*) ;; *) . ./scripts/setup_git.sh ;; esac
 
-echo "=== setup GitHub CLI ==="
-read -p "run? (Y/n)" yn
+read -p "=== setup GitHub CLI? (Y/n) ===" yn
 case "$yn" in [nN]*) ;; *) . ./scripts/setup_gh.sh ;; esac
 
 source $HOME/.zsh/.zshrc
