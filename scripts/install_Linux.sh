@@ -4,11 +4,10 @@
 # for Arch Linux
 #
 
-# yayをインストール
-if type "yay" > /dev/null 2>&1; then
-  echo "yay is exist!"
-else
-  echo_title "Install yay"
+set -eu
+
+if ! type -p yay >/dev/null; then
+  echo "=== install yay ==="
   git clone https://aur.archlinux.org/yay-bin yay
   cd yay
   makepkg -si --noconfirm
@@ -16,11 +15,10 @@ else
   rm -rf yay
 fi
 
-# n
+echo "=== install n (node version manager) ==="
 curl -L https://bit.ly/n-install | bash -s -- -n latest
 
-# 諸々インストール
-echo_title "Install all the usual tools"
+echo "=== install all the usual tools ==="
 yay -S \
  zsh \
  unzip \
@@ -46,6 +44,5 @@ yay -S \
  bat \
  trash-cli
 
-# zshに切り替え
-echo_title "Switch to zsh"
+echo "=== switch to zsh ==="
 sudo chsh -s $(which zsh) $(whoami)
