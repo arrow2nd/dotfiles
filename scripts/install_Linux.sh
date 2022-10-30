@@ -21,7 +21,7 @@ if ! type -p n >/dev/null; then
 fi
 
 echo "=== install all the usual tools ==="
-yay -S \
+yay -S --noconfirm \
  zsh \
  unzip \
  deno \
