@@ -107,3 +107,9 @@ on_map = '<Plug>(Translate)'
 repo = 'iamcco/markdown-preview.nvim'
 build = 'sh -c "cd app && yarn install"'
 on_ft = ['markdown', 'pandoc.markdown', 'rmd']
+
+[[plugins]]
+repo = '4513ECHO/denops-gitter.vim'
+on_depends = ['denops.vim']
+on_path = 'gitter://'
+hook_source = 'source ~/.config/nvim/dein/plugins/denops-gitter.lua'
