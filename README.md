@@ -13,19 +13,8 @@
 
 ## 手順
 
-### 1. 初期設定
-
 ```sh
-curl https://raw.githubusercontent.com/arrow2nd/dotfiles/main/setup.sh > setup.sh
-./setup.sh
-```
-
-### 2. `gh` を設定
-
-```
-gh auth login
-gh extension install kawarimidoll/gh-q
-gh extension install arrow2nd/gh-todo
+curl https://raw.githubusercontent.com/arrow2nd/dotfiles/main/setup.sh | bash
 ```
 
 ### 追記
