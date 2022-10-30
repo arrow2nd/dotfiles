@@ -7,7 +7,6 @@ cd ~
 git clone https://github.com/arrow2nd/dotfiles.git
 cd dotfiles
 
-echo "=== install apps ==="
 [[ -f scripts/install_`uname`.sh ]] && . ./scripts/install_`uname`.sh
 
 echo "=== create symbolic links ==="
