@@ -114,18 +114,18 @@ mason_lspconfig.setup_handlers({ function(server)
 end })
 
 -- null-ls.nvim
-local deno_config_files = { 'deps.js', 'deps.ts', 'deno.json', 'import_map.json' }
+local prettier_config_files = { '.prettierrc', '.prettierrc.js', '.prettierrc.json' }
 
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.deno_fmt.with {
       condition = function(utils)
-        return utils.has_file(deno_config_files)
+        return not utils.has_file(prettier_config_files)
       end
     },
-    null_ls.builtins.formatting.prettierd.with {
+    null_ls.builtins.formatting.prettier.with {
       condition = function(utils)
-        return not utils.has_file(deno_config_files)
+        return utils.has_file(prettier_config_files)
       end,
     },
   },
