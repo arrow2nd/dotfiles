@@ -115,6 +115,7 @@ end })
 
 -- null-ls.nvim
 local prettier_config_files = { '.prettierrc', '.prettierrc.js', '.prettierrc.json' }
+local textlint_config_files = { ".textlintrc", ".textlintrc.yml", ".textlintrc.json" }
 
 null_ls.setup({
   sources = {
@@ -127,6 +128,13 @@ null_ls.setup({
       condition = function(utils)
         return utils.has_file(prettier_config_files)
       end,
+    },
+    null_ls.builtins.diagnostics.textlint.with {
+      filetypes = { "markdown" },
+      condition = function(utils)
+        return utils.has_file(textlint_config_files)
+      end,
+      prefer_local = "node_modules/.bin",
     },
   },
   on_attach = common_on_attach,
