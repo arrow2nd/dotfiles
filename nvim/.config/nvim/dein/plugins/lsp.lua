@@ -30,6 +30,7 @@ mason.setup({
 })
 
 -- mason-lspconfig.nvim
+local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
 local common_on_attach = function(client, bufnr)
   -- キーマップ
   h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>')
@@ -44,11 +45,11 @@ local common_on_attach = function(client, bufnr)
   h.nmap('gt', '<CMD>Telescope lsp_type_definitions<CR>', { desc = "Lists all the type definitions" })
 
   -- 保存時に自動でフォーマット
-  local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
   if client.supports_method('textDocument/formatting') then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
     vim.api.nvim_create_autocmd('BufWritePre', {
       callback = function()
-        vim.lsp.buf.format({ async = true })
+        vim.lsp.buf.format({ bufnr = bufnr })
       end,
       group = augroup,
       buffer = bufnr,
