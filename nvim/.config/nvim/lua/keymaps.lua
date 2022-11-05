@@ -6,9 +6,9 @@ vim.g.mapleader = " "
 -- ESC
 h.imap('jj', '<ESC>', { desc = "Exit insert mode" })
 
--- バッファ切り替え
-h.nmap('<C-j>', '<CMD>bprev<CR>', { desc = "Switch to previous buffer" })
-h.nmap('<C-k>', '<CMD>bnext<CR>', { desc = "Switch to next buffer" })
+-- スクロール移動
+h.nmap('<C-j>', '<C-e>gj', { desc = "Scroll down & Move" })
+h.nmap('<C-k>', '<C-y>gk', { desc = "Scroll up & Move" })
 
 -- タブ
 h.nmap('<C-h>', '<CMD>tabprevious<CR>', { desc = "Switch to previous tab" })
