@@ -39,6 +39,7 @@ local common_on_attach = function(client, bufnr)
   h.nmap('g]', '<CMD>lua vim.diagnostic.goto_next()<CR>')
   h.nmap('g[', '<CMD>lua vim.diagnostic.goto_prev()<CR>')
   h.nmap('ga', '<CMD>lua vim.lsp.buf.code_action()<CR>', { desc = "Show available code actions" })
+  h.nmap('gE', '<CMD>Telescope diagnostics<CR>')
   h.nmap('gr', '<CMD>Telescope lsp_references<CR>', { desc = "Lists all the references" })
   h.nmap('gi', '<CMD>Telescope lsp_implementations<CR>', { desc = "Lists all the implementations" })
   h.nmap('gd', '<CMD>Telescope lsp_definitions<CR>', { desc = "Lists all the definitions" })
@@ -117,7 +118,6 @@ end })
 -- null-ls.nvim
 local prettier_config_files = { '.prettierrc', '.prettierrc.js', '.prettierrc.json' }
 local textlint_config_files = { ".textlintrc", ".textlintrc.yml", ".textlintrc.json" }
-local eslint_config_files = { '.eslintrc', '.eslintrc.json' }
 
 null_ls.setup({
   sources = {
@@ -127,23 +127,17 @@ null_ls.setup({
       end
     },
     null_ls.builtins.formatting.prettier.with {
+      prefer_local = "node_modules/.bin",
       condition = function(utils)
         return utils.has_file(prettier_config_files)
       end,
-      prefer_local = "node_modules/.bin",
-    },
-    null_ls.builtins.diagnostics.eslint.with {
-      condition = function(utils)
-        return utils.has_file(eslint_config_files)
-      end,
-      prefer_local = "node_modules/.bin",
     },
     null_ls.builtins.diagnostics.textlint.with {
       filetypes = { "markdown" },
+      prefer_local = "node_modules/.bin",
       condition = function(utils)
         return utils.has_file(textlint_config_files)
       end,
-      prefer_local = "node_modules/.bin",
     },
   },
   on_attach = common_on_attach,
