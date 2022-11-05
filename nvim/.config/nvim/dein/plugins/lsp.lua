@@ -129,6 +129,7 @@ null_ls.setup({
       condition = function(utils)
         return utils.has_file(prettier_config_files)
       end,
+      prefer_local = "node_modules/.bin",
     },
     null_ls.builtins.diagnostics.textlint.with {
       filetypes = { "markdown" },
