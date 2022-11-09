@@ -94,8 +94,9 @@ repo = 'tpope/vim-commentary'
 on_event = 'InsertEnter'
 
 [[plugins]]
-repo = 'tpope/vim-surround'
+repo = 'kylechui/nvim-surround'
 on_event = 'BufReadPost'
+hook_source = 'source ~/.config/nvim/dein/plugins/nvim-surround.lua'
 
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'
