@@ -18,12 +18,6 @@ shift + cmd - j : yabai -m window --warp south
 shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
 
-# move window
-shift + ctrl - a : yabai -m window --move rel:-20:0
-shift + ctrl - s : yabai -m window --move rel:0:20
-shift + ctrl - w : yabai -m window --move rel:0:-20
-shift + ctrl - d : yabai -m window --move rel:20:0
-
 # increase window size
 shift + alt - a : yabai -m window --resize left:-20:0
 shift + alt - s : yabai -m window --resize bottom:0:20
