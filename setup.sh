@@ -10,7 +10,7 @@ cd dotfiles
 [[ -f scripts/install_`uname`.sh ]] && . ./scripts/install_`uname`.sh
 
 echo "=== create symbolic links ==="
-stow -v --no-folding joplin kitty nvim zsh vsvim sheldon nekome
+stow -v --no-folding joplin nvim zsh vsvim sheldon nekome
 
 echo "=== install dein ==="
 mkdir -p ~/.cache/dein
