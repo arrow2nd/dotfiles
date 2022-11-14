@@ -60,6 +60,11 @@ depends = ['nvim-web-devicons']
 hook_source = 'source ~/.config/nvim/dein/plugins/lualine.lua'
 on_event = 'VimEnter'
 
+# [[plugins]]
+# repo = 'nvim-treesitter/playground'
+# depends = ['nvim-treesitter']
+# on_source = 'nvim-treesitter'
+
 # ref: https://zenn.dev/mkobayashime/articles/nvim-treesitter-dein
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
