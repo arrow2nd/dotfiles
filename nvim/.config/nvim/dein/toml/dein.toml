@@ -9,7 +9,4 @@ hook_add = 'colorscheme iceberg'
 # repo = 'cocopon/pgmnt.vim'
 
 [[plugins]]
-repo = 'antoinemadec/FixCursorHold.nvim'
-
-[[plugins]]
 repo = 'vim-jp/vimdoc-ja'
