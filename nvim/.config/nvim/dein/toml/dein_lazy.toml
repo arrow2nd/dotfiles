@@ -106,8 +106,12 @@ hook_source = 'source ~/.config/nvim/dein/plugins/nvim-surround.lua'
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'
 on_depends = ['denops.vim']
-on_cmd = ["Translate"]
+on_cmd = ['Translate']
 on_map = '<Plug>(Translate)'
+
+[[plugins]]
+repo = 'thinca/vim-qfreplace'
+on_cmd = ['Qfreplace']
 
 [[plugins]]
 repo = 'iamcco/markdown-preview.nvim'
