@@ -8,7 +8,7 @@ api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
   group = 'autocmds',
   pattern = { '*.rdf' },
   callback = function()
-    vim.opt.filetype = 'xml'
+    vim.opt.filetype = 'xml.rdf'
   end,
 })
 
