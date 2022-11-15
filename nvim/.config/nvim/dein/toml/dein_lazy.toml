@@ -9,27 +9,22 @@ repo = 'kyazdani42/nvim-web-devicons'
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-depends = ['mason-lspconfig.nvim', 'nvim-cmp', 'null-ls.nvim']
+depends = ['mason-lspconfig.nvim', 'nvim-cmp', 'null-ls.nvim', 'vim-vsnip']
 hook_source = 'source ~/.config/nvim/dein/plugins/lsp.lua'
 on_event = 'BufReadPost'
-
-[[plugins]]
-repo = 'williamboman/mason.nvim'
 
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
 depends = ['mason.nvim']
 
 [[plugins]]
+repo = 'williamboman/mason.nvim'
+
+[[plugins]]
 repo = 'hrsh7th/nvim-cmp'
-depends = ['cmp-nvim-lsp', 'vim-vsnip', 'cmp-path', 'cmp-buffer']
 
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp'
-on_source = 'nvim-cmp'
-
-[[plugins]]
-repo = 'hrsh7th/vim-vsnip'
 on_source = 'nvim-cmp'
 
 [[plugins]]
@@ -41,8 +36,15 @@ repo = 'hrsh7th/cmp-buffer'
 on_source = 'nvim-cmp'
 
 [[plugins]]
+repo = 'hrsh7th/cmp-vsnip'
+on_source = 'nvim-cmp'
+
+[[plugins]]
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = ['plenary.nvim']
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
