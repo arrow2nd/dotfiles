@@ -34,7 +34,7 @@ h.nmap('<Leader>fr', '<CMD>Telescope registers<CR>')
 h.nmap('<Leader>fk', '<CMD>Telescope keymaps<CR>')
 h.nmap('<Leader>fh', '<CMD>Telescope help_tags<CR>')
 h.nmap('<Leader>fc', '<CMD>Telescope git_commits<CR>')
-h.nmap('<C-n>', function()
+h.nmap('<Leader>bb', function()
   return '<CMD>Telescope file_browser cwd=' .. vim.fn.expand("%:p:h") .. '<CR>'
 end, { silent = true, expr = true })
 
