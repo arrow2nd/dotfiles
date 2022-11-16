@@ -1,21 +1,27 @@
 local api = vim.api
 
--- autocmd
-api.nvim_create_augroup('autocmds', {})
+local augroup = api.nvim_create_augroup('AutoCommands', {})
 
--- rdf -> xml
+-- rdfをxmlとして認識させる
 api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
-  group = 'autocmds',
+  group = augroup,
   pattern = { '*.rdf' },
   callback = function()
-    vim.opt.filetype = 'xml.rdf'
+    vim.opt.filetype = 'xml.'
+
+    local full_path = vim.fn.expand('%:p')
+    if string.find(full_path, 'imasparql') then
+      vim.opt.filetype:append('imasrdf')
+    else
+      vim.opt.filetype:append('rdf')
+    end
   end,
 })
 
 -- 常にインサートモードでTerminalを開く
 -- ref: https://zenn.dev/ryo_kawamata/articles/improve-neovmi-terminal
 api.nvim_create_autocmd({ 'TermOpen' }, {
-  group = 'autocmds',
+  group = augroup,
   pattern = { '*' },
   command = 'startinsert',
 })

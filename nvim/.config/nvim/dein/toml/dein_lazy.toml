@@ -45,6 +45,7 @@ depends = ['plenary.nvim']
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
+hook_source = 'source ~/.config/nvim/dein/plugins/vsnip.lua'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
