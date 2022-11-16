@@ -31,7 +31,6 @@ mason.setup({
 
 -- mason-lspconfig.nvim
 local common_on_attach = function(client, bufnr)
-  -- キーマップ
   h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>')
   h.nmap('gn', '<CMD>lua vim.lsp.buf.rename()<CR>')
   h.nmap('ge', '<CMD>lua vim.diagnostic.open_float()<CR>')
