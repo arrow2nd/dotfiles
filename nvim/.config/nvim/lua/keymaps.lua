@@ -51,4 +51,4 @@ h.nmap('<leader>hu', '<CMD>Gitsigns undo_stage_hunk<CR>', { desc = "Undo the las
 h.nmap('<leader>hr', '<CMD>Gitsigns reset_hunk<CR>', { desc = "Reset the lines of the hunk" })
 
 -- translate.vim
-h.vmap('t', '<Plug>(Translate)', { desc = "Translates the selected area" })
+h.vmap('<leader>tl', '<Plug>(Translate)', { desc = "Translates the selected area" })

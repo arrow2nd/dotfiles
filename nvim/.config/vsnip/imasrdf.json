@@ -1,0 +1,93 @@
+{
+  "Idol": {
+    "prefix": ["idol"],
+    "body": "<${1|imas:Whose,schema:member|} rdf:resource=\"$0\"/>",
+    "description": "アイドル"
+  },
+  "Clothe": {
+    "prefix": ["clothe"],
+    "body": [
+      "<rdf:Description rdf:about=\"${2:Clothe_Resource_Name}\">",
+      "\t<schema:name xml:lang=\"ja\">${1:ClotheName}</schema:name>",
+      "\t<rdfs:label rdf:datatype=\"http://www.w5.org/2001/XMLSchema#string\">${1:ClotheName}</rdfs:label>",
+      "\t${3:<schema:description xml:lang=\"ja\">${4:ClotheDesc}</schema:description>}",
+      "\t$0",
+      "\t<rdf:type rdf:resource=\"https://sparql.crssnky.xyz/imasrdf/URIs/imas-schema.ttl#Clothes\"/>",
+      "</rdf:Description>"
+    ],
+    "description": "衣装"
+  },
+  "Clothe:IndividualDesc": {
+    "prefix": ["clothe:individualdesc"],
+    "body": [
+      "<rdf:Description rdf:about=\"${2:ClotheResourceName}_${3:Last}${4:First}\">",
+      "\t<schema:name xml:lang=\"ja\">${1:ClotheName}</schema:name>",
+      "\t<rdfs:label rdf:datatype=\"http://www.w5.org/2001/XMLSchema#string\">${1:ClotheName}</rdfs:label>",
+      "\t<schema:description xml:lang=\"ja\">${0:ClotheDesc}</schema:description>",
+      "\t<imas:Whose rdf:resource=\"${3:Last}_${4:First}\"/>",
+      "\t<rdf:type rdf:resource=\"https://sparql.crssnky.xyz/imasrdf/URIs/imas-schema.ttl#Clothes\"/>",
+      "</rdf:Description>"
+    ],
+    "description": "個別の説明文が存在する衣装"
+  },
+  "Unit:Illumination-STARS": {
+    "prefix": ["unit:illuminationStars"],
+    "body": [
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Sakuragi_Mano\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Hachimiya_Meguru\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Kazano_Hiori\"/>"
+    ]
+  },
+  "Unit:L-Antica": {
+    "prefix": ["unit:l-Antica"],
+    "body": [
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Shirase_Sakuya\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Tanaka_Mamimi\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Tsukioka_Kogane\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Mitsumine_Yuika\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Yukoku_Kiriko\"/>"
+    ]
+  },
+  "Unit:Hokura": {
+    "prefix": ["unit:hokura"],
+    "body": [
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Arisugawa_Natsuha\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Komiya_Kaho\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Saijo_Juri\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Sonoda_Chiyoko\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Morino_Rinze\"/>"
+    ]
+  },
+  "Unit:Alstromeria": {
+    "prefix": ["unit:alstromeria"],
+    "body": [
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Osaki_Amana\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Osaki_Tenka\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Kuwayama_Chiyuki\"/>"
+    ]
+  },
+  "Unit:Straylight": {
+    "prefix": ["unit:straylight"],
+    "body": [
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Izumi_Mei\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Serizawa_Asahi\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Mayuzumi_Fuyuko\"/>"
+    ]
+  },
+  "Unit:noctchill": {
+    "prefix": ["unit:noctchill"],
+    "body": [
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Asakura_Toru\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Ichikawa_Hinana\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Higuchi_Madoka\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Fukumaru_Koito\"/>"
+    ]
+  },
+  "Unit:shhis": {
+    "prefix": ["unit:shhis"],
+    "body": [
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Aketa_Mikoto\"/>",
+      "<${1|imas:Whose,schema:member|} rdf:resource=\"Nanakusa_Nichika\"/>"
+    ]
+  }
+}
