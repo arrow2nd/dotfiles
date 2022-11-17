@@ -45,14 +45,6 @@ telescope.setup {
     file_browser = {
       hidden = true,
       respect_gitignore = false,
-      mappings = {
-        i = {
-          ['<C-n>'] = 'close',
-        },
-        n = {
-          ['<C-n>'] = 'close',
-        },
-      },
     },
   }
 }
