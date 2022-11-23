@@ -2,9 +2,7 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-# repo = 'cocopon/iceberg.vim'
-repo = 'arrow2nd/iceberg.vim'
-rev = 'feat-nvim-treesitter'
+repo = 'cocopon/iceberg.vim'
 hook_add = 'colorscheme iceberg'
 
 # [[plugins]]
