@@ -29,6 +29,16 @@ mason.setup({
   }
 })
 
+-- vim.lsp
+-- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = {
+    format = function(diagnostic)
+      return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+    end,
+  },
+})
+
 -- mason-lspconfig.nvim
 local common_on_attach = function(client, bufnr)
   h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>')
@@ -142,6 +152,7 @@ null_ls.setup({
   },
   on_attach = common_on_attach,
   capabilities = commom_capabilities,
+  diagnostics_format = "#{m} (#{s}: #{c})",
 })
 
 -- nvim-cmp
