@@ -19,9 +19,11 @@ depends = ['mason.nvim']
 
 [[plugins]]
 repo = 'williamboman/mason.nvim'
+hook_source = 'source ~/.config/nvim/dein/plugins/mason.lua'
 
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp'
+hook_source = 'source ~/.config/nvim/dein/plugins/nvim-cmp.lua'
 
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp'

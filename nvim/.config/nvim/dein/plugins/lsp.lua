@@ -1,14 +1,8 @@
 local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
 if not lspconfig_ok then return end
 
-local mason_ok, mason = pcall(require, 'mason')
-if not mason_ok then return end
-
 local mason_lspconfig_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
 if not mason_lspconfig_ok then return end
-
-local cmp_ok, cmp = pcall(require, 'cmp')
-if not cmp_ok then return end
 
 local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not cmp_nvim_lsp_ok then return end
@@ -18,18 +12,7 @@ if not null_ls_ok then return end
 
 local h = require('helper')
 
--- mason.nvim
-mason.setup({
-  ui = {
-    icons = {
-      package_installed = '',
-      package_pending = '↻',
-      package_uninstalled = ''
-    }
-  }
-})
-
--- vim.lsp
+-- neovim-lsp
 -- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = {
@@ -153,28 +136,4 @@ null_ls.setup({
   on_attach = common_on_attach,
   capabilities = commom_capabilities,
   diagnostics_format = "#{m} (#{s}: #{c})",
-})
-
--- nvim-cmp
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn['vsnip#anonymous'](args.body)
-    end,
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-    { name = 'buffer' },
-    { name = 'path' },
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-    ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<CR>'] = cmp.mapping.abort(),
-    ['<C-y>'] = cmp.mapping.confirm { select = true },
-  }),
-  experimental = {
-    ghost_text = true,
-  },
 })
