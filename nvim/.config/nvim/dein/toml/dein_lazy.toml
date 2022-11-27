@@ -128,3 +128,8 @@ repo = '4513ECHO/denops-gitter.vim'
 on_depends = ['denops.vim']
 on_path = 'gitter://'
 hook_source = 'source ~/.config/nvim/dein/plugins/denops-gitter.lua'
+
+[[plugins]]
+repo = 'arrow2nd/ichigo.vim'
+on_depends = ['denops.vim']
+on_cmd = ['IchigoRun']

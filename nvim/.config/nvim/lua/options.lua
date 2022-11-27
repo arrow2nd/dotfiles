@@ -66,3 +66,7 @@ vim.opt.incsearch = true
 
 -- ヒストリの上限
 vim.opt.history = 255
+
+-- denops.vim
+-- vim.g['denops#debug'] = 1
+-- vim.opt.runtimepath:append('~/workspace/github.com/arrow2nd/ichigo.vim')
