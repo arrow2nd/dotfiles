@@ -3,9 +3,6 @@ local h = require('helper')
 -- リーダーキー
 vim.g.mapleader = " "
 
--- ESC
-h.imap('jj', '<ESC>', { desc = "Exit insert mode" })
-
 -- スクロール移動
 h.nmap('<C-j>', '<C-e>gj', { desc = "Scroll down & Move" })
 h.nmap('<C-k>', '<C-y>gk', { desc = "Scroll up & Move" })
