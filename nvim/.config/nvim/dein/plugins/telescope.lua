@@ -5,8 +5,8 @@ telescope.setup {
   defaults = {
     mappings = {
       i = {
-        ['<A-j>'] = 'move_selection_next',
-        ['<A-k>'] = 'move_selection_previous',
+        ['J'] = 'move_selection_next',
+        ['K'] = 'move_selection_previous',
         ['<C-n>'] = 'cycle_history_next',
         ['<C-p>'] = 'cycle_history_prev',
         ['<ESC><ESC>'] = 'close',
