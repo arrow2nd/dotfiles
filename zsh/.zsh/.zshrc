@@ -72,9 +72,6 @@ alias dot='cd ~/dotfiles'
 alias tw='nekome tweet'
 alias todo='gh todo'
 
-# kitty
-alias icat='kitty +kitten icat'
-
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
 
