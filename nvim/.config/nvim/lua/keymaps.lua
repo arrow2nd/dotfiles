@@ -3,15 +3,17 @@ local h = require('helper')
 -- リーダーキー
 vim.g.mapleader = " "
 
--- スクロール移動
-h.nmap('<A-j>', '<C-e>gj', { desc = "Scroll down & Move" })
-h.nmap('<A-k>', '<C-y>gk', { desc = "Scroll up & Move" })
+-- 行移動
+h.nmap('j', 'gj')
+h.nmap('k', 'gk')
+h.nmap('gj', 'j')
+h.nmap('gk', 'k')
 
 -- タブ
-h.nmap('<C-h>', '<CMD>tabprevious<CR>', { desc = "Switch to previous tab" })
-h.nmap('<C-l>', '<CMD>tabnext<CR>', { desc = "Switch to next tab" })
-h.nmap('st', '<CMD>tabnew<CR>', { desc = "Create new tab" })
-h.nmap('sc', '<CMD>tabclose<CR>', { desc = "Close tab" })
+h.nmap('th', '<CMD>tabprevious<CR>', { desc = "Switch to previous tab" })
+h.nmap('tl', '<CMD>tabnext<CR>', { desc = "Switch to next tab" })
+h.nmap('tn', '<CMD>tabnew<CR>', { desc = "Create new tab" })
+h.nmap('tc', '<CMD>tabclose<CR>', { desc = "Close tab" })
 
 -- ハイライト解除
 h.nmap('<ESC><ESC>', '<CMD>nohlsearch<CR>', { desc = "Unhighlight" })
@@ -41,11 +43,11 @@ h.nmap('<Leader>gd', '<CMD>Gdiffsplit<CR>', { desc = "Show git diff" })
 h.nmap('<Leader>gc', '<CMD>Git commit<CR>', { desc = "Operate git commit" })
 
 -- gitsigns.nvim
-h.nmap('<leader>hb', '<CMD>Gitsigns blame_line<CR>', { desc = "Show git blame on the current line" })
-h.nmap('<leader>hp', '<CMD>Gitsigns preview_hunk<CR>', { desc = "Show preview the hunk" })
-h.nmap('<leader>hs', '<CMD>Gitsigns stage_hunk<CR>', { desc = "Stage the hunk" })
-h.nmap('<leader>hu', '<CMD>Gitsigns undo_stage_hunk<CR>', { desc = "Undo the last call of stage hunk" })
-h.nmap('<leader>hr', '<CMD>Gitsigns reset_hunk<CR>', { desc = "Reset the lines of the hunk" })
+h.nmap('<Leader>hb', '<CMD>Gitsigns blame_line<CR>', { desc = "Show git blame on the current line" })
+h.nmap('<Leader>hp', '<CMD>Gitsigns preview_hunk<CR>', { desc = "Show preview the hunk" })
+h.nmap('<Leader>hs', '<CMD>Gitsigns stage_hunk<CR>', { desc = "Stage the hunk" })
+h.nmap('<Leader>hu', '<CMD>Gitsigns undo_stage_hunk<CR>', { desc = "Undo the last call of stage hunk" })
+h.nmap('<Leader>hr', '<CMD>Gitsigns reset_hunk<CR>', { desc = "Reset the lines of the hunk" })
 
 -- translate.vim
-h.vmap('<leader>tl', '<Plug>(Translate)', { desc = "Translates the selected area" })
+h.vmap('<Leader>tl', '<Plug>(Translate)', { desc = "Translates the selected area" })
