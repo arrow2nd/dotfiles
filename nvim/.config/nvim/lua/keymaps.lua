@@ -4,8 +4,8 @@ local h = require('helper')
 vim.g.mapleader = " "
 
 -- スクロール移動
-h.nmap('<C-j>', '<C-e>gj', { desc = "Scroll down & Move" })
-h.nmap('<C-k>', '<C-y>gk', { desc = "Scroll up & Move" })
+h.nmap('<A-j>', '<C-e>gj', { desc = "Scroll down & Move" })
+h.nmap('<A-k>', '<C-y>gk', { desc = "Scroll up & Move" })
 
 -- タブ
 h.nmap('<C-h>', '<CMD>tabprevious<CR>', { desc = "Switch to previous tab" })
