@@ -6,21 +6,23 @@
 
 set -eu
 
+YAY_DIR="$HOME/yay"
+
 if ! type -p yay >/dev/null; then
-  echo "=== install yay ==="
-  git clone https://aur.archlinux.org/yay-bin yay
-  cd yay
+  echo "[ yay ]"
+  git clone https://aur.archlinux.org/yay-bin "$YAY_DIR"
+  cd "$YAY_DIR"
   makepkg -si --noconfirm
   cd ..
   rm -rf yay
 fi
 
 if ! type -p n >/dev/null; then
-  echo "=== install n (node version manager) ==="
+  echo "[ n (node version manager) ]"
   curl -L https://bit.ly/n-install | bash -s -- -n latest
 fi
 
-echo "=== install all the usual tools ==="
+echo "[ Tools ]"
 yay -S --noconfirm \
  zsh \
  unzip \
@@ -31,7 +33,6 @@ yay -S --noconfirm \
  xsel \
  ngrok \
  ripgrep \
- stow \
  rustup \
  openssh \
  wget \
@@ -46,5 +47,5 @@ yay -S --noconfirm \
  bat \
  trash-cli
 
-echo "=== switch to zsh ==="
+echo "[ Switch to zsh ]"
 sudo chsh -s $(which zsh) $(whoami)

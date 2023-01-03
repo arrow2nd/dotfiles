@@ -22,7 +22,6 @@ eval "$(sheldon source)"
 #
 # パス
 #
-#
 
 # Node.js (n)
 export N_PREFIX="$HOME/.n"
@@ -58,9 +57,6 @@ alias q='cd $(ghq list -p | fzf)'
 alias l='exa -la'
 alias la='exa -a'
 alias lt='exa -T'
-
-# trash-cli
-alias put='trash-put'
 
 # 雑多
 alias cls='clear'
