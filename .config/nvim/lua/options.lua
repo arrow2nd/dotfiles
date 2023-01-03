@@ -1,29 +1,3 @@
--- 不要なプラグインを無効化
-local disable_plugins = {
-  'did_install_default_menus',
-  'did_install_syntax_menu',
-  'did_indent_on',
-  'did_load_filetypes',
-  'did_load_ftplugin',
-  'loaded_2html_plugin',
-  'loaded_gzip',
-  'loaded_man',
-  'loaded_matchit',
-  'loaded_matchparen',
-  'loaded_netrwPlugin',
-  'loaded_remote_plugins',
-  'loaded_shada_plugin',
-  'loaded_spellfile_plugin',
-  'loaded_tarPlugin',
-  'loaded_tutor_mode_plugin',
-  'loaded_zipPlugin',
-  'skip_loading_mswin',
-}
-
-for _, name in ipairs(disable_plugins) do
-  vim.g[name] = 1
-end
-
 -- 24bitカラー
 vim.opt.termguicolors = true
 
@@ -67,6 +41,12 @@ vim.opt.incsearch = true
 -- ヒストリの上限
 vim.opt.history = 255
 
--- denops.vim
--- vim.g['denops#debug'] = 1
--- vim.opt.runtimepath:append('~/workspace/github.com/arrow2nd/ichigo.vim')
+-- LSPの警告フォーマット
+-- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = {
+    format = function(diagnostic)
+      return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+    end,
+  },
+})
