@@ -36,7 +36,7 @@ end
 return {
   {
     'neovim/nvim-lspconfig',
-    event = 'BufReadPost',
+    event = 'BufReadPre',
     config = function()
       local lspconfig = require('lspconfig')
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
@@ -58,9 +58,8 @@ return {
         if server == 'denols' then
           if is_node_repo then return end
           opts.cmd = { 'deno', 'lsp', '--unstable' }
-          opts.root_dir = lspconfig.util.root_pattern('deps.[jt]s', 'deno.json', 'import_map.json')
+          opts.root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc')
           opts.init_options = { lint = true, unstable = true }
-          opts.on_attach = disable_fmt_on_attach
         elseif server == 'tsserver' then
           if not is_node_repo then return end
           opts.root_dir = node_root_dir
@@ -108,31 +107,19 @@ return {
   },
   {
     'jose-elias-alvarez/null-ls.nvim',
-    event = 'BufReadPost',
+    event = 'BufReadPre',
     config = function()
       local null_ls = require('null-ls')
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
-      local prettier_config_files = { '.prettierrc', '.prettierrc.js', '.prettierrc.json' }
-      local textlint_config_files = { ".textlintrc", ".textlintrc.yml", ".textlintrc.json" }
-
       null_ls.setup({
         sources = {
-          null_ls.builtins.formatting.deno_fmt.with {
-            condition = function(utils)
-              return not utils.has_file(prettier_config_files)
-            end
-          },
-          null_ls.builtins.formatting.prettierd.with {
-            condition = function(utils)
-              return utils.has_file(prettier_config_files)
-            end,
-          },
+          null_ls.builtins.formatting.prettierd,
           null_ls.builtins.diagnostics.textlint.with {
             filetypes = { "markdown" },
             prefer_local = "node_modules/.bin",
             condition = function(utils)
-              return utils.has_file(textlint_config_files)
+              return utils.has_file({ ".textlintrc", ".textlintrc.yml", ".textlintrc.json" })
             end,
           },
         },
