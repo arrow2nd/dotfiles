@@ -18,11 +18,10 @@ require("lazy").setup({
     { import = "plugins" },
   },
   defaults = { lazy = true },
-  install = {
-    colorscheme = { "iceberg" },
-  },
+  install = { colorscheme = { "iceberg" } },
   performance = {
     cache = { enabled = true },
+    disable_events = { "VimEnter", "BufReadPre" },
     rtp = {
       disabled_plugins = {
         "2html_plugin",
@@ -34,6 +33,8 @@ require("lazy").setup({
         "tohtml",
         "tutor",
         "zipPlugin",
+        "shada",
+        "rplugin",
       },
     },
   }

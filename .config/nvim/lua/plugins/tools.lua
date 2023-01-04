@@ -35,9 +35,4 @@ return {
     build = 'sh -c "cd app && yarn install"',
     ft = { 'markdown', 'pandoc.markdown', 'rmd' }
   },
-  {
-    'skanehira/denops-translate.vim',
-    dependencies = { 'vim-denops/denops.vim' },
-    cmd = 'Translate',
-  }
 }
