@@ -37,10 +37,6 @@ return {
   {
     'neovim/nvim-lspconfig',
     event = 'BufReadPost',
-    dependencies = {
-      'williamboman/mason-lspconfig.nvim',
-      'hrsh7th/cmp-nvim-lsp'
-    },
     config = function()
       local lspconfig = require('lspconfig')
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
@@ -82,9 +78,6 @@ return {
   },
   {
     'williamboman/mason-lspconfig.nvim',
-    dependencies = {
-      'williamboman/mason.nvim',
-    },
     config = {
       ensure_installed = {
         'denols',
@@ -115,9 +108,7 @@ return {
   },
   {
     'jose-elias-alvarez/null-ls.nvim',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp'
-    },
+    event = 'BufReadPost',
     config = function()
       local null_ls = require('null-ls')
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
@@ -132,8 +123,7 @@ return {
               return not utils.has_file(prettier_config_files)
             end
           },
-          null_ls.builtins.formatting.prettier.with {
-            prefer_local = "node_modules/.bin",
+          null_ls.builtins.formatting.prettierd.with {
             condition = function(utils)
               return utils.has_file(prettier_config_files)
             end,
