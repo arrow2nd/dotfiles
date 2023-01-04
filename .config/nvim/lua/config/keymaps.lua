@@ -1,4 +1,4 @@
-local h = require('helper')
+local h = require('util.helper')
 
 -- リーダーキー
 vim.g.mapleader = " "

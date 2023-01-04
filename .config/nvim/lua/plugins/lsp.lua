@@ -1,4 +1,4 @@
-local h = require('helper')
+local h = require('util.helper')
 
 local common_on_attach = function(client, bufnr)
   h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>')

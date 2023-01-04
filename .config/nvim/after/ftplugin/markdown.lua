@@ -1,4 +1,4 @@
-local h = require('helper')
+local h = require('util.helper')
 local optl = vim.opt_local
 
 -- ref: Vimでmarkdownの箇条書き（kawarimidoll）

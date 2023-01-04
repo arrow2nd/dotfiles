@@ -9,7 +9,7 @@
 
 [PlemolJP (Nerd Fonts)](https://github.com/yuru7/PlemolJP)
 
-- macOS の場合は brew 経由で自動でインストールされます
+- macOSの場合はbrew経由で自動でインストールされます
 
 ## 手順
 
@@ -19,4 +19,4 @@ curl https://raw.githubusercontent.com/arrow2nd/dotfiles/main/setup.sh | bash
 
 ### 追記
 
-- node は自動で入らないので `n latest` とかすること
+- nodeは自動で入らないので `n latest` とかすること
