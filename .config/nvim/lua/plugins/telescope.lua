@@ -44,6 +44,9 @@ function M.config()
           width = 0.9,
         },
       },
+      preview = {
+        treesitter = false,
+      },
       file_ignore_patterns = {
         '^.git/',
       },
