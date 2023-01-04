@@ -10,6 +10,20 @@ local M = {
   cmd = 'Telescope'
 }
 
+function M.init()
+  local h = require('util.helper')
+  h.nmap('<Leader>ff', '<CMD>Telescope find_files<CR>')
+  h.nmap('<Leader>fg', '<CMD>Telescope live_grep<CR>')
+  h.nmap('<Leader>fb', '<CMD>Telescope buffers<CR>')
+  h.nmap('<Leader>fr', '<CMD>Telescope registers<CR>')
+  h.nmap('<Leader>fk', '<CMD>Telescope keymaps<CR>')
+  h.nmap('<Leader>fh', '<CMD>Telescope help_tags<CR>')
+  h.nmap('<Leader>fc', '<CMD>Telescope git_commits<CR>')
+  h.nmap('<Leader>bb', function()
+    return '<CMD>Telescope file_browser cwd=' .. vim.fn.expand("%:p:h") .. '<CR>'
+  end, { silent = true, expr = true })
+end
+
 function M.config()
   local telescope = require('telescope')
 

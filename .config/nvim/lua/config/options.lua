@@ -50,3 +50,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     end,
   },
 })
+
+-- Terminalを現在のウィンドウの下部に開く
+vim.api.nvim_create_user_command('T', 'split | wincmd j | resize 10 | terminal <args>', { nargs = '*' })

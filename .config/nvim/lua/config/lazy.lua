@@ -35,6 +35,7 @@ require("lazy").setup({
         "zipPlugin",
         "shada",
         "rplugin",
+        "man",
       },
     },
   }
