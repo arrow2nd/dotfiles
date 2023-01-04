@@ -39,6 +39,5 @@ return {
     'skanehira/denops-translate.vim',
     dependencies = { 'vim-denops/denops.vim' },
     cmd = 'Translate',
-    keys = '<Plug>(Translate)'
   }
 }
