@@ -14,7 +14,8 @@
 ## 手順
 
 ```sh
-bash -c "$(curl https://raw.githubusercontent.com/arrow2nd/dotfiles/main/setup.sh)"
+git clone https://github.com/arrow2nd/dotfiles.git $HOME/dotfiles
+./dotfiles/setup.sh
 ```
 
 ### 追記

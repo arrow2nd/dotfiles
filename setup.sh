@@ -8,23 +8,10 @@ MENU="dotfiles (for macOS / ArchLinux)
 
 SETUP MENU:
   [a] Execute all
-  [c] Clone dotfiles
   [i] Install tools
   [l] Link dotfiles
   [s] Setup Git & GitHub CLI
 "
-
-clone_repo() {
-  echo "[ Clone dotfiles repo ]"
-
-  if [ -d "$DOT_DIR" ]; then
-    echo "$DOT_DIR already exists."
-  else
-    git clone https://github.com/arrow2nd/dotfiles.git "$DOT_DIR"
-  fi
-
-  echo ""
-}
 
 install_tools() {
   echo "[ Install tools ]"
@@ -71,10 +58,6 @@ fi
 echo "$MENU"
 read -r result
 echo ""
-
-if [[ "$result" == *"a"* ]] || [[ "$result" == *"c"* ]]; then 
-  clone_repo
-fi
 
 if [[ "$result" == *"a"* ]] || [[ "$result" == *"i"* ]]; then 
   install_tools
