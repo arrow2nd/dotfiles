@@ -4,6 +4,7 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp-vsnip": { "branch": "main", "commit": "989a8a73c44e926199bfd05fa7a516d51f2d2752" },
   "denops-gitter.vim": { "branch": "main", "commit": "7006355e4500f7ee2b99437a89dce7b78d507728" },
+  "denops-translate.vim": { "branch": "main", "commit": "cb080d3bff1a033cc5fd26bc7c48713a68719279" },
   "denops.vim": { "branch": "main", "commit": "4839ef4e283f8551286c826e44366ac6174cfc71" },
   "gitsigns.nvim": { "branch": "main", "commit": "81641791439bc8f0ceb3691d62b95c8e646f3771" },
   "iceberg.vim": { "branch": "master", "commit": "e01ac08c2202e7544531f4d806f6893539da6471" },
