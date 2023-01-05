@@ -29,7 +29,7 @@ clone_repo() {
 install_tools() {
   echo "[ Install tools ]"
 
-  local path="${DOT_DIR}/scripts/install_${uname}.sh"
+  local path="${DOT_DIR}/scripts/install_$(uname).sh"
   if [[ -f "$path" ]]; then
     sh -c "$path"
   else
