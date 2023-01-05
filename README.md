@@ -14,7 +14,7 @@
 ## 手順
 
 ```sh
-curl https://raw.githubusercontent.com/arrow2nd/dotfiles/main/setup.sh | bash
+bash -c "$(curl https://raw.githubusercontent.com/arrow2nd/dotfiles/main/setup.sh)"
 ```
 
 ### 追記
