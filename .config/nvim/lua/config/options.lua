@@ -1,45 +1,52 @@
+local opt = vim.opt
+
+-- 文字コード
+vim.scriptencoding = "utf-8"
+opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
+
 -- 24bitカラー
-vim.opt.termguicolors = true
+opt.termguicolors = true
 
 -- intro を非表示
-vim.opt.shortmess = 'I'
+opt.shortmess = "I"
 
 -- 行
-vim.opt.number = true
-vim.opt.signcolumn = 'yes'
+opt.number = true
+opt.signcolumn = "yes"
 
 -- ヘルプの言語
-vim.opt.helplang = 'ja'
+opt.helplang = "ja"
 
 -- バックアップ, スワップファイル
-vim.opt.backup = false
-vim.opt.swapfile = false
+opt.backup = false
+opt.swapfile = false
 
 -- buffer切り替え時の未保存警告をオフ
-vim.opt.hidden = true
+opt.hidden = true
 
 -- 行末までカーソルを移動可能に
-vim.opt.virtualedit = 'onemore'
+opt.virtualedit = "onemore"
 
 -- マウス操作有効化
-vim.opt.mouse = 'a'
+opt.mouse = "a"
 
 -- タブ, インデント
-vim.opt.tabstop = 2
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.smartindent = true
+opt.tabstop = 2
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.smartindent = true
 
 -- 全ての値を10進数として扱う
-vim.opt.nrformats = ''
+opt.nrformats = ""
 
 -- 検索
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.incsearch = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.incsearch = true
 
 -- ヒストリの上限
-vim.opt.history = 255
+opt.history = 255
 
 -- LSPの警告フォーマット
 -- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
@@ -52,4 +59,4 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 })
 
 -- Terminalを現在のウィンドウの下部に開く
-vim.api.nvim_create_user_command('T', 'split | wincmd j | resize 10 | terminal <args>', { nargs = '*' })
+vim.api.nvim_create_user_command("T", "split | wincmd j | resize 10 | terminal <args>", { nargs = "*" })
