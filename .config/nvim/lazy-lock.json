@@ -5,6 +5,7 @@
   "cmp-vsnip": { "branch": "main", "commit": "989a8a73c44e926199bfd05fa7a516d51f2d2752" },
   "denops-gitter.vim": { "branch": "main", "commit": "7006355e4500f7ee2b99437a89dce7b78d507728" },
   "denops.vim": { "branch": "main", "commit": "6578820fb79b1ae45e0dd448fd96dd6deb2f7be0" },
+  "dial.nvim": { "branch": "master", "commit": "61afb28f61ba090a67a88186f7bc8a94212e509a" },
   "gitsigns.nvim": { "branch": "main", "commit": "d4f8c01280413919349f5df7daccd0c172143d7c" },
   "iceberg.vim": { "branch": "master", "commit": "e01ac08c2202e7544531f4d806f6893539da6471" },
   "lazy.nvim": { "branch": "main", "commit": "8798ccc95031225e3b2241bd8b2d26c2452b06c4" },
