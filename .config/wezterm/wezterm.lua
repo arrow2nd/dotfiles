@@ -53,6 +53,7 @@ local key_tables = {
 
 return {
   check_for_updates = false,
+  front_end = 'WebGpu',
   font = wezterm.font 'PlemolJP Console NF',
   font_size = 14,
   color_scheme = 'iceberg-dark',
