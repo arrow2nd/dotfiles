@@ -19,6 +19,7 @@ require("lazy").setup({
   },
   defaults = { lazy = true },
   install = { colorscheme = { "iceberg" } },
+  concurrency = 10,
   performance = {
     cache = { enabled = true },
     disable_events = { "VimEnter", "BufReadPre" },
