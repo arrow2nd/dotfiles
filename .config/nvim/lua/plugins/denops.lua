@@ -8,7 +8,7 @@ return {
   },
   {
     "vim-skk/skkeleton",
-    event = "BufReadPre",
+    event = "VeryLazy",
     init = function()
       h.imap("<C-j>", "<Plug>(skkeleton-enable)")
       h.cmap("<C-j>", "<Plug>(skkeleton-enable)")
