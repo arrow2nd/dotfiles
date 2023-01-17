@@ -8,7 +8,11 @@ return {
     config = function()
       local picker = require("window-picker")
 
-      picker.setup()
+      picker.setup({
+        selection_chars = "ASDFGHJKL",
+        fg_color = "#454545",
+        other_win_hl_color = "#89c3eb",
+      })
 
       h.nmap("<C-w><C-w>", function()
         local id = picker.pick_window() or vim.api.nvim_get_current_win()
