@@ -36,8 +36,4 @@ return {
       vim.g["gitter#token"] = fn.trim(table.concat(token))
     end
   },
-  {
-    "lambdalisue/butler.vim",
-    event = "VeryLazy",
-  }
 }
