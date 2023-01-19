@@ -20,5 +20,5 @@ git clone https://github.com/arrow2nd/dotfiles.git $HOME/dotfiles
 
 ### 追記
 
-- node は自動で入らないので `n latest` とかすること
+- node は自動で入らないので `volta install node` とかすること
 - GPG 鍵のインポート、git との紐付けは別でやること
