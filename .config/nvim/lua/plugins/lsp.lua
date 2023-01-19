@@ -86,9 +86,10 @@ return {
         "eslint",
         "yamlls",
         "jsonls",
-        "pylsp",
         "rust_analyzer",
         "tailwindcss",
+        "cssls",
+        "bashls",
       },
       automatic_installation = true,
     }

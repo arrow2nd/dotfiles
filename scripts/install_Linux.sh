@@ -17,11 +17,6 @@ if ! type -p yay >/dev/null; then
   rm -rf yay
 fi
 
-if ! type -p n >/dev/null; then
-  echo "[ n (node version manager) ]"
-  curl -L https://bit.ly/n-install | bash -s -- -n latest
-fi
-
 echo "[ Tools ]"
 yay -S --noconfirm \
  zsh \

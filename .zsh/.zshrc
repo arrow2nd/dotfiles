@@ -23,9 +23,9 @@ eval "$(sheldon source)"
 # パス
 #
 
-# Node.js (n)
-export N_PREFIX="$HOME/.n"
-export PATH="$N_PREFIX/bin:$PATH"
+# Node.js (Volta)
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Deno
 export PATH="$HOME/.deno/bin:$PATH"

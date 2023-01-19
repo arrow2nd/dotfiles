@@ -60,6 +60,11 @@ read -r result
 echo ""
 
 if [[ "$result" == *"a"* ]] || [[ "$result" == *"i"* ]]; then 
+  if ! type -p volta >/dev/null; then
+    echo "[ Volta (Node.js version manager) ]"
+    curl https://get.volta.sh | bash -s -- --skip-setup
+  fi
+
   install_tools
 fi
 
