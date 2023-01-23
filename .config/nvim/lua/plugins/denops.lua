@@ -1,22 +1,22 @@
-local h = require("util.helper")
+local h = require('util.helper')
 local fn = vim.fn
 
 return {
   {
-    "vim-denops/denops.vim",
-    event = "VeryLazy",
+    'vim-denops/denops.vim',
+    event = 'VeryLazy',
   },
   {
-    "vim-skk/skkeleton",
-    event = "VeryLazy",
+    'vim-skk/skkeleton',
+    event = 'VeryLazy',
     init = function()
-      h.imap("<C-j>", "<Plug>(skkeleton-enable)")
-      h.cmap("<C-j>", "<Plug>(skkeleton-enable)")
+      h.imap('<C-j>', '<Plug>(skkeleton-enable)')
+      h.cmap('<C-j>', '<Plug>(skkeleton-enable)')
 
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "skkeleton-initialize-pre",
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'skkeleton-initialize-pre',
         callback = function()
-          vim.fn["skkeleton#config"]({
+          vim.fn['skkeleton#config']({
             eggLikeNewline = true,
             skkServerPort = 1178,
             useSkkServer = true,
@@ -26,14 +26,14 @@ return {
     end
   },
   {
-    "4513ECHO/denops-gitter.vim",
-    event = "VeryLazy",
+    '4513ECHO/denops-gitter.vim',
+    event = 'VeryLazy',
     init = function()
-      vim.api.nvim_create_user_command("ReadingVimrc", "new gitter://room/vim-jp/reading-vimrc", {})
+      vim.api.nvim_create_user_command('ReadingVimrc', 'new gitter://room/vim-jp/reading-vimrc', {})
     end,
     config = function()
-      local token = fn.readfile(fn.expand("~/.config/denops-gitter/.token"))
-      vim.g["gitter#token"] = fn.trim(table.concat(token))
+      local token = fn.readfile(fn.expand('~/.config/denops-gitter/.token'))
+      vim.g['gitter#token'] = fn.trim(table.concat(token))
     end
   },
 }

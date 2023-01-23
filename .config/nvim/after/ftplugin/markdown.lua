@@ -47,6 +47,6 @@ for _, mode in pairs({ 'n', 'i', 'x' }) do
   h[mode .. 'map'](
     '<C-CR>',
     '<CMD>MarkdownCheckbox<CR>',
-    { buffer = true, desc = "Toggle checkbox" }
+    { buffer = true, desc = 'Toggle checkbox' }
   )
 end
