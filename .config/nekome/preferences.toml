@@ -1,10 +1,10 @@
 [feature]
-  main_user = "arrow_2nd"
+  main_user = "_arrow2nd"
   load_tweets_limit = 50
   accmulate_tweets_limit = 250
   use_external_editor = true
   is_locale_cjk = true
-  startup_cmds = ["home", "mention --unfocus", "list imas 1478216622016188419 --unfocus"]
+  startup_cmds = ["home", "mention --unfocus"]
 
 [comfirm]
   block = true
