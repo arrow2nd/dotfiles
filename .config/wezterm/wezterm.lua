@@ -53,7 +53,7 @@ local key_tables = {
 
 local hyperlink_rules = {
   {
-    regex = [[\bhttp://localhost:\d+\b]],
+    regex = [[\bhttps?://\S+\b]],
     format = '$0',
   },
   {
