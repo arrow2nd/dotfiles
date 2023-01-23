@@ -51,6 +51,17 @@ local key_tables = {
   },
 }
 
+local hyperlink_rules = {
+  {
+    regex = [[\bhttp://localhost:\d+\b]],
+    format = '$0',
+  },
+  {
+    regex = [[\bfile://\S+\b]],
+    format = '$0',
+  },
+}
+
 return {
   check_for_updates = false,
   front_end = 'WebGpu',
@@ -64,4 +75,5 @@ return {
   leader = { key = 'a', mods = 'CTRL' },
   keys = keybinds,
   key_tables = key_tables,
+  hyperlink_rules = hyperlink_rules,
 }
