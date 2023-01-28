@@ -26,7 +26,7 @@ return {
         vim.api.nvim_command('wincmd w')
       end
 
-      for _, mode in pairs({ 'n', 'i', 'x' }) do
+      for _, mode in pairs({ 'n', 'x' }) do
         local key = mode .. 'map'
         local opts = { desc = 'Select window' }
 
