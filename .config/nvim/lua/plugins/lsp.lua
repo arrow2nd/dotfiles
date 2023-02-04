@@ -48,9 +48,7 @@ return {
 
         local opts = {
           on_attach = common_on_attach,
-          capabilities = cmp_nvim_lsp.default_capabilities(
-            vim.lsp.protocol.make_client_capabilities()
-          )
+          capabilities = cmp_nvim_lsp.default_capabilities(),
         }
 
         -- denols と tsserver を出し分ける
@@ -125,9 +123,7 @@ return {
           },
         },
         on_attach = common_on_attach,
-        capabilities = cmp_nvim_lsp.default_capabilities(
-          vim.lsp.protocol.make_client_capabilities()
-        ),
+        capabilities = cmp_nvim_lsp.default_capabilities(),
         diagnostics_format = '#{m} (#{s}: #{c})',
       })
     end
