@@ -5,7 +5,7 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "59224771f91b86d1de12570b4070fe4ad7cd1eeb" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp-vsnip": { "branch": "main", "commit": "989a8a73c44e926199bfd05fa7a516d51f2d2752" },
-  "denops-gitter.vim": { "branch": "main", "commit": "7006355e4500f7ee2b99437a89dce7b78d507728" },
+  "denops-translate.vim": { "branch": "main", "commit": "01c32a40a99251351cb9af555f773888d1155114" },
   "denops.vim": { "branch": "main", "commit": "8f3899de3d3add07105221262dca90a31c4c2d4c" },
   "dial.nvim": { "branch": "master", "commit": "5020da900cc5dfd7067f181ee2ebd872ca7c84e8" },
   "gitsigns.nvim": { "branch": "main", "commit": "ec4742a7eebf68bec663041d359b95637242b5c3" },
