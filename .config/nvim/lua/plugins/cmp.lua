@@ -8,6 +8,7 @@ return {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-vsnip',
+      'hrsh7th/cmp-cmdline',
     },
     config = function()
       local cmp = require('cmp')
@@ -19,12 +20,13 @@ return {
             vim.fn['vsnip#anonymous'](args.body)
           end,
         },
-        sources = {
-          { name = 'buffer' },
+        sources = cmp.config.sources({
           { name = 'path' },
           { name = 'nvim_lsp' },
           { name = 'vsnip' },
-        },
+        }, {
+          { name = 'buffer' },
+        }),
         formatting = {
           format = lspkind.cmp_format({
             mode = 'symbol_text',
@@ -43,6 +45,22 @@ return {
           ['<C-y>'] = cmp.mapping.confirm { select = true },
         }),
         experimental = { ghost_text = true },
+      })
+
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+          { name = 'cmdline' }
+        })
       })
     end
   },
