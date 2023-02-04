@@ -3,13 +3,15 @@ return {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
+      'onsails/lspkind.nvim',
       'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-vsnip',
     },
     config = function()
       local cmp = require('cmp')
+      local lspkind = require('lspkind')
 
       cmp.setup({
         snippet = {
@@ -18,14 +20,25 @@ return {
           end,
         },
         sources = {
-          { name = 'nvim_lsp' },
-          { name = 'vsnip' },
           { name = 'buffer' },
           { name = 'path' },
+          { name = 'nvim_lsp' },
+          { name = 'vsnip' },
+        },
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = 'symbol_text',
+            menu = ({
+              buffer = '[Buffer]',
+              path = '[Path]',
+              nvim_lsp = '[LSP]',
+              vsnip = '[Snip]',
+            })
+          }),
         },
         mapping = cmp.mapping.preset.insert({
-          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-          ['<Tab>'] = cmp.mapping.select_next_item(),
+          ['<S-TAB>'] = cmp.mapping.select_prev_item(),
+          ['<TAB>'] = cmp.mapping.select_next_item(),
           ['<CR>'] = cmp.mapping.abort(),
           ['<C-y>'] = cmp.mapping.confirm { select = true },
         }),
