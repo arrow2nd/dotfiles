@@ -2,8 +2,8 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 
 local keybinds = {
-  -- CTRL-A, CTRL-A で CTRL-A を送る
-  { key = 'a', mods = 'LEADER|CTRL', action = act.SendString '\x01' },
+  -- CTRL-S, CTRL-S で CTRL-S を送る
+  { key = 's', mods = 'LEADER|CTRL', action = act.SendString '\x01' },
   -- コピー&ペースト
   { key = 'c', mods = 'SHIFT|CTRL', action = act.CopyTo 'Clipboard' },
   { key = 'v', mods = 'SHIFT|CTRL', action = act.PasteFrom 'Clipboard' },
@@ -72,7 +72,7 @@ return {
   hide_tab_bar_if_only_one_tab = true,
   scrollback_lines = 3500,
   disable_default_key_bindings = true,
-  leader = { key = 'a', mods = 'CTRL' },
+  leader = { key = 's', mods = 'CTRL' },
   keys = keybinds,
   key_tables = key_tables,
   hyperlink_rules = hyperlink_rules,
