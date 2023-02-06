@@ -26,6 +26,7 @@ return {
           'dockerfile',
           'go',
           'gomod',
+          'graphql',
           'html',
           'javascript',
           'jsdoc',
