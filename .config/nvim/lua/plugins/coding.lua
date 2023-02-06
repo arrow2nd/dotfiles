@@ -49,6 +49,9 @@ return {
           augend.constant.alias.bool,
           augend.semver.alias.semver,
           augend.date.alias['%Y/%m/%d'],
+          augend.date.alias['%Y-%m-%d'],
+          augend.date.alias['%Y年%m月%d日'],
+          augend.date.alias['%m月%d日'],
         }
       })
 
