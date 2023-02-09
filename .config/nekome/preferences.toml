@@ -1,6 +1,6 @@
 [feature]
   main_user = "_arrow2nd"
-  load_tweets_limit = 50
+  load_tweets_limit = 100
   accmulate_tweets_limit = 250
   use_external_editor = true
   is_locale_cjk = true
@@ -40,7 +40,7 @@
 [layout]
   tweet = "{annotation}\n{user_info}\n{text}\n{poll}\n{detail}"
   tweet_anotation = "{text} {author_name} {author_username}"
-  tweet_detail = "{created_at} | via {via}\n{metrics}"
+  tweet_detail = "{created_at} {metrics}"
   tweet_poll = "{graph}\n{detail}"
   tweet_poll_graph = "{label}\n{graph} {per} {votes}"
   tweet_poll_detail = "{status} | {all_votes} votes | ends on {end_date}"
@@ -48,7 +48,7 @@
   user_info = "{name} {username} {badge}"
 
 [text]
-  like = "Like"
+  like = "Fav"
   retweet = "RT"
   loading = "Loading..."
   no_tweets = "No tweets ฅ^-ω-^ฅ"
