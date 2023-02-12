@@ -4,6 +4,7 @@ return {
   {
     'tkmpypy/chowcho.nvim',
     init = function()
+      -- Neovimの<C-w><C-w>をchowcho.nvimで拡張する
       -- ref: https://zenn.dev/kawarimidoll/articles/daa39da5838567
       local select_window = function()
         local focusable_windows = 0;
