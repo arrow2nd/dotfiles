@@ -1,8 +1,7 @@
 local api = vim.api
-
 local augroup = api.nvim_create_augroup('AutoCommands', {})
 
--- rdfをxmlとして認識させる
+-- rdfをxmlとして読む
 api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
   group = augroup,
   pattern = { '*.rdf' },
