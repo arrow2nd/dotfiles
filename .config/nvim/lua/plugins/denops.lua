@@ -6,6 +6,12 @@ return {
     event = 'VeryLazy',
   },
   {
+    'yuki-yano/denops-lazy.nvim',
+    config = function()
+      require('denops-lazy').setup()
+    end
+  },
+  {
     'vim-skk/skkeleton',
     event = 'VeryLazy',
     dependencies = { 'vim-denops/denops.vim' },
@@ -23,11 +29,14 @@ return {
           })
         end
       })
-    end
+    end,
   },
   {
     'skanehira/denops-translate.vim',
     dependencies = { 'vim-denops/denops.vim' },
-    event = 'VeryLazy',
+    cmd = 'Translate',
+    config = function()
+      require('denops-lazy').setup('denops-translate.vim')
+    end
   },
 }

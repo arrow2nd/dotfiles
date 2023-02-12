@@ -12,7 +12,7 @@ opt.termguicolors = true
 opt.shortmess = 'I'
 
 -- 行
-opt.number = true
+opt.number = false
 opt.signcolumn = 'yes'
 
 -- ヘルプの言語

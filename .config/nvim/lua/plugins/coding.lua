@@ -60,6 +60,22 @@ return {
     end
   },
   {
+    'yuki-yano/fuzzy-motion.vim',
+    dependencies = {
+      'vim-denops/denops.vim',
+      'lambdalisue/kensaku.vim',
+    },
+    cmd = 'FuzzyMotion',
+    init = function()
+      h.nmap('<Leader>fm', '<CMD>FuzzyMotion<CR>')
+      vim.g.fuzzy_motion_matchers = { 'fzf', 'kensaku' }
+    end,
+    config = function()
+      require('denops-lazy').load('kensaku.vim')
+      require('denops-lazy').load('fuzzy-motion.vim')
+    end
+  },
+  {
     'iamcco/markdown-preview.nvim',
     build = 'sh -c "cd app && npm install"',
     ft = { 'markdown', 'pandoc.markdown', 'rmd' }
