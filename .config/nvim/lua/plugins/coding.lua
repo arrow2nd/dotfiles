@@ -104,6 +104,11 @@ return {
     end
   },
   {
+    'lambdalisue/butler.vim',
+    dependencies = { 'vim-denops/denops.vim' },
+    event = 'VeryLazy',
+  },
+  {
     'iamcco/markdown-preview.nvim',
     build = 'sh -c "cd app && npm install"',
     ft = { 'markdown', 'pandoc.markdown', 'rmd' }
