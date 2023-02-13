@@ -51,12 +51,12 @@ opt.history = 255
 -- LSPの警告フォーマット
 -- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = {
-    format = function(diagnostic)
-      return string.format('%s (%s: %s)', diagnostic.message, diagnostic.source, diagnostic.code)
-    end,
-  },
-})
+        virtual_text = {
+            format = function(diagnostic)
+              return string.format('%s (%s: %s)', diagnostic.message, diagnostic.source, diagnostic.code)
+            end,
+        },
+    })
 
 -- Terminalを現在のウィンドウの下部に開く
 vim.api.nvim_create_user_command('T', 'split | wincmd j | resize 10 | terminal <args>', { nargs = '*' })
