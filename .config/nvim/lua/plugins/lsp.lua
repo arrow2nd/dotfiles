@@ -80,7 +80,7 @@ return {
         'denols',
         'gopls',
         'tsserver',
-        'sumneko_lua',
+        'lua_ls',
         'eslint',
         'yamlls',
         'jsonls',
