@@ -104,10 +104,6 @@ return {
         end
     },
     {
-        'mattn/vim-chatgpt',
-        cmd = { 'ChatGPT', 'CodeReviewPlease' }
-    },
-    {
         'iamcco/markdown-preview.nvim',
         build = 'sh -c "cd app && npm install"',
         ft = { 'markdown', 'pandoc.markdown', 'rmd' }
