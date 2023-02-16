@@ -88,7 +88,7 @@ return {
     },
     cmd = 'FuzzyMotion',
     init = function()
-      h.nmap('<Leader>fm', '<CMD>FuzzyMotion<CR>')
+      h.nmap('<Leader><Space>', '<CMD>FuzzyMotion<CR>')
       vim.g.fuzzy_motion_matchers = { 'fzf', 'kensaku' }
     end,
     config = function()
