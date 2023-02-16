@@ -66,9 +66,9 @@ local hyperlink_rules = {
 local font_size = 12
 
 local hostname = wezterm.hostname()
-if string.match(hostname, "munchkin") then
+if string.match(hostname, "exotic") then
   -- MacBook Air 2015
-  font_size = 14
+  font_size = 13
 end
 
 return {
