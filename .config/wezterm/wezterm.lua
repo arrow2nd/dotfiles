@@ -38,6 +38,7 @@ local keybinds = {
   -- その他
   { key = 'Enter', mods = 'LEADER', action = 'QuickSelect' },
   { key = '/',     mods = 'LEADER', action = act.Search('CurrentSelectionOrEmptyString') },
+  { key = 'L',     mods = 'CTRL',   action = wezterm.action.ShowDebugOverlay },
 }
 
 local key_tables = {
@@ -62,11 +63,19 @@ local hyperlink_rules = {
   },
 }
 
+local font_size = 12
+
+local hostname = wezterm.hostname()
+if string.match(hostname, "munchkin") then
+  -- MacBook Air 2015
+  font_size = 14
+end
+
 return {
   check_for_updates = false,
   front_end = 'WebGpu',
   font = wezterm.font 'PlemolJP Console NF',
-  font_size = 13,
+  font_size = font_size,
   color_scheme = 'iceberg-dark',
   window_decorations = 'RESIZE',
   hide_tab_bar_if_only_one_tab = true,
