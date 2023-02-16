@@ -2,16 +2,28 @@ local h = require('util.helper')
 
 return {
   {
+    'vim-denops/denops.vim',
+    event = 'VeryLazy',
+  },
+  {
     'vim-jp/vimdoc-ja',
     lazy = false,
   },
   {
-    'tpope/vim-fugitive',
-    cmd = { 'Git', 'Gdiffsplit', 'Gclog' },
+    'lambdalisue/gin.vim',
+    dependencies = {
+      'vim-denops/denops.vim',
+      'yuki-yano/denops-lazy.nvim'
+    },
+    cmd = { 'Gin', 'GinStatus', 'GinDiff', 'GinLog', 'GinChaperon' },
     init = function()
-      h.nmap('<Leader>gs', '<CMD>Git<CR>', { desc = 'Operate git status' })
-      h.nmap('<Leader>gd', '<CMD>Gdiffsplit<CR>', { desc = 'Show git diff' })
-      h.nmap('<Leader>gc', '<CMD>Git commit<CR>', { desc = 'Operate git commit' })
+      h.nmap('<Leader>gs', '<CMD>GinStatus ++opener=split<CR>', { desc = 'Operate git status' })
+      h.nmap('<Leader>gc', '<CMD>Gin commit<CR>', { desc = 'Operate git commit' })
+      h.nmap('<Leader>gd', '<CMD>GinDiff ++opener=vsplit<CR>', { desc = 'Show git diff' })
+      h.nmap('<Leader>gl', '<CMD>GinLog ++opener=split<CR>', { desc = 'Show git log' })
+    end,
+    config = function()
+      require('denops-lazy').load('gin.vim')
     end
   },
   {
@@ -41,6 +53,11 @@ return {
     cmd = 'Qfreplace',
   },
   {
+    'iamcco/markdown-preview.nvim',
+    build = 'sh -c "cd app && npm install"',
+    ft = { 'markdown', 'pandoc.markdown', 'rmd' }
+  },
+  {
     'monaqa/dial.nvim',
     keys = { '<C-a>', '<C-x>' },
     config = function()
@@ -67,6 +84,7 @@ return {
     dependencies = {
       'vim-denops/denops.vim',
       'lambdalisue/kensaku.vim',
+      'yuki-yano/denops-lazy.nvim'
     },
     cmd = 'FuzzyMotion',
     init = function()
@@ -99,13 +117,19 @@ return {
     end,
   },
   {
-    'iamcco/markdown-preview.nvim',
-    build = 'sh -c "cd app && npm install"',
-    ft = { 'markdown', 'pandoc.markdown', 'rmd' }
-  },
-  {
     'lambdalisue/butler.vim',
     dependencies = { 'vim-denops/denops.vim' },
     event = 'VeryLazy',
   },
+  {
+    'skanehira/denops-translate.vim',
+    dependencies = {
+      'vim-denops/denops.vim',
+      'yuki-yano/denops-lazy.nvim'
+    },
+    cmd = 'Translate',
+    config = function()
+      require('denops-lazy').load('denops-translate.vim')
+    end
+  }
 }
