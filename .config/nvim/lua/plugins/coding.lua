@@ -25,8 +25,11 @@ return {
     config = true,
   },
   {
-    'tpope/vim-commentary',
-    event = 'InsertEnter'
+    'terrortylor/nvim-comment',
+    event = 'InsertEnter',
+    config = function()
+      require('nvim_comment').setup()
+    end
   },
   {
     'kylechui/nvim-surround',
@@ -96,16 +99,13 @@ return {
     end,
   },
   {
-    'skanehira/denops-translate.vim',
-    dependencies = { 'vim-denops/denops.vim' },
-    cmd = 'Translate',
-    config = function()
-      require('denops-lazy').setup('denops-translate.vim')
-    end
-  },
-  {
     'iamcco/markdown-preview.nvim',
     build = 'sh -c "cd app && npm install"',
     ft = { 'markdown', 'pandoc.markdown', 'rmd' }
+  },
+  {
+    'lambdalisue/butler.vim',
+    dependencies = { 'vim-denops/denops.vim' },
+    event = 'VeryLazy',
   },
 }
