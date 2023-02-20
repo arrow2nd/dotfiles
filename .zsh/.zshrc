@@ -14,12 +14,6 @@ eval "$(sheldon source)"
 }
 
 #
-# ローカル設定
-#
-
-[ -f $ZDOTDIR/.zshrc_local ] && . $ZDOTDIR/.zshrc_local
-
-#
 # パス
 #
 
@@ -70,6 +64,12 @@ alias todo='gh todo'
 
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
+
+#
+# ローカル設定
+#
+
+[ -f $ZDOTDIR/.zshrc_local ] && . $ZDOTDIR/.zshrc_local
 
 #
 # 一般設定
