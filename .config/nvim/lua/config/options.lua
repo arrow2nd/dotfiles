@@ -33,7 +33,7 @@ opt.mouse = 'a'
 
 -- 不可視文字可視化
 opt.list = true
-opt.listchars = { tab = '<->', trail = '-', nbsp = '+' }
+opt.listchars = { tab = '>>', trail = '-', nbsp = '+' }
 
 -- タブ, インデント
 opt.tabstop = 2
