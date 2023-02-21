@@ -1,4 +1,5 @@
 local h = require('util.helper')
+local api = vim.api
 
 return {
   {
@@ -53,9 +54,25 @@ return {
     cmd = 'Qfreplace',
   },
   {
-    'iamcco/markdown-preview.nvim',
-    build = 'sh -c "cd app && npm install"',
-    ft = { 'markdown', 'pandoc.markdown', 'rmd' }
+    'toppair/peek.nvim',
+    build = 'deno task --quiet build:fast',
+    ft = { 'markdown', 'pandoc.markdown', 'rmd' },
+    init = function()
+      api.nvim_create_user_command('PeekOpen', require('peek').open, {})
+      api.nvim_create_user_command('PeekClose', require('peek').close, {})
+    end,
+    config = function()
+      require('peek').setup({
+        auto_load = true,
+        close_on_bdelete = true,
+        syntax = true,
+        theme = 'dark',
+        update_on_change = true,
+        app = 'browser',
+        throttle_at = 200000,
+        throttle_time = 'auto',
+      })
+    end
   },
   {
     'monaqa/dial.nvim',
@@ -104,7 +121,7 @@ return {
       h.imap('<C-j>', '<Plug>(skkeleton-enable)')
       h.cmap('<C-j>', '<Plug>(skkeleton-enable)')
 
-      vim.api.nvim_create_autocmd('User', {
+      api.nvim_create_autocmd('User', {
         pattern = 'skkeleton-initialize-pre',
         callback = function()
           vim.fn['skkeleton#config']({
