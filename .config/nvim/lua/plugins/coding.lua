@@ -7,6 +7,9 @@ return {
     event = 'VeryLazy',
   },
   {
+    'rbtnn/vim-ambiwidth',
+  },
+  {
     'vim-jp/vimdoc-ja',
     lazy = false,
   },
