@@ -2,7 +2,7 @@
 
 ## 環境
 
-- Arch Linux or macOS (10.15 Catalina ~)
+- Manjaro (i3-wm) or macOS (10.15 Catalina ~)
 - git, curl 導入済み
 
 ### フォント
