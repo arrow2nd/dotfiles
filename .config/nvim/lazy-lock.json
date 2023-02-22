@@ -6,6 +6,7 @@
   "ddc-matcher_length": { "branch": "main", "commit": "8a0fa55470b97587e8b8aceac9550ce1d0ea0173" },
   "ddc-sorter_rank": { "branch": "main", "commit": "412c0f039d1690978089cac479f71d393135a2ba" },
   "ddc-source-around": { "branch": "main", "commit": "e9ea00419c2fa51746316d0cc5b392f05991e0bd" },
+  "ddc-source-file": { "branch": "main", "commit": "f10a559015f1bf1779f9eb6d7db2ad7af6eff89e" },
   "ddc-source-nvim-lsp": { "branch": "main", "commit": "1795bfdbf0879054f3ca9f5ab7025ba68e0338c4" },
   "ddc-ui-pum": { "branch": "main", "commit": "aa027c94834226170f03ba7cff5d25293f23a666" },
   "ddc.vim": { "branch": "main", "commit": "c6db873ce617dccdbb39b2a589e6b3bc13dd8140" },

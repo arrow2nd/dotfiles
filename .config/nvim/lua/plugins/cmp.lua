@@ -14,6 +14,7 @@ return {
       -- Source
       'Shougo/ddc-source-around',
       'Shougo/ddc-source-nvim-lsp',
+      'LumaKernel/ddc-source-file',
       -- Matcher
       'Shougo/ddc-matcher_head',
       'Shougo/ddc-matcher_length',
@@ -33,6 +34,7 @@ return {
         'skkeleton',
         'vsnip',
         'nvim-lsp',
+        'file',
         'around',
       })
 
@@ -41,17 +43,18 @@ return {
           matchers = { 'matcher_head', 'matcher_length' },
           sorters = { 'sorter_rank' },
           converters = { 'converter_remove_overlap' },
-        },
-        around = {
-          mark = '[A]',
           ignoreCase = true,
         },
+        around = { mark = '[A]' },
         ['nvim-lsp'] = {
           mark = '[LS]',
           forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
         },
-        vsnip = {
-          dup = 'keep',
+        vsnip = { dup = 'keep' },
+        file = {
+          mark = '[F]',
+          isVolatile = true,
+          forceCompletionPattern = [[\S/\S*]],
         },
         skkeleton = {
           mark = '[SKK]',
