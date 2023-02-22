@@ -4,7 +4,6 @@ local api = vim.api
 return {
   {
     'vim-denops/denops.vim',
-    event = 'VeryLazy',
   },
   {
     'rbtnn/vim-ambiwidth',

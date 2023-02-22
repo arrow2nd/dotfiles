@@ -21,6 +21,9 @@ return {
       'Shougo/ddc-sorter_rank',
       -- Converter
       'Shougo/ddc-converter_remove_overlap',
+      -- Preview
+      'matsui54/denops-popup-preview.vim',
+      'matsui54/denops-signature_help',
     },
     config = function()
       require('denops-lazy').load('ddc.vim')
@@ -39,7 +42,10 @@ return {
           sorters = { 'sorter_rank' },
           converters = { 'converter_remove_overlap' },
         },
-        around = { mark = '[A]' },
+        around = {
+          mark = '[A]',
+          ignoreCase = true,
+        },
         ['nvim-lsp'] = {
           mark = '[LS]',
           forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
@@ -82,8 +88,11 @@ return {
   },
   {
     'matsui54/denops-popup-preview.vim',
-    event = 'BufReadPre',
-    dependencies = { 'vim-denops/denops.vim' },
+    -- event = 'BufReadPre',
+    dependencies = {
+      'vim-denops/denops.vim',
+      'yuki-yano/denops-lazy.nvim',
+    },
     config = function()
       require('denops-lazy').load('denops-popup-preview.vim')
 
@@ -98,8 +107,11 @@ return {
   },
   {
     'matsui54/denops-signature_help',
-    event = 'BufReadPre',
-    dependencies = { 'vim-denops/denops.vim' },
+    -- event = 'BufReadPre',
+    dependencies = {
+      'vim-denops/denops.vim',
+      'yuki-yano/denops-lazy.nvim',
+    },
     config = function()
       require('denops-lazy').load('denops-signature_help')
 
