@@ -39,17 +39,12 @@ return {
     event = 'BufReadPre',
     config = function()
       local lspconfig = require('lspconfig')
-      local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
       require('mason-lspconfig').setup_handlers({ function(server)
         local buf_full_filename = vim.api.nvim_buf_get_name(0)
         local node_root_dir = lspconfig.util.root_pattern('package.json')
         local is_node_repo = node_root_dir(buf_full_filename) ~= nil
-
-        local opts = {
-          on_attach = common_on_attach,
-          capabilities = cmp_nvim_lsp.default_capabilities(),
-        }
+        local opts = { on_attach = common_on_attach }
 
         -- denols と tsserver を出し分ける
         -- ref: https://zenn.dev/kawarimidoll/articles/2b57745045b225
@@ -109,7 +104,6 @@ return {
     event = 'BufReadPre',
     config = function()
       local null_ls = require('null-ls')
-      local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
       null_ls.setup({
         sources = {
@@ -123,7 +117,6 @@ return {
           },
         },
         on_attach = common_on_attach,
-        capabilities = cmp_nvim_lsp.default_capabilities(),
         diagnostics_format = '#{m} (#{s}: #{c})',
       })
     end
