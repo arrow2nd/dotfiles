@@ -1,3 +1,5 @@
+local h = require('util.helper')
+
 return {
   {
     'nvim-telescope/telescope.nvim',
@@ -9,7 +11,6 @@ return {
     },
     cmd = 'Telescope',
     init = function()
-      local h = require('util.helper')
       h.nmap('<Leader>ff', '<CMD>Telescope find_files<CR>')
       h.nmap('<Leader>fg', '<CMD>Telescope live_grep<CR>')
       h.nmap('<Leader>fb', '<CMD>Telescope buffers<CR>')
