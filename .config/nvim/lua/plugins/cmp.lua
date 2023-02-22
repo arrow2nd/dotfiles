@@ -84,6 +84,13 @@ return {
   {
     'Shougo/pum.vim',
     config = function()
+      fn['pum#set_option']({
+        auto_select = true,
+        padding = true,
+        max_horizontal_items = 3,
+      })
+
+      -- keymaps
       local opts = { silent = true, noremap = true }
       h.imap('<C-y>', '<Cmd>call pum#map#confirm()<CR>', opts)
       h.imap('<C-e>', '<Cmd>call pum#map#cancel()<CR>', opts)
@@ -91,7 +98,6 @@ return {
   },
   {
     'matsui54/denops-popup-preview.vim',
-    -- event = 'BufReadPre',
     dependencies = {
       'vim-denops/denops.vim',
       'yuki-yano/denops-lazy.nvim',
@@ -100,9 +106,11 @@ return {
       require('denops-lazy').load('denops-popup-preview.vim')
 
       vim.g.popup_preview_config = {
-        delay = 30,
+        border = false,
+        supportVsnip = true,
         supportUltisnips = false,
         supportInfo = true,
+        delay = 30,
       }
 
       fn['popup_preview#enable']()
@@ -110,7 +118,6 @@ return {
   },
   {
     'matsui54/denops-signature_help',
-    -- event = 'BufReadPre',
     dependencies = {
       'vim-denops/denops.vim',
       'yuki-yano/denops-lazy.nvim',

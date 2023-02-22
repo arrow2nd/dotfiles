@@ -41,16 +41,16 @@ opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 
--- 全ての値を10進数として扱う
-opt.nrformats = ''
-
 -- 検索
 opt.ignorecase = true
 opt.smartcase = true
 opt.incsearch = true
 
 -- ヒストリの上限
-opt.history = 255
+opt.history = 512
+
+-- 補完
+opt.completeopt = 'menu,noinsert'
 
 -- LSPの警告フォーマット
 -- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
