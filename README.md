@@ -3,7 +3,7 @@
 ## 環境
 
 - Manjaro (i3-wm) or macOS (10.15 Catalina ~)
-- git, curl 導入済み
+- git, curl, make 導入済み
 
 ### フォント
 
