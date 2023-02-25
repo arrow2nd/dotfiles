@@ -3,9 +3,6 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
-# set default desktop layout (default is tiling)
-# workspace_layout tabbed <stacking|tabbed>
-
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 2
 default_floating_border normal
@@ -49,9 +46,9 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # IME
 exec --no-startup-id fcitx5 -d
 
-# Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+# VIME
+bindsym $mod+c exec XMODIFIERS=@im= ~/.config/i3/clip.sh
+for_window [instance="Floaterm"] floating enable
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -63,8 +60,6 @@ bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-
-# focus_follows_mouse no
 
 # change focus
 bindsym $mod+h focus left
@@ -232,20 +227,10 @@ mode "$mode_system" {
 bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 5 px or 5 ppt
         bindsym j resize grow height 5 px or 5 ppt
         bindsym k resize shrink height 5 px or 5 ppt
         bindsym l resize grow width 5 px or 5 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
 
         # exit resize mode: Enter or Escape
         bindsym Return mode "default"
@@ -280,9 +265,7 @@ smart_gaps on
 smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps Gaps: (o) outer, (i) inner set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global) set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
