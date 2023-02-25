@@ -36,5 +36,6 @@ yabai -m rule --add app="^システム環境設定$" manage=off sticky=on
 yabai -m rule --add app="^計算機$" manage=off sticky=on
 yabai -m rule --add app="^Digital Color Meter$" manage=off sticky=on
 yabai -m rule --add app="^Gifski$" manage=off sticky=on
+yabai -m rule --add app="^Bitwarden$" manage=off sticky=on
 
 echo "yabai configuration loaded.."
