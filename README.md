@@ -2,7 +2,7 @@
 
 ## 環境
 
-- Manjaro (i3-wm) or macOS (10.15 Catalina ~)
+- Manjaro (Sway) or macOS (10.15 Catalina ~)
 - git, curl, make 導入済み
 
 ### フォント
@@ -15,7 +15,8 @@
 
 ```sh
 git clone https://github.com/arrow2nd/dotfiles.git $HOME/dotfiles
-./dotfiles/setup.sh
+cd ./dotfiles
+./setup.sh
 ```
 
 ### 追記

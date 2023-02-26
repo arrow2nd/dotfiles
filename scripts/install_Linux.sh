@@ -19,6 +19,7 @@ fi
 
 echo "[ Tools ]"
 yay -S --noconfirm \
+ base-devel \
  zsh \
  unzip \
  deno \
