@@ -4,7 +4,7 @@ set -eu
 
 DOT_DIR="$HOME/dotfiles"
 
-MENU="dotfiles (for macOS / ArchLinux)
+MENU="dotfiles (for macOS / Manjaro Sway)
 
 SETUP MENU:
   [a] Execute all
