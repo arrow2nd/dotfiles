@@ -1,0 +1,67 @@
+# config for sway
+
+# variables
+include ~/.config/sway/definitions
+
+# theme
+set $gui-font BIZTER 11
+set $term-font PlemolJP Console NF 12
+set $gtk-theme Nordic-bluish-accent
+set $icon-theme Nordzy-dark
+set $cursor-theme Nordzy-cursors
+set $gtk-color-scheme prefer-dark
+set $kvantum-theme Nordic-bluish
+
+# iceberg
+set $color0  #1e2132
+set $color1  #e27878
+set $color2  #b4be82
+set $color3  #e2a478
+set $color4  #84a0c6
+set $color5  #a093c7
+set $color6  #89b8c2
+set $color7  #c6c8d1
+set $color8  #6b7089
+set $color9  #e98989
+set $color10 #c0ca8e
+set $color11 #e9b189
+set $color12 #91acd1
+set $color13 #ada0d3
+set $color14 #95c4ce
+set $color15 #d2d4de
+
+set $background-color $color0
+set $text-color $color6
+set $selection-color $color1
+set $accent-color $color12
+
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name         Border  BG       Text    Indicator Child Border
+client.focused          $color5 $color12 $color0 $color6   $color12
+client.focused_inactive $color0 $color1  $color5 $color3   $color0
+client.unfocused        $color0 $color0  $color5 $color6   $color0
+client.urgent           $color8 $color8  $color0 $color9   $color8
+client.placeholder      $color0 $color0  $color5 $color0   $color0
+client.background       $color7
+
+# in / out
+include /etc/sway/inputs/*
+include /etc/sway/outputs/*
+
+# enable modes
+include ~/.config/sway/modes/*
+
+# floating
+for_window [app_id="term_float"] {
+  floating enabled
+  resize set 1000 600
+}
+
+for_window [app_id="Vime"] {
+  floating enabled
+  resize set 600 300
+}
+
+# include additional configs e.g. to autostart applications
+include /etc/sway/config.d/*
+

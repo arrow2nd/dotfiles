@@ -1,0 +1,158 @@
+### Variables
+#
+# Logo key. Use Mod1 for Alt and Mod4 for Super.
+set $mod Mod4
+
+# Direction keys
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Add --to-code to bindsym, support for non-latin layouts
+set $bindsym bindsym --to-code
+
+# For user's convenience, the same for unbindsym
+set $unbindsym unbindsym --to-code
+
+# background
+set $background /usr/share/backgrounds/manjaro-sway/gruvbox-dark-manjarosway-3840x2160.png
+
+# Your preferred terminal emulator
+set $term wezterm
+set $term_float wezterm start --class term_float
+
+# onscreen bar
+set $onscreen_bar bash /usr/share/sway/scripts/wob.sh "$accent-color" "$background-color"
+
+# brightness control
+set $brightness_step bash -c 'echo $(( $(light -Mr) / 100 * 5 < 1 ? 1 : $(( $(light -Mr) / 100 * 5 )) ))'
+set $brightness_up light -r -A $($brightness_step) && $onscreen_bar $(light -G | cut -d'.' -f1)
+set $brightness_down light -r -U $($brightness_step) && $onscreen_bar $(light -G | cut -d'.' -f1)
+
+# audio control
+set $sink_volume pactl get-sink-volume @DEFAULT_SINK@ | grep '^Volume:' | cut -d / -f 2 | tr -d ' ' | sed 's/%//'
+set $source_volume pactl get-source-volume @DEFAULT_SOURCE@ | grep '^Volume:' | cut -d / -f 2 | tr -d ' ' | sed 's/%//'
+set $volume_down $onscreen_bar $(pactl set-sink-volume @DEFAULT_SINK@ -5% && $sink_volume)
+set $volume_up $onscreen_bar $(pactl set-sink-volume @DEFAULT_SINK@ +5% && $sink_volume)
+set $volume_mute $onscreen_bar $(pactl set-sink-mute @DEFAULT_SINK@ toggle && pactl get-sink-mute @DEFAULT_SINK@ | sed -En "/no/ s/.*/$($sink_volume)/p; /yes/ s/.*/0/p")
+set $mic_mute $onscreen_bar $(pactl set-source-mute @DEFAULT_SOURCE@ toggle && pactl get-source-mute @DEFAULT_SOURCE@ | sed -En "/no/ s/.*/$($source_volume)/p; /yes/ s/.*/0/p")
+
+# vime
+set $vime XMODIFIERS=@im= ~/.config/sway/vime.sh
+
+# zeit tracking
+set $zeit_list zeit list --only-projects-and-tasks --append-project-id-to-task | \
+    rofi -dmenu -font "$gui-font" -p "Select task to track" -lines 10 -width 35 | \
+    /usr/share/sway/scripts/zeit.sh track && \
+    pkill -RTMIN+10 waybar
+
+# Your preferred application launcher
+set $menu rofi \
+    -show combi \
+    -combi-modi "drun" \
+    -font "$gui-font" \
+
+### Lockscreen configuration
+set $locking swaylock --daemonize \
+    --screenshots \
+    --font "$term-font" \
+    --font-size 24 \
+    --indicator \
+    --indicator-radius 100 \
+    --indicator-thickness 7 \
+    --effect-blur 7x5 \
+    --effect-vignette 0.5:0.5 \
+    --ring-color "$color4" \
+    --key-hl-color "$color3" \
+    --inside-color 00000088 \
+    --separator-color 00000000 \
+    --text-ver-color "$color7" \
+    --ring-ver-color "$color3" \
+    --inside-ver-color 00000088 \
+    --text-wrong-color "$color7" \
+    --ring-wrong-color "$color1" \
+    --inside-wrong-color 00000088 \
+    --grace 2 \
+    --fade-in 0.2
+
+# bluetooth menu
+set $bluetooth $term_float bluetuith
+
+### Idle configuration
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+#
+set $idle_timeout 240
+set $locking_timeout 300
+set $screen_timeout 600
+set $swayidle swayidle -w \
+    timeout $idle_timeout 'light -G > /tmp/brightness && light -S 10' resume 'light -S $([ -f /tmp/brightness ] && cat /tmp/brightness || echo 100%)' \
+    timeout $locking_timeout 'exec $locking' \
+    timeout $screen_timeout 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'playerctl pause' \
+    before-sleep 'exec $locking'
+
+# statusbar command
+set $statusbar waybar
+set $waybar_position top
+
+# pulseaudio command
+set $pulseaudio $term_float pulsemixer
+
+# calendar application
+set $calendar $term_float calcurse
+
+# workspace names
+set $ws1 number 1
+set $ws2 number 2
+set $ws3 number 3
+set $ws4 number 4
+set $ws5 number 5
+set $ws6 number 6
+set $ws7 number 7
+set $ws8 number 8
+set $ws9 number 9
+set $ws10 number 10
+
+# screenshot 
+set $grimshot /usr/share/sway/scripts/grimshot
+set $pipe_output $grimshot save output -
+set $pipe_selection $grimshot save window -
+set $notify_paste  [[ $(wl-paste -l) == "image/png" ]] && notify-send "Screenshot copied to clipboard"
+set $swappy swappy -f -
+set $swappy_pipe swappy -f - -o -
+set $upload_pipe curl -s -F "file=@-;filename=.png" https://x0.at/ | tee >(wl-copy) >(xargs notify-send)
+
+set $screenshot_screen $pipe_output | $swappy && $notify_paste
+set $screenshot_screen_upload $pipe_output | $swappy_pipe | $upload_pipe 
+
+set $screenshot_selection $pipe_selection | $swappy && $notify_paste
+set $screenshot_selection_upload $pipe_selection | $swappy_pipe | $upload_pipe
+
+# autostarts
+set $autostart_dex '[ -x "$(command -v dex)" ] && gdbus wait --session org.kde.StatusNotifierWatcher && dex --autostart'
+set $autotiling '[ -x "$(command -v autotiling)" ] && autotiling'
+set $workspace_icons '[ -x "$(command -v sworkstyle)" ] && sworkstyle -d -l info &> /tmp/sworkstyle.log'
+set $mounting_daemon '[ -x "$(command -v pcmanfm)" ] && pcmanfm -d'
+# set $flashfocus '[ -x "$(command -v flashfocus)" ] && flashfocus'
+# set $wlsunset '[ -x "$(command -v wlsunset)" ] && /usr/share/sway/scripts/sunset.sh "on"'
+# set $foot_server '[ -x "$(command -v foot)" ] && /usr/share/sway/scripts/foot.sh --server'
+
+# restart kanshi https://github.com/emersion/kanshi/issues/43#issuecomment-531679213
+set $kanshi '[ -x "$(command -v kanshi)" ] && pkill kanshi; exec kanshi'
+set $xdg-dirs '[ -x "$(command -v xdg-user-dirs-update)" ] && exec xdg-user-dirs-update'
+
+# apply the keyboard layout from localectl if no keyboard layout has been set via config.d
+set $auto_xdg_keyboard 'grep -q xkb_layout ~/.config/sway/config.d/*.conf || /usr/share/sway/scripts/keyboard.sh'
+
+# daemons
+set $mako '/usr/share/sway/scripts/mako.sh --font "$term-font" --text-color "$text-color" --border-color "$accent-color" --background-color "$background-color" --border-size 2 --width 400 --height 200 --padding 20 --margin 20 --default-timeout 5000'
+set $swappy_notify '[ -x "$(command -v swappy)" ] && /usr/share/sway/scripts/screenshot-notify.sh'
+set $swayr_daemon '[ -x "$(command -v swayrd)" ] && pkill swayrd; RUST_BACKTRACE=1 RUST_LOG=swayr=debug swayrd &> /tmp/swayrd.log'
+set $calendar_daemon 'calcurse --daemon'
+set $nm_applet '[ -x "$(command -v nm-applet)" ] && nm-applet'
+set $watch_playerctl '[ -x "$(command -v playerctl)" ] && pkill playerctl; playerctl -a metadata --format \'{{status}} {{title}}\' --follow | while read line; do pkill -RTMIN+5 waybar; done'
+# set $poweralert '[ -x "$(command -v poweralertd)" ] && pkill poweralertd; poweralertd -s -i "line power" &'
