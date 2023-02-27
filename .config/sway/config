@@ -45,23 +45,12 @@ client.placeholder      $color0 $color0  $color5 $color0   $color0
 client.background       $color7
 
 # in / out
-include /etc/sway/inputs/*
-include /etc/sway/outputs/*
+include ~/.config/sway/inputs/*
+include ~/.config/sway/outputs/*
 
 # enable modes
 include ~/.config/sway/modes/*
 
-# floating
-for_window [app_id="term_float"] {
-  floating enabled
-  resize set 1000 600
-}
-
-for_window [app_id="Vime"] {
-  floating enabled
-  resize set 600 300
-}
-
 # include additional configs e.g. to autostart applications
-include /etc/sway/config.d/*
+include ~/.config/sway/config.d/*
 
