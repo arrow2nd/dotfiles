@@ -1,9 +1,5 @@
 #!/bin/bash
 
-#
-# for macOS
-#
-
 set -eu
 
 if ! type -p brew >/dev/null; then

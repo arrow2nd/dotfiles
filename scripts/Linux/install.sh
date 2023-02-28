@@ -1,13 +1,8 @@
 #!/bin/bash
 
-#
-# for Arch Linux
-#
-
 set -eu
 
 YAY_DIR="$HOME/yay"
-
 if ! type -p yay >/dev/null; then
   echo "[ yay ]"
   git clone https://aur.archlinux.org/yay-bin "$YAY_DIR"

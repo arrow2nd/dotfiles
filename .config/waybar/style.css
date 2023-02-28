@@ -1,186 +1,129 @@
-/* =============================================================================
- *
- * Waybar configuration
- *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
- * =========================================================================== */
+/* waybar (iceberg 風味) */
 
-/* import css definitions for current theme */
-
-/* -----------------------------------------------------------------------------
- * Keyframes
- * -------------------------------------------------------------------------- */
-
-@keyframes blink-warning {
-  70% {
-    color: @wm_icon_bg;
-  }
-
-  to {
-    color: @wm_icon_bg;
-    background-color: @warning_color;
-  }
-}
-
-@keyframes blink-critical {
-  70% {
-    color: @wm_icon_bg;
-  }
-
-  to {
-    color: @wm_icon_bg;
-    background-color: @error_color;
-  }
-}
-
-/* -----------------------------------------------------------------------------
- * Base styles
- * -------------------------------------------------------------------------- */
-
-/* Reset all styles */
 * {
-  border: none;
-  min-height: 0;
-  margin: 0;
-  padding: 0;
   font-family: "PlemolJP Console NF";
-}
-
-/* The whole bar */
-window#waybar {
-  background: @theme_bg_color;
-  color: @wm_icon_bg;
   font-size: 14px;
 }
 
-/* Each module */
-#custom-pacman,
-#custom-menu,
-#custom-scratchpad,
-#bluetooth,
-#battery,
-#clock,
-#cpu,
-#memory,
-#mode,
-#network,
-#pulseaudio,
-#temperature,
-#idle_inhibitor,
-#backlight,
-#language,
-#custom-adaptive-light,
-#custom-sunset,
-#custom-playerctl,
-#tray {
-  padding-left: 8px;
-  padding-right: 8px;
+window#waybar {
+  color: #c6c8d1;
+  background-color: #1e2132;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  border-radius: 0;
 }
 
-/* -----------------------------------------------------------------------------
- * Module styles
- * -------------------------------------------------------------------------- */
-
-#custom-scratchpad,
-#custom-menu,
-#workspaces button.focused {
-  color: @theme_bg_color;
-  background-color: @theme_selected_bg_color;
+window#waybar.hidden {
+  opacity: 0.2;
 }
 
-#battery {
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+button {
+  border: none;
+  border-radius: 0;
 }
 
-#battery.warning.discharging {
-  animation-name: blink-warning;
-  animation-duration: 3s;
-}
-
-#battery.critical.discharging {
-  animation-name: blink-critical;
-  animation-duration: 2s;
-}
-
-#clock {
-  font-weight: 500;
-}
-
-#cpu.warning {
-  color: @warning_color;
-}
-
-#cpu.critical {
-  color: @error_color;
-}
-
-#custom-menu {
-  padding-left: 8px;
-  padding-right: 13px;
-}
-
-#memory {
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-#memory.warning {
-  color: @warning_color;
-}
-
-#memory.critical {
-  color: @error_color;
-  animation-name: blink-critical;
-  animation-duration: 2s;
-}
-
-#mode {
-  background: @background_color;
-}
-
-#network.disconnected {
-  color: @warning_color;
-}
-
-#pulseaudio.muted {
-  color: @warning_color;
-}
-
-#temperature.critical {
-  color: @error_color;
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+  background: inherit;
 }
 
 #workspaces button {
-  border-top: 2px solid transparent;
-  /* To compensate for the top border and still have vertical centering */
-  padding-bottom: 2px;
-  padding-left: 10px;
-  padding-right: 10px;
-  color: @theme_selected_bg_color;
-}
-
-#workspaces button.focused {
-  border-color: @theme_selected_bg_color;
+  padding: 2px;
+  background-color: transparent;
 }
 
 #workspaces button.urgent {
-  border-color: @error_color;
-  color: @error_color;
+  color: #e2a478;
+  background-color: transparent;
 }
 
-#custom-pacman {
-  color: @warning_color;
+#tray,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#bluetooth,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+  margin: 4px 2px;
+  padding: 0 8px;
+  border-radius: 4px;
+  color: #c6c8d1;
 }
 
-#bluetooth.disabled {
-  color: @warning_color;
+#window,
+#workspaces {
+  margin: 4px;
 }
 
-#custom-wf-recorder {
-  color: @error_color;
-  padding-right: 10px;
+#mode {
+  background-color: #a093c7;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: #1e2132;
+  background-color: #b4be82;
+}
+
+#battery.warning:not(.charging) {
+  color: #1e2132;
+  background-color: #e2a478;
+}
+
+@keyframes blink {
+  to {
+    color: #1e2132;
+    background-color: #e27878;
+  }
+}
+
+#battery.critical:not(.charging) {
+  color: #1e2132;
+  background-color: #e2a478;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: #000000;
+}
+
+#network.disconnected {
+  color: #1e2132;
+  background-color: #e27878;
+}
+
+#pulseaudio.muted {
+  color: #1e2132;
+  background-color: #d2d4de;
+}
+
+#temperature.critical {
+  color: #1e2132;
+  background-color: #e27878;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
 }
