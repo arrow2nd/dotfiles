@@ -18,9 +18,19 @@
     "clock"
   ],
   "sway/workspaces": {
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
+    },
+    "all-outputs": true,
+    "active-only": false,
     "format": "{icon}",
     "format-icons": {
-      "urgent": "",
+      "urgent": "!!",
       "focused": "",
       "default": ""
     }
