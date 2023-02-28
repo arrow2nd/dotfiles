@@ -2,7 +2,7 @@
 
 ## 環境
 
-- Manjaro (Sway) or macOS (10.15 Catalina ~)
+- Arch Linux (Sway) or macOS (10.15 Catalina ~)
 - git, curl, make 導入済み
 
 ### フォント
