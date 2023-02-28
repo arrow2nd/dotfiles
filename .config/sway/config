@@ -50,8 +50,8 @@ client.background       $c_white
 
 ### Border:
 #
-# default_border none
-# smart_borders none
+default_border none
+smart_borders none
 
 ### Gap:
 #
