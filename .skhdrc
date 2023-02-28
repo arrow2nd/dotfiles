@@ -6,7 +6,6 @@ ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 # alt - s : yabai -m space --layout stack
 
 # focus window
-cmd - x : yabai -m window --focus recent
 cmd - h : yabai -m window --focus west
 cmd - j : yabai -m window --focus south
 cmd - k : yabai -m window --focus north
@@ -18,12 +17,12 @@ shift + cmd - j : yabai -m window --warp south
 shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
 
-shift + alt - 1 : yabai -m window --space 1
-shift + alt - 2 : yabai -m window --space 2
-shift + alt - 3 : yabai -m window --space 3
-shift + alt - 4 : yabai -m window --space 4
-shift + alt - 5 : yabai -m window --space 5
-shift + alt - 6 : yabai -m window --space 6
+shift + cmd - 1 : yabai -m window --space 1
+shift + cmd - 2 : yabai -m window --space 2
+shift + cmd - 3 : yabai -m window --space 3
+shift + cmd - 4 : yabai -m window --space 4
+shift + cmd - 5 : yabai -m window --space 5
+shift + cmd - 6 : yabai -m window --space 6
 
 # increase window size
 shift + cmd - u : yabai -m window --resize left:-20:0
@@ -32,10 +31,10 @@ shift + cmd - o : yabai -m window --resize top:0:-20
 shift + cmd - p : yabai -m window --resize right:20:0
 
 # decrease window size
-shift + alt - u : yabai -m window --resize left:20:0
-shift + alt - i : yabai -m window --resize bottom:0:-20
-shift + alt - o : yabai -m window --resize top:0:20
-shift + alt - p : yabai -m window --resize right:-20:0
+alt + cmd - u : yabai -m window --resize left:20:0
+alt + cmd - i : yabai -m window --resize bottom:0:-20
+alt + cmd - o : yabai -m window --resize top:0:20
+alt + cmd - p : yabai -m window --resize right:-20:0
 
 # toggle window fullscreen zoom
 cmd - f : yabai -m window --toggle zoom-fullscreen
