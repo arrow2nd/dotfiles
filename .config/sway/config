@@ -314,7 +314,3 @@ exec_always {
 #
 # notify (mako)
 exec mako
-# Network
-# exec nm-applet --indicator
-# Bluetooth
-# exec blueman-applet
