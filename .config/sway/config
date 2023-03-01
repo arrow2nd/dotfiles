@@ -306,7 +306,7 @@ include /etc/sway/config.d/*
 exec_always {
   gsettings set org.gnome.desktop.interface gtk-theme "Nordic-bluish-accent"
   gsettings set org.gnome.desktop.interface icon-theme "Nordzy-dark"
-  gsettings set org.gnome.desktop.interface cursor-theme "Nordzy-cursors"
+  gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
   kvantummanager --set "Nordic-bluish"
 }
 
