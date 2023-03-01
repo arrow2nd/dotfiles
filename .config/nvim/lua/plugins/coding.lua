@@ -3,9 +3,6 @@ local api = vim.api
 
 return {
   {
-    'vim-denops/denops.vim',
-  },
-  {
     'rbtnn/vim-ambiwidth',
     lazy = false,
   },

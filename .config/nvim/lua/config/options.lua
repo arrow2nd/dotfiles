@@ -1,6 +1,6 @@
 local opt = vim.opt
 
--- 文字コード
+-- 文字
 vim.scriptencoding = 'utf-8'
 opt.encoding = 'utf-8'
 opt.fileencoding = 'utf-8'
