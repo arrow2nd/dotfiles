@@ -26,7 +26,7 @@ text-color=#1e2132
 [urgency=critical]
 background-color=#e27878
 text-color=#1e2132
-on-notify=exec mpv --keep-open=no /usr/share/sounds/freedesktop/stereo/message.oga
+on-notify=exec paplay /usr/share/sounds/freedesktop/stereo/message.oga
 
 [mode=silent]
 invisible=1
