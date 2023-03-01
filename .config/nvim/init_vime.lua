@@ -7,10 +7,9 @@ vim.opt.laststatus = 0
 vim.opt.rtp:prepend(vim.fn.stdpath('data') .. '/lazy/lazy.nvim')
 
 require('lazy').setup({
-  { 'rbtnn/vim-ambiwidth', lazy = false },
+  { 'rbtnn/vim-ambiwidth' },
   {
     'cocopon/iceberg.vim',
-    lazy = false,
     priority = 1000,
     config = function()
       vim.cmd([[colorscheme iceberg]])
@@ -18,13 +17,8 @@ require('lazy').setup({
   },
   {
     'vim-skk/skkeleton',
-    event = 'InsertEnter',
-    dependencies = {
-      'vim-denops/denops.vim',
-      'yuki-yano/denops-lazy.nvim'
-    },
+    dependencies = { 'vim-denops/denops.vim' },
     config = function()
-      require('denops-lazy').load('skkeleton')
       h.imap('<C-j>', '<Plug>(skkeleton-enable)')
 
       local dictionaries = {}
@@ -49,44 +43,46 @@ require('lazy').setup({
   },
   {
     'Shougo/ddc.vim',
-    event = 'InsertEnter',
     dependencies = {
       'vim-denops/denops.vim',
-      'yuki-yano/denops-lazy.nvim',
       'Shougo/pum.vim',
       'Shougo/ddc-ui-pum',
     },
     config = function()
-      require('denops-lazy').load('ddc.vim')
-      local patch_global = vim.fn['ddc#custom#patch_global']
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'skkeleton-initialize-pre',
+        callback = function()
+          local patch_global = vim.fn['ddc#custom#patch_global']
 
-      patch_global('sources', { 'skkeleton' })
-      patch_global('sourceOptions', {
-        skkeleton = {
-          mark = '[SKK]',
-          matchers = { 'skkeleton' },
-          isVolatile = true,
-          minAutoCompleteLength = 2,
-        },
+          patch_global('ui', 'pum')
+          patch_global('sources', { 'skkeleton' })
+          patch_global('sourceOptions', {
+            skkeleton = {
+              mark = '[SKK]',
+              matchers = { 'skkeleton' },
+              isVolatile = true,
+              minAutoCompleteLength = 2,
+            },
+          })
+
+          local opts = { silent = true, expr = true, noremap = true }
+          h.imap('<Tab>',
+            [[pum#visible() ? pum#map#insert_relative(+1) : '<Tab>']],
+            opts
+          )
+          h.imap('<S-Tab>',
+            [[pum#visible() ? pum#map#insert_relative(-1) : '<S-TAB>']],
+            opts
+          )
+
+          vim.fn['ddc#enable']()
+        end
       })
-
-      patch_global('ui', 'pum')
-
-      local opts = { silent = true, expr = true, noremap = true }
-      h.imap('<Tab>',
-        [[pum#visible() ? pum#map#insert_relative(+1) : '<Tab>']],
-        opts
-      )
-      h.imap('<S-Tab>',
-        [[pum#visible() ? pum#map#insert_relative(-1) : '<S-TAB>']],
-        opts
-      )
-
-      vim.fn['ddc#enable']()
     end,
   },
   {
     'Shougo/pum.vim',
+    lazy = true,
     config = function()
       vim.fn['pum#set_option']({
         auto_select = true,
@@ -101,7 +97,7 @@ require('lazy').setup({
   },
 }, {
   performance = {
-    defaults = { lazy = true },
+    defaults = { lazy = false },
     cache = { enabled = true },
     rtp = {
       disabled_plugins = {
