@@ -50,10 +50,9 @@ require('lazy').setup({
     },
     config = function()
       vim.api.nvim_create_autocmd('User', {
-        pattern = 'skkeleton-initialize-pre',
+        pattern = 'skkeleton-initialize-post',
         callback = function()
           local patch_global = vim.fn['ddc#custom#patch_global']
-
           patch_global('ui', 'pum')
           patch_global('sources', { 'skkeleton' })
           patch_global('sourceOptions', {
@@ -66,14 +65,8 @@ require('lazy').setup({
           })
 
           local opts = { silent = true, expr = true, noremap = true }
-          h.imap('<Tab>',
-            [[pum#visible() ? pum#map#insert_relative(+1) : '<Tab>']],
-            opts
-          )
-          h.imap('<S-Tab>',
-            [[pum#visible() ? pum#map#insert_relative(-1) : '<S-TAB>']],
-            opts
-          )
+          h.imap('<Tab>', [[pum#visible() ? pum#map#insert_relative(+1) : '<Tab>']], opts)
+          h.imap('<S-Tab>', [[pum#visible() ? pum#map#insert_relative(-1) : '<S-TAB>']], opts)
 
           vim.fn['ddc#enable']()
         end
