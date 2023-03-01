@@ -6,7 +6,7 @@ tmp=/tmp/vime
 [[ -f ${tmp} ]] && rm ${tmp}
 touch ${tmp}
 
-wezterm start --class vime nvim -c start ${tmp} || exit 1
-head -c -1 ${tmp} | wl-copy
+wezterm start --class vime nvim -u ~/.config/nvim/init_vime.lua -c start ${tmp} || exit 1
+wl-copy $(head -c -1 ${tmp})
 
 notify-send -t 1000 Copied!
