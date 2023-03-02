@@ -132,11 +132,9 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
             -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' \
             -B 'Yes, exit sway' 'swaymsg exit'
     
-    # Lock
-    bindsym $mod+Ctrl+l exec swaylock
-
     # VIME
-    bindsym $mod+C exec XMODIFIERS=@im= ~/.config/sway/vime.sh
+    bindsym $mod+i exec XMODIFIERS=@im= ~/.config/sway/vime.sh --clear
+    bindsym $mod+Shift+i exec XMODIFIERS=@im= ~/.config/sway/vime.sh
 #
 # Moving around:
 #
@@ -264,7 +262,7 @@ set $mode_shutdown "\
 </span>"
 mode --pango_markup $mode_shutdown {
     # lock
-    bindsym l mode "default", exec $locking
+    bindsym l mode "default", exec swaylock
     # logout
     bindsym e exec loginctl terminate-user $USER
     # suspend
@@ -313,3 +311,5 @@ exec_always {
 #
 # notify (mako)
 exec mako
+# WebRTC
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
