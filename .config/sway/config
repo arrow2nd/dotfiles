@@ -280,11 +280,10 @@ bindsym $mod+Shift+e mode $mode_shutdown
 
 ### Floating:
 #
-for_window [app_id="" title="ネットワーク接続"] floating enable, sticky enable
 for_window [app_id="" title="ピクチャーインピクチャー"] floating enable, sticky enable
 for_window [app_id="" title="Bitwarden"] floating enable, sticky enable
+for_window [app_id="clamtk" title=""] floating enable, sticky enable
 for_window [app_id="pavucontrol" title=""] floating enable, sticky enable
-for_window [app_id="blueman-manager"] floating enable, sticky enable
 for_window [app_id="firefox" title="^Library$"] floating enable, border pixel 1, sticky enable
 for_window [app_id="vime"] floating enabled, resize set 650 300
 for_window [app_id="term_float"] floating enabled, resize set 800 500
