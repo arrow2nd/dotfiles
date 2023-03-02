@@ -1,10 +1,10 @@
-local h = require('util.helper')
+local imap = require('util.helper').imap
 local fn = vim.fn
 
 return {
   {
     'Shougo/ddc.vim',
-    event = 'InsertEnter',
+    event = 'BufReadPost',
     dependencies = {
       'vim-denops/denops.vim',
       'yuki-yano/denops-lazy.nvim',
@@ -69,11 +69,11 @@ return {
 
       -- keymap
       local opts = { silent = true, expr = true, noremap = true }
-      h.imap('<Tab>',
+      imap('<Tab>',
         [[pum#visible() ? pum#map#insert_relative(+1) : '<Tab>']],
         opts
       )
-      h.imap('<S-Tab>',
+      imap('<S-Tab>',
         [[pum#visible() ? pum#map#insert_relative(-1) : '<S-TAB>']],
         opts
       )
@@ -92,19 +92,14 @@ return {
 
       -- keymaps
       local opts = { silent = true, noremap = true }
-      h.imap('<C-y>', '<Cmd>call pum#map#confirm()<CR>', opts)
-      h.imap('<C-e>', '<Cmd>call pum#map#cancel()<CR>', opts)
+      imap('<C-y>', '<Cmd>call pum#map#confirm()<CR>', opts)
+      imap('<C-e>', '<Cmd>call pum#map#cancel()<CR>', opts)
     end
   },
   {
     'matsui54/denops-popup-preview.vim',
-    dependencies = {
-      'vim-denops/denops.vim',
-      'yuki-yano/denops-lazy.nvim',
-    },
+    dependencies = { 'vim-denops/denops.vim' },
     config = function()
-      require('denops-lazy').load('denops-popup-preview.vim')
-
       vim.g.popup_preview_config = {
         border = false,
         supportVsnip = true,
@@ -118,13 +113,8 @@ return {
   },
   {
     'matsui54/denops-signature_help',
-    dependencies = {
-      'vim-denops/denops.vim',
-      'yuki-yano/denops-lazy.nvim',
-    },
+    dependencies = { 'vim-denops/denops.vim' },
     config = function()
-      require('denops-lazy').load('denops-signature_help')
-
       vim.g.signature_help_config = {
         contentsStyle = 'currentLabel',
         viewStyle = 'virtual',

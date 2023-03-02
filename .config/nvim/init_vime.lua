@@ -48,7 +48,7 @@ require('lazy').setup({
       'Shougo/pum.vim',
       'Shougo/ddc-ui-pum',
     },
-    config = function()
+    init = function()
       vim.api.nvim_create_autocmd('User', {
         pattern = 'skkeleton-initialize-post',
         callback = function()

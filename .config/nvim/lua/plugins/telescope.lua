@@ -1,4 +1,4 @@
-local h = require('util.helper')
+local nmap = require('util.helper').nmap
 
 return {
   {
@@ -11,14 +11,14 @@ return {
     },
     cmd = 'Telescope',
     init = function()
-      h.nmap('<Leader>ff', '<CMD>Telescope find_files<CR>')
-      h.nmap('<Leader>fg', '<CMD>Telescope live_grep<CR>')
-      h.nmap('<Leader>fb', '<CMD>Telescope buffers<CR>')
-      h.nmap('<Leader>fr', '<CMD>Telescope registers<CR>')
-      h.nmap('<Leader>fk', '<CMD>Telescope keymaps<CR>')
-      h.nmap('<Leader>fh', '<CMD>Telescope help_tags<CR>')
-      h.nmap('<Leader>fc', '<CMD>Telescope git_commits<CR>')
-      h.nmap('<Leader>bb', function()
+      nmap('<Leader>ff', '<CMD>Telescope find_files<CR>')
+      nmap('<Leader>fg', '<CMD>Telescope live_grep<CR>')
+      nmap('<Leader>fb', '<CMD>Telescope buffers<CR>')
+      nmap('<Leader>fr', '<CMD>Telescope registers<CR>')
+      nmap('<Leader>fk', '<CMD>Telescope keymaps<CR>')
+      nmap('<Leader>fh', '<CMD>Telescope help_tags<CR>')
+      nmap('<Leader>fc', '<CMD>Telescope git_commits<CR>')
+      nmap('<Leader>bb', function()
         return '<CMD>Telescope file_browser cwd=' .. vim.fn.expand('%:p:h') .. '<CR>'
       end, { silent = true, expr = true })
     end,

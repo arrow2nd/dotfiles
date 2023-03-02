@@ -2,14 +2,9 @@ local h = require('util.helper')
 local api = vim.api
 
 return {
-  {
-    'rbtnn/vim-ambiwidth',
-    lazy = false,
-  },
-  {
-    'vim-jp/vimdoc-ja',
-    lazy = false,
-  },
+  { 'rbtnn/vim-ambiwidth',  lazy = false },
+  { 'vim-jp/vimdoc-ja',     lazy = false },
+  { 'thinca/vim-qfreplace', cmd = 'Qfreplace' },
   {
     'lambdalisue/gin.vim',
     dependencies = {
@@ -48,10 +43,6 @@ return {
     'kylechui/nvim-surround',
     event = 'BufReadPost',
     config = true,
-  },
-  {
-    'thinca/vim-qfreplace',
-    cmd = 'Qfreplace',
   },
   {
     'toppair/peek.nvim',
@@ -115,7 +106,7 @@ return {
   },
   {
     'vim-skk/skkeleton',
-    event = 'VeryLazy',
+    event = "BufReadPost",
     dependencies = { 'vim-denops/denops.vim' },
     init = function()
       h.imap('<C-j>', '<Plug>(skkeleton-enable)')

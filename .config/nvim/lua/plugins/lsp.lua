@@ -48,13 +48,11 @@ return {
 
         -- denols と tsserver を出し分ける
         -- ref: https://zenn.dev/kawarimidoll/articles/2b57745045b225
-        if server == 'denols' then
-          if is_node_repo then return end
+        if server == 'denols' and not is_node_repo then
           opts.cmd = { 'deno', 'lsp', '--unstable' }
           opts.root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc')
           opts.init_options = { lint = true, unstable = true }
-        elseif server == 'tsserver' then
-          if not is_node_repo then return end
+        elseif server == 'tsserver' and is_node_repo then
           opts.root_dir = node_root_dir
           opts.on_attach = disable_fmt_on_attach
         elseif server == 'tailwindcss' then
@@ -108,13 +106,13 @@ return {
       null_ls.setup({
         sources = {
           null_ls.builtins.formatting.prettierd,
-          null_ls.builtins.diagnostics.textlint.with {
+          null_ls.builtins.diagnostics.textlint.with({
             filetypes = { 'markdown' },
             prefer_local = 'node_modules/.bin',
             condition = function(utils)
               return utils.has_file({ '.textlintrc', '.textlintrc.yml', '.textlintrc.json' })
             end,
-          },
+          }),
         },
         on_attach = common_on_attach,
         diagnostics_format = '#{m} (#{s}: #{c})',
