@@ -16,7 +16,7 @@ border-radius=4
 icon-path=/usr/share/icons/Nordzy:/usr/share/icons/Nordzy-dark
 
 [urgency=normal]
-background-color=#1e2132dd
+background-color=#6b7089dd
 text-color=#c6c8d1
 
 [urgency=low]
