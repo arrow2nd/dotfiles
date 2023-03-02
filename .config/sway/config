@@ -50,8 +50,8 @@ client.background       $c_white
 
 ### Border:
 #
-# default_border pixel 2
-# smart_borders none
+default_border pixel 2
+smart_borders none
 
 ### Gap:
 #
