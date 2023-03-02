@@ -133,8 +133,8 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
             -B 'Yes, exit sway' 'swaymsg exit'
     
     # VIME
-    bindsym $mod+i exec XMODIFIERS=@im= ~/.config/sway/vime.sh --clear
-    bindsym $mod+Shift+i exec XMODIFIERS=@im= ~/.config/sway/vime.sh
+    bindsym $mod+i exec ~/.config/sway/vime.sh --clear
+    bindsym $mod+Shift+i exec ~/.config/sway/vime.sh
 #
 # Moving around:
 #
