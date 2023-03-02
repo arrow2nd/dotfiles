@@ -50,8 +50,8 @@ client.background       $c_white
 
 ### Border:
 #
-default_border pixel 2
-smart_borders none
+# default_border pixel 2
+# smart_borders none
 
 ### Gap:
 #
@@ -280,6 +280,7 @@ bindsym $mod+Shift+e mode $mode_shutdown
 
 ### Floating:
 #
+for_window [app_id="" title=".*共有インジケーター$"] floating enable, sticky enable
 for_window [app_id="" title="ピクチャーインピクチャー"] floating enable, sticky enable
 for_window [app_id="" title="Bitwarden"] floating enable, sticky enable
 for_window [app_id="clamtk" title=""] floating enable, sticky enable
