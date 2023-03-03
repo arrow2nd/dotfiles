@@ -134,17 +134,6 @@ return {
     end,
   },
   {
-    'lambdalisue/butler.vim',
-    dependencies = {
-      'vim-denops/denops.vim',
-      'yuki-yano/denops-lazy.nvim'
-    },
-    cmd = 'Butler',
-    config = function()
-      require('denops-lazy').load('butler.vim')
-    end
-  },
-  {
     'skanehira/denops-translate.vim',
     dependencies = {
       'vim-denops/denops.vim',
