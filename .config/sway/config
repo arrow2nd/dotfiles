@@ -11,11 +11,12 @@ set $up k
 set $right l
 # wob
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
-# Terminal emulator
+# Application
 set $term wezterm
 set $term_float wezterm start --class term_float
-# Application launcher
 set $menu wofi
+set $screenshot /usr/share/sway/scripts/grimshot --notify
+# Application launcher
 # Mixer
 set $volume_up pamixer -ui 2 && pamixer --get-volume > $WOBSOCK
 set $volume_down pamixer -ud 2 && pamixer --get-volume > $WOBSOCK
@@ -217,11 +218,14 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # ScreenShot:
 #
     # アクティブウィンドウ
-    bindsym $mod+Ctrl+Shift+2 exec /usr/share/sway/scripts/grimshot --notify save window $HOME/pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
+    bindsym $mod+Ctrl+2 exec $screenshot copy window
+    bindsym $mod+Ctrl+Shift+2 exec $screenshot save window $HOME/pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
     # フルスクリーン
-    bindsym $mod+Ctrl+Shift+3 exec /usr/share/sway/scripts/grimshot --notify save output $HOME/pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
+    bindsym $mod+Ctrl+3 exec $screenshot copy output
+    bindsym $mod+Ctrl+Shift+3 exec $screenshot save output $HOME/pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
     # 選択範囲
-    bindsym $mod+Ctrl+Shift+4 exec /usr/share/sway/scripts/grimshot --notify save area $HOME/pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
+    bindsym $mod+Ctrl+4 exec $screenshot copy area
+    bindsym $mod+Ctrl+Shift+4 exec $screenshot save area $HOME/pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
 #
 # Brightness:
 #
