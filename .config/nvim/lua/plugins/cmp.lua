@@ -4,10 +4,9 @@ local fn = vim.fn
 return {
   {
     'Shougo/ddc.vim',
-    event = 'BufReadPost',
+    lazy = false,
     dependencies = {
       'vim-denops/denops.vim',
-      'yuki-yano/denops-lazy.nvim',
       -- UI
       'Shougo/pum.vim',
       'Shougo/ddc-ui-pum',
@@ -27,7 +26,6 @@ return {
       'matsui54/denops-signature_help',
     },
     config = function()
-      require('denops-lazy').load('ddc.vim')
       local patch_global = fn['ddc#custom#patch_global']
 
       patch_global('sources', {
@@ -125,7 +123,7 @@ return {
   },
   {
     'hrsh7th/vim-vsnip',
-    event = 'InsertEnter',
+    lazy = false,
     dependencies = { 'hrsh7th/vim-vsnip-integ' },
     config = function()
       vim.g.vsnip_snippet_dir = '~/.config/vsnip'

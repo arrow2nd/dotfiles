@@ -7,19 +7,13 @@ return {
   { 'thinca/vim-qfreplace', cmd = 'Qfreplace' },
   {
     'lambdalisue/gin.vim',
-    dependencies = {
-      'vim-denops/denops.vim',
-      'yuki-yano/denops-lazy.nvim'
-    },
-    cmd = { 'Gin', 'GinStatus', 'GinDiff', 'GinLog', 'GinChaperon' },
+    lazy = false,
+    dependencies = { 'vim-denops/denops.vim' },
     init = function()
       h.nmap('<Leader>gs', '<CMD>GinStatus ++opener=split<CR>', { desc = 'Operate git status' })
       h.nmap('<Leader>gc', '<CMD>Gin commit<CR>', { desc = 'Operate git commit' })
       h.nmap('<Leader>gd', '<CMD>GinDiff ++opener=vsplit<CR>', { desc = 'Show git diff' })
       h.nmap('<Leader>gl', '<CMD>GinLog ++opener=split<CR>', { desc = 'Show git log' })
-    end,
-    config = function()
-      require('denops-lazy').load('gin.vim')
     end
   },
   {
@@ -89,24 +83,19 @@ return {
   },
   {
     'yuki-yano/fuzzy-motion.vim',
+    lazy = false,
     dependencies = {
       'vim-denops/denops.vim',
       'lambdalisue/kensaku.vim',
-      'yuki-yano/denops-lazy.nvim'
     },
-    cmd = 'FuzzyMotion',
     init = function()
       h.nmap('<Leader><Space>', '<CMD>FuzzyMotion<CR>')
       vim.g.fuzzy_motion_matchers = { 'fzf', 'kensaku' }
-    end,
-    config = function()
-      require('denops-lazy').load('kensaku.vim')
-      require('denops-lazy').load('fuzzy-motion.vim')
     end
   },
   {
     'vim-skk/skkeleton',
-    event = "BufReadPost",
+    lazy = false,
     dependencies = { 'vim-denops/denops.vim' },
     init = function()
       h.imap('<C-j>', '<Plug>(skkeleton-enable)')
@@ -135,13 +124,7 @@ return {
   },
   {
     'skanehira/denops-translate.vim',
-    dependencies = {
-      'vim-denops/denops.vim',
-      'yuki-yano/denops-lazy.nvim'
-    },
-    cmd = 'Translate',
-    config = function()
-      require('denops-lazy').load('denops-translate.vim')
-    end
+    lazy = false,
+    dependencies = { 'vim-denops/denops.vim' },
   }
 }
