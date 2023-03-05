@@ -80,7 +80,6 @@ return {
         'rust_analyzer',
         'tailwindcss',
         'cssls',
-        'bashls',
       },
       automatic_installation = true,
     }
