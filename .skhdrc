@@ -1,5 +1,5 @@
 # Reload yabai
-ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+cmd + shift - c : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 # changing the container layout
 # alt - e : yabai -m space --layout bsp
