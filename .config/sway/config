@@ -219,13 +219,13 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 #
     # アクティブウィンドウ
     bindsym $mod+Ctrl+2 exec $screenshot copy window
-    bindsym $mod+Ctrl+Shift+2 exec $screenshot save window $HOME/pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
+    bindsym $mod+Ctrl+Shift+2 exec $screenshot save window $HOME/Pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
     # フルスクリーン
     bindsym $mod+Ctrl+3 exec $screenshot copy output
-    bindsym $mod+Ctrl+Shift+3 exec $screenshot save output $HOME/pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
+    bindsym $mod+Ctrl+Shift+3 exec $screenshot save output $HOME/Pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
     # 選択範囲
     bindsym $mod+Ctrl+4 exec $screenshot copy area
-    bindsym $mod+Ctrl+Shift+4 exec $screenshot save area $HOME/pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
+    bindsym $mod+Ctrl+Shift+4 exec $screenshot save area $HOME/Pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
 #
 # Brightness:
 #
