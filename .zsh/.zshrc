@@ -7,9 +7,11 @@ eval "$(sheldon source)"
 #
 # プロンプト
 #
-
-MNML_USER_CHAR=""
-MNML_INSERT_CHAR=""
+() {
+  local emoji=('🐴' '🐶' '🦄' '🦀' '🐱' '🍷' '🍺' '🥙' '🍿' '🥝' '🍤' '🍣' '🍛' '🌵')
+  MNML_USER_CHAR=$emoji[($RANDOM % $#emoji + 1)]
+  MNML_INSERT_CHAR=""
+}
 
 #
 # パス
