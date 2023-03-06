@@ -9,6 +9,9 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # Firefox
 export MOZ_ENABLE_WAYLAND=1
 
+# Android Studio
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Qt
 export QT_QPA_PLATFORM="wayland;xcb"
 
