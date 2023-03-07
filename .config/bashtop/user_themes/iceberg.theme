@@ -1,0 +1,81 @@
+# iceberg style palette (https://cocopon.github.io/iceberg.vim/)
+# by arrow2nd (iceberg Author @cocopon)
+
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]="#1e2132"
+
+# Main text color
+theme[main_fg]="#c6c8d1"
+
+# Title color for boxes
+theme[title]="#84a0c6"
+
+# Higlight color for keyboard shortcuts
+theme[hi_fg]="#b4be82"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#6b7089"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#d2d4de"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#6b7089"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#a093c7"
+
+# Cpu box outline color
+theme[cpu_box]="#6b7089"
+
+# Memory/disks box outline color
+theme[mem_box]="#6b7089"
+
+# Net up/down box outline color
+theme[net_box]="#6b7089"
+
+# Processes box outline color
+theme[proc_box]="#6b7089"
+
+# Box divider line and small boxes line color
+theme[div_line]="#6b7089"
+
+# Temperature graph colors
+theme[temp_start]="#84a0c6"
+theme[temp_mid]="#95c4ce"
+theme[temp_end]="#d2d4de"
+
+# CPU graph colors
+theme[cpu_start]="#84a0c6"
+theme[cpu_mid]="#95c4ce"
+theme[cpu_end]="#d2d4de"
+
+# Mem/Disk free meter
+theme[free_start]="#84a0c6"
+theme[free_mid]="#95c4ce"
+theme[free_end]="#d2d4de"
+
+# Mem/Disk cached meter
+theme[cached_start]="#84a0c6"
+theme[cached_mid]="#95c4ce"
+theme[cached_end]="#d2d4de"
+
+# Mem/Disk available meter
+theme[available_start]="#84a0c6"
+theme[available_mid]="#95c4ce"
+theme[available_end]="#d2d4de"
+
+# Mem/Disk used meter
+theme[used_start]="#84a0c6"
+theme[used_mid]="#95c4ce"
+theme[used_end]="#d2d4de"
+
+# Download graph colors
+theme[download_start]="#84a0c6"
+theme[download_mid]="#95c4ce"
+theme[download_end]="#d2d4de"
+
+# Upload graph colors
+theme[upload_start]="#84a0c6"
+theme[upload_mid]="#95c4ce"
+theme[upload_end]="#d2d4de"
