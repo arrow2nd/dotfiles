@@ -13,4 +13,5 @@ find . -type f \
        -not -path "*waybar*" \
        -not -path "*swaylock*" \
        -not -path "*mako*" | \
+       -not -path "*pipewire*" | \
        cut -c 3-
