@@ -42,8 +42,7 @@ return {
             vertical = {
               width = 0.8,
               height = 0.9,
-              mirror = true,
-              prompt_position = 'top',
+              prompt_position = 'bottom',
             },
           },
           preview = { treesitter = false },
