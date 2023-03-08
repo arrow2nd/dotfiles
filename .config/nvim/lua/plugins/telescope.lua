@@ -29,16 +29,22 @@ return {
         defaults = {
           mappings = {
             i = {
-              ['<C-n>'] = 'cycle_history_next',
-              ['<C-p>'] = 'cycle_history_prev',
-              ['<ESC><ESC>'] = 'close',
+                  ['<C-n>'] = 'cycle_history_next',
+                  ['<C-p>'] = 'cycle_history_prev',
+                  ['<ESC><ESC>'] = 'close',
             },
             n = {
-              ['<ESC><ESC>'] = 'close',
+                  ['<ESC><ESC>'] = 'close',
             },
           },
+          layout_strategy = 'vertical',
           layout_config = {
-            horizontal = { width = 0.9 },
+            vertical = {
+              width = 0.5,
+              height = 0.9,
+              mirror = true,
+              prompt_position = 'top',
+            },
           },
           preview = { treesitter = false },
           file_ignore_patterns = { '^.git/' },
@@ -54,9 +60,7 @@ return {
           },
         },
         pickers = {
-          find_files = {
-            hidden = true,
-          },
+          find_files = { hidden = true },
           live_grep = {},
         },
         extensions = {
