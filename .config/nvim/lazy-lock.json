@@ -39,6 +39,7 @@
   "telescope.nvim": { "branch": "master", "commit": "c1a2af0af69e80e14e6b226d3957a064cd080805" },
   "vim-ambiwidth": { "branch": "main", "commit": "023c43aad6629c9b2fc7bda26f7a63891df0f44d" },
   "vim-qfreplace": { "branch": "master", "commit": "db1c4b0161931c9a63942f4f562a0d0f4271ac14" },
+  "vim-quickrun": { "branch": "master", "commit": "50f9ced186cf2651f4356aa3548c2306e181ec3b" },
   "vim-vsnip": { "branch": "master", "commit": "8dde8c0ef10bb1afdbb301e2bd7eb1c153dd558e" },
   "vim-vsnip-integ": { "branch": "master", "commit": "1cf89903f12777b90dd79eb4b3d7fbc0b9a254a1" },
   "vimdoc-ja": { "branch": "master", "commit": "46c25d6f3faa14d80758e28a1e577223e5e1df33" }

@@ -5,6 +5,7 @@ return {
   { 'rbtnn/vim-ambiwidth',  lazy = false },
   { 'vim-jp/vimdoc-ja',     lazy = false },
   { 'thinca/vim-qfreplace', cmd = 'Qfreplace' },
+  { 'thinca/vim-quickrun',  cmd = 'QuickRun' },
   {
     'lambdalisue/gin.vim',
     lazy = false,
