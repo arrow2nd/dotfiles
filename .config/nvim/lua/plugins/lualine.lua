@@ -32,8 +32,8 @@ return {
             { 'diagnostics', sources = { 'nvim_lsp' } },
           },
           lualine_c = { 'filename', get_lsp_progress },
-          lualine_x = { 'encoding', 'filetype' },
-          lualine_y = { 'progress' },
+          lualine_x = { 'fileformat', 'encoding' },
+          lualine_y = { 'filetype' },
           lualine_z = { 'location' }
         },
         inactive_sections = {
@@ -41,7 +41,7 @@ return {
           lualine_b = {},
           lualine_c = { 'filename' },
           lualine_x = {},
-          lualine_y = { 'encoding', 'location' },
+          lualine_y = { 'fileformat', 'encoding', 'location' },
           lualine_z = {}
         },
         tabline = {},
