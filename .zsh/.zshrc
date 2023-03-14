@@ -55,7 +55,7 @@ alias lt='exa -T'
 # 雑多
 alias cls='clear'
 alias v="nvim"
-alias y='yarn'
+alias p='pnpm'
 alias zmv='noglob zmv -W'
 alias rdflint='java -jar rdflint-*.jar'
 alias dot='cd ~/dotfiles'
