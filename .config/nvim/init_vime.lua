@@ -34,6 +34,7 @@ require('lazy').setup({
         pattern = 'skkeleton-initialize-pre',
         callback = function()
           vim.fn['skkeleton#config']({
+            eggLikeNewline = true,
             registerConvertResult = true,
             globalDictionaries = dictionaries,
           })
@@ -64,9 +65,9 @@ require('lazy').setup({
             },
           })
 
-          local opts = { silent = true, expr = true, noremap = true }
-          h.imap('<Tab>', [[pum#visible() ? pum#map#insert_relative(+1) : '<Tab>']], opts)
-          h.imap('<S-Tab>', [[pum#visible() ? pum#map#insert_relative(-1) : '<S-TAB>']], opts)
+          local opts = { silent = true, noremap = true }
+          h.imap('<c-n>', '<Cmd>call pum#map#select_relative(+1)<CR>', opts)
+          h.imap('<c-p>', '<Cmd>call pum#map#select_relative(-1)<CR>', opts)
 
           vim.fn['ddc#enable']()
         end
