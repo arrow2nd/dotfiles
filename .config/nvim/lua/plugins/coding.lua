@@ -123,6 +123,7 @@ return {
         pattern = 'skkeleton-initialize-pre',
         callback = function()
           vim.fn['skkeleton#config']({
+            eggLikeNewline = true,
             registerConvertResult = true,
             globalDictionaries = dictionaries,
           })
