@@ -2,7 +2,6 @@ local h = require('util.helper')
 local api = vim.api
 
 return {
-  { 'rbtnn/vim-ambiwidth',  lazy = false },
   { 'vim-jp/vimdoc-ja',     lazy = false },
   { 'thinca/vim-qfreplace', cmd = 'Qfreplace' },
   { 'thinca/vim-quickrun',  cmd = 'QuickRun' },
