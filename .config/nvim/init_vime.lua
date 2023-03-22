@@ -7,7 +7,6 @@ vim.opt.laststatus = 0
 vim.opt.rtp:prepend(vim.fn.stdpath('data') .. '/lazy/lazy.nvim')
 
 require('lazy').setup({
-  { 'rbtnn/vim-ambiwidth' },
   {
     'cocopon/iceberg.vim',
     priority = 1000,
