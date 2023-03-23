@@ -74,7 +74,7 @@ end
 return {
   check_for_updates = false,
   -- front_end = 'WebGpu',
-  font = wezterm.font 'PlemolJP Console NF',
+  font = wezterm.font('PlemolJP Console NF'),
   font_size = font_size,
   color_scheme = 'iceberg-dark',
   window_decorations = 'RESIZE',
