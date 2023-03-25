@@ -26,5 +26,8 @@ export QT_SCALE_FACTOR=1
 # keyring
 export SSH_AUTH_SOCK="/run/user/$(id -u)/keyring/ssh"
 
+# browser
+export BROWSER="vivaldi-stable"
+
 # sway
 /sbin/sway
