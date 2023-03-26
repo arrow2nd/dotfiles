@@ -7,18 +7,17 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'kyazdani42/nvim-web-devicons',
+      'nvim-telescope/telescope-ui-select.nvim',
       'nvim-telescope/telescope-file-browser.nvim'
     },
     cmd = 'Telescope',
     init = function()
-      nmap('<Leader>ff', '<CMD>Telescope find_files<CR>')
-      nmap('<Leader>fg', '<CMD>Telescope live_grep<CR>')
-      nmap('<Leader>fb', '<CMD>Telescope buffers<CR>')
-      nmap('<Leader>fr', '<CMD>Telescope registers<CR>')
-      nmap('<Leader>fk', '<CMD>Telescope keymaps<CR>')
-      nmap('<Leader>fh', '<CMD>Telescope help_tags<CR>')
-      nmap('<Leader>fc', '<CMD>Telescope git_commits<CR>')
-      nmap('<Leader>bb', function()
+      nmap(';f', '<CMD>Telescope find_files<CR>')
+      nmap(';g', '<CMD>Telescope live_grep<CR>')
+      nmap(';k', '<CMD>Telescope keymaps<CR>')
+      nmap(';h', '<CMD>Telescope help_tags<CR>')
+      nmap(';c', '<CMD>Telescope git_commits<CR>')
+      nmap(';b', function()
         return '<CMD>Telescope file_browser cwd=' .. vim.fn.expand('%:p:h') .. '<CR>'
       end, { silent = true, expr = true })
     end,
@@ -33,12 +32,13 @@ return {
                   ['<C-k>'] = 'move_selection_previous',
                   ['<C-n>'] = 'cycle_history_next',
                   ['<C-p>'] = 'cycle_history_prev',
-                  ['<ESC><ESC>'] = 'close',
+                  ['<C-q>'] = 'close',
             },
             n = {
-                  ['<ESC><ESC>'] = 'close',
+                  ['q'] = 'close',
             },
           },
+          prompt_prefix = ' ',
           layout_strategy = 'vertical',
           layout_config = {
             vertical = {
@@ -72,6 +72,7 @@ return {
         }
       })
 
+      telescope.load_extension('ui-select')
       telescope.load_extension('file_browser')
     end
   }
