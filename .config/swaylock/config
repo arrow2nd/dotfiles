@@ -10,6 +10,7 @@ fade-in=0.5
 
 indicator-radius=100
 indicator-thickness=7
+
 inside-color=00000066
 inside-clear-color=00000000
 inside-ver-color=00000000
@@ -28,7 +29,7 @@ line-wrong-color=e27878
 text-color=c6c8d1
 text-clear-color=c6c8d1
 text-ver-color=c6c8d1
-text-wrong-color=c6c8d1
+text-wrong-color=00000066
 
 key-hl-color=84a0c6
 separator-color=00000000
