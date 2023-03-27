@@ -22,8 +22,10 @@ return {
         dependencies = { "lambdalisue/mr.vim" },
       },
       -- Filter
-      'yuki-yano/ddu-filter-fzf',
-      'Milly/ddu-filter-kensaku',
+      {
+        'Milly/ddu-filter-kensaku',
+        dependencies = { 'lambdalisue/kensaku.vim' },
+      },
       -- Kind
       'Shougo/ddu-kind-file',
       'Shougo/ddu-kind-word',
