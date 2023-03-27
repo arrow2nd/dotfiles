@@ -15,12 +15,18 @@ return {
       'Shougo/ddu-source-file_rec',
       'Shougo/ddu-source-line',
       'shun/ddu-source-rg',
+      'shun/ddu-source-buffer',
       'matsui54/ddu-source-help',
+      {
+        "kuuote/ddu-source-mr",
+        dependencies = { "lambdalisue/mr.vim" },
+      },
       -- Filter
       'yuki-yano/ddu-filter-fzf',
       'Milly/ddu-filter-kensaku',
       -- Kind
       'Shougo/ddu-kind-file',
+      'Shougo/ddu-kind-word',
       -- Column
       'ryota2357/ddu-column-icon_filename',
       -- ui-select
@@ -30,8 +36,11 @@ return {
     },
     init = function()
       h.nmap(';f', '<Cmd>Ddu file_rec -ui-param-startFilter<CR>')
-      h.nmap(';l', '<Cmd>Ddu line -ui-param-startFilter<CR>')
-      h.nmap(';H', '<Cmd>Ddu help -ui-param-startFilter<CR>')
+      h.nmap(';h', '<Cmd>Ddu help -ui-param-startFilter<CR>')
+      h.nmap(';B', '<Cmd>Ddu -name=with_preview buffer<CR>')
+      h.nmap(';l', '<Cmd>Ddu -name=with_preview line<CR>')
+      h.nmap(';u', '<Cmd>Ddu -name=with_preview mr<CR>')
+      h.nmap(';w', '<Cmd>Ddu -name=with_preview mr -source-param-kind="mrw"<CR>')
       h.nmap(';g', function()
         vim.fn['ddu#start']({ name = 'grep' })
       end)
@@ -85,6 +94,9 @@ return {
           action = {
             defaultAction = 'do',
           },
+          word = {
+            defaultAction = 'append',
+          },
           ui_select = {
             defaultAction = 'select',
           },
@@ -96,19 +108,26 @@ return {
         },
       })
 
+      local ui_params_preview = {
+        ff = {
+          ignoreEmpty = false,
+          startFilter = true,
+          autoAction = { name = 'preview' },
+        },
+      }
+
+      -- With preview
+      vim.fn['ddu#custom#patch_local']('with_preview', {
+        uiParams = ui_params_preview,
+      })
+
       -- Live grep
       vim.fn['ddu#custom#patch_local']('grep', {
         volatile = true,
         sources = {
           { name = 'rg' },
         },
-        uiParams = {
-          ff = {
-            ignoreEmpty = false,
-            startFilter = true,
-            autoAction = { name = 'preview' },
-          },
-        },
+        uiParams = ui_params_preview,
       })
 
       -- Filer
@@ -127,6 +146,7 @@ return {
         },
       })
 
+      -- keymaps
       local opts = { buffer = true, silent = true, noremap = true }
       local nowait = { buffer = true, silent = true, noremap = true, nowait = true }
 

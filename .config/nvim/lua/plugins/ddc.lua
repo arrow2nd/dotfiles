@@ -44,7 +44,7 @@ return {
           ignoreCase = true,
         },
         around = { mark = '[A]' },
-            ['nvim-lsp'] = {
+        ['nvim-lsp'] = {
           mark = '[LS]',
           forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
         },
@@ -121,8 +121,6 @@ return {
     dependencies = { 'hrsh7th/vim-vsnip-integ' },
     config = function()
       vim.g.vsnip_snippet_dir = '~/.config/vsnip'
-
-      -- NOTE: `h.imap() の形式で書くと、ジャンプしようとした際に `vsnip~` が入力されてしまうので vim.cmd を使ってる
       vim.cmd('imap <expr> <C-l> vsnip#jumpable(1) ? "<Plug>(vsnip-jump-next)" : "<C-l>"')
       vim.cmd('smap <expr> <C-l> vsnip#jumpable(1) ? "<Plug>(vsnip-jump-next)" : "<C-l>"')
       vim.cmd('imap <expr> <C-h> vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-h>"')
