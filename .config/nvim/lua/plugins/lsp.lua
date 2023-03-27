@@ -1,18 +1,6 @@
 local h = require('util.helper')
 
 local common_on_attach = function(client, bufnr)
-  h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>')
-  h.nmap('gn', '<CMD>lua vim.lsp.buf.rename()<CR>')
-  h.nmap('ge', '<CMD>lua vim.diagnostic.open_float()<CR>')
-  h.nmap('g]', '<CMD>lua vim.diagnostic.goto_next()<CR>')
-  h.nmap('g[', '<CMD>lua vim.diagnostic.goto_prev()<CR>')
-  h.nmap('ga', '<CMD>lua vim.lsp.buf.code_action()<CR>', { desc = 'Show available code actions' })
-  h.nmap('gE', '<CMD>Telescope diagnostics<CR>')
-  h.nmap('gr', '<CMD>Telescope lsp_references<CR>', { desc = 'Lists all the references' })
-  h.nmap('gi', '<CMD>Telescope lsp_implementations<CR>', { desc = 'Lists all the implementations' })
-  h.nmap('gd', '<CMD>Telescope lsp_definitions<CR>', { desc = 'Lists all the definitions' })
-  h.nmap('gt', '<CMD>Telescope lsp_type_definitions<CR>', { desc = 'Lists all the type definitions' })
-
   local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
 
   -- 保存時に自動でフォーマット
@@ -67,6 +55,20 @@ return {
 
         lspconfig[server].setup(opts)
       end })
+
+      -- keymaps
+      h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>', { desc = 'Show hover' })
+      h.nmap('gf', '<CMD>lua vim.lsp.buf.format({ async = true })<CR>', { desc = 'Formatting' })
+      h.nmap('ga', '<CMD>lua vim.lsp.buf.code_action()<CR>', { desc = 'Show available code actions' })
+      h.nmap('gn', '<CMD>lua vim.lsp.buf.rename()<CR>', { desc = 'Rename definition' })
+      h.nmap('gr', '<CMD>lua vim.lsp.buf.references()<CR>', { desc = 'Show references' })
+      h.nmap('gd', '<CMD>lua vim.lsp.buf.definition()<CR>', { desc = 'Show definitions' })
+      h.nmap('gD', '<CMD>lua vim.lsp.buf.declaration()<CR>', { desc = 'Show declarations' })
+      h.nmap('gt', '<CMD>lua vim.lsp.buf.type_definition()<CR>', { desc = 'Show type definitions' })
+      h.nmap('ge', '<CMD>lua vim.diagnostic.open_float()<CR>', { desc = 'Show diagnostic' })
+      h.nmap('gE', '<CMD>lua vim.diagnostics.setqflist()<CR>', { desc = 'Send references to quickfix' })
+      h.nmap('g]', '<CMD>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic" })
+      h.nmap('g[', '<CMD>lua vim.diagnostic.goto_prev()<CR>', { desc = "Go to previous diagnostic" })
     end
   },
   {

@@ -22,5 +22,9 @@ h.nmap('<ESC><ESC>', '<CMD>nohlsearch<CR>', { desc = 'Unhighlight' })
 h.omap('<C-p>', '<Up>')
 h.omap('<C-n>', '<Down>')
 
+-- quickfix
+h.nmap('q[', '<Cmd>cprevious<CR>')
+h.nmap('q]', '<Cmd>cnext<CR>')
+
 -- ESCでターミナルを抜ける
 h.tmap('<ESC>', '<C-\\><C-n>')
