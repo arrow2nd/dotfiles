@@ -52,6 +52,7 @@ return {
             preview = true,
             previewFloating = true,
             previewSplit = 'horizontal',
+            autoResize = false,
           },
         },
         sourceParams = {
@@ -105,7 +106,6 @@ return {
           ff = {
             ignoreEmpty = false,
             startFilter = true,
-            autoResize = false,
             autoAction = { name = 'preview' },
           },
         },
@@ -164,6 +164,7 @@ return {
         callback = function()
           common_keymaps()
           h.nmap('i', '<Cmd>call ddu#ui#ff#do_action("openFilterWindow")<CR>', opts)
+          -- 一括でQuickfixに流しこむ
           h.nmap('Q', function()
             vim.fn['ddu#ui#ff#multi_actions']({
               { 'clearSelectAllItems' },
