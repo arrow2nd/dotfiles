@@ -12,7 +12,7 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('lualine').setup({
         options = {
@@ -31,9 +31,9 @@ return {
             'diff',
             { 'diagnostics', sources = { 'nvim_lsp' } },
           },
-          lualine_c = { 'filename', get_lsp_progress },
-          lualine_x = { 'fileformat', 'encoding' },
-          lualine_y = { 'filetype' },
+          lualine_c = { 'filename' },
+          lualine_x = { get_lsp_progress },
+          lualine_y = { 'fileformat', 'encoding' },
           lualine_z = { 'location' }
         },
         inactive_sections = {

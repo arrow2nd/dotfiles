@@ -1,19 +1,22 @@
 local h = require('util.helper')
-local api = vim.api
 
 return {
   { 'vim-jp/vimdoc-ja',     lazy = false },
   { 'thinca/vim-qfreplace', cmd = 'Qfreplace' },
   { 'thinca/vim-quickrun',  cmd = 'QuickRun' },
   {
-    'lambdalisue/gin.vim',
-    lazy = false,
-    dependencies = { 'vim-denops/denops.vim' },
-    init = function()
-      h.nmap('<Leader>gs', '<CMD>GinStatus ++opener=split<CR>', { desc = 'Operate git status' })
-      h.nmap('<Leader>gc', '<CMD>Gin commit<CR>', { desc = 'Operate git commit' })
-      h.nmap('<Leader>gd', '<CMD>GinDiff ++opener=vsplit<CR>', { desc = 'Show git diff' })
-      h.nmap('<Leader>gl', '<CMD>GinLog ++opener=split<CR>', { desc = 'Show git log' })
+    'seblj/nvim-tabline',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    event = 'VeryLazy',
+    config = function()
+      require('tabline').setup({
+        no_name = '[No Name]',
+        modified_icon = '*',
+        show_icon = true,
+        color_all_icons = true,
+        separator = '',
+        padding = 2,
+      })
     end
   },
   {
@@ -50,8 +53,8 @@ return {
     build = 'deno task --quiet build:fast',
     ft = { 'markdown', 'pandoc.markdown', 'rmd' },
     init = function()
-      api.nvim_create_user_command('PeekOpen', require('peek').open, {})
-      api.nvim_create_user_command('PeekClose', require('peek').close, {})
+      vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
+      vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
     end,
     config = function()
       require('peek').setup({
@@ -99,36 +102,6 @@ return {
       h.nmap('<Leader><Space>', '<CMD>FuzzyMotion<CR>')
       vim.g.fuzzy_motion_matchers = { 'fzf', 'kensaku' }
     end
-  },
-  {
-    'vim-skk/skkeleton',
-    lazy = false,
-    dependencies = { 'vim-denops/denops.vim' },
-    init = function()
-      h.imap('<C-j>', '<Plug>(skkeleton-enable)')
-      h.cmap('<C-j>', '<Plug>(skkeleton-enable)')
-
-      -- 辞書を探す
-      local dictionaries = {}
-      local handle = io.popen('ls $HOME/.skk/*') -- フルバスで取得
-      if handle then
-        for file in handle:lines() do
-          table.insert(dictionaries, file)
-        end
-        handle:close()
-      end
-
-      api.nvim_create_autocmd('User', {
-        pattern = 'skkeleton-initialize-pre',
-        callback = function()
-          vim.fn['skkeleton#config']({
-            eggLikeNewline = true,
-            registerConvertResult = true,
-            globalDictionaries = dictionaries,
-          })
-        end
-      })
-    end,
   },
   {
     'skanehira/denops-translate.vim',
