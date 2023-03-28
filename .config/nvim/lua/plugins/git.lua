@@ -6,8 +6,9 @@ return {
     lazy = false,
     dependencies = { 'vim-denops/denops.vim' },
     init = function()
-      -- h.nmap('<Leader>gs', '<CMD>GinStatus ++opener=split<CR>', { desc = 'Operate git status' })
-      h.nmap('<Leader>gc', '<CMD>Gin commit<CR>', { desc = 'Operate git commit' })
+      h.nmap('<Leader>gs', '<CMD>GinStatus ++opener=split<CR>', { desc = 'git status' })
+      h.nmap('<Leader>gb', '<CMD>GinBranch ++opener=split<CR>', { desc = 'git branch' })
+      h.nmap('<Leader>gc', '<CMD>Gin commit<CR>', { desc = 'git commit' })
     end
   },
   {
@@ -97,6 +98,8 @@ return {
         keymaps = {
           disable_defaults = true,
           view = {
+            { 'n', '<ESC>',      act.close,                     { desc = 'Close view' } },
+            { 'n', 'q',          act.close,                     { desc = 'Close view' } },
             { 'n', '<TAB>',      act.select_next_entry,         { desc = 'Open the diff for the next file' } },
             { 'n', '<S-TAB>',    act.select_prev_entry,         { desc = 'Open the diff for the previous file' } },
             { 'n', '<C-n>',      act.select_next_entry,         { desc = 'Open the diff for the next file' } },
@@ -158,6 +161,8 @@ return {
             { 'n', '?', act.help({ 'view', 'diff4' }), { desc = 'Open the help panel' } },
           },
           file_panel = {
+            { 'n', '<ESC>',     act.close,               { desc = 'Close file panel' } },
+            { 'n', 'q',         act.close,               { desc = 'Close file panel' } },
             { 'n', 'j',         act.next_entry,          { desc = 'Bring the cursor to the next file entry' } },
             { 'n', '<DOWN>',    act.next_entry,          { desc = 'Bring the cursor to the next file entry' } },
             { 'n', 'k',         act.prev_entry,          { desc = 'Bring the cursor to the previous file entry.' } },
@@ -185,11 +190,10 @@ return {
             { 'n', '?',         act.help('file_panel'),  { desc = 'Open the help panel' } },
           },
           file_history_panel = {
-            { 'n', '!',       act.options,          { desc = 'Open the option panel' } },
-            { 'n', '<C-A-d>', act.open_in_diffview, { desc = 'Open the entry under the cursor in a diffview' } },
-            { 'n', 'y', act.copy_hash,
-              { desc = 'Copy the commit hash of the entry under the cursor', },
-            },
+            { 'n', '<ESC>',     act.close,                      { desc = 'Close file panel' } },
+            { 'n', 'q',         act.close,                      { desc = 'Close file panel' } },
+            { 'n', '!',         act.options,                    { desc = 'Open the option panel' } },
+            { 'n', '<C-A-d>',   act.open_in_diffview,           { desc = 'Open the entry under the cursor in a diffview' } },
             { 'n', 'L',         act.open_commit_log,            { desc = 'Show commit details' } },
             { 'n', 'zR',        act.open_all_folds,             { desc = 'Expand all folds' } },
             { 'n', 'zM',        act.close_all_folds,            { desc = 'Collapse all folds' } },
@@ -208,6 +212,9 @@ return {
             { 'n', '<Leader>b', act.toggle_files,               { desc = 'Toggle the file panel' } },
             { 'n', 'gx',        act.cycle_layout,               { desc = 'Cycle available layouts' } },
             { 'n', '?',         act.help('file_history_panel'), { desc = 'Open the help panel' } },
+            { 'n', 'y', act.copy_hash,
+              { desc = 'Copy the commit hash of the entry under the cursor', },
+            },
           },
           option_panel = {
             { 'n', '<TAB>', act.select_entry,         { desc = 'Change the current option' } },
