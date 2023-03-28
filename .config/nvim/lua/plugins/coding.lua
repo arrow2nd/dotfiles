@@ -5,21 +5,6 @@ return {
   { 'thinca/vim-qfreplace', cmd = 'Qfreplace' },
   { 'thinca/vim-quickrun',  cmd = 'QuickRun' },
   {
-    'seblj/nvim-tabline',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    event = 'VeryLazy',
-    config = function()
-      require('tabline').setup({
-        no_name = '[No Name]',
-        modified_icon = '*',
-        show_icon = true,
-        color_all_icons = true,
-        separator = '',
-        padding = 2,
-      })
-    end
-  },
-  {
     'norcalli/nvim-colorizer.lua',
     event = 'BufRead',
     config = function()
@@ -30,42 +15,6 @@ return {
     'windwp/nvim-ts-autotag',
     event = 'InsertEnter',
     config = true,
-  },
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    config = true,
-  },
-  {
-    'numToStr/Comment.nvim',
-    event = 'InsertEnter',
-    config = true,
-  },
-  {
-    'kylechui/nvim-surround',
-    event = 'BufReadPost',
-    config = true,
-  },
-  {
-    'toppair/peek.nvim',
-    build = 'deno task --quiet build:fast',
-    ft = { 'markdown', 'pandoc.markdown', 'rmd' },
-    init = function()
-      vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
-      vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
-    end,
-    config = function()
-      require('peek').setup({
-        auto_load = true,
-        close_on_bdelete = true,
-        syntax = true,
-        theme = 'dark',
-        update_on_change = true,
-        app = 'browser',
-        throttle_at = 200000,
-        throttle_time = 'auto',
-      })
-    end
   },
   {
     'monaqa/dial.nvim',

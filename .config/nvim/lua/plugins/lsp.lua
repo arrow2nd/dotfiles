@@ -67,8 +67,8 @@ return {
       h.nmap('gt', '<CMD>lua vim.lsp.buf.type_definition()<CR>', { desc = 'Show type definitions' })
       h.nmap('ge', '<CMD>lua vim.diagnostic.open_float()<CR>', { desc = 'Show diagnostic' })
       h.nmap('gE', '<CMD>lua vim.diagnostics.setqflist()<CR>', { desc = 'Send references to quickfix' })
-      h.nmap('g]', '<CMD>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic" })
-      h.nmap('g[', '<CMD>lua vim.diagnostic.goto_prev()<CR>', { desc = "Go to previous diagnostic" })
+      h.nmap(']g', '<CMD>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic" })
+      h.nmap('[g', '<CMD>lua vim.diagnostic.goto_prev()<CR>', { desc = "Go to previous diagnostic" })
     end
   },
   {

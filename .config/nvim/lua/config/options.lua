@@ -8,6 +8,9 @@ opt.fileencoding = 'utf-8'
 -- 24bitカラー
 opt.termguicolors = true
 
+-- statusline を下部に固定
+opt.laststatus = 3
+
 -- intro を非表示
 opt.shortmess = 'I'
 
