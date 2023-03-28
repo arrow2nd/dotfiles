@@ -37,11 +37,9 @@ return {
     config = true,
   },
   {
-    'terrortylor/nvim-comment',
+    'numToStr/Comment.nvim',
     event = 'InsertEnter',
-    config = function()
-      require('nvim_comment').setup()
-    end
+    config = true,
   },
   {
     'kylechui/nvim-surround',
