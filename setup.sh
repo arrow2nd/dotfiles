@@ -40,15 +40,17 @@ function link_dotfiles {
 
   local links=$(script_run "$SCRIPTS_DIR/find.sh")
 
+  IFS=$'\n'
   for f in $links; do
     mkdir -p "$HOME/$(dirname "$f")"
-    
+
     if [ -L "$HOME/$f" ]; then
       ln -sfv "$DOT_DIR/$f" "$HOME/$f"
     else
       ln -siv "$DOT_DIR/$f" "$HOME/$f"
     fi
   done
+  unset IFS
 }
 
 MENU="dotfiles (for macOS / Arch Linux)

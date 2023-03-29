@@ -6,5 +6,6 @@ find . -type f \
        -not -path "*.DS_Store" \
        -not -path "*.luarc.json" \
        -not -path "*.yabairc" \
-       -not -path "*.skhdrc" | \
-       cut -c 3-
+       -not -path "*.skhdrc" \
+       -not -path "*Library*" \
+       | cut -c 3-

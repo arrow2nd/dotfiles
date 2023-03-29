@@ -3,7 +3,10 @@
 set -eu 
 
 find . -type f \
-       -path "*/.*" \
+       -path "*/*" \
+       -not -path "*.sh" \
+       -not -path "*.md" \
+       -not -path "*scripts*" \
        -not -path "*.git*" \
        -not -path "*.DS_Store" \
        -not -path "*.luarc.json" \
