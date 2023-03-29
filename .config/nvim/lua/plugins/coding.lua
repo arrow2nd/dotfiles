@@ -54,5 +54,16 @@ return {
     'skanehira/denops-translate.vim',
     lazy = false,
     dependencies = { 'vim-denops/denops.vim' },
+  },
+  {
+    'voldikss/vim-floaterm',
+    cmd = { 'FloatermNew', 'FloatermToggle', 'FloatermSend' },
+    init = function()
+      h.nmap('<Leader>t', '<Cmd>FloatermToggle<CR>')
+    end,
+    config = function()
+      vim.g.floaterm_title = '  ($1/$2) '
+      vim.api.nvim_set_hl(0, "FloatermBorder", { link = "Normal" })
+    end
   }
 }
