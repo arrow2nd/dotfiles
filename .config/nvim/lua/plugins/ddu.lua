@@ -155,8 +155,9 @@ return {
       local common_keymaps = function()
         vim.wo.cursorline = true
         h.nmap('<CR>', '<Cmd>call ddu#ui#do_action("itemAction")<CR>', opts)
-        h.nmap('<C-CR>',
-          '<Cmd>call ddu#ui#do_action("itemAction", {"name": "open", "params": {"command": "vsplit"}})<CR>',
+        h.nmap('os', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "open", "params": {"command": "split"}})<CR>',
+          opts)
+        h.nmap('ov', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "open", "params": {"command": "vsplit"}})<CR>',
           opts)
         h.nmap('<SPACE>', '<Cmd>call ddu#ui#do_action("toggleSelectItem")<CR>', opts)
         h.nmap('<ESC>', '<Cmd>call ddu#ui#do_action("quit")<CR>', nowait)
@@ -211,9 +212,6 @@ return {
           h.nmap('q', '<Cmd>close<CR>', nowait)
           h.nmap('<ESC>', '<Cmd>close<CR>', nowait)
           h.imap('<CR>', '<Cmd>call ddu#ui#ff#do_action("itemAction")<CR>', opts)
-          h.imap('<C-CR>',
-            '<Cmd>call ddu#ui#do_action("itemAction", {"name": "open", "params": {"command": "vsplit"}})<CR>',
-            opts)
           h.imap('<C-j>', [[<Cmd>call ddu#ui#ff#execute('call cursor(line(".") + 1, 0)<Bar>redraw')<CR>]], opts)
           h.imap('<C-k>', [[<Cmd>call ddu#ui#ff#execute('call cursor(line(".") - 1, 0)<Bar>redraw')<CR>]], opts)
         end,
