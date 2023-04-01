@@ -54,18 +54,36 @@ return {
       end)
     end,
     config = function()
-      vim.fn['ddu#custom#patch_global']({
-        ui = 'ff',
-        uiParams = {
-          _ = {
-            split = 'floating',
-            filterSplitDirection = 'floating',
-            preview = true,
-            previewFloating = true,
-            previewSplit = 'horizontal',
-            autoResize = false,
+      local reset_ui = function()
+        local width = math.floor(vim.api.nvim_win_get_width(0) * 0.8)
+
+        vim.fn['ddu#custom#patch_global']({
+          ui = 'ff',
+          uiParams = {
+            _ = {
+              split = 'floating',
+              filterSplitDirection = 'floating',
+              winWidth = width,
+              winHeight = 16,
+              winCol = math.floor((vim.api.nvim_win_get_width(0) - width) / 2),
+              preview = true,
+              previewFloating = true,
+              previewSplit = 'horizontal',
+              previewWidth = width,
+              previewHeight = 12,
+              autoResize = false,
+            },
           },
-        },
+        })
+      end
+
+      reset_ui()
+      vim.api.nvim_create_autocmd('VimResized', {
+        pattern = '*',
+        callback = reset_ui,
+      })
+
+      vim.fn['ddu#custom#patch_global']({
         sourceParams = {
           file_rec = {
             ignoredDirectories = { '.git', 'node_modules', '.next' },
@@ -187,7 +205,7 @@ return {
         end,
       })
 
-      vim.api.nvim_create_autocmd("FileType", {
+      vim.api.nvim_create_autocmd('FileType', {
         pattern = 'ddu-ff',
         callback = function()
           common_keymaps()
@@ -206,7 +224,7 @@ return {
         end,
       })
 
-      vim.api.nvim_create_autocmd("FileType", {
+      vim.api.nvim_create_autocmd('FileType', {
         pattern = 'ddu-ff-filter',
         callback = function()
           h.nmap('q', '<Cmd>close<CR>', nowait)
@@ -214,6 +232,8 @@ return {
           h.imap('<CR>', '<Cmd>call ddu#ui#ff#do_action("itemAction")<CR>', opts)
           h.imap('<C-j>', [[<Cmd>call ddu#ui#ff#execute('call cursor(line(".") + 1, 0)<Bar>redraw')<CR>]], opts)
           h.imap('<C-k>', [[<Cmd>call ddu#ui#ff#execute('call cursor(line(".") - 1, 0)<Bar>redraw')<CR>]], opts)
+          h.imap('<C-n>', function() vim.cmd('execute("normal! k")') end, opts)
+          h.imap('<C-p>', function() vim.cmd('execute("normal! j")') end, opts)
         end,
       })
     end
