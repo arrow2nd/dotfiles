@@ -55,8 +55,9 @@ return {
     end,
     config = function()
       local reset_ui = function()
-        local width = math.floor(vim.api.nvim_win_get_width(0) * 0.8)
-        local height = 16
+        local w = vim.api.nvim_win_get_width(0)
+        local win_width = math.floor(w * 0.8)
+        local win_height = 16
 
         vim.fn['ddu#custom#patch_global']({
           ui = 'ff',
@@ -64,17 +65,22 @@ return {
             _ = {
               split = 'floating',
               filterSplitDirection = 'floating',
-              winWidth = width,
-              winHeight = height,
-              winCol = math.floor((vim.api.nvim_win_get_width(0) - width) / 2),
-              winRow = math.floor((vim.api.nvim_win_get_height(0) - height) / 2) + 1,
+              winWidth = win_width,
+              winHeight = win_height,
+              winCol = math.floor((w - win_width) / 2),
+              winRow = math.floor((vim.api.nvim_win_get_height(0) - win_height) / 2) + 1,
               preview = true,
               previewFloating = true,
               previewSplit = 'horizontal',
-              previewWidth = width,
+              previewWidth = win_width,
               previewHeight = 12,
               autoResize = false,
             },
+            filer = {
+              winWidth = math.floor(w / 2),
+              winCol = math.floor(w / 4),
+              previewWidth = math.floor(w / 2),
+            }
           },
         })
       end
