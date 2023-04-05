@@ -17,6 +17,7 @@ opt.shortmess = 'I'
 -- 行
 opt.number = false
 opt.signcolumn = 'yes'
+opt.cursorline = true
 
 -- ヘルプの言語
 opt.helplang = 'ja'
