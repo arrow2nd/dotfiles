@@ -32,7 +32,7 @@ yabai -m config right_padding                12
 yabai -m config window_gap                   06
 
 # Open specific applications in floating mode
-yabai -m rule --add app="(システム|環境)設定" manage=off sticky=on
+yabai -m rule --add app="設定$" manage=off sticky=on
 yabai -m rule --add app="^計算機$" manage=off sticky=on
 yabai -m rule --add app="^Digital Color Meter$" manage=off sticky=on
 yabai -m rule --add app="^Gifski$" manage=off sticky=on
