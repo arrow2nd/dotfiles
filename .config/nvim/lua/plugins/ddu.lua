@@ -205,11 +205,9 @@ return {
           h.nmap('m', '<Cmd>call ddu#ui#ff#do_action("itemAction", {"name": "move"})<CR>', opts)
           h.nmap('n', '<Cmd>call ddu#ui#ff#do_action("itemAction", {"name": "newFile"})<CR>', opts)
           h.nmap('N', '<Cmd>call ddu#ui#ff#do_action("itemAction", {"name": "newDirectory"})<CR>', opts)
-          -- ディレクトリなら展開、ファイルなら開く
-          vim.cmd([[nnoremap <buffer><expr> <CR>
-            \ ddu#ui#get_item()->get('isTree', v:false)
-            \ ? "<Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
-            \ : "<Cmd>call ddu#ui#do_action('itemAction', {'name': 'open'})<CR>"]])
+          -- ディレクトリの展開
+          h.nmap('h', '<Cmd>call ddu#ui#do_action("expandItem", {"mode": "toggle"})<CR>', opts)
+          h.nmap('l', '<Cmd>call ddu#ui#do_action("expandItem", {"mode": "toggle"})<CR>', opts)
         end,
       })
 
