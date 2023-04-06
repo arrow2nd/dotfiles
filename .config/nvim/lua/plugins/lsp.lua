@@ -34,7 +34,7 @@ return {
 
         local node_root_dir = lspconfig.util.root_pattern('package.json')
         local is_node_repo = node_root_dir(buf_full_filename) ~= nil
-        --
+
         -- denols と tsserver を出し分ける
         -- ref: https://zenn.dev/kawarimidoll/articles/2b57745045b225
         if server == 'denols' then
