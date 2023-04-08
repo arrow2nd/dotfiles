@@ -5,11 +5,6 @@ return {
   { 'thinca/vim-qfreplace', cmd = 'Qfreplace' },
   { 'thinca/vim-quickrun',  cmd = 'QuickRun' },
   {
-    -- NOTE: Neovim の HEAD に取り込まれてるので、Stable が v0.9 とかになったら消す
-    'editorconfig/editorconfig-vim',
-    event = "BufRead",
-  },
-  {
     'norcalli/nvim-colorizer.lua',
     event = 'BufRead',
     config = function()
