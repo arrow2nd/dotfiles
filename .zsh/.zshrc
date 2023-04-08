@@ -42,6 +42,8 @@ alias gp='git push'
 alias gb='git branch'
 alias gc='git commit'
 alias gsw='git switch'
+# マージ済のブランチをまとめて消す
+ alias g-delete-merged-braches='git branch --merged | grep -v "*" | xargs git branch -d'
 
 # ghq + fzf
 alias q='cd $(ghq list -p | fzf)'
