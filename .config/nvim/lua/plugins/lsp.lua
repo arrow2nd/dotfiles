@@ -1,6 +1,9 @@
 local h = require('util.helper')
 
 local common_on_attach = function(client, bufnr)
+  -- NOTE: 色がいっぱいあるの好きじゃないので切ってる
+  client.server_capabilities.semanticTokensProvider = nil
+
   local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
 
   -- 保存時に自動でフォーマット
@@ -109,6 +112,7 @@ return {
 
       null_ls.setup({
         sources = {
+          null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.formatting.prettierd,
           null_ls.builtins.diagnostics.textlint.with({
             filetypes = { 'markdown' },
