@@ -14,12 +14,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  defaults = { lazy = true },
   spec = {
     { import = 'plugins' },
   },
-  defaults = { lazy = true },
-  install = { colorscheme = { 'iceberg' } },
   concurrency = 10,
+  install = { colorscheme = { 'iceberg' } },
   performance = {
     cache = { enabled = true },
     disable_events = { 'VimEnter', 'BufReadPre' },
