@@ -18,7 +18,7 @@ return {
       nmap(';G', '<CMD>Telescope live_grep<CR>')
       nmap(';k', '<CMD>Telescope keymaps<CR>')
       nmap(';h', '<CMD>Telescope help_tags<CR>')
-      nmap(';c', '<CMD>Telescope git_commits<CR>')
+      nmap(';o', '<CMD>Telescope oldfiles<CR>')
       nmap(';b', function()
         return '<CMD>Telescope file_browser cwd=' .. vim.fn.expand('%:p:h') .. '<CR>'
       end, { silent = true, expr = true })
@@ -34,7 +34,6 @@ return {
                   ['<C-k>'] = 'move_selection_previous',
                   ['<C-n>'] = 'cycle_history_next',
                   ['<C-p>'] = 'cycle_history_prev',
-                  ['<C-q>'] = 'close',
             },
             n = {
                   ['q'] = 'close',
