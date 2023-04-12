@@ -4,6 +4,7 @@ return {
   {
     'Shougo/ddu.vim',
     lazy = false,
+    enabled = false,
     dependencies = {
       'vim-denops/denops.vim',
       -- UI
@@ -129,11 +130,6 @@ return {
             defaultAction = 'select',
           },
         },
-        actionOptions = {
-          narrow = {
-            quit = false,
-          },
-        },
       })
 
       local ui_params_preview = {
@@ -172,6 +168,11 @@ return {
             columns = { 'icon_filename' },
           },
         },
+        actionOptions = {
+          narrow = {
+            quit = false,
+          },
+        },
       })
 
       -- keymaps
@@ -197,17 +198,18 @@ return {
         callback = function()
           common_keymaps()
           -- ファイル操作
-          h.nmap('c', '<Cmd>call ddu#ui#ff#do_action("itemAction", {"name": "copy"})<CR>', opts)
-          h.nmap('yy', '<Cmd>call ddu#ui#ff#do_action("itemAction", {"name": "yank"})<CR>', opts)
-          h.nmap('p', '<Cmd>call ddu#ui#ff#do_action("itemAction", {"name": "paste"})<CR>', opts)
-          h.nmap('D', '<Cmd>call ddu#ui#ff#do_action("itemAction", {"name": "delete"})<CR>', opts)
-          h.nmap('r', '<Cmd>call ddu#ui#ff#do_action("itemAction", {"name": "rename"})<CR>', opts)
-          h.nmap('m', '<Cmd>call ddu#ui#ff#do_action("itemAction", {"name": "move"})<CR>', opts)
-          h.nmap('n', '<Cmd>call ddu#ui#ff#do_action("itemAction", {"name": "newFile"})<CR>', opts)
-          h.nmap('N', '<Cmd>call ddu#ui#ff#do_action("itemAction", {"name": "newDirectory"})<CR>', opts)
+          h.nmap('c', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "copy"})<CR>', opts)
+          h.nmap('yy', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "yank"})<CR>', opts)
+          h.nmap('p', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "paste"})<CR>', opts)
+          h.nmap('D', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "delete"})<CR>', opts)
+          h.nmap('r', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "rename"})<CR>', opts)
+          h.nmap('m', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "move"})<CR>', opts)
+          h.nmap('n', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newFile"})<CR>', opts)
+          h.nmap('N', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newDirectory"})<CR>', opts)
           -- ディレクトリの展開
+          h.nmap('o', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "narrow"})<CR>', opts)
           h.nmap('h', '<Cmd>call ddu#ui#do_action("expandItem", {"mode": "toggle"})<CR>', opts)
-          h.nmap('l', '<Cmd>call ddu#ui#do_action("expandItem", {"mode": "toggle"})<CR>', opts)
+          h.nmap('l', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "open"})<CR>', opts)
         end,
       })
 
