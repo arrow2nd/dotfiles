@@ -59,7 +59,11 @@ return {
     'voldikss/vim-floaterm',
     cmd = { 'FloatermNew', 'FloatermToggle', 'FloatermSend' },
     init = function()
-      h.nmap('<Leader>t', '<Cmd>FloatermToggle<CR>')
+      h.nmap('ff', '<Cmd>FloatermToggle<CR>')
+      h.nmap('fn', '<Cmd>FloatermNew<CR>')
+      h.nmap('fc', '<Cmd>FloatermKill<CR>')
+      h.nmap(']f', '<Cmd>FloatermNext<CR>')
+      h.nmap('[f', '<Cmd>FloatermPrev<CR>')
     end,
     config = function()
       vim.g.floaterm_title = '  ($1/$2) '
