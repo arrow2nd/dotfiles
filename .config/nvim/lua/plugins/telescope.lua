@@ -25,18 +25,19 @@ return {
     end,
     config = function()
       local telescope = require('telescope')
+      local fb_actions = require('telescope._extensions.file_browser.actions')
 
       telescope.setup({
         defaults = {
           mappings = {
             i = {
-                  ['<C-j>'] = 'move_selection_next',
-                  ['<C-k>'] = 'move_selection_previous',
-                  ['<C-n>'] = 'cycle_history_next',
-                  ['<C-p>'] = 'cycle_history_prev',
+              ['<C-j>'] = 'move_selection_next',
+              ['<C-k>'] = 'move_selection_previous',
+              ['<C-n>'] = 'cycle_history_next',
+              ['<C-p>'] = 'cycle_history_prev',
             },
             n = {
-                  ['q'] = 'close',
+              ['q'] = 'close',
             },
           },
           prompt_prefix = ' ',
@@ -69,6 +70,25 @@ return {
           file_browser = {
             hidden = true,
             respect_gitignore = false,
+            mappings = {
+              ['i'] = {
+                ['<C-h>'] = fb_actions.goto_home_dir,
+                ['<C-w>'] = fb_actions.goto_cwd,
+                ['<C-f>'] = fb_actions.toggle_browser,
+              },
+              ['n'] = {
+                ['c'] = fb_actions.create,
+                ['r'] = fb_actions.rename,
+                ['m'] = fb_actions.move,
+                ['y'] = fb_actions.copy,
+                ['d'] = fb_actions.remove,
+                ['o'] = fb_actions.open,
+                ['g'] = fb_actions.goto_parent_dir,
+                ['h'] = fb_actions.goto_home_dir,
+                ['w'] = fb_actions.goto_cwd,
+                ['f'] = fb_actions.toggle_browser,
+              },
+            },
           },
         }
       })
