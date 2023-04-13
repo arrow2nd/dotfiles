@@ -125,6 +125,14 @@ return {
       vim.cmd('smap <expr> <C-l> vsnip#jumpable(1) ? "<Plug>(vsnip-jump-next)" : "<C-l>"')
       vim.cmd('imap <expr> <C-h> vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-h>"')
       vim.cmd('smap <expr> <C-h> vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-h>"')
+
+      -- 補完確定時に textEdit を適応
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'PumCompleteDone',
+        callback = function()
+          fn['vsnip_integ#on_complete_done'](vim.g['pum#completed_item'])
+        end
+      })
     end
   }
 }

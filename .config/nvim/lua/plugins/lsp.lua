@@ -32,9 +32,12 @@ return {
       local lspconfig = require('lspconfig')
 
       require('mason-lspconfig').setup_handlers({ function(server)
-        local buf_full_filename = vim.api.nvim_buf_get_name(0)
-        local opts = { on_attach = common_on_attach }
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+        local opts = { capabilities = capabilities, on_attach = common_on_attach }
+
+        local buf_full_filename = vim.api.nvim_buf_get_name(0)
         local node_root_dir = lspconfig.util.root_pattern('package.json')
         local is_node_repo = node_root_dir(buf_full_filename) ~= nil
 
