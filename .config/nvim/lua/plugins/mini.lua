@@ -31,6 +31,10 @@ return {
         once = true,
       })
 
+      -- indentscope
+      require('mini.indentscope').setup({ symbol = '┆' })
+      vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "Conceal" })
+
       -- statusline
       require('mini.statusline').setup({
         content = {
