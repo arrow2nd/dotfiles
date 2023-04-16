@@ -54,7 +54,7 @@ opt.incsearch = true
 opt.history = 512
 
 -- 補完
-opt.completeopt = 'menu,noinsert'
+opt.completeopt = 'menuone,noselect'
 
 -- LSPの警告フォーマット
 -- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
