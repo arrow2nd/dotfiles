@@ -28,6 +28,8 @@ return {
     config = function()
       local patch_global = fn['ddc#custom#patch_global']
 
+      patch_global('ui', 'pum')
+
       patch_global('sources', {
         'skkeleton',
         'vsnip',
@@ -63,8 +65,6 @@ return {
         },
       })
 
-      patch_global('ui', 'pum')
-
       -- keymap
       local opts = { silent = true, noremap = true }
       imap('<c-n>', '<Cmd>call pum#map#select_relative(+1)<CR>', opts)
@@ -93,11 +93,11 @@ return {
     dependencies = { 'vim-denops/denops.vim' },
     config = function()
       vim.g.popup_preview_config = {
-        border = false,
+        border = true,
         supportVsnip = true,
         supportUltisnips = false,
         supportInfo = true,
-        delay = 30,
+        delay = 80,
       }
 
       fn['popup_preview#enable']()
