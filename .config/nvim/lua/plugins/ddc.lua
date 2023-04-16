@@ -22,7 +22,7 @@ return {
       -- Converter
       'Shougo/ddc-converter_remove_overlap',
       -- Preview
-      'arrow2nd/denops-popup-preview.vim',
+      'matsui54/denops-popup-preview.vim',
       'matsui54/denops-signature_help',
     },
     config = function()
@@ -89,9 +89,8 @@ return {
     end
   },
   {
-    'arrow2nd/denops-popup-preview.vim',
+    'matsui54/denops-popup-preview.vim',
     dependencies = { 'vim-denops/denops.vim' },
-    branch = 'fix-cannot-read-properties-of-undefined',
     config = function()
       vim.g.popup_preview_config = {
         border = false,
