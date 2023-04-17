@@ -38,5 +38,6 @@ yabai -m rule --add app="^Digital Color Meter$" manage=off sticky=on
 yabai -m rule --add app="^Gifski$" manage=off sticky=on
 yabai -m rule --add app="^Bitwarden$" manage=off sticky=on
 yabai -m rule --add app="^AquaSKK$" manage=off sticky=on
+yabai -m rule --add app="KeePassXC$" manage=off sticky=on
 
 echo "yabai configuration loaded.."
