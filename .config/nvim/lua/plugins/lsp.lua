@@ -57,6 +57,8 @@ return {
           if tailwind_root_dir(buf_full_filename) == nil then return end
         elseif server == 'jsonls' then
           opts.on_attach = disable_fmt_on_attach
+        elseif server == 'cssls' then
+          opts.filetypes = { 'css', 'scss', 'sass', 'less' }
         end
 
         lspconfig[server].setup(opts)
