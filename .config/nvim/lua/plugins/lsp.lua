@@ -4,10 +4,9 @@ local common_on_attach = function(client, bufnr)
   -- NOTE: 色がいっぱいあるの好きじゃないので切ってる
   client.server_capabilities.semanticTokensProvider = nil
 
-  local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
-
   -- 保存時に自動でフォーマット
   if client.supports_method('textDocument/formatting') then
+    local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
     vim.api.nvim_create_autocmd('BufWritePre', {
       callback = function()
@@ -35,11 +34,11 @@ return {
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-        local opts = { capabilities = capabilities, on_attach = common_on_attach }
-
         local buf_full_filename = vim.api.nvim_buf_get_name(0)
         local node_root_dir = lspconfig.util.root_pattern('package.json')
         local is_node_repo = node_root_dir(buf_full_filename) ~= nil
+
+        local opts = { capabilities = capabilities, on_attach = common_on_attach }
 
         -- denols と tsserver を出し分ける
         -- ref: https://zenn.dev/kawarimidoll/articles/2b57745045b225
@@ -64,22 +63,27 @@ return {
         lspconfig[server].setup(opts)
       end })
 
-      -- keymaps
-      h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>', { desc = 'Show hover' })
-      h.nmap('gf', '<CMD>lua vim.lsp.buf.format({ async = true })<CR>', { desc = 'Formatting' })
-      h.nmap('ga', '<CMD>lua vim.lsp.buf.code_action()<CR>', { desc = 'Show available code actions' })
-      h.nmap('gn', '<CMD>lua vim.lsp.buf.rename()<CR>', { desc = 'Rename definition' })
-      h.nmap('gD', '<CMD>lua vim.lsp.buf.declaration()<CR>', { desc = 'Show declarations' })
-      h.nmap('ge', '<CMD>lua vim.diagnostic.open_float()<CR>', { desc = 'Show diagnostic' })
-
-      h.nmap('gi', '<CMD>Telescope lsp_implementations<CR>', { desc = 'Lists all the implementations' })
-      h.nmap('gd', '<CMD>Telescope lsp_definitions<CR>', { desc = 'Lists all the definitions' })
-      h.nmap('gt', '<CMD>Telescope lsp_type_definitions<CR>', { desc = 'Lists all the type definitions' })
-      h.nmap('gr', '<CMD>Telescope lsp_references<CR>', { desc = 'Lists all the references' })
+      -- global keymaps
       h.nmap('gE', '<CMD>Telescope diagnostics<CR>', { desc = 'Lists all the diagnostics' })
-
+      h.nmap('ge', '<CMD>lua vim.diagnostic.open_float()<CR>', { desc = 'Show diagnostic' })
       h.nmap(']g', '<CMD>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic" })
       h.nmap('[g', '<CMD>lua vim.diagnostic.goto_prev()<CR>', { desc = "Go to previous diagnostic" })
+
+      vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+        callback = function()
+          -- local keymaps
+          h.nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>', { desc = 'Show hover' })
+          h.nmap('gf', '<CMD>lua vim.lsp.buf.format({ async = true })<CR>', { desc = 'Formatting' })
+          h.nmap('ga', '<CMD>lua vim.lsp.buf.code_action()<CR>', { desc = 'Show available code actions' })
+          h.nmap('gn', '<CMD>lua vim.lsp.buf.rename()<CR>', { desc = 'Rename definition' })
+          h.nmap('gD', '<CMD>lua vim.lsp.buf.declaration()<CR>', { desc = 'Show declarations' })
+          h.nmap('gi', '<CMD>Telescope lsp_implementations<CR>', { desc = 'Lists all the implementations' })
+          h.nmap('gd', '<CMD>Telescope lsp_definitions<CR>', { desc = 'Lists all the definitions' })
+          h.nmap('gt', '<CMD>Telescope lsp_type_definitions<CR>', { desc = 'Lists all the type definitions' })
+          h.nmap('gr', '<CMD>Telescope lsp_references<CR>', { desc = 'Lists all the references' })
+        end
+      })
     end
   },
   {

@@ -72,9 +72,19 @@ return {
             respect_gitignore = false,
             mappings = {
               ['i'] = {
-                ['<C-h>'] = fb_actions.goto_home_dir,
-                ['<C-w>'] = fb_actions.goto_cwd,
-                ['<C-f>'] = fb_actions.toggle_browser,
+                ["<C-CR>"] = fb_actions.create,
+                ["<C-r>"] = fb_actions.rename,
+                ["<C-m>"] = fb_actions.move,
+                ["<C-y>"] = fb_actions.copy,
+                ["<C-d>"] = fb_actions.remove,
+                ["<C-o>"] = fb_actions.open,
+                ["<C-g>"] = fb_actions.goto_parent_dir,
+                ["<C-h>"] = fb_actions.goto_home_dir,
+                ["<C-w>"] = fb_actions.goto_cwd,
+                ["<C-t>"] = fb_actions.change_cwd,
+                ["<C-f>"] = fb_actions.toggle_browser,
+                ["<C-s>"] = fb_actions.toggle_all,
+                ["<bs>"] = fb_actions.backspace,
               },
               ['n'] = {
                 ['c'] = fb_actions.create,

@@ -2,13 +2,12 @@ local h = require('util.helper')
 
 return {
   {
-    'lambdalisue/gin.vim',
-    lazy = false,
-    dependencies = { 'vim-denops/denops.vim' },
+    'tpope/vim-fugitive',
+    cmd = { 'Git', 'Gvdiffsplit' },
     init = function()
-      h.nmap('<Leader>gs', '<CMD>GinStatus ++opener=split<CR>', { desc = 'git status' })
-      h.nmap('<Leader>gb', '<CMD>GinBranch ++opener=split<CR>', { desc = 'git branch' })
-      h.nmap('<Leader>gc', '<CMD>Gin commit<CR>', { desc = 'git commit' })
+      h.nmap('<Leader>gs', '<CMD>Git<CR>', { desc = 'git status' })
+      h.nmap('<Leader>gc', '<CMD>Git commit<CR>', { desc = 'git commit' })
+      h.nmap('<Leader>gb', '<CMD>Git blame<CR>', { desc = 'git blame' })
     end
   },
   {
