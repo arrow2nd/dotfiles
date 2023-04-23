@@ -56,6 +56,12 @@ return {
     dependencies = { 'vim-denops/denops.vim' },
   },
   {
+    'kat0h/bufpreview.vim',
+    lazy = false,
+    dependencies = { 'vim-denops/denops.vim' },
+    build = 'deno task prepare',
+  },
+  {
     'voldikss/vim-floaterm',
     cmd = { 'FloatermNew', 'FloatermToggle', 'FloatermSend' },
     init = function()
@@ -69,5 +75,5 @@ return {
       vim.g.floaterm_title = '  ($1/$2) '
       vim.api.nvim_set_hl(0, "FloatermBorder", { link = "Normal" })
     end
-  }
+  },
 }

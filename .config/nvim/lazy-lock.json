@@ -1,4 +1,5 @@
 {
+  "bufpreview.vim": { "branch": "master", "commit": "9b3df1e6f508a6df6951b6bc5353e8f822a0c186" },
   "chowcho.nvim": { "branch": "main", "commit": "6bfba65061ddc088aa8a96300c42b62dd483f5e7" },
   "ddc-converter_remove_overlap": { "branch": "main", "commit": "dfed51c4b0e1c5713d4826cc41ed2afb446f4b04" },
   "ddc-matcher_head": { "branch": "main", "commit": "fd27c8881e677048218441eeb0566c334548426d" },
