@@ -54,7 +54,7 @@ sudo apt install -y \
  trash-cli
 
 # sheldon
-cargo install sheldon
+cargo install sheldon --locked
 
 # ghq
 go install github.com/x-motemen/ghq@latest
