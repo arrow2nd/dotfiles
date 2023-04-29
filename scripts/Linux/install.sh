@@ -51,7 +51,8 @@ sudo apt install -y \
  exa \
  fd-find \
  bat \
- trash-cli
+ trash-cli \
+ libssl-dev
 
 # sheldon
 cargo install sheldon --locked
