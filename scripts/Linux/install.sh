@@ -45,14 +45,16 @@ sudo apt install -y \
  ngrok \
  ripgrep \
  keychain \
- neovim \
  gh \
  fzf \
  exa \
  fd-find \
  bat \
  trash-cli \
- libssl-dev
+ libssl-dev \ 
+ ninja-build \
+ gettext \
+ cmake
 
 # sheldon
 cargo install sheldon --locked
