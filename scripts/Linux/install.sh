@@ -2,21 +2,9 @@
 
 set -eu
 
-YAY_DIR="$HOME/yay"
-if ! type -p yay >/dev/null; then
-  echo "[ yay ]"
-  git clone https://aur.archlinux.org/yay-bin "$YAY_DIR"
-  cd "$YAY_DIR"
-  makepkg -si --noconfirm
-  cd ..
-  rm -rf yay
-fi
-
 echo "[ Tools ]"
-yay -S --noconfirm \
- base-devel \
+sudo apt install -y \
  zsh \
- unzip \
  deno \
  ffmpeg \
  go \
@@ -25,8 +13,6 @@ yay -S --noconfirm \
  ngrok \
  ripgrep \
  rustup \
- openssh \
- wget \
  keychain \
  neovim \
  github-cli \

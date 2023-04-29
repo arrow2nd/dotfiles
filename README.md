@@ -2,7 +2,7 @@
 
 ## 環境
 
-- Arch Linux (Sway) or macOS (10.15 Catalina ~)
+- Pop!\_OS (22.04 ~) or macOS (10.15 Catalina ~)
 - git, curl, make 導入済み
 
 ### フォント
