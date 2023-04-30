@@ -53,7 +53,7 @@ function link_dotfiles {
   unset IFS
 }
 
-MENU="dotfiles (for macOS / Arch Linux)
+MENU="dotfiles (for macOS / Pop!_OS)
 
 SETUP MENU:
   [a] Execute all
