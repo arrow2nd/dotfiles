@@ -20,6 +20,7 @@ return {
       nmap(';k', '<CMD>Telescope keymaps<CR>')
       nmap(';h', '<CMD>Telescope help_tags<CR>')
       nmap(';o', '<CMD>Telescope oldfiles<CR>')
+      nmap(';B', '<CMD>Telescope buffers<CR>')
       nmap(';b', function()
         return '<CMD>Telescope file_browser cwd=' .. vim.fn.expand('%:p:h') .. '<CR>'
       end, { silent = true, expr = true })
