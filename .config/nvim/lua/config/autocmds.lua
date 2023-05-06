@@ -21,6 +21,6 @@ api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
 -- ref: https://zenn.dev/ryo_kawamata/articles/improve-neovmi-terminal
 api.nvim_create_autocmd({ 'TermOpen' }, {
   group = augroup,
-  pattern = { '*' },
+  pattern = { 'term://*' },
   command = 'startinsert',
 })
