@@ -14,13 +14,11 @@ return {
       'Shougo/ddc-source-around',
       'Shougo/ddc-source-nvim-lsp',
       'LumaKernel/ddc-source-file',
-      -- Matcher
-      'Shougo/ddc-matcher_head',
-      'Shougo/ddc-matcher_length',
-      -- Sorter
-      'Shougo/ddc-sorter_rank',
-      -- Converter
-      'Shougo/ddc-converter_remove_overlap',
+      -- Filter
+      'Shougo/ddc-filter-matcher_head',
+      'Shougo/ddc-filter-matcher_length',
+      'Shougo/ddc-filter-sorter_rank',
+      'Shougo/ddc-filter-converter_remove_overlap',
       -- Preview
       'matsui54/denops-popup-preview.vim',
       'matsui54/denops-signature_help',
