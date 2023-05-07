@@ -5,10 +5,14 @@ return {
   { 'thinca/vim-qfreplace', cmd = 'Qfreplace' },
   { 'thinca/vim-quickrun',  cmd = 'QuickRun' },
   {
-    'norcalli/nvim-colorizer.lua',
+    'brenoprata10/nvim-highlight-colors',
     event = 'BufRead',
     config = function()
-      require('colorizer').setup()
+      require('nvim-highlight-colors').setup({
+        render = 'background',
+        enable_named_colors = true,
+        enable_tailwind = true,
+      })
     end
   },
   {
