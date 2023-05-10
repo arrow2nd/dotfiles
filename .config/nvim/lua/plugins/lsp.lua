@@ -1,7 +1,7 @@
 local h = require('util.helper')
 
 local common_on_attach = function(client, bufnr)
-  -- NOTE: 色がいっぱいあるの好きじゃないので切ってる
+  -- Semantic token を有効にすると色がいっぱいになるので切る
   client.server_capabilities.semanticTokensProvider = nil
 
   -- 保存時に自動でフォーマット
