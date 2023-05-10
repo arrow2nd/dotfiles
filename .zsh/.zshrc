@@ -50,6 +50,19 @@ alias todo='gh todo'
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
 
 #
+# キーバインド
+#
+
+# コマンド履歴を検索
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m)
+  CURSOR=${#BUFFER}
+}
+
+zle -N select-history
+bindkey "^h" select-history
+
+#
 # ローカル設定
 #
 
