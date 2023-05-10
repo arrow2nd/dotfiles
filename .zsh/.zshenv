@@ -7,6 +7,9 @@ export LC_CTYPE=en_US.UTF-8
 # エディタ
 export EDITOR=nvim
 
+# 自作スクリプト
+export PATH="$HOME/.local/bin:$PATH"
+
 # Node.js (Volta)
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
