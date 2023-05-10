@@ -7,6 +7,7 @@ eval "$(sheldon source)"
 #
 # プロンプト
 #
+
 () {
   local emoji=('🐴' '🐶' '🦄' '🦀' '🐱' '🍷' '🍺' '🥙' '🍿' '🥝' '🍤' '🍣' '🍛' '🌵')
   MNML_USER_CHAR=$emoji[($RANDOM % $#emoji + 1)]
