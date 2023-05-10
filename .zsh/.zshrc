@@ -13,23 +13,6 @@ eval "$(sheldon source)"
 }
 
 #
-# パス
-#
-
-# Node.js (Volta)
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-# Deno
-export PATH="$HOME/.deno/bin:$PATH"
-
-# Golang
-export PATH="$HOME/go/bin:$PATH"
-
-# Rust
-export PATH="$HOME/.cargo/bin:$PATH"
-
-#
 # エイリアス
 #
 
@@ -42,8 +25,9 @@ alias gp='git push'
 alias gb='git branch'
 alias gc='git commit'
 alias gsw='git switch'
+
 # マージ済のブランチをまとめて消す
- alias g-delete-merged-braches='git branch --merged | grep -v "*" | xargs git branch -d'
+alias g-delete-merged-braches='git branch --merged | grep -v "*" | xargs git branch -d'
 
 # ghq + fzf
 alias q='cd $(ghq list -p | fzf)'
