@@ -107,7 +107,7 @@ autoload -Uz zmv
 
 export HISTFILE=${HOME}/.zhistory
 export HISTSIZE=1000
-export SAVEHIST=1000
+export SAVEHIST=2000
 
 # スペースで始まるコマンドを除外
 setopt hist_ignore_space
