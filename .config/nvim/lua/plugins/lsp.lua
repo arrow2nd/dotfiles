@@ -31,9 +31,11 @@ return {
       local lspconfig = require('lspconfig')
 
       require('mason-lspconfig').setup_handlers({ function(server)
+        -- スニペットを有効に
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+        -- node_modules があるか
         local buf_full_filename = vim.api.nvim_buf_get_name(0)
         local node_root_dir = lspconfig.util.root_pattern('package.json')
         local is_node_repo = node_root_dir(buf_full_filename) ~= nil
@@ -47,17 +49,25 @@ return {
           opts.cmd = { 'deno', 'lsp', '--unstable' }
           opts.root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc')
           opts.init_options = { lint = true, unstable = true }
+
+          -- Node.js
         elseif server == 'tsserver' then
           if not is_node_repo then return end
           opts.root_dir = node_root_dir
           opts.on_attach = disable_fmt_on_attach
+
+          -- tailwind
         elseif server == 'tailwindcss' then
           local tailwind_root_dir = lspconfig.util.root_pattern('tailwind.config.[jt]s', 'twind.config.[jt]s')
           if tailwind_root_dir(buf_full_filename) == nil then return end
-        elseif server == 'jsonls' then
-          opts.on_attach = disable_fmt_on_attach
+
+          -- css
         elseif server == 'cssls' then
           opts.filetypes = { 'css', 'scss', 'sass', 'less' }
+
+          -- フォーマッタを無効化 (Prettierを使うため)
+        elseif server == 'html' or server == 'jsonls' then
+          opts.on_attach = disable_fmt_on_attach
         end
 
         lspconfig[server].setup(opts)
