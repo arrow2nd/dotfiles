@@ -27,6 +27,9 @@ alias gb='git branch'
 alias gc='git commit'
 alias gsw='git switch'
 
+# ブランチ切り替え
+alias gswfzf='git switch $(git branch -l | fzf | tr -d "* ")'
+
 # マージ済のブランチをまとめて消す
 alias g-delete-merged-braches='git branch --merged | grep -v "*" | xargs git branch -d'
 
