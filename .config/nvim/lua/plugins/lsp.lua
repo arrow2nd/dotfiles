@@ -83,6 +83,10 @@ return {
         elseif server == 'cssls' then
           opts.filetypes = { 'css', 'scss', 'sass', 'less' }
 
+          -- yaml
+        elseif server == 'yamlls' then
+          opts.settings.yaml.keyOrdering = false
+
           -- フォーマッタを無効化 (Prettierを使うため)
         elseif server == 'html' or server == 'jsonls' then
           opts.on_attach = disable_fmt_on_attach
