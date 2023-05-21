@@ -161,7 +161,20 @@ return {
       null_ls.setup({
         sources = {
           null_ls.builtins.code_actions.gitsigns,
-          null_ls.builtins.formatting.prettier,
+          -- deno fmt と Prettier を出し分ける
+          -- ref: https://zenn.dev/nazo6/articles/c2f16b07798bab
+          null_ls.builtins.formatting.deno_fmt.with({
+            condition = function(utils)
+              -- Prettier の設定がない & Deno のプロジェクトでもない
+              return not (utils.has_file({ ".prettierrc", ".prettierrc.js", "deno.json", "deno.jsonc" }))
+            end,
+          }),
+          null_ls.builtins.formatting.prettier.with({
+            condition = function(utils)
+              return utils.has_file({ ".prettierrc", ".prettierrc.js" })
+            end,
+            prefer_local = "node_modules/.bin",
+          }),
           null_ls.builtins.diagnostics.textlint.with({
             filetypes = { 'markdown' },
             prefer_local = 'node_modules/.bin',
