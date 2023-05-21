@@ -44,7 +44,6 @@ return {
             local diagnostics      = MiniStatusline.section_diagnostics({ trunc_width = 75 })
             local filename         = MiniStatusline.section_filename({ trunc_width = 140 })
             local fileinfo         = MiniStatusline.section_fileinfo({ trunc_width = 120 })
-            local location         = MiniStatusline.section_location({ trunc_width = 9999 }) -- 常にShort表示
 
             local get_lsp_progress = function()
               local prog = vim.lsp.util.get_progress_messages()[1]
@@ -64,7 +63,7 @@ return {
               '%=', -- End left alignment
               { hl = 'MiniStatuslineFilename', strings = { get_lsp_progress() } },
               { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
-              { hl = mode_hl,                  strings = { location } },
+              { hl = mode_hl,                  strings = { "L%l" } },
             })
           end,
           inactive = nil,
