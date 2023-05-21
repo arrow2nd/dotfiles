@@ -85,7 +85,11 @@ return {
 
           -- yaml
         elseif server == 'yamlls' then
-          opts.settings.yaml.keyOrdering = false
+          opts.settings = {
+            yaml = {
+              keyOrdering = false
+            }
+          }
 
           -- フォーマッタを無効化 (Prettierを使うため)
         elseif server == 'html' or server == 'jsonls' then
