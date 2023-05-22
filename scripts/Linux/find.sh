@@ -4,6 +4,7 @@ find . -type f \
        -path "*/.*" \
        -not -path "*.git*" \
        -not -path "*.DS_Store" \
+       -not -path "*.Brewfile" \
        -not -path "*.luarc.json" \
        -not -path "*.yabairc" \
        -not -path "*.skhdrc" \
