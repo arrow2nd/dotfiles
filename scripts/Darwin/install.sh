@@ -8,4 +8,4 @@ if ! type -p brew >/dev/null; then
 fi
 
 echo "[ Tools ]"
-brew bundle --file=./Brewfile
+brew bundle --file=~/dotfiles/scripts/Darwin/Brewfile
