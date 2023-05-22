@@ -45,7 +45,6 @@ alias lt='exa -T'
 alias cls='clear'
 alias v="nvim"
 alias zmv='noglob zmv -W'
-alias rdflint='java -jar rdflint-*.jar'
 alias dot='cd ~/dotfiles'
 alias todo='gh todo'
 
