@@ -2,7 +2,7 @@
 
 ## 環境
 
-- Pop!\_OS (22.04 ~) or macOS (10.15 Catalina ~)
+- Arch Linux (Sway) or macOS (10.15 Catalina ~)
 - git, curl, make 導入済み
 
 ### フォント
@@ -24,4 +24,5 @@ cd ./dotfiles
 - node は自動で入らないので `volta install node` とかすること
 - GPG 鍵のインポート、git との紐付けは別でやること
 - SKK の辞書は `~/.skk/` に置くこと
-- Git のコミットテンプレートは [ここ](https://gist.github.com/arrow2nd/45056915238a1ed84982b4cfff5210d5)
+- Git のコミットテンプレートは
+  [ここ](https://gist.github.com/arrow2nd/45056915238a1ed84982b4cfff5210d5)
