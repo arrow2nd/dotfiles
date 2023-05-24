@@ -20,7 +20,6 @@ yay -S --noconfirm \
  deno \
  ffmpeg \
  go \
- goreleaser \
  xsel \
  ngrok \
  ripgrep \
