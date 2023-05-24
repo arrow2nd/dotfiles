@@ -35,7 +35,20 @@ yay -S --noconfirm \
  exa \
  fd \
  bat \
- trash-cli
+ trash-cli \
+ ly \
+ mako \
+ wob \
+ pamixer \
+ brightnessctl \
+ bashtop \
+ wezterm \
+ vivaldi \ 
+ kvantum-theme-nordic \
+ nordic-bluish-accent-theme \
+ nordzy-icon-theme
+
+pacman -S sway xorg-xwayland qt5-wayland swayidle waybar swaybg swaylock-effects noto-fonts
 
 echo "[ Switch to zsh ]"
 sudo chsh -s $(which zsh) $(whoami)
