@@ -2,7 +2,8 @@
 
 ## 環境
 
-- Arch Linux (Sway) or macOS (10.15 Catalina ~)
+- Arch Linux (Sway) or macOS
+  - (Arch はお遊び用です)
 - git, curl, make 導入済み
 
 ### フォント
