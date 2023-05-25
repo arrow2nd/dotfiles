@@ -160,7 +160,6 @@ return {
 
       null_ls.setup({
         sources = {
-          null_ls.builtins.code_actions.gitsigns,
           -- deno fmt と Prettier を出し分ける
           -- ref: https://zenn.dev/nazo6/articles/c2f16b07798bab
           null_ls.builtins.formatting.deno_fmt.with({
