@@ -2,8 +2,7 @@
 
 ## 環境
 
-- Arch Linux (Sway) or macOS
-  - (Arch はお遊び用です)
+- macOS (Apple Silicon)
 - git, curl, make 導入済み
 
 ### フォント
