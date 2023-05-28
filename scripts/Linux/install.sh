@@ -14,7 +14,6 @@ fi
 
 echo "[ Tools ]"
 yay -S --noconfirm \
- base-devel \
  zsh \
  unzip \
  deno \
@@ -25,8 +24,6 @@ yay -S --noconfirm \
  ripgrep \
  rustup \
  openssh \
- wget \
- keychain \
  neovim \
  github-cli \
  ghq \
@@ -36,17 +33,9 @@ yay -S --noconfirm \
  fd \
  bat \
  trash-cli \
- ly \
- mako \
- wob \
- pamixer \
- brightnessctl \
  bashtop \
  wezterm \
  vivaldi \ 
- kvantum-theme-nordic \
- nordic-bluish-accent-theme \
- nordzy-icon-theme
 
 pacman -S sway xorg-xwayland qt5-wayland swayidle waybar swaybg swaylock-effects noto-fonts
 
