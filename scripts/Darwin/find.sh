@@ -10,11 +10,5 @@ find . -type f \
        -not -path "*.git*" \
        -not -path "*.DS_Store" \
        -not -path "*.luarc.json" \
-       -not -path "*wofi*" \
-       -not -path "*sway*" \
-       -not -path "*waybar*" \
-       -not -path "*swaylock*" \
-       -not -path "*mako*" \
-       -not -path "*pipewire*" \
        -not -path "*bashtop*" \
        | cut -c 3-
