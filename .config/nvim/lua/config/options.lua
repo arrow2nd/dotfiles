@@ -37,7 +37,7 @@ opt.mouse = 'a'
 
 -- 不可視文字可視化
 opt.list = true
-opt.listchars = { tab = '>>', trail = '-', nbsp = '+' }
+opt.listchars = { tab = '󰌒  ', trail = '⋅', nbsp = '␣', extends = "❯", precedes = "❮" }
 
 -- タブ, インデント
 opt.tabstop = 2
