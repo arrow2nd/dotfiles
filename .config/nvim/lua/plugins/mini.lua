@@ -31,6 +31,19 @@ return {
         once = true,
       })
 
+      -- hipatterns
+      local hipatterns = require('mini.hipatterns')
+      hipatterns.setup({
+        highlighters = {
+          fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+          hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
+          todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
+          note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+
+          hex_color = hipatterns.gen_highlighter.hex_color(),
+        },
+      })
+
       -- indentscope
       require('mini.indentscope').setup({ symbol = '┆' })
       vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "Conceal" })
@@ -52,7 +65,7 @@ return {
               local title = prog.title or ''
               local per = prog.percentage or 0
 
-              return string.format('%s (%s%%%%)', title, per)
+              return string.format('󰔟 %s (%s%%%%)', title, per)
             end
 
             return MiniStatusline.combine_groups({
