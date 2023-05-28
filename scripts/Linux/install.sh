@@ -27,7 +27,6 @@ yay -S --noconfirm \
   openssh \
   neovim \
   github-cli \
-  ghq \
   sheldon \
   fzf \
   exa \
@@ -38,7 +37,9 @@ yay -S --noconfirm \
   wezterm \
   vivaldi
 
-pacman -S sway xorg-xwayland qt5-wayland swayidle waybar swaybg swaylock-effects noto-fonts
+go install github.com/x-motemen/ghq@latest
+go install github.com/arrow2nd/anct@latest
+go install github.com/arrow2nd/nimotsu@latest
 
 echo "[ Switch to zsh ]"
 sudo chsh -s $(which zsh) $(whoami)
