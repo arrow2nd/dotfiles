@@ -2,7 +2,7 @@
 
 ## 環境
 
-- macOS (Apple Silicon)
+- macOS (Apple Silicon) or Manjaro (GNOME)
 - git, curl, make 導入済み
 
 ### フォント
