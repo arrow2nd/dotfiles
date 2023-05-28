@@ -14,28 +14,29 @@ fi
 
 echo "[ Tools ]"
 yay -S --noconfirm \
- zsh \
- unzip \
- deno \
- ffmpeg \
- go \
- xsel \
- ngrok \
- ripgrep \
- rustup \
- openssh \
- neovim \
- github-cli \
- ghq \
- sheldon \
- fzf \
- exa \
- fd \
- bat \
- trash-cli \
- bashtop \
- wezterm \
- vivaldi \ 
+  make \
+  zsh \
+  unzip \
+  deno \
+  ffmpeg \
+  go \
+  xsel \
+  ngrok \
+  ripgrep \
+  rustup \
+  openssh \
+  neovim \
+  github-cli \
+  ghq \
+  sheldon \
+  fzf \
+  exa \
+  fd \
+  bat \
+  trash-cli \
+  bashtop \
+  wezterm \
+  vivaldi
 
 pacman -S sway xorg-xwayland qt5-wayland swayidle waybar swaybg swaylock-effects noto-fonts
 
