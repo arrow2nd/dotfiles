@@ -68,7 +68,7 @@ local font_size = 12
 local hostname = wezterm.hostname()
 if string.match(hostname, "exotic") then
   -- MacBook Air 2015
-  font_size = 13
+  font_size = 10
 end
 
 return {
