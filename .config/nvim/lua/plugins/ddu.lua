@@ -5,7 +5,7 @@ return {
     'Shougo/ddu.vim',
     lazy = false,
     enabled = true,
-    commit = '5fa96a4a7ec03a503ca7af35a8d40dd207b641e9',
+    -- commit = '5fa96a4a7ec03a503ca7af35a8d40dd207b641e9',
     dependencies = {
       'vim-denops/denops.vim',
       -- UI
