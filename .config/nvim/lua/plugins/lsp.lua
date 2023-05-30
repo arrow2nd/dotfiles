@@ -100,7 +100,8 @@ return {
       end })
 
       -- global keymaps
-      h.nmap('gE', '<CMD>Ddu nvim_lsp_diagnostic_all<CR>', { desc = 'Lists all the diagnostics' })
+      -- h.nmap('gE', '<CMD>Ddu nvim_lsp_diagnostic_all<CR>', { desc = 'Lists all the diagnostics' })
+      h.nmap('gE', '<CMD>Telescope diagnostics<CR>', { desc = 'Lists all the diagnostics' })
       h.nmap('ge', '<CMD>lua vim.diagnostic.open_float()<CR>', { desc = 'Show diagnostic' })
       h.nmap(']g', '<CMD>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic" })
       h.nmap('[g', '<CMD>lua vim.diagnostic.goto_prev()<CR>', { desc = "Go to previous diagnostic" })
@@ -114,8 +115,10 @@ return {
           h.nmap('ga', '<CMD>lua vim.lsp.buf.code_action()<CR>', { desc = 'Show available code actions' })
           h.nmap('gn', '<CMD>lua vim.lsp.buf.rename()<CR>', { desc = 'Rename definition' })
           h.nmap('gD', '<CMD>lua vim.lsp.buf.declaration()<CR>', { desc = 'Show declarations' })
-          h.nmap('gd', '<CMD>lua vim.lsp.buf.definition()<CR>', { desc = 'Lists all the definitions' })
-          h.nmap('gr', '<CMD>Ddu nvim_lsp_references<CR>', { desc = 'Lists all the references' })
+          -- h.nmap('gd', '<CMD>lua vim.lsp.buf.definition()<CR>', { desc = 'Lists all the definitions' })
+          -- h.nmap('gr', '<CMD>Ddu nvim_lsp_references<CR>', { desc = 'Lists all the references' })
+          h.nmap('gd', '<CMD>Telescope lsp_definitions<CR>', { desc = 'Lists all the definitions' })
+          h.nmap('gr', '<CMD>Telescope lsp_references<CR>', { desc = 'Lists all the references' })
         end
       })
     end

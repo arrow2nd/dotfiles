@@ -3,7 +3,7 @@ local nmap = require('util.helper').nmap
 return {
   {
     'nvim-telescope/telescope.nvim',
-    enabled = false,
+    enabled = true,
     version = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',

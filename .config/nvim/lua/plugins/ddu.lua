@@ -4,8 +4,7 @@ return {
   {
     'Shougo/ddu.vim',
     lazy = false,
-    enabled = true,
-    -- commit = '5fa96a4a7ec03a503ca7af35a8d40dd207b641e9',
+    enabled = false,
     dependencies = {
       'vim-denops/denops.vim',
       -- UI
@@ -14,16 +13,13 @@ return {
       -- Source
       'Shougo/ddu-source-action',
       'Shougo/ddu-source-file',
-      'Shougo/ddu-source-file_rec',
+      'Shougo/ddu-source-file_old',
+      'matsui54/ddu-source-file_external',
       'Shougo/ddu-source-line',
       'shun/ddu-source-rg',
       'shun/ddu-source-buffer',
       'matsui54/ddu-source-help',
-      'gamoutatsumi/ddu-source-nvim-lsp',
-      {
-        "kuuote/ddu-source-mr",
-        dependencies = { "lambdalisue/mr.vim" },
-      },
+      'uga-rosa/ddu-source-nvim_lsp',
       -- Filter
       {
         'Milly/ddu-filter-kensaku',
@@ -40,18 +36,14 @@ return {
       'Shougo/ddu-commands.vim',
     },
     init = function()
-      h.nmap(';f', '<Cmd>Ddu file_rec<CR>')
+      h.nmap(';f', '<Cmd>Ddu file_external<CR>')
       h.nmap(';h', '<Cmd>Ddu help<CR>')
       h.nmap(';B', '<Cmd>Ddu buffer<CR>')
       h.nmap(';l', '<Cmd>Ddu line<CR>')
-      h.nmap(';u', '<Cmd>Ddu mr<CR>')
-      h.nmap(';w', '<Cmd>Ddu mr -source-param-kind="mrw"<CR>')
-      h.nmap(';g', function()
-        vim.fn['ddu#start']({ name = 'grep' })
-      end)
-      h.nmap(';b', function()
-        vim.fn['ddu#start']({ name = 'filer', searchPath = vim.fn.expand('%:p') })
-      end)
+      h.nmap(';o', '<Cmd>Ddu file_old<CR>')
+      h.nmap(';g', '<Cmd>Ddu -name=grep<CR>')
+      -- FIXME: 開いてるファイルがあるディレクトリを開いてほしいけどなんかダメそう
+      h.nmap(';b', [[<Cmd>Ddu -name=filer -source-option-path=`expand('%:p:h')`<CR>]])
     end,
     config = function()
       local reset_ui = function()
@@ -103,8 +95,8 @@ return {
 
       vim.fn['ddu#custom#patch_global']({
         sourceParams = {
-          file_rec = {
-            ignoredDirectories = { '.git', 'node_modules', '.next' },
+          file_external = {
+            cmd = { 'fd', '.', '-H', '-E', '.git', '-t', 'f' },
           },
           rg = {
             inputType = 'migemo',
@@ -156,6 +148,7 @@ return {
       -- Filer
       vim.fn['ddu#custom#patch_local']('filer', {
         ui = 'filer',
+        sync = true,
         sources = {
           {
             name = 'file',
@@ -205,16 +198,19 @@ return {
           h.nmap('m', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "move"})<CR>', opts)
           h.nmap('n', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newFile"})<CR>', opts)
           h.nmap('N', '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newDirectory"})<CR>', opts)
+          h.nmap('h', function()
+            vim.fn['ddu#ui#do_action']([[itemAction]], { name = 'narrow', params = { path = '..' } })
+          end, opts)
           -- ディレクトリなら展開、ファイルなら何もしない
           vim.cmd([[nnoremap <buffer><expr> <Tab>
-            \ ddu#ui#get_item()->get('isTree', v:false)
-            \ ? "<Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
-            \ : "<Tab>"]])
+             \ ddu#ui#get_item()->get('isTree', v:false)
+             \ ? "<Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
+             \ : "<Tab>"]])
           -- ディレクトリなら展開、ファイルなら開く
           vim.cmd([[nnoremap <buffer><expr> <CR>
-            \ ddu#ui#get_item()->get('isTree', v:false)
-            \ ? "<Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
-            \ : "<Cmd>call ddu#ui#do_action('itemAction', {'name': 'open'})<CR>"]])
+             \ ddu#ui#get_item()->get('isTree', v:false)
+             \ ? "<Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
+             \ : "<Cmd>call ddu#ui#do_action('itemAction', {'name': 'open'})<CR>"]])
         end,
       })
 
