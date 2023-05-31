@@ -1,9 +1,9 @@
 local opt = vim.opt
 
 -- 文字
-vim.scriptencoding = 'utf-8'
-opt.encoding = 'utf-8'
-opt.fileencoding = 'utf-8'
+vim.scriptencoding = "utf-8"
+opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
 
 -- 24bitカラー
 opt.termguicolors = true
@@ -12,15 +12,15 @@ opt.termguicolors = true
 opt.laststatus = 3
 
 -- intro を非表示
-opt.shortmess = 'I'
+opt.shortmess = "I"
 
 -- 行
 opt.number = false
-opt.signcolumn = 'yes'
+opt.signcolumn = "yes"
 opt.cursorline = true
 
 -- ヘルプの言語
-opt.helplang = 'ja'
+opt.helplang = "ja"
 
 -- バックアップ, スワップファイル
 opt.backup = false
@@ -30,14 +30,14 @@ opt.swapfile = false
 opt.hidden = true
 
 -- 行末までカーソルを移動可能に
-opt.virtualedit = 'onemore'
+opt.virtualedit = "onemore"
 
 -- マウス操作有効化
-opt.mouse = 'a'
+opt.mouse = "a"
 
 -- 不可視文字可視化
 opt.list = true
-opt.listchars = { tab = '󰌒  ', trail = '⋅', nbsp = '␣', extends = "❯", precedes = "❮" }
+opt.listchars = { tab = "󰌒  ", trail = "⋅", nbsp = "␣", extends = "❯", precedes = "❮" }
 
 -- タブ, インデント
 opt.tabstop = 2
@@ -54,17 +54,17 @@ opt.incsearch = true
 opt.history = 512
 
 -- 補完
-opt.completeopt = 'menuone,noinsert'
+opt.completeopt = "menuone,noinsert"
 
 -- LSPの警告フォーマット
 -- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = {
     format = function(diagnostic)
-      return string.format('%s (%s: %s)', diagnostic.message, diagnostic.source, diagnostic.code)
+      return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
     end,
   },
 })
 
 -- 自動フォーマットを無視して保存
-vim.api.nvim_create_user_command('W', 'noautocmd w', {})
+vim.api.nvim_create_user_command("W", "noautocmd w", {})

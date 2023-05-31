@@ -1,16 +1,16 @@
-local nmap = require('util.helper').nmap
+local nmap = require("util.helper").nmap
 
 return {
   {
-    'TimUntersberger/neogit',
-    cmd = { 'Neogit' },
+    "TimUntersberger/neogit",
+    cmd = { "Neogit" },
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim',
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
     },
     init = function()
-      nmap('<Leader>gg', '<CMD>Neogit<CR>', { desc = 'Open Neogit' })
-      nmap('<Leader>gc', '<CMD>Neogit commit<CR>', { desc = 'git commit' })
+      nmap("<Leader>gg", "<CMD>Neogit<CR>", { desc = "Open Neogit" })
+      nmap("<Leader>gc", "<CMD>Neogit commit<CR>", { desc = "git commit" })
     end,
     config = function()
       require("neogit").setup({
@@ -48,6 +48,6 @@ return {
           recent = { folded = true },
         },
       })
-    end
+    end,
   },
 }

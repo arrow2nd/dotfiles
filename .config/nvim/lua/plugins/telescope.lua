@@ -1,67 +1,67 @@
-local nmap = require('util.helper').nmap
+local nmap = require("util.helper").nmap
 
 return {
   {
-    'nvim-telescope/telescope.nvim',
-    enabled = true,
-    version = '0.1.x',
+    "nvim-telescope/telescope.nvim",
+    enabled = false,
+    version = "0.1.x",
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-      'nvim-telescope/telescope-ui-select.nvim',
-      'Allianaab2m/telescope-kensaku.nvim',
-      'nvim-telescope/telescope-file-browser.nvim'
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "nvim-telescope/telescope-ui-select.nvim",
+      "Allianaab2m/telescope-kensaku.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
     },
-    cmd = 'Telescope',
+    cmd = "Telescope",
     init = function()
-      nmap(';f', '<CMD>Telescope find_files<CR>')
-      nmap(';g', '<CMD>Telescope kensaku<CR>')
-      nmap(';G', '<CMD>Telescope live_grep<CR>')
-      nmap(';k', '<CMD>Telescope keymaps<CR>')
-      nmap(';h', '<CMD>Telescope help_tags<CR>')
-      nmap(';o', '<CMD>Telescope oldfiles<CR>')
-      nmap(';B', '<CMD>Telescope buffers<CR>')
-      nmap(';b', function()
-        return '<CMD>Telescope file_browser cwd=' .. vim.fn.expand('%:p:h') .. '<CR>'
+      nmap(";f", "<CMD>Telescope find_files<CR>")
+      nmap(";g", "<CMD>Telescope kensaku<CR>")
+      nmap(";G", "<CMD>Telescope live_grep<CR>")
+      nmap(";k", "<CMD>Telescope keymaps<CR>")
+      nmap(";h", "<CMD>Telescope help_tags<CR>")
+      nmap(";o", "<CMD>Telescope oldfiles<CR>")
+      nmap(";B", "<CMD>Telescope buffers<CR>")
+      nmap(";b", function()
+        return "<CMD>Telescope file_browser cwd=" .. vim.fn.expand("%:p:h") .. "<CR>"
       end, { silent = true, expr = true })
     end,
     config = function()
-      local telescope = require('telescope')
-      local fb_actions = require('telescope._extensions.file_browser.actions')
+      local telescope = require("telescope")
+      local fb_actions = require("telescope._extensions.file_browser.actions")
 
       telescope.setup({
         defaults = {
           mappings = {
             i = {
-              ['<C-j>'] = 'move_selection_next',
-              ['<C-k>'] = 'move_selection_previous',
-              ['<C-n>'] = 'cycle_history_next',
-              ['<C-p>'] = 'cycle_history_prev',
+              ["<C-j>"] = "move_selection_next",
+              ["<C-k>"] = "move_selection_previous",
+              ["<C-n>"] = "cycle_history_next",
+              ["<C-p>"] = "cycle_history_prev",
             },
             n = {
-              ['q'] = 'close',
+              ["q"] = "close",
             },
           },
-          prompt_prefix = ' ',
-          layout_strategy = 'vertical',
+          prompt_prefix = " ",
+          layout_strategy = "vertical",
           layout_config = {
             vertical = {
               width = 0.8,
               height = 0.9,
-              prompt_position = 'bottom',
+              prompt_position = "bottom",
             },
           },
           preview = { treesitter = false },
-          file_ignore_patterns = { '^.git/' },
+          file_ignore_patterns = { "^.git/" },
           vimgrep_arguments = {
-            'rg',
-            '--color=never',
-            '--no-heading',
-            '--with-filename',
-            '--line-number',
-            '--column',
-            '--smart-case',
-            '--hidden',
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
           },
         },
         pickers = {
@@ -70,11 +70,11 @@ return {
         },
         extensions = {
           file_browser = {
-            initial_mode = 'normal',
+            initial_mode = "normal",
             hidden = true,
             respect_gitignore = false,
             mappings = {
-              ['i'] = {
+              ["i"] = {
                 ["<A-c>"] = false,
                 ["<S-CR>"] = false,
                 ["<A-r>"] = false,
@@ -91,7 +91,7 @@ return {
                 ["<C-s>"] = false,
                 ["<bs>"] = false,
               },
-              ['n'] = {
+              ["n"] = {
                 ["c"] = fb_actions.create,
                 ["r"] = fb_actions.rename,
                 ["m"] = fb_actions.move,
@@ -107,12 +107,12 @@ return {
               },
             },
           },
-        }
+        },
       })
 
-      telescope.load_extension('ui-select')
-      telescope.load_extension('kensaku')
-      telescope.load_extension('file_browser')
-    end
-  }
+      telescope.load_extension("ui-select")
+      telescope.load_extension("kensaku")
+      telescope.load_extension("file_browser")
+    end,
+  },
 }
