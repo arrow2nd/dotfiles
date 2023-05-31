@@ -146,6 +146,30 @@ return {
         },
       })
 
+      -- nvim_lsp
+      for name, method in pairs({
+        lsp_declaration = "textDocument/declaration",
+        lsp_definitions = "textDocument/definition",
+        lsp_references = "textDocument/references",
+      }) do
+        vim.fn["ddu#custom#patch_local"](name, {
+          sync = true,
+          sources = {
+            { name = "nvim_lsp" },
+          },
+          sourceParams = {
+            nvim_lsp = {
+              method = method,
+            },
+          },
+          uiParams = {
+            ff = {
+              immediateAction = "open",
+            },
+          },
+        })
+      end
+
       -- Filer
       vim.fn["ddu#custom#patch_local"]("filer", {
         ui = "filer",
