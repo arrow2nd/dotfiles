@@ -119,6 +119,9 @@ return {
           file = {
             defaultAction = "open",
           },
+          nvim_lsp = {
+            defaultAction = "open",
+          },
           help = {
             defaultAction = "open",
           },
