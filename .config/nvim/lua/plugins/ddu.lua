@@ -46,8 +46,9 @@ return {
     end,
     config = function()
       local reset_ui = function()
-        local w = vim.api.nvim_win_get_width(0)
-        local win_width = math.floor(w * 0.8)
+        local width = vim.api.nvim_eval("&columns")
+        local height = vim.api.nvim_eval("&lines")
+        local win_width = math.floor(width * 0.8)
         local win_height = 16
         local preview_height = 14
 
@@ -57,7 +58,7 @@ return {
             _ = {
               winWidth = win_width,
               winHeight = win_height,
-              winCol = math.floor((w - win_width) / 2),
+              winCol = math.floor((width - win_width) / 2),
               split = "floating",
               filterSplitDirection = "floating",
               floatingBorder = "rounded",
@@ -74,13 +75,13 @@ return {
               autoResize = false,
             },
             ff = {
-              winRow = math.floor((vim.api.nvim_win_get_height(0) - win_height) / 2) + preview_height / 2 - 1,
+              winRow = math.floor((height - win_height) / 2) + preview_height / 2 - 1,
               startFilter = true,
               autoAction = { name = "preview" },
               ignoreEmpty = false,
             },
             filer = {
-              winRow = math.floor((vim.api.nvim_win_get_height(0) - win_height) / 2),
+              winRow = math.floor((height - win_height) / 2),
             },
           },
         })
