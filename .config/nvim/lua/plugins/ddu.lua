@@ -113,11 +113,6 @@ return {
             sorters = { "sorter_alpha" },
           },
         },
-        filterParams = {
-          -- matcher_kensaku = {
-          --   highlightMatched = "Search",
-          -- },
-        },
         kindOptions = {
           file = {
             defaultAction = "open",
