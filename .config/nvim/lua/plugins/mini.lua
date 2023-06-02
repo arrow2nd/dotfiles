@@ -53,8 +53,15 @@ return {
             local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 9999 }) -- 常にShort表示
             local git = MiniStatusline.section_git({ trunc_width = 75 })
             local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-            local filename = MiniStatusline.section_filename({ trunc_width = 140 })
             local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+
+            local filename = function()
+              if vim.bo.buftype == "terminal" then
+                return "%t"
+              else
+                return "%f%m%r"
+              end
+            end
 
             local get_lsp_progress = function()
               local prog = vim.lsp.util.get_progress_messages()[1]
@@ -72,7 +79,7 @@ return {
               { hl = mode_hl, strings = { mode } },
               { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
               "%<", -- Mark general truncate point
-              { hl = "MiniStatuslineFilename", strings = { filename } },
+              { hl = "MiniStatuslineFilename", strings = { filename() } },
               "%=", -- End left alignment
               { hl = "MiniStatuslineFilename", strings = { get_lsp_progress() } },
               { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
