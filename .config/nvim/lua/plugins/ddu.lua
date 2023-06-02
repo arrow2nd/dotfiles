@@ -58,7 +58,6 @@ return {
           uiParams = {
             _ = {
               winWidth = win_width,
-              winHeight = win_height,
               winCol = math.floor((width - win_width) / 2),
               split = "floating",
               filterSplitDirection = "floating",
@@ -76,13 +75,16 @@ return {
               autoResize = false,
             },
             ff = {
+              winHeight = win_height,
               winRow = math.floor((height - win_height) / 2) + preview_height / 2 - 1,
-              startFilter = true,
               autoAction = { name = "preview" },
+              startFilter = true,
               ignoreEmpty = false,
             },
             filer = {
-              winRow = math.floor((height - win_height) / 2),
+              winHeight = win_height * 1.5,
+              winRow = math.floor((height - win_height * 1.5) / 2),
+              previewSplit = "vertical",
             },
           },
         })
