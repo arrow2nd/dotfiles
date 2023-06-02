@@ -21,6 +21,7 @@ return {
       "matsui54/ddu-source-help",
       "uga-rosa/ddu-source-nvim_lsp",
       -- Filter
+      "Shougo/ddu-filter-sorter_alpha",
       {
         "Milly/ddu-filter-kensaku",
         dependencies = { "lambdalisue/kensaku.vim" },
@@ -109,12 +110,13 @@ return {
           _ = {
             ignoreCase = true,
             matchers = { "matcher_kensaku" },
+            sorters = { "sorter_alpha" },
           },
         },
         filterParams = {
-          matcher_kensaku = {
-            highlightMatched = "Search",
-          },
+          -- matcher_kensaku = {
+          --   highlightMatched = "Search",
+          -- },
         },
         kindOptions = {
           file = {

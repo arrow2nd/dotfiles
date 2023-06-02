@@ -13,6 +13,7 @@
   "ddu-column-icon_filename": { "branch": "main", "commit": "386fd6021fe281ea5be871a85090c48dfd3e3768" },
   "ddu-commands.vim": { "branch": "main", "commit": "94df8b81baca392a4473f2afe162c9e8aa69f4e1" },
   "ddu-filter-kensaku": { "branch": "master", "commit": "fb95b8a86976c3506a11cabcc1ca6fa909aeb2ea" },
+  "ddu-filter-sorter_alpha": { "branch": "main", "commit": "b6b3f4d88c9b5f47aad5861820086bfb68dd7879" },
   "ddu-kind-file": { "branch": "main", "commit": "b646bc6601105c06112f04ea61461b1442885ce1" },
   "ddu-kind-word": { "branch": "main", "commit": "584281b175c55465e6195e222ce1b11896c85d6f" },
   "ddu-source-action": { "branch": "main", "commit": "953ce9273910ff6477b8411bb386fe8415378061" },
