@@ -1,9 +1,6 @@
 # launch vime
 shift + cmd - i : vime --new
 
-# launch logseq
-shift + cmd - l : open -a /Applications/Logseq.app
-
 # Reload yabai
 cmd + shift - c : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
