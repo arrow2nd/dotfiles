@@ -112,7 +112,6 @@ return {
           _ = {
             ignoreCase = true,
             matchers = { "matcher_kensaku" },
-            sorters = { "sorter_alpha" },
           },
         },
         kindOptions = {
@@ -182,6 +181,7 @@ return {
         },
         sourceOptions = {
           _ = {
+            sorters = { "sorter_alpha" },
             columns = { "icon_filename" },
           },
         },
