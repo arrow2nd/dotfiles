@@ -197,7 +197,9 @@ return {
 
       local common_keymaps = function()
         vim.wo.cursorline = true
+        -- 開く
         h.nmap("<CR>", '<Cmd>call ddu#ui#do_action("itemAction")<CR>', opts)
+        -- 分割して開く
         h.nmap(
           "os",
           '<Cmd>call ddu#ui#do_action("itemAction", {"name": "open", "params": {"command": "split"}})<CR>',
@@ -208,11 +210,13 @@ return {
           '<Cmd>call ddu#ui#do_action("itemAction", {"name": "open", "params": {"command": "vsplit"}})<CR>',
           opts
         )
+        -- 選択
         h.nmap("<SPACE>", '<Cmd>call ddu#ui#do_action("toggleSelectItem")<CR>', opts)
+        -- 閉じる
         h.nmap("<ESC>", '<Cmd>call ddu#ui#do_action("quit")<CR>', nowait)
         h.nmap("q", '<Cmd>call ddu#ui#do_action("quit")<CR>', nowait)
+        -- アクション選択
         h.nmap("a", '<Cmd>call ddu#ui#do_action("chooseAction")<CR>', opts)
-        h.nmap("K", '<Cmd>call ddu#ui#do_action("preview")<CR>', opts)
       end
 
       vim.api.nvim_create_autocmd("FileType", {
@@ -225,8 +229,8 @@ return {
           h.nmap("x", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "delete"})<CR>', opts)
           h.nmap("r", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "rename"})<CR>', opts)
           h.nmap("m", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "move"})<CR>', opts)
-          h.nmap("n", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newFile"})<CR>', opts)
-          h.nmap("N", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newDirectory"})<CR>', opts)
+          h.nmap("c", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newFile"})<CR>', opts)
+          h.nmap("C", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newDirectory"})<CR>', opts)
           -- ディレクトリなら展開、ファイルなら何もしない
           vim.cmd([[nnoremap <buffer><expr> <Tab>
              \ ddu#ui#get_item()->get('isTree', v:false)
@@ -251,15 +255,19 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "ddu-ff-filter",
         callback = function()
+          -- 閉じる
           h.nmap("q", "<Cmd>close<CR>", nowait)
           h.nmap("<ESC>", "<Cmd>close<CR>", nowait)
+          -- 開く
           h.imap("<CR>", '<Cmd>call ddu#ui#ff#do_action("itemAction")<CR>', opts)
+          -- 選択
           h.imap("<C-j>", [[<Cmd>call ddu#ui#ff#execute('call cursor(line(".") + 1, 0)<Bar>redraw')<CR>]], opts)
           h.imap("<C-k>", [[<Cmd>call ddu#ui#ff#execute('call cursor(line(".") - 1, 0)<Bar>redraw')<CR>]], opts)
-          h.imap("<C-n>", function()
+          -- 履歴
+          h.imap("<C-p>", function()
             vim.cmd('execute("normal! k")')
           end, opts)
-          h.imap("<C-p>", function()
+          h.imap("<C-n>", function()
             vim.cmd('execute("normal! j")')
           end, opts)
           -- 一括でQuickfixに流しこむ
