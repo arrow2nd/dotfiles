@@ -77,7 +77,7 @@ return {
       fn["pum#set_option"]({
         auto_select = true,
         padding = true,
-        max_horizontal_items = 3,
+        scrollbar_char = "",
       })
 
       -- keymaps
