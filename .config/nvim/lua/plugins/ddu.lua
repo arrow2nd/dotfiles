@@ -217,6 +217,8 @@ return {
         h.nmap("q", '<Cmd>call ddu#ui#do_action("quit")<CR>', nowait)
         -- アクション選択
         h.nmap("a", '<Cmd>call ddu#ui#do_action("chooseAction")<CR>', opts)
+        -- プレビュー
+        h.nmap("K", '<Cmd>call ddu#ui#do_action("preview")<CR>', opts)
       end
 
       vim.api.nvim_create_autocmd("FileType", {
