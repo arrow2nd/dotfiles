@@ -46,8 +46,10 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     config = function()
-      local lspconfig = require("lspconfig")
+      require("mason").setup()
+      require("mason-lspconfig").setup()
 
+      local lspconfig = require("lspconfig")
       require("mason-lspconfig").setup_handlers({
         function(server)
           -- スニペットを有効に
