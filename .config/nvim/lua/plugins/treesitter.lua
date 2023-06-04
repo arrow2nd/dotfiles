@@ -2,6 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     event = "BufRead",
+    commit = "6847ce4f8c93a0c8fd5a3d4df08975ab185187eb",
     config = function()
       require("nvim-treesitter.configs").setup({
         autotag = { enable = true },
