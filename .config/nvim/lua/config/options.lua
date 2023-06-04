@@ -55,6 +55,7 @@ opt.history = 512
 
 -- 補完
 opt.completeopt = "menuone,noinsert"
+opt.pumheight = 24
 
 -- LSPの警告フォーマット
 -- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
