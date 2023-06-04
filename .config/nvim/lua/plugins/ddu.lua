@@ -19,7 +19,7 @@ return {
       "shun/ddu-source-rg",
       "shun/ddu-source-buffer",
       "matsui54/ddu-source-help",
-      "uga-rosa/ddu-source-nvim_lsp",
+      "uga-rosa/ddu-source-lsp",
       -- Filter
       "Shougo/ddu-filter-sorter_alpha",
       {
@@ -118,7 +118,7 @@ return {
           file = {
             defaultAction = "open",
           },
-          nvim_lsp = {
+          lsp = {
             defaultAction = "open",
           },
           help = {
@@ -148,19 +148,18 @@ return {
         },
       })
 
-      -- nvim_lsp
+      -- lsp
       for name, method in pairs({
         lsp_declaration = "textDocument/declaration",
-        lsp_definitions = "textDocument/definition",
-        lsp_references = "textDocument/references",
+        lsp_definition = "textDocument/definition",
       }) do
         vim.fn["ddu#custom#patch_local"](name, {
           sync = true,
           sources = {
-            { name = "nvim_lsp" },
+            { name = "lsp_definition" },
           },
           sourceParams = {
-            nvim_lsp = {
+            lsp = {
               method = method,
             },
           },

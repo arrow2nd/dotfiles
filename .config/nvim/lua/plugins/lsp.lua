@@ -108,7 +108,7 @@ return {
       })
 
       -- global keymaps
-      h.nmap("gE", "<CMD>Ddu nvim_diagnostic<CR>", { desc = "Lists all the diagnostics" })
+      h.nmap("gE", "<CMD>Ddu lsp_diagnostic<CR>", { desc = "Lists all the diagnostics" })
       h.nmap("ge", "<CMD>lua vim.diagnostic.open_float()<CR>", { desc = "Show diagnostic" })
       h.nmap("]g", "<CMD>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
       h.nmap("[g", "<CMD>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to previous diagnostic" })
@@ -121,9 +121,9 @@ return {
           h.nmap("gf", "<CMD>lua vim.lsp.buf.format({ async = true })<CR>", { desc = "Formatting" })
           h.nmap("ga", "<CMD>lua vim.lsp.buf.code_action()<CR>", { desc = "Show available code actions" })
           h.nmap("gn", "<CMD>lua vim.lsp.buf.rename()<CR>", { desc = "Rename definition" })
-          h.nmap("gD", "<CMD>Ddu -name=lsp_declaration<CR>", { desc = "Show declarations" })
-          h.nmap("gd", "<CMD>Ddu -name=lsp_definitions<CR>", { desc = "Lists all the definitions" })
-          h.nmap("gr", "<CMD>Ddu -name=lsp_references<CR>", { desc = "Lists all the references" })
+          h.nmap("gD", "<CMD>Ddu -name=lsp_declaration<CR>", { desc = "Show declaration" })
+          h.nmap("gd", "<CMD>Ddu -name=lsp_definition<CR>", { desc = "Lists all the definition" })
+          h.nmap("gr", "<CMD>Ddu lsp_references<CR>", { desc = "Lists all the references" })
         end,
       })
     end,
