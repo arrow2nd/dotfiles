@@ -19,29 +19,6 @@ return {
           augend.date.alias["%Y-%m-%d"],
           augend.date.alias["%Y年%m月%d日"],
           augend.date.alias["%m月%d日"],
-          -- 論理演算子
-          augend.constant.new({
-            elements = { "and", "or" },
-            word = true,
-            cyclic = true,
-          }),
-          augend.constant.new({
-            elements = { "&&", "||" },
-            word = false,
-            cyclic = true,
-          }),
-        },
-      })
-
-      dial.augends:on_filetype({
-        javascript = {
-          augend.constant.new({ elements = { "let", "const" } }),
-        },
-        typescript = {
-          augend.constant.new({ elements = { "let", "const" } }),
-        },
-        markdown = {
-          augend.misc.alias.markdown_header,
         },
       })
 
