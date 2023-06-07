@@ -46,7 +46,6 @@ alias cls='clear'
 alias v="nvim"
 alias zmv='noglob zmv -W'
 alias dot='cd ~/dotfiles'
-alias todo='gh todo'
 
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
