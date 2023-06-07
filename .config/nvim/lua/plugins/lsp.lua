@@ -81,6 +81,14 @@ return {
             opts.root_dir = node_root_dir
             opts.on_attach = disable_fmt_on_attach
 
+          -- Angular
+          elseif server == "angularls" then
+            -- tsserverのものを使うので無効にする
+            opts.on_attach = function(client, bufnr)
+              client.server_capabilities.renameProvider = false
+              common_on_attach(client, bufnr)
+            end
+
           -- tailwind
           elseif server == "tailwindcss" then
             local tailwind_root_dir = lspconfig.util.root_pattern("tailwind.config.[jt]s", "twind.config.[jt]s")
