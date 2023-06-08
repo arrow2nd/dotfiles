@@ -168,6 +168,7 @@ return {
               immediateAction = "open",
             },
           },
+          unique = true,
         })
       end
 
