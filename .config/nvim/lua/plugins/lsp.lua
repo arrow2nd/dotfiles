@@ -91,7 +91,7 @@ return {
 
           -- tailwind
           elseif server == "tailwindcss" then
-            local tailwind_root_dir = lspconfig.util.root_pattern("tailwind.config.[jt]s", "twind.config.[jt]s")
+            local tailwind_root_dir = lspconfig.util.root_pattern("tailwind.config.{js,cjs,ts}", "twind.config.{js,ts}")
             if tailwind_root_dir(buf_full_filename) == nil then
               return
             end
