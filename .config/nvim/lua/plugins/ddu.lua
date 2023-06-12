@@ -262,7 +262,7 @@ return {
           h.nmap("q", "<Cmd>close<CR>", nowait)
           h.nmap("<ESC>", "<Cmd>close<CR>", nowait)
           -- 開く
-          h.imap("<CR>", '<Cmd>call ddu#ui#ff#do_action("itemAction")<CR>', opts)
+          h.imap("<CR>", '<Cmd>call ddu#ui#ff#do_action("itemAction")<CR><Cmd>stopinsert<CR>', opts)
           -- 選択
           h.imap("<C-j>", [[<Cmd>call ddu#ui#ff#execute('call cursor(line(".") + 1, 0)<Bar>redraw')<CR>]], opts)
           h.imap("<C-k>", [[<Cmd>call ddu#ui#ff#execute('call cursor(line(".") - 1, 0)<Bar>redraw')<CR>]], opts)
