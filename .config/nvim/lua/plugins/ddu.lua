@@ -78,6 +78,7 @@ return {
               winHeight = win_height,
               winRow = math.floor((height - win_height) / 2) + preview_height / 2 - 1,
               autoAction = { name = "preview" },
+              startFilter = true,
               ignoreEmpty = false,
             },
             filer = {
