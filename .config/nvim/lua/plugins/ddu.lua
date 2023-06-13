@@ -47,45 +47,41 @@ return {
     end,
     config = function()
       local reset_ui = function()
-        local width = vim.api.nvim_eval("&columns")
-        local height = vim.api.nvim_eval("&lines")
+        local width = vim.opt.columns:get()
+        local height = vim.opt.lines:get()
         local win_width = math.floor(width * 0.8)
-        local win_height = 16
-        local preview_height = 14
+        local win_height = math.floor(height * 0.4)
 
         vim.fn["ddu#custom#patch_global"]({
           ui = "ff",
           uiParams = {
             _ = {
               winWidth = win_width,
+              winHeight = win_height,
               winCol = math.floor((width - win_width) / 2),
+              winRow = math.floor((height - win_height) / 2),
               split = "floating",
-              filterSplitDirection = "floating",
-              floatingBorder = "rounded",
+              floatingBorder = "single",
               preview = true,
               previewFloating = true,
-              previewFloatingBorder = "rounded",
-              previewSplit = "horizontal",
-              previewWidth = math.floor(win_width / 2),
-              previewHeight = preview_height,
+              previewFloatingBorder = "single",
+              previewSplit = "vertical",
+              previewWidth = math.floor(win_width * 0.5),
+              previewHeight = win_height,
+              previewRow = math.floor((height - win_height) / 2) + 1,
               highlights = {
                 floating = "Normal",
                 floatingBorder = "Normal",
               },
-              autoResize = false,
             },
             ff = {
-              winHeight = win_height,
-              winRow = math.floor((height - win_height) / 2) + preview_height / 2 - 1,
-              autoAction = { name = "preview" },
+              filterSplitDirection = "floating",
+              filterFloatingPosition = "top",
+              autoResize = false,
               startFilter = true,
               ignoreEmpty = false,
             },
-            filer = {
-              winHeight = win_height * 1.5,
-              winRow = math.floor((height - win_height * 1.5) / 2),
-              previewSplit = "vertical",
-            },
+            filer = {},
           },
         })
       end
@@ -261,11 +257,9 @@ return {
           -- 閉じる
           h.nmap("q", "<Cmd>close<CR>", nowait)
           h.nmap("<ESC>", "<Cmd>close<CR>", nowait)
+          h.imap("<ESC>", "<Cmd>close<CR><Cmd>stopinsert<CR>", opts)
           -- 開く
           h.imap("<CR>", '<Cmd>call ddu#ui#ff#do_action("itemAction")<CR><Cmd>stopinsert<CR>', opts)
-          -- 選択
-          h.imap("<C-j>", [[<Cmd>call ddu#ui#ff#execute('call cursor(line(".") + 1, 0)<Bar>redraw')<CR>]], opts)
-          h.imap("<C-k>", [[<Cmd>call ddu#ui#ff#execute('call cursor(line(".") - 1, 0)<Bar>redraw')<CR>]], opts)
           -- 履歴
           h.imap("<C-p>", function()
             vim.cmd('execute("normal! k")')
