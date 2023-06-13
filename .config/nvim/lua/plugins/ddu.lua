@@ -78,7 +78,6 @@ return {
               filterSplitDirection = "floating",
               filterFloatingPosition = "top",
               autoResize = false,
-              startFilter = true,
               ignoreEmpty = false,
             },
             filer = {},
