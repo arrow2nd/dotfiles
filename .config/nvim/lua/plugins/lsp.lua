@@ -78,7 +78,6 @@ return {
             if not is_node_repo then
               return
             end
-            opts.root_dir = node_root_dir
             opts.on_attach = disable_fmt_on_attach
 
           -- Angular
