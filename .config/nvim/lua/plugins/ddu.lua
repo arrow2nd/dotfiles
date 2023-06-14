@@ -246,7 +246,7 @@ return {
         pattern = "ddu-ff",
         callback = function()
           common_keymaps()
-          h.nmap("i", '<Cmd>call ddu#ui#ff#do_action("openFilterWindow")<CR>', opts)
+          h.nmap("i", '<Cmd>call ddu#ui#do_action("openFilterWindow")<CR>', opts)
         end,
       })
 
@@ -256,9 +256,7 @@ return {
           -- 閉じる
           h.nmap("q", "<Cmd>close<CR>", nowait)
           h.nmap("<ESC>", "<Cmd>close<CR>", nowait)
-          h.imap("<ESC>", "<Cmd>close<CR><Cmd>stopinsert<CR>", opts)
-          -- 開く
-          h.imap("<CR>", '<Cmd>call ddu#ui#ff#do_action("itemAction")<CR><Cmd>stopinsert<CR>', opts)
+          h.imap("<CR>", "<Cmd>close<CR><Cmd>stopinsert<CR>", opts)
           -- 履歴
           h.imap("<C-p>", function()
             vim.cmd('execute("normal! k")')
