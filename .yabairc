@@ -39,6 +39,7 @@ yabai -m rule --add app="^Gifski$" manage=off sticky=on
 yabai -m rule --add app="^Bitwarden$" manage=off sticky=on
 yabai -m rule --add app="^AquaSKK$" manage=off sticky=on
 yabai -m rule --add app="KeePassXC$" manage=off sticky=on
+yabai -m rule --add app="AquaSKK" manage=off sticky=on
 # vime
 yabai -m rule --add app="wezterm-gui" manage=off sticky=on
 
