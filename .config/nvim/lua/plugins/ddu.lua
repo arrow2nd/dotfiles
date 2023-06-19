@@ -247,6 +247,14 @@ return {
         callback = function()
           common_keymaps()
           h.nmap("i", '<Cmd>call ddu#ui#do_action("openFilterWindow")<CR>', opts)
+          -- 一括でQuickfixに流しこむ
+          h.nmap("<C-q>", function()
+            vim.fn["ddu#ui#ff#multi_actions"]({
+              { "clearSelectAllItems" },
+              { "toggleAllItems" },
+              { "itemAction", { name = "quickfix" } },
+            })
+          end, opts)
         end,
       })
 
