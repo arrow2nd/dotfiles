@@ -128,8 +128,8 @@ return {
           -- local keymaps
           h.nmap("K", "<CMD>lua vim.lsp.buf.hover()<CR>", { desc = "Show hover" })
           h.nmap("gf", "<CMD>lua vim.lsp.buf.format({ async = true })<CR>", { desc = "Formatting" })
-          h.nmap("ga", "<CMD>lua vim.lsp.buf.code_action()<CR>", { desc = "Show available code actions" })
           h.nmap("gn", "<CMD>lua vim.lsp.buf.rename()<CR>", { desc = "Rename definition" })
+          h.nmap("ga", "<CMD>Ddu lsp_codeAction<CR>", { desc = "Show available code actions" })
           h.nmap("gD", "<CMD>Ddu -name=lsp_declaration<CR>", { desc = "Show declaration" })
           h.nmap("gd", "<CMD>Ddu -name=lsp_definition<CR>", { desc = "Lists all the definition" })
           h.nmap("gr", "<CMD>Ddu lsp_references -unique<CR>", { desc = "Lists all the references" })

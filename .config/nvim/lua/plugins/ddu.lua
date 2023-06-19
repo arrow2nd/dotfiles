@@ -128,6 +128,9 @@ return {
           ui_select = {
             defaultAction = "select",
           },
+          lsp_codeAction = {
+            defaultAction = "apply",
+          },
         },
       })
 
