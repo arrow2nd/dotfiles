@@ -71,13 +71,53 @@ if string.match(hostname, "exotic") then
   font_size = 10
 end
 
+local colors = {
+  tab_bar = {
+    background = "#1e2132",
+
+    active_tab = {
+      bg_color = "#161821",
+      fg_color = "#c6c8d1",
+      intensity = "Bold",
+      underline = "None",
+      italic = false,
+      strikethrough = false,
+    },
+
+    inactive_tab = {
+      bg_color = "#1e2132",
+      fg_color = "#6b7089",
+      italic = true,
+    },
+
+    inactive_tab_hover = {
+      bg_color = "#161821",
+      fg_color = "#6b7089",
+      italic = true,
+    },
+
+    new_tab = {
+      bg_color = "#1e2132",
+      fg_color = "#6b7089",
+    },
+
+    new_tab_hover = {
+      bg_color = "#161821",
+      fg_color = "#6b7089",
+      italic = false,
+    },
+  },
+}
+
 return {
   check_for_updates = false,
   front_end = "WebGpu",
   font = wezterm.font("PlemolJP Console NF"),
   font_size = font_size,
+  colors = colors,
   color_scheme = "iceberg-dark",
   window_decorations = "RESIZE",
+  use_fancy_tab_bar = false,
   hide_tab_bar_if_only_one_tab = true,
   scrollback_lines = 3500,
   disable_default_key_bindings = true,
