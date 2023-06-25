@@ -73,7 +73,7 @@ return {
               previewFloatingBorder = "single",
               previewSplit = "vertical",
               previewWidth = math.floor(win_width * 0.5),
-              previewHeight = 10,
+              previewHeight = win_height,
               previewRow = math.floor((height - win_height) / 2),
               filterSplitDirection = "floating",
               filterFloatingPosition = "top",
