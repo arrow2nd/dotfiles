@@ -14,6 +14,7 @@ return {
       "Shougo/ddc-source-around",
       "Shougo/ddc-source-nvim-lsp",
       "LumaKernel/ddc-source-file",
+      "uga-rosa/ddc-source-vsnip",
       -- Filter
       "Shougo/ddc-filter-matcher_head",
       "Shougo/ddc-filter-matcher_length",
@@ -48,7 +49,6 @@ return {
           mark = "[LS]",
           forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
         },
-        vsnip = { dup = "keep" },
         file = {
           mark = "[F]",
           isVolatile = true,
@@ -116,21 +116,12 @@ return {
   {
     "hrsh7th/vim-vsnip",
     lazy = false,
-    dependencies = { "hrsh7th/vim-vsnip-integ" },
     config = function()
       vim.g.vsnip_snippet_dir = "~/.config/vsnip"
       vim.cmd('imap <expr> <C-l> vsnip#jumpable(1) ? "<Plug>(vsnip-jump-next)" : "<C-l>"')
       vim.cmd('smap <expr> <C-l> vsnip#jumpable(1) ? "<Plug>(vsnip-jump-next)" : "<C-l>"')
       vim.cmd('imap <expr> <C-h> vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-h>"')
       vim.cmd('smap <expr> <C-h> vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-h>"')
-
-      -- 補完確定時に textEdit を適応
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "PumCompleteDone",
-        callback = function()
-          fn["vsnip_integ#on_complete_done"](vim.g["pum#completed_item"])
-        end,
-      })
     end,
   },
 }
