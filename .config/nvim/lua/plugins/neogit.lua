@@ -2,7 +2,7 @@ local nmap = require("util.helper").nmap
 
 return {
   {
-    "TimUntersberger/neogit",
+    "NeogitOrg/neogit",
     cmd = { "Neogit" },
     dependencies = {
       "nvim-lua/plenary.nvim",
