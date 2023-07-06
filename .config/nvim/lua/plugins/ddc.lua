@@ -17,7 +17,6 @@ return {
       "uga-rosa/ddc-source-vsnip",
       -- Filter
       "Shougo/ddc-filter-matcher_head",
-      "Shougo/ddc-filter-matcher_length",
       "Shougo/ddc-filter-sorter_rank",
       "Shougo/ddc-filter-converter_remove_overlap",
       -- Preview
@@ -39,7 +38,7 @@ return {
 
       patch_global("sourceOptions", {
         _ = {
-          matchers = { "matcher_head", "matcher_length" },
+          matchers = { "matcher_head" },
           sorters = { "sorter_rank" },
           converters = { "converter_remove_overlap" },
           ignoreCase = true,
