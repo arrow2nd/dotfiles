@@ -70,21 +70,6 @@ return {
     end,
   },
   {
-    "Shougo/pum.vim",
-    config = function()
-      fn["pum#set_option"]({
-        auto_select = true,
-        padding = true,
-        scrollbar_char = "",
-      })
-
-      -- keymaps
-      local opts = { silent = true, noremap = true }
-      imap("<C-y>", "<Cmd>call pum#map#confirm()<CR>", opts)
-      imap("<C-e>", "<Cmd>call pum#map#cancel()<CR>", opts)
-    end,
-  },
-  {
     "matsui54/denops-popup-preview.vim",
     dependencies = { "vim-denops/denops.vim" },
     config = function()
