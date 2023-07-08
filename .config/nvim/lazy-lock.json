@@ -8,7 +8,7 @@
   "ddc-source-file": { "branch": "main", "commit": "f10a559015f1bf1779f9eb6d7db2ad7af6eff89e" },
   "ddc-source-nvim-lsp": { "branch": "main", "commit": "721d4e6163d1e0135af45ba27eab1265cb01c099" },
   "ddc-source-vsnip": { "branch": "main", "commit": "d3c429fd91f432ab5478cc343f9b61bacac74f8e" },
-  "ddc-ui-pum": { "branch": "main", "commit": "e8eb779ab052b66627e177ee8334910ebe5cae73" },
+  "ddc-ui-native": { "branch": "main", "commit": "758eca2be8654f3d2b451aa7dc756ce39855568d" },
   "ddc.vim": { "branch": "main", "commit": "20b03b277deffda5bc95bc07bfb154bb176a0248" },
   "ddu-column-icon_filename": { "branch": "main", "commit": "da82c0f68ea0e5bd00b6977e0d223364685b0aa2" },
   "ddu-commands.vim": { "branch": "main", "commit": "94c601d05284e39a956aa84c1a256baa820c19ca" },

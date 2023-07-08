@@ -8,8 +8,9 @@ return {
     dependencies = {
       "vim-denops/denops.vim",
       -- UI
-      "Shougo/pum.vim",
-      "Shougo/ddc-ui-pum",
+      -- "Shougo/pum.vim",
+      -- "Shougo/ddc-ui-pum",
+      "Shougo/ddc-ui-native",
       -- Source
       "Shougo/ddc-source-around",
       "Shougo/ddc-source-nvim-lsp",
@@ -26,7 +27,7 @@ return {
     config = function()
       local patch_global = fn["ddc#custom#patch_global"]
 
-      patch_global("ui", "pum")
+      patch_global("ui", "native")
 
       patch_global("sources", {
         "skkeleton",
