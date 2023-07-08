@@ -74,7 +74,6 @@ return {
               previewSplit = "vertical",
               previewWidth = math.floor(win_width * 0.5),
               previewHeight = win_height,
-              previewRow = math.floor((height - win_height) / 2),
               filterSplitDirection = "floating",
               filterFloatingPosition = "top",
               autoResize = false,
@@ -216,8 +215,6 @@ return {
         h.nmap("q", '<Cmd>call ddu#ui#do_action("quit")<CR>', nowait)
         -- アクション選択
         h.nmap("a", '<Cmd>call ddu#ui#do_action("chooseAction")<CR>', opts)
-        -- プレビュー
-        h.nmap("K", '<Cmd>call ddu#ui#do_action("preview")<CR>', opts)
       end
 
       vim.api.nvim_create_autocmd("FileType", {
@@ -249,7 +246,10 @@ return {
         pattern = "ddu-ff",
         callback = function()
           common_keymaps()
+          -- フィルターを開く
           h.nmap("i", '<Cmd>call ddu#ui#do_action("openFilterWindow")<CR>', opts)
+          -- プレビュー
+          h.nmap("K", '<Cmd>call ddu#ui#do_action("preview")<CR>', opts)
           -- 一括でQuickfixに流しこむ
           h.nmap("<C-q>", function()
             vim.fn["ddu#ui#ff#multi_actions"]({
