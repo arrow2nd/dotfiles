@@ -8,8 +8,6 @@ return {
     dependencies = {
       "vim-denops/denops.vim",
       -- UI
-      -- "Shougo/pum.vim",
-      -- "Shougo/ddc-ui-pum",
       "Shougo/ddc-ui-native",
       -- Source
       "Shougo/ddc-source-around",
