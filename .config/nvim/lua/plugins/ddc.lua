@@ -74,7 +74,7 @@ return {
     dependencies = { "vim-denops/denops.vim" },
     config = function()
       vim.g.popup_preview_config = {
-        border = true,
+        border = false,
         supportVsnip = true,
         supportUltisnips = false,
         supportInfo = true,
