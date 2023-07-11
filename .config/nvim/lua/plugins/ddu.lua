@@ -147,30 +147,6 @@ return {
         },
       })
 
-      -- lsp
-      for name, method in pairs({
-        lsp_declaration = "textDocument/declaration",
-        lsp_definition = "textDocument/definition",
-      }) do
-        vim.fn["ddu#custom#patch_local"](name, {
-          sync = true,
-          sources = {
-            { name = "lsp_definition" },
-          },
-          sourceParams = {
-            lsp = {
-              method = method,
-            },
-          },
-          uiParams = {
-            ff = {
-              immediateAction = "open",
-            },
-          },
-          unique = true,
-        })
-      end
-
       -- Filer
       vim.fn["ddu#custom#patch_local"]("filer", {
         ui = "filer",
