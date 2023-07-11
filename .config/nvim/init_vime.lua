@@ -45,15 +45,14 @@ require("lazy").setup({
     "Shougo/ddc.vim",
     dependencies = {
       "vim-denops/denops.vim",
-      "Shougo/pum.vim",
-      "Shougo/ddc-ui-pum",
+      "Shougo/ddc-ui-native",
     },
     init = function()
       vim.api.nvim_create_autocmd("User", {
         pattern = "skkeleton-initialize-post",
         callback = function()
           local patch_global = vim.fn["ddc#custom#patch_global"]
-          patch_global("ui", "pum")
+          patch_global("ui", "native")
           patch_global("sources", { "skkeleton" })
           patch_global("sourceOptions", {
             skkeleton = {
@@ -64,28 +63,9 @@ require("lazy").setup({
             },
           })
 
-          local opts = { silent = true, noremap = true }
-          h.imap("<c-n>", "<Cmd>call pum#map#select_relative(+1)<CR>", opts)
-          h.imap("<c-p>", "<Cmd>call pum#map#select_relative(-1)<CR>", opts)
-
           vim.fn["ddc#enable"]()
         end,
       })
-    end,
-  },
-  {
-    "Shougo/pum.vim",
-    lazy = true,
-    config = function()
-      vim.fn["pum#set_option"]({
-        auto_select = true,
-        padding = true,
-        max_horizontal_items = 3,
-      })
-
-      local opts = { silent = true, noremap = true }
-      h.imap("<C-y>", "<Cmd>call pum#map#confirm()<CR>", opts)
-      h.imap("<C-e>", "<Cmd>call pum#map#cancel()<CR>", opts)
     end,
   },
 }, {
