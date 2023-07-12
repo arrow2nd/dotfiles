@@ -227,7 +227,7 @@ return {
           -- フィルターを開く
           h.nmap("i", '<Cmd>call ddu#ui#do_action("openFilterWindow")<CR>', opts)
           -- プレビュー
-          h.nmap("K", '<Cmd>call ddu#ui#do_action("preview")<CR>', opts)
+          h.nmap("K", '<Cmd>call ddu#ui#do_action("togglePreview")<CR>', opts)
           -- 一括でQuickfixに流しこむ
           h.nmap("<C-q>", function()
             vim.fn["ddu#ui#ff#multi_actions"]({
