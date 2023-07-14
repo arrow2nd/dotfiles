@@ -112,8 +112,7 @@ local colors = {
 return {
   check_for_updates = false,
   front_end = "WebGpu",
-  -- font = wezterm.font("PlemolJP Console NF"),
-  font = wezterm.font("UDEV Gothic NF"),
+  font = wezterm.font("PlemolJP Console NF"),
   font_size = font_size,
   colors = colors,
   color_scheme = "iceberg-dark",
