@@ -46,6 +46,17 @@ return {
       require("mini.indentscope").setup({ symbol = "┆" })
       vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "Conceal" })
 
+      -- jump2d
+      require("mini.jump2d").setup({
+        labels = "asdfghjklqwertyuiopzxcvbnm",
+        view = {
+          dim = true,
+        },
+        mappings = {
+          start_jumping = "<Leader><Space>",
+        },
+      })
+
       -- statusline
       require("mini.statusline").setup({
         content = {

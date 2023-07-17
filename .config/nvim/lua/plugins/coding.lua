@@ -10,18 +10,6 @@ return {
     config = true,
   },
   {
-    "yuki-yano/fuzzy-motion.vim",
-    lazy = false,
-    dependencies = {
-      "vim-denops/denops.vim",
-      "lambdalisue/kensaku.vim",
-    },
-    init = function()
-      h.nmap("<Leader><Space>", "<CMD>FuzzyMotion<CR>")
-      vim.g.fuzzy_motion_matchers = { "fzf", "kensaku" }
-    end,
-  },
-  {
     "skanehira/denops-translate.vim",
     lazy = false,
     dependencies = { "vim-denops/denops.vim" },
