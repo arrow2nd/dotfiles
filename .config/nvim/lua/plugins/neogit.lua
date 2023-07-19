@@ -33,8 +33,8 @@ return {
         preview_buffer = { kind = "split" },
         popup = { kind = "split" },
         signs = {
-          section = { ">", "v" },
-          item = { ">", "v" },
+          section = { "", "" },
+          item = { "", "" },
           hunk = { "", "" },
         },
         integrations = { diffview = true },
