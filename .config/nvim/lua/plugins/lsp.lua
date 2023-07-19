@@ -20,7 +20,7 @@ end
 
 local common_on_attach = function(client, bufnr)
   -- Semantic token を有効にすると色がいっぱいになるので切る
-  client.server_capabilities.semanticTokensProvider = nil
+  client.server_capabilities.semanticTokensProvider = false
 
   -- 保存時に自動フォーマット
   if client.supports_method("textDocument/formatting") and enable_autoformat() then
