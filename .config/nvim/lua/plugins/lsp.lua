@@ -84,6 +84,7 @@ return {
             -- tsserverのものを使うので無効にする
             opts.on_attach = function(client, bufnr)
               client.server_capabilities.renameProvider = false
+              client.server_capabilities.completionProvider = false
               common_on_attach(client, bufnr)
             end
 
