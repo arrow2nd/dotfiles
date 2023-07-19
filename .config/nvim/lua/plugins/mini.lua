@@ -104,21 +104,21 @@ return {
       })
 
       -- iceberg
-      local mini_statusline_colors = {
-        MiniStatuslineModeNormal = { bg = "#818596", fg = "#17171b" },
-        MiniStatuslineModeInsert = { bg = "#84a0c6", fg = "#161821" },
-        MiniStatuslineModeVisual = { bg = "#b4be82", fg = "#161821" },
-        MiniStatuslineModeReplace = { bg = "#e2a478", fg = "#161821" },
-        MiniStatuslineModeCommand = { bg = "#818596", fg = "#17171b" },
-        MiniStatuslineModeOther = { bg = "#0f1117", fg = "#3e445e" },
-        MiniStatuslineDevinfo = { bg = "#2e313f", fg = "#6b7089" },
-        MiniStatuslineFileinfo = { bg = "#2e313f", fg = "#6b7089" },
-        MiniStatuslineInactive = { link = "StatusLineNC" },
-      }
-
-      for group, conf in pairs(mini_statusline_colors) do
-        vim.api.nvim_set_hl(0, group, conf)
-      end
+      -- local mini_statusline_colors = {
+      --   MiniStatuslineModeNormal = { bg = "#818596", fg = "#17171b" },
+      --   MiniStatuslineModeInsert = { bg = "#84a0c6", fg = "#161821" },
+      --   MiniStatuslineModeVisual = { bg = "#b4be82", fg = "#161821" },
+      --   MiniStatuslineModeReplace = { bg = "#e2a478", fg = "#161821" },
+      --   MiniStatuslineModeCommand = { bg = "#818596", fg = "#17171b" },
+      --   MiniStatuslineModeOther = { bg = "#0f1117", fg = "#3e445e" },
+      --   MiniStatuslineDevinfo = { bg = "#2e313f", fg = "#6b7089" },
+      --   MiniStatuslineFileinfo = { bg = "#2e313f", fg = "#6b7089" },
+      --   MiniStatuslineInactive = { link = "StatusLineNC" },
+      -- }
+      --
+      -- for group, conf in pairs(mini_statusline_colors) do
+      --   vim.api.nvim_set_hl(0, group, conf)
+      -- end
     end,
   },
 }
