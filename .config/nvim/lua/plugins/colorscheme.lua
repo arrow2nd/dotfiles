@@ -11,7 +11,7 @@ return {
     end,
   },
   {
-    "arrow2nd/aqua.vim",
+    "arrow2nd/aqua",
     -- dir = "~/workspace/github.com/arrow2nd/aqua.vim",
     enabled = true,
     lazy = false,
