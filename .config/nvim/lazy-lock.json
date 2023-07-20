@@ -1,4 +1,5 @@
 {
+  "aqua": { "branch": "main", "commit": "c401f3c6741c4a9cc9fa6ee6e800ef8e4bdf4c13" },
   "bufpreview.vim": { "branch": "master", "commit": "9b3df1e6f508a6df6951b6bc5353e8f822a0c186" },
   "chowcho.nvim": { "branch": "main", "commit": "6bfba65061ddc088aa8a96300c42b62dd483f5e7" },
   "ddc-filter-converter_remove_overlap": { "branch": "main", "commit": "5597c2cfeb9d3a12a889cf043ee62ce49e12005a" },
@@ -49,7 +50,6 @@
   "nvim-treesitter": { "branch": "master", "commit": "4115fad9fded72571bdc3e0f7351e64b31799a3d" },
   "nvim-ts-autotag": { "branch": "main", "commit": "6be1192965df35f94b8ea6d323354f7dc7a557e4" },
   "nvim-web-devicons": { "branch": "master", "commit": "efbfed0567ef4bfac3ce630524a0f6c8451c5534" },
-  "playground": { "branch": "master", "commit": "2b81a018a49f8e476341dfcb228b7b808baba68b" },
   "plenary.nvim": { "branch": "master", "commit": "267282a9ce242bbb0c5dc31445b6d353bed978bb" },
   "skkeleton": { "branch": "main", "commit": "632932668465809a688aaeb937e9ea57093b33fb" },
   "vim-floaterm": { "branch": "master", "commit": "bcaeabf89a92a924031d471395054d84bd88ce2f" },
