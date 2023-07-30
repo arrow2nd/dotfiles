@@ -29,11 +29,11 @@ return {
       patch_global("ui", "native")
 
       patch_global("sources", {
-        "around",
-        "file",
-        "nvim-lsp",
         "skkeleton",
+        "nvim-lsp",
         "vsnip",
+        "file",
+        "around",
       })
 
       patch_global("sourceOptions", {
