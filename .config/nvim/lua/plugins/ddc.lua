@@ -43,10 +43,14 @@ return {
           converters = { "converter_truncate_abbr", "converter_remove_overlap" },
           ignoreCase = true,
         },
-        around = { mark = "[A]" },
+        around = {
+          mark = "[A]",
+        },
         ["nvim-lsp"] = {
           mark = "[LS]",
-          forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
+          dup = "keep",
+          forceCompletionPattern = [[\k+]],
+          sorters = { "sorter_lsp-kind" },
         },
         file = {
           mark = "[F]",
@@ -60,6 +64,17 @@ return {
           converters = {},
           isVolatile = true,
           minAutoCompleteLength = 2,
+        },
+      })
+
+      patch_global("sourceParams", {
+        ["nvim-lsp"] = {
+          snippetEngine = vim.fn["denops#callback#register"](function(body)
+            vim.fn["vsnip#anonymous"](body)
+          end),
+          enableResolveItem = true,
+          enableAdditionalTextEdit = true,
+          confirmBehavior = "replace",
         },
       })
 

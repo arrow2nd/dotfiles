@@ -45,11 +45,18 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "Shougo/ddc-source-nvim-lsp",
+    },
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup()
 
       local lspconfig = require("lspconfig")
+      local ddc_nvim_lsp = require("ddc_nvim_lsp")
+
       require("mason-lspconfig").setup_handlers({
         function(server)
           -- node_modules があるか
@@ -58,7 +65,7 @@ return {
           local is_node_repo = node_root_dir(buf_full_filename) ~= nil
 
           local opts = {
-            capabilities = vim.lsp.protocol.make_client_capabilities(),
+            capabilities = ddc_nvim_lsp.make_client_capabilities(),
             on_attach = common_on_attach,
           }
 
