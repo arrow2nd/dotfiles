@@ -49,7 +49,7 @@ return {
         ["nvim-lsp"] = {
           mark = "[LS]",
           dup = "keep",
-          forceCompletionPattern = [[\k+]],
+          forceCompletionPattern = [[(\k+|\.)]],
           sorters = { "sorter_lsp-kind" },
         },
         file = {
