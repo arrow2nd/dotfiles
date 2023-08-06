@@ -36,3 +36,6 @@ apply = ["defer"]
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 apply = ["defer"]
+
+[plugins.zsh-abbrev-alias]
+github = "momo-lab/zsh-abbrev-alias"

@@ -14,41 +14,43 @@ eval "$(sheldon source)"
 }
 
 #
-# エイリアス
+# エイリアス (abbr)
 #
 
 # Git
-alias g='git'
-alias ga='git add'
-alias gd='git diff'
-alias gs='git status'
-alias gp='git push'
-alias gb='git branch'
-alias gc='git commit'
-alias gsw='git switch'
+abbrev-alias ga='git add'
+abbrev-alias gd='git diff'
+abbrev-alias gs='git status'
+abbrev-alias gp='git push'
+abbrev-alias gb='git branch'
+abbrev-alias gc='git commit'
+abbrev-alias gsw='git switch'
 
 # ブランチ切り替え
-alias gswf='git switch $(git branch -l | fzf | tr -d "* ")'
+abbrev-alias gswf='git switch $(git branch -l | fzf | tr -d "* ")'
 
 # マージ済のブランチをまとめて消す
-alias g-delete-merged-braches='git branch --merged | grep -v "*" | xargs git branch -d'
+abbrev-alias g-delete-merged-braches='git branch --merged | grep -v "*" | xargs git branch -d'
 
 # ghq + fzf
-alias q='cd $(ghq list -p | fzf)'
+abbrev-alias q='cd $(ghq list -p | fzf)'
 
 # exa
-alias l='exa -la'
-alias la='exa -a'
-alias lt='exa -T'
+abbrev-alias l='exa -la'
+abbrev-alias la='exa -a'
+abbrev-alias lt='exa -T'
+
+# brew
+abbrev-alias brewu='brew upgrade && brew autoremove && brew cleanup -s'
 
 # 雑多
-alias cls='clear'
-alias v="nvim"
-alias zmv='noglob zmv -W'
-alias dot='cd ~/dotfiles'
+abbrev-alias cls='clear'
+abbrev-alias v="nvim"
+abbrev-alias zmv='noglob zmv -W'
+abbrev-alias dot='cd ~/dotfiles'
 
 # 天気予報
-alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
+abbrev-alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
 
 #
 # キーバインド
