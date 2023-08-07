@@ -18,22 +18,15 @@ eval "$(sheldon source)"
 #
 
 # Git
+abbrev-alias g='git'
 abbrev-alias ga='git add'
 abbrev-alias gd='git diff'
 abbrev-alias gs='git status'
 abbrev-alias gp='git push'
+abbrev-alias gpl='git pull'
 abbrev-alias gb='git branch'
 abbrev-alias gc='git commit'
 abbrev-alias gsw='git switch'
-
-# ブランチ切り替え
-abbrev-alias gswf='git switch $(git branch -l | fzf | tr -d "* ")'
-
-# マージ済のブランチをまとめて消す
-abbrev-alias g-delete-merged-braches='git branch --merged | grep -v "*" | xargs git branch -d'
-
-# ghq + fzf
-abbrev-alias q='cd $(ghq list -p | fzf)'
 
 # exa
 abbrev-alias l='exa -la'
@@ -49,11 +42,20 @@ abbrev-alias v="nvim"
 abbrev-alias zmv='noglob zmv -W'
 abbrev-alias dot='cd ~/dotfiles'
 
+# ブランチ切り替え
+alias gswf='git switch $(git branch -l | fzf | tr -d "* ")'
+
+# ghq + fzf
+alias q='cd $(ghq list -p | fzf)'
+
+# マージ済のブランチをまとめて消す
+alias g-delete-merged-braches='git branch --merged | grep -v "*" | xargs git branch -d'
+
 # 天気予報
-abbrev-alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
+alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
 
 #
-# キーバインド
+# ZLE
 #
 
 # コマンド履歴を検索
