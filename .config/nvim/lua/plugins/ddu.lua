@@ -66,8 +66,6 @@ return {
                 floating = "Normal",
                 floatingBorder = "Normal",
               },
-            },
-            ff = {
               preview = true,
               previewFloating = true,
               previewFloatingBorder = "single",
@@ -76,6 +74,8 @@ return {
               previewHeight = win_height - 2,
               previewCol = math.floor(width / 2) - 2,
               previewRow = math.floor((height - win_height) / 2) + 1,
+            },
+            ff = {
               filterSplitDirection = "floating",
               filterFloatingPosition = "top",
               autoResize = false,
@@ -217,6 +217,7 @@ return {
              \ ddu#ui#get_item()->get('isTree', v:false)
              \ ? "<Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
              \ : "<Cmd>call ddu#ui#do_action('itemAction', {'name': 'open'})<CR>"]])
+          h.nmap("K", '<Cmd>call ddu#ui#do_action("togglePreview")<CR>', opts)
         end,
       })
 
