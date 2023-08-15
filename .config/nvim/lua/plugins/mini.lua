@@ -74,15 +74,12 @@ return {
             end
 
             local get_lsp_progress = function()
-              local prog = vim.lsp.util.get_progress_messages()[1]
-              if not prog then
+              local prog = vim.lsp.status()
+              if prog == "" then
                 return ""
               end
 
-              local title = prog.title or ""
-              local per = prog.percentage or 0
-
-              return string.format("󰔟 %s (%s%%%%)", title, per)
+              return string.format("󰔟 %s", prog:gsub("%%", "%%%%"))
             end
 
             return MiniStatusline.combine_groups({

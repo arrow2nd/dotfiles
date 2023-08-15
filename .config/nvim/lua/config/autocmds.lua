@@ -24,3 +24,10 @@ api.nvim_create_autocmd({ "TermOpen" }, {
   pattern = { "term://*" },
   command = "startinsert",
 })
+
+-- LSPからの進行状況を受け取ったらステータスを更新する
+api.nvim_create_autocmd("LspProgress", {
+  group = augroup,
+  pattern = "*",
+  command = "redrawstatus",
+})
