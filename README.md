@@ -4,6 +4,7 @@
 
 - macOS (Apple Silicon) or Manjaro (GNOME)
 - git, curl, make 導入済み
+- Neovim (HEAD)
 
 ### フォント
 
