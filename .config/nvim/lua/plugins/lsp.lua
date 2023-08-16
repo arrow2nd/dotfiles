@@ -1,45 +1,5 @@
 local h = require("util.helper")
-
--- 自動フォーマットを有効にできるか
---
--- 環境変数 `NVIM_DISABLE_AUTOFORMATTING_PROJECTS` にプロジェクトのパスを追加することで無効にできます
--- カンマ区切りで複数指定可能です
-local function enable_autoformat()
-  local root = vim.fn.getcwd(0)
-  local disable_projects = vim.split(os.getenv("NVIM_DISABLE_AUTOFORMATTING_PROJECTS") or "", ",")
-
-  -- 無効にするプロジェクトか
-  for _, project in ipairs(disable_projects) do
-    if root == project then
-      return false
-    end
-  end
-
-  return true
-end
-
-local common_on_attach = function(client, bufnr)
-  -- Semantic token を有効にすると色がいっぱいになるので切る
-  client.server_capabilities.semanticTokensProvider = nil
-
-  -- 保存時に自動フォーマット
-  if client.supports_method("textDocument/formatting") and enable_autoformat() then
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      callback = function()
-        vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
-      end,
-      group = augroup,
-      buffer = bufnr,
-    })
-  end
-end
-
-local disable_fmt_on_attach = function(client, bufnr)
-  client.server_capabilities.documentFormattingProvider = false
-  common_on_attach(client, bufnr)
-end
+local lsp = require("util.lsp")
 
 return {
   {
@@ -66,7 +26,7 @@ return {
 
           local opts = {
             capabilities = ddc_nvim_lsp.make_client_capabilities(),
-            on_attach = common_on_attach,
+            on_attach = lsp.enable_fmt_on_attach,
           }
 
           -- denols と tsserver を出し分ける
@@ -78,13 +38,14 @@ return {
             opts.cmd = { "deno", "lsp", "--unstable" }
             opts.root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
             opts.init_options = { lint = true, unstable = true }
+            opts.on_attach = lsp.disable_fmt_on_attach
 
           -- Node.js
           elseif server == "tsserver" then
             if not is_node_repo then
               return
             end
-            opts.on_attach = disable_fmt_on_attach
+            opts.on_attach = lsp.disable_fmt_on_attach
 
           -- Angular
           elseif server == "angularls" then
@@ -92,12 +53,13 @@ return {
             opts.on_attach = function(client, bufnr)
               client.server_capabilities.renameProvider = false
               client.server_capabilities.completionProvider = false
-              common_on_attach(client, bufnr)
+              lsp.enable_fmt_on_attach(client, bufnr)
             end
 
           -- tailwind
           elseif server == "tailwindcss" then
             local tailwind_root_dir = lspconfig.util.root_pattern("tailwind.config.{js,cjs,ts}", "twind.config.{js,ts}")
+
             if tailwind_root_dir(buf_full_filename) == nil then
               return
             end
@@ -116,7 +78,7 @@ return {
 
           -- 内蔵フォーマッタを無効化
           elseif server == "html" or server == "jsonls" or server == "lua_ls" then
-            opts.on_attach = disable_fmt_on_attach
+            opts.on_attach = lsp.disable_fmt_on_attach
           end
 
           lspconfig[server].setup(opts)
@@ -147,6 +109,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = {
       ensure_installed = {
+        "efm",
         "denols",
         "gopls",
         "tsserver",
@@ -172,44 +135,5 @@ return {
         },
       },
     },
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = "BufReadPre",
-    config = function()
-      local null_ls = require("null-ls")
-
-      null_ls.setup({
-        sources = {
-          -- deno fmt と Prettier を出し分ける
-          -- ref: https://zenn.dev/nazo6/articles/c2f16b07798bab
-          null_ls.builtins.formatting.deno_fmt.with({
-            condition = function(utils)
-              -- Prettier の設定がない & Deno のプロジェクトでもない
-              return not (utils.has_file({ ".prettierrc", ".prettierrc.js", "deno.json", "deno.jsonc" }))
-            end,
-          }),
-          -- Prettier
-          null_ls.builtins.formatting.prettier.with({
-            condition = function(utils)
-              return utils.has_file({ ".prettierrc", ".prettierrc.js" })
-            end,
-            prefer_local = "node_modules/.bin",
-          }),
-          -- TextLint
-          null_ls.builtins.diagnostics.textlint.with({
-            filetypes = { "markdown" },
-            prefer_local = "node_modules/.bin",
-            condition = function(utils)
-              return utils.has_file({ ".textlintrc", ".textlintrc.yml", ".textlintrc.json" })
-            end,
-          }),
-          -- Stylua
-          null_ls.builtins.formatting.stylua,
-        },
-        on_attach = common_on_attach,
-        diagnostics_format = "#{m} (#{s}: #{c})",
-      })
-    end,
   },
 }
