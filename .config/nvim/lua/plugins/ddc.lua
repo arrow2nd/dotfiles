@@ -27,6 +27,7 @@ return {
       local patch_global = fn["ddc#custom#patch_global"]
 
       patch_global("ui", "native")
+      patch_global("autoCompleteDelay", 75)
 
       patch_global("sources", {
         "skkeleton",
@@ -49,8 +50,8 @@ return {
         ["nvim-lsp"] = {
           mark = "[LS]",
           dup = "keep",
-          forceCompletionPattern = [[\k+|\.\w*|:\w*|->\w*]],
-          sorters = { "sorter_lsp-kind" },
+          forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
+          sorters = { "sorter_rank", "sorter_lsp-kind" },
         },
         file = {
           mark = "[F]",
