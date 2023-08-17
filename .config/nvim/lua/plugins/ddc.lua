@@ -51,7 +51,7 @@ return {
           mark = "[LS]",
           dup = "keep",
           forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
-          sorters = { "sorter_rank", "sorter_lsp-kind" },
+          sorters = { "sorter_lsp-kind", "sorter_rank" },
         },
         file = {
           mark = "[F]",
