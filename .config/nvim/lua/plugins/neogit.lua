@@ -38,7 +38,7 @@ return {
           hunk = { "", "" },
         },
         integrations = { diffview = true },
-        sections = {
+        section = {
           untracked = { folded = false },
           unstaged = { folded = false },
           staged = { folded = false },
