@@ -20,7 +20,7 @@ return {
       "Shougo/ddc-filter-converter_truncate_abbr",
       "Shougo/ddc-filter-converter_remove_overlap",
       -- Preview
-      "matsui54/denops-popup-preview.vim",
+      "uga-rosa/ddc-previewer-floating",
       "matsui54/denops-signature_help",
     },
     config = function()
@@ -85,21 +85,24 @@ return {
       imap("<c-p>", "<Cmd>call pum#map#select_relative(-1)<CR>", opts)
 
       fn["ddc#enable"]()
+      require("ddc_previewer_floating").enable()
     end,
   },
   {
-    "matsui54/denops-popup-preview.vim",
-    dependencies = { "vim-denops/denops.vim" },
+    "uga-rosa/ddc-previewer-floating",
     config = function()
-      vim.g.popup_preview_config = {
-        border = false,
-        supportVsnip = true,
-        supportUltisnips = false,
-        supportInfo = true,
-        delay = 60,
-      }
-
-      fn["popup_preview#enable"]()
+      require("ddc_previewer_floating").setup({
+        ui = "native",
+        max_width = 78,
+        border = "none",
+        window_options = {
+          wrap = false,
+          number = false,
+          signcolumn = "no",
+          cursorline = false,
+          foldenable = false,
+        },
+      })
     end,
   },
   {
