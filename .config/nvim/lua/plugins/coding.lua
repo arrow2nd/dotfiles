@@ -21,19 +21,11 @@ return {
     build = "deno task prepare",
   },
   {
-    "voldikss/vim-floaterm",
-    cmd = { "FloatermNew", "FloatermToggle", "FloatermSend" },
+    "akinsho/toggleterm.nvim",
+    cmd = { "ToggleTerm" },
     init = function()
-      h.nmap("<Leader>ff", "<Cmd>FloatermToggle<CR>")
-      h.nmap("<Leader>fn", "<Cmd>FloatermNew<CR>")
-      h.nmap("<Leader>fc", "<Cmd>FloatermKill<CR>")
-      h.nmap("]f", "<Cmd>FloatermNext<CR>")
-      h.nmap("[f", "<Cmd>FloatermPrev<CR>")
-      h.tmap("<C-q>", "<Cmd>FloatermHide<CR>")
+      h.nmap("<Leader>ff", "<Cmd>ToggleTerm<CR>")
     end,
-    config = function()
-      vim.g.floaterm_title = "  ($1/$2) "
-      vim.api.nvim_set_hl(0, "FloatermBorder", { link = "Normal" })
-    end,
+    config = true,
   },
 }
