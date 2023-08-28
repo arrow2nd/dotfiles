@@ -8,10 +8,10 @@ vim.opt.rtp:prepend(vim.fn.stdpath("data") .. "/lazy/lazy.nvim")
 
 require("lazy").setup({
   {
-    "cocopon/iceberg.vim",
+    "arrow2nd/aqua",
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme iceberg]])
+      vim.cmd([[colorscheme aqua]])
     end,
   },
   {
