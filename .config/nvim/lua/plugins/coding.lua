@@ -24,7 +24,7 @@ return {
     "akinsho/toggleterm.nvim",
     cmd = { "ToggleTerm" },
     init = function()
-      h.nmap("<Leader>ff", "<Cmd>ToggleTerm<CR>")
+      h.nmap("<Leader><Space>", "<Cmd>ToggleTerm<CR>")
     end,
     config = true,
   },
