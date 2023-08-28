@@ -45,17 +45,6 @@ return {
       -- indentscope
       require("mini.indentscope").setup({ symbol = "┆" })
 
-      -- jump2d
-      require("mini.jump2d").setup({
-        labels = "asdfghjklqwertyuiopzxcvbnm",
-        view = {
-          dim = true,
-        },
-        mappings = {
-          start_jumping = "<Leader><Space>",
-        },
-      })
-
       -- statusline
       require("mini.statusline").setup({
         content = {
