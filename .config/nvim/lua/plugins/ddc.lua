@@ -50,7 +50,7 @@ return {
         ["nvim-lsp"] = {
           mark = "[LS]",
           dup = "keep",
-          keywordPattern = "[a-zA-Z0-9_À-ÿ$#-*]*",
+          keywordPattern = "[a-zA-Z0-9_À-ÿ$#\\-*]*",
           forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
           sorters = { "sorter_lsp-kind", "sorter_rank" },
         },
