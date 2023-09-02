@@ -1,5 +1,5 @@
 {
-  "aqua": { "branch": "main", "commit": "2de17471b3f8746d862069fcc905fe44047ad734" },
+  "aqua": { "branch": "main", "commit": "db1e6b97b4532ddc7c91939be2fb7445acd369d1" },
   "bufpreview.vim": { "branch": "master", "commit": "9b3df1e6f508a6df6951b6bc5353e8f822a0c186" },
   "chowcho.nvim": { "branch": "main", "commit": "6bfba65061ddc088aa8a96300c42b62dd483f5e7" },
   "ddc-filter-converter_remove_overlap": { "branch": "main", "commit": "e94330b06c47f63a46ce705927bb4deaff611c21" },
