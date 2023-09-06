@@ -23,13 +23,16 @@ export PATH="$HOME/go/bin:$PATH"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# Homebrew
+# macOS
 if [[ $(uname) == "Darwin" ]]; then
+  # Homebrew
   eval "$(/opt/homebrew/bin/brew shellenv)"
-
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   autoload -Uz compinit
   compinit
+
+  # Rancher Desktop
+  export PATH="$HOME/.rd/bin:$PATH"
 fi
 
 # ローカル設定
