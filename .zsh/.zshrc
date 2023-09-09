@@ -28,10 +28,10 @@ abbrev-alias gb='git branch'
 abbrev-alias gc='git commit'
 abbrev-alias gsw='git switch'
 
-# exa
-abbrev-alias l='exa -la'
-abbrev-alias la='exa -a'
-abbrev-alias lt='exa -T'
+# eza
+abbrev-alias l='eza -la'
+abbrev-alias la='eza -a'
+abbrev-alias lt='eza -T'
 
 # brew
 abbrev-alias brewu='brew upgrade && brew autoremove && brew cleanup -s'

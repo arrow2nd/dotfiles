@@ -29,7 +29,7 @@ yay -S --noconfirm \
   github-cli \
   sheldon \
   fzf \
-  exa \
+  eza \
   fd \
   bat \
   trash-cli \
