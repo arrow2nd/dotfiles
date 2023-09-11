@@ -94,7 +94,6 @@ return {
     config = function()
       require("ddc_previewer_floating").setup({
         ui = "native",
-        max_width = 78,
         border = "none",
         window_options = {
           wrap = false,
