@@ -11,5 +11,5 @@ find . -type f \
        -not -path "*.DS_Store" \
        -not -path "*.luarc.json" \
        -not -path "*bashtop*" \
-       -not -path "stylua.toml" \
+       -not -path "*stylua.toml" \
        | cut -c 3-
