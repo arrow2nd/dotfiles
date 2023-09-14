@@ -45,6 +45,11 @@ return {
       -- indentscope
       require("mini.indentscope").setup({ symbol = "┆" })
 
+      -- starter
+      require("mini.starter").setup({
+        autoopen = true,
+      })
+
       -- statusline
       require("mini.statusline").setup({
         content = {
