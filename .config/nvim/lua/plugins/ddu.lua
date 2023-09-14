@@ -110,6 +110,11 @@ return {
             matchers = { "matcher_kensaku" },
           },
         },
+        filterParams = {
+          matcher_kensaku = {
+            highlightMatched = "Search",
+          },
+        },
         kindOptions = {
           file = {
             defaultAction = "open",
@@ -247,13 +252,6 @@ return {
           h.nmap("q", "<Cmd>close<CR>", nowait)
           h.nmap("<ESC>", "<Cmd>close<CR>", nowait)
           h.imap("<CR>", "<Cmd>close<CR><Cmd>stopinsert<CR>", opts)
-          -- 履歴
-          h.imap("<C-p>", function()
-            vim.cmd('execute("normal! k")')
-          end, opts)
-          h.imap("<C-n>", function()
-            vim.cmd('execute("normal! j")')
-          end, opts)
           -- 一括でQuickfixに流しこむ
           h.imap("<C-q>", function()
             vim.fn["ddu#ui#ff#multi_actions"]({
