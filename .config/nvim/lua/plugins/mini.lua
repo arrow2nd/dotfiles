@@ -7,6 +7,8 @@ return {
       vim.api.nvim_create_autocmd({ "InsertEnter" }, {
         pattern = "*",
         callback = function()
+          -- ai
+          require("mini.ai").setup({})
           -- comment
           require("mini.comment").setup({})
           -- splitjoin
