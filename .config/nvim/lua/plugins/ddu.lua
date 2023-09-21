@@ -22,10 +22,7 @@ return {
       "uga-rosa/ddu-source-lsp",
       -- Filter
       "Shougo/ddu-filter-sorter_alpha",
-      {
-        "Milly/ddu-filter-kensaku",
-        dependencies = { "lambdalisue/kensaku.vim" },
-      },
+      "Shougo/ddu-filter-matcher_substring",
       -- Kind
       "Shougo/ddu-kind-file",
       "Shougo/ddu-kind-word",
@@ -100,18 +97,18 @@ return {
             cmd = { "fd", ".", "-H", "-E", ".git", "-t", "f" },
           },
           rg = {
-            inputType = "migemo",
+            inputType = "regex",
             args = { "--json", "--column", "--no-heading", "--color", "never", "--hidden", "--glob", "!.git" },
           },
         },
         sourceOptions = {
           _ = {
             ignoreCase = true,
-            matchers = { "matcher_kensaku" },
+            matchers = { "matcher_substring" },
           },
         },
         filterParams = {
-          matcher_kensaku = {
+          matcher_substring = {
             highlightMatched = "Search",
           },
         },
@@ -147,6 +144,7 @@ return {
         },
         sourceOptions = {
           rg = {
+            matchers = {},
             volatile = true,
           },
         },
