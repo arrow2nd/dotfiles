@@ -1,0 +1,18 @@
+{
+  "dirPath": "~/.skk",
+  "jisyos": [
+    {
+      "name": "SKK-JISYO.L",
+      "url": "https://skk-dev.github.io/dict/SKK-JISYO.L.gz"
+    },
+    {
+      "name": "skk-jisyo.imas.utf8",
+      "url": "https://ime.imas-db.jp/dist/skk-jisyo.imas.utf8"
+    },
+    {
+      "name": "skk-jisyo-emoji-ja.utf8",
+      "url": "https://raw.githubusercontent.com/arrow2nd/skk-jisyo-emoji-ja/main/skk-jisyo-emoji-ja.utf8"
+    }
+  ]
+}
+
