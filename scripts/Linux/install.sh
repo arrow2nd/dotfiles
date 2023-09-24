@@ -40,6 +40,7 @@ yay -S --noconfirm \
 go install github.com/x-motemen/ghq@latest
 go install github.com/arrow2nd/anct@latest
 go install github.com/arrow2nd/nimotsu@latest
+go install github.com/arrow2nd/jisyo@latest
 
 echo "[ Switch to zsh ]"
 sudo chsh -s $(which zsh) $(whoami)
