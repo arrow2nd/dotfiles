@@ -34,8 +34,7 @@ yay -S --noconfirm \
   bat \
   trash-cli \
   bashtop \
-  wezterm \
-  vivaldi
+  wezterm
 
 go install github.com/x-motemen/ghq@latest
 go install github.com/arrow2nd/anct@latest
