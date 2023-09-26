@@ -34,6 +34,7 @@ yay -S --noconfirm \
   bat \
   trash-cli \
   bashtop \
+  yazi \
   wezterm
 
 go install github.com/x-motemen/ghq@latest
