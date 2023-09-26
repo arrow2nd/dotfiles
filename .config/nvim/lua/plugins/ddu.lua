@@ -15,7 +15,6 @@ return {
       "Shougo/ddu-source-file",
       "Shougo/ddu-source-file_old",
       "matsui54/ddu-source-file_external",
-      "Shougo/ddu-source-line",
       "shun/ddu-source-rg",
       "shun/ddu-source-buffer",
       "matsui54/ddu-source-help",
@@ -37,7 +36,6 @@ return {
       h.nmap(";f", "<Cmd>Ddu file_external<CR>")
       h.nmap(";h", "<Cmd>Ddu help<CR>")
       h.nmap(";B", "<Cmd>Ddu buffer<CR>")
-      h.nmap(";l", "<Cmd>Ddu line<CR>")
       h.nmap(";o", "<Cmd>Ddu file_old<CR>")
       h.nmap(";g", "<Cmd>Ddu -name=grep<CR>")
       h.nmap(";b", [[<Cmd>Ddu -name=filer -searchPath=`expand('%:p')`<CR>]])
