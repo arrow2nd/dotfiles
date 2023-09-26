@@ -67,7 +67,7 @@ local font_size = 12
 
 local hostname = wezterm.hostname()
 if string.match(hostname, "exotic") then
-  -- MacBook Air 2015
+  -- GPD Pocket 2
   font_size = 10
 end
 
