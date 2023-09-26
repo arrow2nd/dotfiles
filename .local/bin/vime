@@ -15,4 +15,8 @@ fi
 wezterm start --class vime nvim -u ~/.config/nvim/init_vime.lua ${opts} ${tmp} || exit 1
 
 # 末尾の改行を消してコピー
-cat $tmp | tr -d '\n' | pbcopy
+if [ "$(uname)" == 'Darwin' ]; then
+  cat $tmp | tr -d '\n' | pbcopy
+else
+  cat $tmp | tr -d '\n' | xsel -bi
+fi
