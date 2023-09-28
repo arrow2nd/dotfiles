@@ -4,6 +4,7 @@ return {
   {
     "NeogitOrg/neogit",
     cmd = { "Neogit" },
+    commit = "29aaebd",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
