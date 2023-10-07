@@ -68,7 +68,7 @@ local font_size = 12
 local hostname = wezterm.hostname()
 if string.match(hostname, "exotic") then
   -- GPD Pocket 2
-  font_size = 10
+  font_size = 11
 end
 
 local colors = {
