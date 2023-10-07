@@ -42,6 +42,7 @@ return {
     end,
     config = function()
       local reset_ui = function()
+        local top = 4
         local width = vim.opt.columns:get()
         local height = vim.opt.lines:get()
         local win_width = math.floor(width * 0.8)
@@ -54,7 +55,7 @@ return {
               winWidth = win_width,
               winHeight = win_height,
               winCol = math.floor((width - win_width) / 2),
-              winRow = math.floor((height - win_height) / 2),
+              winRow = top,
               split = "floating",
               floatingBorder = "single",
               highlights = {
@@ -68,7 +69,7 @@ return {
               previewWidth = math.floor(win_width * 0.5),
               previewHeight = win_height - 2,
               previewCol = math.floor(width / 2) - 2,
-              previewRow = math.floor((height - win_height) / 2) + 1,
+              previewRow = top + 1,
             },
             ff = {
               filterSplitDirection = "floating",
