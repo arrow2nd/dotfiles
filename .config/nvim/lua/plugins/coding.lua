@@ -34,9 +34,9 @@ return {
     init = function()
       vim.g.any_jump_grouping_enabled = 1
 
-      h.nmap("<Leader>j", "<Cmd>AnyJump<CR>")
-      h.xmap("<Leader>j", "<Cmd>AnyJump<CR>")
-      h.xmap("<Leader>al", "<Cmd>AnyJumpLastResults<CR>")
+      h.nmap("gj", "<Cmd>AnyJump<CR>")
+      h.xmap("gj", "<Cmd>AnyJump<CR>")
+      h.nmap("gl", "<Cmd>AnyJumpLastResults<CR>")
     end,
   },
 }
