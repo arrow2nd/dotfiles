@@ -39,7 +39,7 @@ return {
       require("chowcho").setup({
         icon_enabled = true,
         active_border_color = "#d162cb",
-        border_style = "rounded",
+        border_style = "default",
       })
     end,
   },
