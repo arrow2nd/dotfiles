@@ -20,10 +20,11 @@ return {
 
       require("mason-lspconfig").setup_handlers({
         function(server)
-          -- node_modules があるか
           local buf_full_filename = vim.api.nvim_buf_get_name(0)
           local node_root_dir = lspconfig.util.root_pattern("package.json")
-          local is_node_repo = node_root_dir(buf_full_filename) ~= nil
+
+          -- ファイル名末尾が .deno.ts でない & package.json がルートにないなら node とみなす
+          local is_node_repo = not string.match(buf_full_filename, "%.deno%.ts$") and node_root_dir
 
           local opts = {
             capabilities = ddc_nvim_lsp.make_client_capabilities(),
@@ -37,7 +38,7 @@ return {
               return
             end
             opts.cmd = { "deno", "lsp", "--unstable" }
-            opts.root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
+            opts.root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "*.deno.{js,ts}")
             opts.init_options = { lint = true, unstable = true }
             opts.on_attach = lsp.disable_fmt_on_attach
 
