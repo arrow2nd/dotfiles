@@ -35,7 +35,7 @@ return {
               return
             end
             opts.cmd = { "deno", "lsp", "--unstable" }
-            opts.root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "*.deno.{js,ts}")
+            opts.root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
             opts.init_options = { lint = true, unstable = true }
             opts.on_attach = lsp.disable_fmt_on_attach
 
