@@ -23,9 +23,6 @@ return {
           local buf_full_filename = vim.api.nvim_buf_get_name(0)
           local node_root_dir = lspconfig.util.root_pattern("package.json")
 
-          -- ファイル名末尾が .deno.ts でない & package.json がルートにないなら node とみなす
-          local is_node_repo = not string.match(buf_full_filename, "%.deno%.ts$") and node_root_dir
-
           local opts = {
             capabilities = ddc_nvim_lsp.make_client_capabilities(),
             on_attach = lsp.enable_fmt_on_attach,
@@ -34,7 +31,7 @@ return {
           -- denols と tsserver を出し分ける
           -- ref: https://zenn.dev/kawarimidoll/articles/2b57745045b225
           if server == "denols" then
-            if is_node_repo then
+            if node_root_dir then
               return
             end
             opts.cmd = { "deno", "lsp", "--unstable" }
@@ -44,7 +41,7 @@ return {
 
           -- Node.js
           elseif server == "tsserver" then
-            if not is_node_repo then
+            if not node_root_dir then
               return
             end
             opts.on_attach = lsp.disable_fmt_on_attach
