@@ -33,6 +33,7 @@ return {
     cmd = { "AnyJump", "AnyJumpVisual", "AnyJumpBack", "AnyJumpLastResults" },
     init = function()
       vim.g.any_jump_grouping_enabled = 1
+      vim.g.any_jump_disable_default_keybindings = 1
 
       h.nmap("gj", "<Cmd>AnyJump<CR>")
       h.xmap("gj", "<Cmd>AnyJump<CR>")
