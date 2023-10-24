@@ -19,6 +19,7 @@ return {
       "shun/ddu-source-buffer",
       "matsui54/ddu-source-help",
       "uga-rosa/ddu-source-lsp",
+      "kyoh86/ddu-source-quickfix_history",
       -- Filter
       "Shougo/ddu-filter-sorter_alpha",
       "Shougo/ddu-filter-matcher_substring",
@@ -39,6 +40,7 @@ return {
       h.nmap(";o", "<Cmd>Ddu file_old<CR>")
       h.nmap(";g", "<Cmd>Ddu -name=grep<CR>")
       h.nmap(";b", [[<Cmd>Ddu -name=filer -searchPath=`expand('%:p')`<CR>]])
+      h.nmap(";q", "<Cmd>Ddu quickfix_history<CR>")
     end,
     config = function()
       local reset_ui = function()
@@ -133,6 +135,9 @@ return {
           lsp_codeAction = {
             defaultAction = "apply",
           },
+          quickfix_history = {
+            defaultAction = "open"
+          }
         },
       })
 
