@@ -35,9 +35,9 @@ return {
       vim.g.any_jump_grouping_enabled = 1
       vim.g.any_jump_disable_default_keybindings = 1
 
-      h.nmap("gj", "<Cmd>AnyJump<CR>")
-      h.xmap("gj", "<Cmd>AnyJump<CR>")
-      h.nmap("gl", "<Cmd>AnyJumpLastResults<CR>")
+      h.nmap("<Leader>j", "<Cmd>AnyJump<CR>")
+      h.xmap("<Leader>j", "<Cmd>AnyJumpVisual<CR>")
+      h.nmap("<Leader>l", "<Cmd>AnyJumpLastResults<CR>")
     end,
   },
 }
