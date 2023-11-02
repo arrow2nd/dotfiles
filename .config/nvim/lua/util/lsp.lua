@@ -16,7 +16,7 @@ local function enable_autoformat()
   return true
 end
 
-local common_on_attach = function(client, _bufnr)
+local common_on_attach = function(client, _)
   -- Semantic token を有効にすると色がいっぱいになるので切る
   client.server_capabilities.semanticTokensProvider = nil
 end
