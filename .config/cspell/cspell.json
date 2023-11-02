@@ -31,7 +31,9 @@
       "locale": "*",
       "ignoreRegExpList": [
         "/require.*/",
-        "/dependencies\\s*=\\s*{\\s*[\\s\\S]*?\\s*}/gm"
+        "/cmd.*/",
+        "/dependencies\\s*=\\s*{\\s*[\\s\\S]*?\\s*}/gm",
+        "{\\s*\"([^\"]+)\","
       ],
       "dictionaries": [
         "lua"
