@@ -11,6 +11,19 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "Shougo/ddc-source-nvim-lsp",
     },
+    init = function()
+      -- vim辞書がなければダウンロード
+      if vim.fn.filereadable("~/.local/share/cspell/vim.txt.gz") ~= 1 then
+        local vim_dictionary_url = "https://github.com/iamcco/coc-spell-checker/raw/master/dicts/vim/vim.txt.gz"
+        io.popen("curl -fsSLo ~/.local/share/cspell/vim.txt.gz --create-dirs " .. vim_dictionary_url)
+      end
+
+      -- ユーザー辞書がなければ作成
+      if vim.fn.filereadable("~/.local/share/cspell/user.txt") ~= 1 then
+        io.popen("mkdir -p ~/.local/share/cspell")
+        io.popen("touch ~/.local/share/cspell/user.txt")
+      end
+    end,
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup()
@@ -110,10 +123,6 @@ return {
           ".textlintrc.yml",
           ".textlintrc.json",
         },
-        rdflint = {
-          "rdflint-config.yml",
-          "rdflint-config.yaml",
-        },
       }
 
       local prettier = {
@@ -145,6 +154,15 @@ return {
         rootMarkers = config_file.textlint,
       }
 
+      local cspell = {
+        lintCommand = "cspell lint --no-progress --no-summary --no-color --config=~/.config/cspell/cspell.json ${INPUT}",
+        lintFormats = {
+          "%f:%l:%c - %m",
+          "%f:%l:%c %m",
+        },
+        lintSeverity = 3, -- warning
+      }
+
       local languages = {
         css = { prettier },
         html = { prettier },
@@ -158,10 +176,15 @@ return {
         typescript = { denofmt_or_prettier },
         typescriptreact = { denofmt_or_prettier },
         yaml = { prettier },
+        ["="] = { cspell },
       }
 
       require("lspconfig").efm.setup({
-        init_options = { documentFormatting = true },
+        init_options = {
+          documentFormatting = true,
+          codeAction = true,
+          completion = true,
+        },
         filetypes = vim.tbl_keys(languages),
         settings = {
           rootMarkers = { vim.uv.cwd() },
@@ -214,9 +237,9 @@ return {
     config = {
       ui = {
         icons = {
-          package_installed = "",
-          package_pending = "↻",
-          package_uninstalled = "",
+          package_installed = " ",
+          package_pending = "↻ ",
+          package_uninstalled = " ",
         },
       },
     },

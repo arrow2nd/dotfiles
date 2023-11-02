@@ -1,0 +1,41 @@
+{
+  "allowCompoundWords": true,
+  "dictionaries": [
+    "css",
+    "bash",
+    "vim",
+    "lua",
+    "dotfiles",
+    "user"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "dotfiles",
+      "path": "~/.config/cspell/dic.txt",
+      "description": "dotfiles dictionary"
+    },
+    {
+      "name": "user",
+      "path": "~/.local/share/cspell/user.txt",
+      "description": "User local dictionary"
+    },
+    {
+      "name": "vim",
+      "path": "~/.local/share/cspell/vim.txt.gz",
+      "description": "Vim Script Language dictionary"
+    }
+  ],
+  "languageSettings": [
+    {
+      "languageId": "lua",
+      "locale": "*",
+      "ignoreRegExpList": [
+        "/require.*/",
+        "/dependencies\\s*=\\s*{\\s*[\\s\\S]*?\\s*}/gm"
+      ],
+      "dictionaries": [
+        "lua"
+      ]
+    }
+  ]
+}
