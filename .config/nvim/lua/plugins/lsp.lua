@@ -160,7 +160,7 @@ return {
           "%f:%l:%c - %m",
           "%f:%l:%c %m",
         },
-        lintSeverity = 3, -- warning
+        lintSeverity = 4, -- hint
       }
 
       local languages = {
