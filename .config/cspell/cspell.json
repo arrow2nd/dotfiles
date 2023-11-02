@@ -1,10 +1,16 @@
 {
   "allowCompoundWords": true,
   "dictionaries": [
+    "html",
     "css",
     "bash",
-    "vim",
+    "go",
     "lua",
+    "node",
+    "typescript",
+    "softwareTerms",
+    "filetypes",
+    "vim",
     "dotfiles",
     "user"
   ],
@@ -37,6 +43,16 @@
       ],
       "dictionaries": [
         "lua"
+      ]
+    },
+    {
+      "languageId": "go",
+      "locale": "*",
+      "ignoreRegExpList": [
+        "import\\s*\\([\\s\\S]*?\\)"
+      ],
+      "dictionaries": [
+        "go"
       ]
     }
   ]
