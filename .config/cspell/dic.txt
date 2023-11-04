@@ -13,10 +13,8 @@ stylua
 textlintrc
 denofmt
 gopls
-tohtml
 skkeleton
 vsnip
-use_magit_keybindings
 sparql
 jsdoc
 gomod
@@ -24,14 +22,8 @@ PlemolJP
 jisyo
 FPATH
 ZDOTDIR
-tview
 nekomata
-tcell
-cbind
-promptui
-pflag
 zstyle
 zhistory
 zcompile
 testid
-octoColor
