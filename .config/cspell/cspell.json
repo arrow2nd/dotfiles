@@ -49,7 +49,7 @@
       "languageId": "go",
       "locale": "*",
       "ignoreRegExpList": [
-        "import\\s*\\([\\s\\S]*?\\)"
+        "import\\s*(\\([\\s\\S]*?\\)|\".*\")"
       ],
       "dictionaries": [
         "go"
