@@ -33,7 +33,7 @@ function WriteWordToFile(file_path)
 end
 
 -- ローカル辞書に追加
-vim.api.nvim_create_user_command("AddCspellUserDic", "lua WriteWordToFile('~/.local/share/cspell/user.txt')", {})
+vim.api.nvim_create_user_command("AddCspellLocalDic", "lua WriteWordToFile('~/.local/share/cspell/user.txt')", {})
 
 -- dotfilesで管理している辞書に追加
 vim.api.nvim_create_user_command("AddCspellDotfilesDic", "lua WriteWordToFile('~/.config/cspell/dic.txt')", {})
