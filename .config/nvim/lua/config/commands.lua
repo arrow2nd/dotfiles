@@ -19,9 +19,17 @@ function WriteWordToFile(file_path)
   end
 
   local word = vim.fn.expand("<cword>")
-  append_to_file(file, word)
 
-  print("Word '" .. word .. "' has been written to " .. file)
+  -- 単語を編集させる
+  local input = vim.fn.input("Edit word: ", string.lower(word))
+  if input == "" then
+    print("No word provided. Operation canceled.")
+    return
+  end
+
+  append_to_file(file, input)
+
+  print("Word '" .. input .. "' has been written to " .. file)
 end
 
 -- ローカル辞書に追加
