@@ -25,6 +25,9 @@ return {
       end
     end,
     config = function()
+      -- hoverのデザインを変更
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+
       require("mason").setup()
       require("mason-lspconfig").setup()
 

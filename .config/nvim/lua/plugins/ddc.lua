@@ -94,7 +94,7 @@ return {
     config = function()
       require("ddc_previewer_floating").setup({
         ui = "native",
-        border = "none",
+        border = "single",
         window_options = {
           wrap = false,
           number = false,
