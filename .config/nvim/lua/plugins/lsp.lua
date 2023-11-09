@@ -236,6 +236,7 @@ return {
     "williamboman/mason.nvim",
     config = {
       ui = {
+        border = "single",
         icons = {
           package_installed = " ",
           package_pending = "↻ ",

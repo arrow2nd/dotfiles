@@ -19,7 +19,7 @@ require("lazy").setup({
     { import = "plugins" },
   },
   concurrency = 10,
-  install = { colorscheme = { "iceberg" } },
+  install = { colorscheme = { "aqua" } },
   performance = {
     cache = { enabled = true },
     disable_events = { "VimEnter", "BufReadPre" },
@@ -39,5 +39,8 @@ require("lazy").setup({
         "man",
       },
     },
+  },
+  ui = {
+    border = "single",
   },
 })
