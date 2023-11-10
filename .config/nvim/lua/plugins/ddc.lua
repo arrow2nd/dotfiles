@@ -8,7 +8,8 @@ return {
     dependencies = {
       "vim-denops/denops.vim",
       -- UI
-      "Shougo/ddc-ui-native",
+      'Shougo/pum.vim',
+      'Shougo/ddc-ui-pum',
       -- Source
       "Shougo/ddc-source-around",
       "Shougo/ddc-source-nvim-lsp",
@@ -26,7 +27,7 @@ return {
     config = function()
       local patch_global = fn["ddc#custom#patch_global"]
 
-      patch_global("ui", "native")
+      patch_global('ui', 'pum')
       patch_global("autoCompleteDelay", 75)
 
       patch_global("sources", {
@@ -90,10 +91,27 @@ return {
     end,
   },
   {
+    'Shougo/pum.vim',
+    config = function()
+      fn['pum#set_option']({
+        auto_select = true,
+        padding = true,
+        border = "none",
+        preview = false,
+        scrollbar_char = "▋"
+      })
+
+      -- keymaps
+      local opts = { silent = true, noremap = true }
+      imap('<C-y>', '<Cmd>call pum#map#confirm()<CR>', opts)
+      imap('<C-e>', '<Cmd>call pum#map#cancel()<CR>', opts)
+    end
+  },
+  {
     "uga-rosa/ddc-previewer-floating",
     config = function()
       require("ddc_previewer_floating").setup({
-        ui = "native",
+        ui = "pum",
         border = "single",
         window_options = {
           wrap = false,
