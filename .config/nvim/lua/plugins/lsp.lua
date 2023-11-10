@@ -160,15 +160,6 @@ return {
         rootMarkers = config_file.textlint,
       }
 
-      local cspell = {
-        lintCommand = "cspell lint --no-progress --no-summary --no-color --config=~/.config/cspell/cspell.json ${INPUT}",
-        lintFormats = {
-          "%f:%l:%c - %m",
-          "%f:%l:%c %m",
-        },
-        lintSeverity = 4, -- hint
-      }
-
       local languages = {
         css = { prettier },
         html = { prettier },
@@ -182,20 +173,25 @@ return {
         typescript = { denofmt_or_prettier },
         typescriptreact = { denofmt_or_prettier },
         yaml = { prettier },
-        ["="] = { cspell },
       }
 
+      -- cspellが実行できるなら追加
+      if vim.fn.executable("cspell") then
+        languages["="] = {
+          lintCommand = "cspell --no-progress --no-summary --no-color --config=~/.config/cspell/cspell.json ${INPUT}",
+          lintIgnoreExitCode = true,
+          lintFormats = {
+            "%f:%l:%c - %m",
+            "%f:%l:%c %m",
+          },
+          lintSeverity = 4, -- hint
+        }
+      end
+
       require("lspconfig").efm.setup({
-        init_options = {
-          documentFormatting = true,
-          codeAction = true,
-          completion = true,
-        },
+        init_options = { documentFormatting = true },
         filetypes = vim.tbl_keys(languages),
-        settings = {
-          rootMarkers = { vim.uv.cwd() },
-          languages = languages,
-        },
+        settings = { languages = languages },
         on_attach = lsp.enable_fmt_on_attach,
       })
 
