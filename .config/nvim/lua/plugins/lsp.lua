@@ -178,13 +178,15 @@ return {
       -- cspellが実行できるなら追加
       if vim.fn.executable("cspell") then
         languages["="] = {
-          lintCommand = "cspell --no-progress --no-summary --no-color --config=~/.config/cspell/cspell.json ${INPUT}",
-          lintIgnoreExitCode = true,
-          lintFormats = {
-            "%f:%l:%c - %m",
-            "%f:%l:%c %m",
+          {
+            lintCommand = "cspell --no-progress --no-summary --no-color --config=~/.config/cspell/cspell.json ${INPUT}",
+            lintIgnoreExitCode = true,
+            lintFormats = {
+              "%f:%l:%c - %m",
+              "%f:%l:%c %m",
+            },
+            lintSeverity = 4, -- hint
           },
-          lintSeverity = 4, -- hint
         }
       end
 
