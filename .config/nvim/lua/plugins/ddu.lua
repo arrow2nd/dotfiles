@@ -60,10 +60,6 @@ return {
               winRow = top,
               split = "floating",
               floatingBorder = "single",
-              highlights = {
-                floating = "Normal",
-                floatingBorder = "Normal",
-              },
               preview = true,
               previewFloating = true,
               previewFloatingBorder = "single",
@@ -136,8 +132,8 @@ return {
             defaultAction = "apply",
           },
           quickfix_history = {
-            defaultAction = "open"
-          }
+            defaultAction = "open",
+          },
         },
       })
 
