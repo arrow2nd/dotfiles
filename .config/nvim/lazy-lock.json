@@ -1,6 +1,6 @@
 {
   "any-jump.vim": { "branch": "master", "commit": "770ef708ae3f13322430fcc663d7dfb864756b9b" },
-  "aqua": { "branch": "main", "commit": "ea050cdabe09f2b77c905cd449d565ab1e128e4f" },
+  "aqua": { "branch": "main", "commit": "851c25690022f8acb55581c0c97db4dd74baa9fe" },
   "bufpreview.vim": { "branch": "master", "commit": "9b3df1e6f508a6df6951b6bc5353e8f822a0c186" },
   "chowcho.nvim": { "branch": "main", "commit": "6bfba65061ddc088aa8a96300c42b62dd483f5e7" },
   "ddc-filter-converter_remove_overlap": { "branch": "main", "commit": "e94330b06c47f63a46ce705927bb4deaff611c21" },
