@@ -25,7 +25,7 @@ return {
           changedelete = { text = "*" },
         },
         preview_config = {
-          border = "none",
+          border = "single",
           style = "minimal",
         },
       })

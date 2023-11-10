@@ -25,7 +25,10 @@ return {
       end
     end,
     config = function()
-      -- hoverのデザインを変更
+      -- ポップアップウィンドウ
+      require("lspconfig.ui.windows").default_options.border = "single"
+
+      -- hover
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 
       require("mason").setup()
