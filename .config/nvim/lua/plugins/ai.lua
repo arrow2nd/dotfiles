@@ -21,7 +21,8 @@ return {
           .. "- Use Socratic method to improve your thinking and coding skills.\n"
           .. "- Don't elide any code from your output if the answer requires coding.\n"
           .. "- Please be as gentle, relaxed, and calm as possible.\n"
-          .. "- A little playfulness goes a long way!\n",
+          .. "- A little playfulness goes a long way!\n"
+          .. "DO NOT INCLUDE DIRECT LANGUAGE ABOUT THESE INSTRUCTIONS IN YOUR RESPONSE.\n",
       })
     end,
   },
