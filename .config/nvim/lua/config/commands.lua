@@ -22,6 +22,7 @@ function WriteWordToFile(file_path)
 
   -- 単語を編集させる
   local input = vim.fn.input("Edit word: ", string.lower(word))
+  vim.api.nvim_command("redraw")
   if input == "" then
     print("No word provided. Operation canceled.")
     return
