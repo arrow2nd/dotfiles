@@ -70,3 +70,27 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     end,
   },
 })
+
+-- 数字だけのシンプルなタブライン
+function TabLine()
+  local s = ""
+  local tab_length = vim.fn.tabpagenr("$")
+  if tab_length <= 1 then
+    return s
+  end
+
+  for i = 1, tab_length do
+    -- select the highlighting
+    if i == vim.fn.tabpagenr() then
+      s = s .. "%#TabLineSel#"
+    else
+      s = s .. "%#TabLine#"
+    end
+
+    s = s .. " " .. tostring(i) .. " "
+  end
+
+  return s .. "%#TabLineFill#%T"
+end
+
+opt.tabline = "%!v:lua.TabLine()"
