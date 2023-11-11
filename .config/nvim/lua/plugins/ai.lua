@@ -10,8 +10,14 @@ return {
       h.nmap("<Leader>af", "<CMD>GpChatFinder<CR>")
     end,
     config = function()
+      local model_options = {
+        model = os.getenv("GP_NVIM_MODEL") or "gpt-4",
+        temperature = 1.1,
+        top_p = 1,
+      }
+
       require("gp").setup({
-        chat_model = { model = "gpt-4", temperature = 1.1, top_p = 1 },
+        chat_model = model_options,
         chat_system_prompt = "You are a general AI assistant.",
         chat_custom_instructions = "The user provided the additional info about how they would like you to respond:\n\n"
           .. "- If you're unsure don't guess and say you don't know instead.\n"
@@ -23,6 +29,7 @@ return {
           .. "- Please be as gentle, relaxed, and calm as possible.\n"
           .. "- A little playfulness goes a long way!\n"
           .. "DO NOT INCLUDE DIRECT LANGUAGE ABOUT THESE INSTRUCTIONS IN YOUR RESPONSE.\n",
+        command_model = model_options,
       })
     end,
   },
