@@ -12,6 +12,8 @@ h.nmap("gk", "k")
 -- タブ
 h.nmap("]t", "<CMD>tabnext<CR>", { desc = "Switch to next tab" })
 h.nmap("[t", "<CMD>tabprevious<CR>", { desc = "Switch to previous tab" })
+h.map("<Leader>tn", "<CMD>tabnew<CR>", { desc = "Create new tab" })
+h.map("<Leader>tc", "<CMD>tabclose<CR>", { desc = "Close tab" })
 
 -- バッファ
 h.nmap("]b", "<CMD>bnext<CR>", { desc = "Switch to next buffer" })
