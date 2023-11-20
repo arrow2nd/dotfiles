@@ -8,8 +8,8 @@ return {
     dependencies = {
       "vim-denops/denops.vim",
       -- UI
-      'Shougo/pum.vim',
-      'Shougo/ddc-ui-pum',
+      "Shougo/pum.vim",
+      "Shougo/ddc-ui-pum",
       -- Source
       "Shougo/ddc-source-around",
       "Shougo/ddc-source-nvim-lsp",
@@ -27,8 +27,7 @@ return {
     config = function()
       local patch_global = fn["ddc#custom#patch_global"]
 
-      patch_global('ui', 'pum')
-      patch_global("autoCompleteDelay", 75)
+      patch_global("ui", "pum")
 
       patch_global("sources", {
         "skkeleton",
@@ -81,31 +80,28 @@ return {
         },
       })
 
-      -- keymap
-      local opts = { silent = true, noremap = true }
-      imap("<c-n>", "<Cmd>call pum#map#select_relative(+1)<CR>", opts)
-      imap("<c-p>", "<Cmd>call pum#map#select_relative(-1)<CR>", opts)
-
       fn["ddc#enable"]()
       require("ddc_previewer_floating").enable()
     end,
   },
   {
-    'Shougo/pum.vim',
+    "Shougo/pum.vim",
     config = function()
-      fn['pum#set_option']({
+      fn["pum#set_option"]({
         auto_select = true,
         padding = true,
         border = "none",
         preview = false,
-        scrollbar_char = "▋"
+        scrollbar_char = "▋",
       })
 
       -- keymaps
       local opts = { silent = true, noremap = true }
-      imap('<C-y>', '<Cmd>call pum#map#confirm()<CR>', opts)
-      imap('<C-e>', '<Cmd>call pum#map#cancel()<CR>', opts)
-    end
+      imap("<c-n>", "<Cmd>call pum#map#select_relative(+1)<CR>", opts)
+      imap("<c-p>", "<Cmd>call pum#map#select_relative(-1)<CR>", opts)
+      imap("<C-y>", "<Cmd>call pum#map#confirm()<CR>", opts)
+      imap("<C-e>", "<Cmd>call pum#map#cancel()<CR>", opts)
+    end,
   },
   {
     "uga-rosa/ddc-previewer-floating",
