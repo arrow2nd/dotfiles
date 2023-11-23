@@ -23,6 +23,7 @@ abbrev-alias ga='git add'
 abbrev-alias gd='git diff'
 abbrev-alias gs='git status'
 abbrev-alias gp='git push'
+abbrev-alias gpu='git pull'
 abbrev-alias gb='git branch'
 abbrev-alias gc='git commit'
 abbrev-alias gsw='git switch'
@@ -48,7 +49,7 @@ alias gswf='git switch $(git branch -l | fzf | tr -d "* ")'
 alias q='cd $(ghq list -p | fzf)'
 
 # マージ済のブランチをまとめて消す
-alias g-delete-merged-braches='git branch --merged | grep -v "*" | xargs git branch -d'
+alias g-delete-merged-branches='git branch --merged | grep -v "*" | xargs git branch -d'
 
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
