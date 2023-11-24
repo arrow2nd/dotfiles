@@ -64,15 +64,6 @@ return {
             end
             opts.on_attach = lsp.disable_fmt_on_attach
 
-          -- Angular
-          elseif server == "angularls" then
-            -- tsserverのものを使うので無効にする
-            opts.on_attach = function(client, bufnr)
-              client.server_capabilities.renameProvider = false
-              client.server_capabilities.completionProvider = false
-              lsp.enable_fmt_on_attach(client, bufnr)
-            end
-
           -- tailwind
           elseif server == "tailwindcss" then
             local tailwind_root_dir = lspconfig.util.root_pattern("tailwind.config.{js,cjs,ts}", "twind.config.{js,ts}")
