@@ -39,7 +39,6 @@ return {
       require("mason-lspconfig").setup_handlers({
         function(server)
           local buf_full_filename = vim.api.nvim_buf_get_name(0)
-          local node_root_dir = lspconfig.util.root_pattern("package.json")
 
           local opts = {
             capabilities = ddc_nvim_lsp.make_client_capabilities(),
@@ -49,28 +48,31 @@ return {
           -- denols と tsserver を出し分ける
           -- ref: https://zenn.dev/kawarimidoll/articles/2b57745045b225
           if server == "denols" then
-            if node_root_dir then
+            local deno_root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
+            if deno_root_dir(buf_full_filename) == nil then
               return
             end
+            opts.root_dir = deno_root_dir
             opts.cmd = { "deno", "lsp", "--unstable" }
-            opts.root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
             opts.init_options = { lint = true, unstable = true }
             opts.on_attach = lsp.disable_fmt_on_attach
 
           -- Node.js
           elseif server == "tsserver" then
-            if not node_root_dir then
+            local node_root_dir = lspconfig.util.root_pattern("package.json")
+            if node_root_dir(buf_full_filename) == nil then
               return
             end
+            opts.root_dir = node_root_dir
             opts.on_attach = lsp.disable_fmt_on_attach
 
-          -- tailwind
+            -- tailwind
           elseif server == "tailwindcss" then
             local tailwind_root_dir = lspconfig.util.root_pattern("tailwind.config.{js,cjs,ts}", "twind.config.{js,ts}")
-
             if tailwind_root_dir(buf_full_filename) == nil then
               return
             end
+            opts.root_dir = tailwind_root_dir
 
           -- css
           elseif server == "cssls" then
