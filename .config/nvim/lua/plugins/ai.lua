@@ -1,7 +1,16 @@
+local h = require("util.helper")
+
 return {
   {
     "robitx/gp.nvim",
     cmd = { "GpChatNew", "GpChatPaste", "GpChatToggle", "GpChatFinder" },
+    init = function()
+      h.nmap("<Leader>at", "<CMD>GpChatNew tabnew<CR>")
+      h.nmap("<Leader>as", "<CMD>GpChatNew split<CR>")
+      h.nmap("<Leader>av", "<CMD>GpChatNew vsplit<CR>")
+      h.nmap("<Leader>aa", "<CMD>GpChatToggle<CR>")
+      h.nmap("<Leader>af", "<CMD>GpChatFinder<CR>")
+    end,
     config = function()
       local model_options = {
         model = "gpt-3.5-turbo-1106",
