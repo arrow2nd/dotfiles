@@ -9,7 +9,7 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "Shougo/ddc-source-nvim-lsp",
+      "Shougo/ddc-source-lsp",
     },
     init = function()
       -- vim辞書がなければダウンロード
