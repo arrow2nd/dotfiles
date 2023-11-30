@@ -14,7 +14,11 @@
   "ddc-source-nvim-lsp": { "branch": "main", "commit": "2ef8a090d98b0c857f02a4a4675025ff32177998" },
   "ddc-source-vsnip": { "branch": "main", "commit": "81483f0d0e218193388e6bbc9b5ec6c3ceed1308" },
   "ddc-ui-pum": { "branch": "main", "commit": "6fd98ba227889883bbf75405506c451feaae6ef8" },
+<<<<<<< HEAD
   "ddc.vim": { "branch": "main", "commit": "f1d675ad9cb67ff014a2fb54e009f56ff1249d89" },
+=======
+  "ddc.vim": { "branch": "main", "commit": "7d95a5a40332980703959ca0744ee1b910ac6c81" },
+>>>>>>> 49970be1160453d4f40088b21bf637777412277d
   "ddu-column-icon_filename": { "branch": "main", "commit": "4c2ce1d82b6f04bdd7c6ca5df6fbcfbb7461f5a3" },
   "ddu-commands.vim": { "branch": "main", "commit": "a9e302f30e189bce2e1ef435d80a71e4a82ad036" },
   "ddu-filter-matcher_substring": { "branch": "main", "commit": "3704a0b12affd8d3114c81c90e6b4cd7f7ef5115" },
@@ -33,22 +37,37 @@
   "ddu-ui-ff": { "branch": "main", "commit": "5b03a5915fd295a7562cfdc6ebb8c9f12428d9d7" },
   "ddu-ui-filer": { "branch": "main", "commit": "10ecb0ff3d7d036873a250e26d0fd1466beb3861" },
   "ddu-vim-ui-select": { "branch": "main", "commit": "c5b48f77d0e58981137181c86862eb8d19a9449e" },
+<<<<<<< HEAD
   "ddu.vim": { "branch": "main", "commit": "9911b66db1a7be9e5ff08a955d4a842851fe0c47" },
+=======
+  "ddu.vim": { "branch": "main", "commit": "ba8b2046c875e09f4199d46b452b73fbb6bd6ac3" },
+>>>>>>> 49970be1160453d4f40088b21bf637777412277d
   "denops-signature_help": { "branch": "main", "commit": "e4522f5fe18adf014058d6cde5d553565b5290ba" },
   "denops-translate.vim": { "branch": "main", "commit": "9b967f03626b4d35ae388f038242a159fcab3786" },
   "denops.vim": { "branch": "main", "commit": "6c7ebef6f71b948a152c09bd844fba00f8fee3d6" },
   "dial.nvim": { "branch": "master", "commit": "27eb570085db2ef44bff4f620d3806039184651c" },
   "diffview.nvim": { "branch": "main", "commit": "3dc498c9777fe79156f3d32dddd483b8b3dbd95f" },
   "git-messenger.vim": { "branch": "master", "commit": "8a61bdfa351d4df9a9118ee1d3f45edbed617072" },
+<<<<<<< HEAD
   "gitsigns.nvim": { "branch": "main", "commit": "6ef8c54fb526bf3a0bc4efb0b2fe8e6d9a7daed2" },
   "gp.nvim": { "branch": "main", "commit": "1cad051cfab49cc71254687af51334ede135d793" },
+=======
+  "gitsigns.nvim": { "branch": "main", "commit": "175e74f87d3d2e4d20952d390af5f2a794f5ed7e" },
+  "gp.nvim": { "branch": "main", "commit": "8d6f138226a947b0b2b95646d76c1f900447f5ab" },
+>>>>>>> 49970be1160453d4f40088b21bf637777412277d
   "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "41674c9d50f23cfa3e11f0ca964eb9100c2a8922" },
   "mason.nvim": { "branch": "main", "commit": "41e75af1f578e55ba050c863587cffde3556ffa6" },
   "mini.nvim": { "branch": "main", "commit": "964fab7fecd14f66a69a96162f8aa816480690fd" },
+<<<<<<< HEAD
   "neogit": { "branch": "master", "commit": "bb538f12fa032c97d4632a6df71d5e0704088139" },
   "nvim-lspconfig": { "branch": "master", "commit": "fcf153fbbf1facd16a71d46b92be8be495123a9f" },
   "nvim-treesitter": { "branch": "master", "commit": "1e64838ff575405c32b447b68762649289e8d73c" },
+=======
+  "neogit": { "branch": "master", "commit": "763948abc669cf93ef0f33d20b350d309681d459" },
+  "nvim-lspconfig": { "branch": "master", "commit": "39546f730bdff8eccf7cec344cfce694f19ac908" },
+  "nvim-treesitter": { "branch": "master", "commit": "bf982eb7dc9d54af748ea1dd8b9db3a7724b9a99" },
+>>>>>>> 49970be1160453d4f40088b21bf637777412277d
   "nvim-ts-autotag": { "branch": "main", "commit": "6be1192965df35f94b8ea6d323354f7dc7a557e4" },
   "nvim-web-devicons": { "branch": "master", "commit": "5efb8bd06841f91f97c90e16de85e96d57e9c862" },
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
@@ -58,5 +77,9 @@
   "vim-qfreplace": { "branch": "master", "commit": "db1c4b0161931c9a63942f4f562a0d0f4271ac14" },
   "vim-quickrun": { "branch": "master", "commit": "50f9ced186cf2651f4356aa3548c2306e181ec3b" },
   "vim-vsnip": { "branch": "master", "commit": "8eebdf6ab4a880d845893f210fd20516d2e2384f" },
+<<<<<<< HEAD
   "vimdoc-ja": { "branch": "master", "commit": "7bdb25dd0104143510433762d01c494c65f86877" }
+=======
+  "vimdoc-ja": { "branch": "master", "commit": "a7a441728d276e4c5a520209a5a5d0e5918f29c9" }
+>>>>>>> 49970be1160453d4f40088b21bf637777412277d
 }
