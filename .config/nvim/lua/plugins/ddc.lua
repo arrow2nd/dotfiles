@@ -12,7 +12,7 @@ return {
       "Shougo/ddc-ui-pum",
       -- Source
       "Shougo/ddc-source-around",
-      "Shougo/ddc-source-nvim-lsp",
+      "Shougo/ddc-source-lsp",
       "LumaKernel/ddc-source-file",
       "uga-rosa/ddc-source-vsnip",
       -- Filter
@@ -31,7 +31,7 @@ return {
 
       patch_global("sources", {
         "skkeleton",
-        "nvim-lsp",
+        "lsp",
         "vsnip",
         "file",
         "around",
@@ -47,7 +47,7 @@ return {
         around = {
           mark = "[A]",
         },
-        ["nvim-lsp"] = {
+        lsp = {
           mark = "[LS]",
           dup = "keep",
           keywordPattern = "[a-zA-Z0-9_À-ÿ$#\\-*]*",
@@ -70,7 +70,7 @@ return {
       })
 
       patch_global("sourceParams", {
-        ["nvim-lsp"] = {
+        lsp = {
           snippetEngine = vim.fn["denops#callback#register"](function(body)
             vim.fn["vsnip#anonymous"](body)
           end),

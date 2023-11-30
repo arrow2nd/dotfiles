@@ -34,14 +34,14 @@ return {
       require("mason-lspconfig").setup()
 
       local lspconfig = require("lspconfig")
-      local ddc_nvim_lsp = require("ddc_nvim_lsp")
+      local ddc_source_lsp = require("ddc_source_lsp")
 
       require("mason-lspconfig").setup_handlers({
         function(server)
           local buf_full_filename = vim.api.nvim_buf_get_name(0)
 
           local opts = {
-            capabilities = ddc_nvim_lsp.make_client_capabilities(),
+            capabilities = ddc_source_lsp.make_client_capabilities(),
             on_attach = lsp.enable_fmt_on_attach,
           }
 
