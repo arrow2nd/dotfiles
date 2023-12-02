@@ -20,6 +20,11 @@ return {
       "matsui54/ddu-source-help",
       "uga-rosa/ddu-source-lsp",
       "kyoh86/ddu-source-quickfix_history",
+      -- "Omochice/ddu-source-anyjump",
+      {
+        "arrow2nd/ddu-source-anyjump",
+        branch = "fix-cannot-search",
+      },
       -- Filter
       "Shougo/ddu-filter-sorter_alpha",
       "Shougo/ddu-filter-matcher_substring",
@@ -41,6 +46,8 @@ return {
       h.nmap(";g", "<Cmd>Ddu -name=grep<CR>")
       h.nmap(";b", [[<Cmd>Ddu -name=filer -searchPath=`expand('%:p')`<CR>]])
       h.nmap(";q", "<Cmd>Ddu quickfix_history<CR>")
+      h.nmap("gD", "<Cmd>Ddu anyjump_definition -ui=ff<CR>")
+      h.nmap("gR", "<Cmd>Ddu anyjump_reference -ui=ff<CR>")
     end,
     config = function()
       local reset_ui = function()
@@ -90,6 +97,23 @@ return {
 
       vim.fn["ddu#custom#patch_global"]({
         sourceParams = {
+          anyjump_definition = {
+            highlights = {
+              path = "Normal",
+              lineNr = "Normal",
+              word = "Title",
+            },
+            removeCommentsFromResults = true,
+          },
+          anyjump_reference = {
+            highlights = {
+              path = "Normal",
+              lineNr = "Normal",
+              word = "Title",
+            },
+            removeCommentsFromResults = true,
+            onlyCurrentFiletype = false,
+          },
           file_external = {
             cmd = { "fd", ".", "-H", "-E", ".git", "-t", "f" },
           },

@@ -28,16 +28,4 @@ return {
     end,
     config = true,
   },
-  {
-    "pechorin/any-jump.vim",
-    cmd = { "AnyJump", "AnyJumpVisual", "AnyJumpBack", "AnyJumpLastResults" },
-    init = function()
-      vim.g.any_jump_grouping_enabled = 1
-      vim.g.any_jump_disable_default_keybindings = 1
-
-      h.nmap("<Leader>aj", "<Cmd>AnyJump<CR>")
-      h.xmap("<Leader>aj", "<Cmd>AnyJumpVisual<CR>")
-      h.nmap("<Leader>al", "<Cmd>AnyJumpLastResults<CR>")
-    end,
-  },
 }
