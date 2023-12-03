@@ -213,6 +213,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = {
       ensure_installed = {
+        "astro",
         "efm",
         "denols",
         "gopls",
@@ -224,6 +225,7 @@ return {
         "rust_analyzer",
         "tailwindcss",
         "cssls",
+        "emmet_language_server",
       },
       automatic_installation = true,
     },
