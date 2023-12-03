@@ -26,6 +26,7 @@ abbrev-alias gp='git push'
 abbrev-alias gpu='git pull'
 abbrev-alias gb='git branch'
 abbrev-alias gc='git commit'
+abbrev-alias gf='git fetch'
 abbrev-alias gsw='git switch'
 
 # eza
