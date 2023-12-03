@@ -2,6 +2,131 @@ local h = require("util.helper")
 local fs = require("util.fs")
 local lsp = require("util.lsp")
 
+local efm_opts = function()
+  local rootMarkers = {
+    prettier = {
+      ".prettierrc",
+      ".prettierrc.js",
+      ".prettierrc.mjs",
+      ".prettierrc.cjs",
+      ".prettierrc.yml",
+      ".prettierrc.yaml",
+      ".prettierrc.json",
+      ".prettierrc.json5",
+      ".prettierrc.toml",
+    },
+    deno = {
+      "deno.json",
+      "deno.jsonc",
+    },
+    stylua = {
+      "stylua.toml",
+      ".stylua.toml",
+    },
+    textlint = {
+      ".textlintrc",
+      ".textlintrc.yml",
+      ".textlintrc.yaml",
+      ".textlintrc.json",
+    },
+    eslint = {
+      ".eslintrc.js",
+      ".eslintrc.yml",
+      ".eslintrc.yaml",
+      ".eslintrc.json",
+      "eslint.config.js",
+    },
+  }
+
+  local prettier = {
+    formatCommand = "node_modules/.bin/prettier --stdin --stdin-filepath ${INPUT}",
+    formatStdin = true,
+    rootMarkers = rootMarkers.prettier,
+  }
+
+  local denofmt = {
+    formatCommand = "deno fmt --ext ${FILEEXT} -",
+    formatStdin = true,
+  }
+
+  -- Prettier の設定がなければ denofmt を使う
+  local denofmt_or_prettier = fs.has_file(rootMarkers.prettier) and prettier or denofmt
+
+  local stylua = {
+    formatCommand = "stylua --color Never -",
+    formatStdin = true,
+    rootMarkers = rootMarkers.stylua,
+  }
+
+  local textlint = {
+    lintCommand = "node_modules/.bin/textlint --no-color --format compact --stdin --stdin-filename ${INPUT}",
+    lintStdin = true,
+    lintFormats = {
+      "%.%#: line %l, col %c, %trror - %m",
+      "%.%#: line %l, col %c, %tarning - %m",
+    },
+    rootMarkers = rootMarkers.textlint,
+  }
+
+  local eslint = {
+    lintCommand = "node_modules/.bin/eslint -f visualstudio --stdin --stdin-filename ${INPUT}",
+    lintIgnoreExitCode = true,
+    lintStdin = true,
+    lintFormats = {
+      "%f(%l,%c): %tarning %m",
+      "%f(%l,%c): %rror %m",
+    },
+    rootMarkers = rootMarkers.eslint,
+    commands = {
+      {
+        title = "eslint fix",
+        commands = "node_modules/.bin/eslint",
+        arguments = { "--fix", "${INPUT}" },
+      },
+    },
+  }
+
+  local languages = {
+    html = { prettier },
+    css = { prettier },
+    scss = { prettier },
+    javascript = { denofmt_or_prettier, eslint },
+    javascriptreact = { denofmt_or_prettier, eslint },
+    typescript = { denofmt_or_prettier, eslint },
+    typescriptreact = { denofmt_or_prettier, eslint },
+    json = { denofmt_or_prettier },
+    jsonc = { denofmt_or_prettier },
+    yaml = { prettier },
+    markdown = { denofmt_or_prettier, textlint },
+    lua = { stylua },
+  }
+
+  -- cspellが実行できるなら追加
+  if vim.fn.executable("cspell") then
+    languages["="] = {
+      {
+        lintCommand = "cspell --no-progress --no-summary --no-color --config=~/.config/cspell/cspell.json ${INPUT}",
+        lintIgnoreExitCode = true,
+        lintFormats = {
+          "%f:%l:%c - %m",
+          "%f:%l:%c %m",
+        },
+        lintSeverity = 4, -- hint
+      },
+    }
+  end
+
+  return {
+    init_options = {
+      documentFormatting = true,
+      hover = true,
+      codeAction = true,
+    },
+    filetypes = vim.tbl_keys(languages),
+    settings = { languages = languages },
+  }
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -86,107 +211,17 @@ return {
               },
             }
 
-          -- 内蔵フォーマッタを無効化
+          -- efm
+          elseif server == "efm" then
+            opts = vim.tbl_deep_extend("force", opts, efm_opts())
+
+            -- 内蔵フォーマッタを無効化
           elseif server == "html" or server == "jsonls" or server == "lua_ls" then
             opts.on_attach = lsp.disable_fmt_on_attach
           end
 
           lspconfig[server].setup(opts)
         end,
-      })
-
-      -- efm
-      local config_file = {
-        prettier = {
-          ".prettierrc",
-          ".prettierrc.json",
-          ".prettierrc.js",
-          ".prettierrc.yml",
-          ".prettierrc.yaml",
-          ".prettierrc.json5",
-          ".prettierrc.mjs",
-          ".prettierrc.cjs",
-          ".prettierrc.toml",
-        },
-        deno = {
-          "deno.json",
-          "deno.jsonc",
-        },
-        stylua = {
-          "stylua.toml",
-          ".stylua.toml",
-        },
-        textlint = {
-          ".textlintrc",
-          ".textlintrc.yml",
-          ".textlintrc.json",
-        },
-      }
-
-      local prettier = {
-        formatCommand = "node_modules/.bin/prettier --stdin --stdin-filepath ${INPUT}",
-        formatStdin = true,
-        rootMarkers = config_file.prettier,
-      }
-
-      local denofmt = {
-        formatCommand = "deno fmt --ext ${FILEEXT} -",
-        formatStdin = true,
-      }
-
-      local denofmt_or_prettier = fs.has_file(config_file.prettier) and prettier or denofmt
-
-      local stylua = {
-        formatCommand = "stylua --color Never -",
-        formatStdin = true,
-        rootMarkers = config_file.stylua,
-      }
-
-      local textlint = {
-        lintCommand = "node_modules/.bin/textlint --no-color --format compact --stdin --stdin-filename ${INPUT}",
-        lintStdin = true,
-        lintFormats = {
-          "%.%#: line %l, col %c, %trror - %m",
-          "%.%#: line %l, col %c, %tarning - %m",
-        },
-        rootMarkers = config_file.textlint,
-      }
-
-      local languages = {
-        css = { prettier },
-        html = { prettier },
-        javascript = { denofmt_or_prettier },
-        javascriptreact = { denofmt_or_prettier },
-        json = { denofmt_or_prettier },
-        jsonc = { denofmt_or_prettier },
-        lua = { stylua },
-        markdown = { denofmt_or_prettier, textlint },
-        scss = { prettier },
-        typescript = { denofmt_or_prettier },
-        typescriptreact = { denofmt_or_prettier },
-        yaml = { prettier },
-      }
-
-      -- cspellが実行できるなら追加
-      if vim.fn.executable("cspell") then
-        languages["="] = {
-          {
-            lintCommand = "cspell --no-progress --no-summary --no-color --config=~/.config/cspell/cspell.json ${INPUT}",
-            lintIgnoreExitCode = true,
-            lintFormats = {
-              "%f:%l:%c - %m",
-              "%f:%l:%c %m",
-            },
-            lintSeverity = 4, -- hint
-          },
-        }
-      end
-
-      require("lspconfig").efm.setup({
-        init_options = { documentFormatting = true },
-        filetypes = vim.tbl_keys(languages),
-        settings = { languages = languages },
-        on_attach = lsp.enable_fmt_on_attach,
       })
 
       -- global keymaps
@@ -219,7 +254,6 @@ return {
         "gopls",
         "tsserver",
         "lua_ls",
-        "eslint",
         "yamlls",
         "jsonls",
         "rust_analyzer",
