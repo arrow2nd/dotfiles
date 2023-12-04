@@ -20,11 +20,7 @@ return {
       "matsui54/ddu-source-help",
       "uga-rosa/ddu-source-lsp",
       "kyoh86/ddu-source-quickfix_history",
-      -- "Omochice/ddu-source-anyjump",
-      {
-        "arrow2nd/ddu-source-anyjump",
-        branch = "fix-cannot-search",
-      },
+      "Omochice/ddu-source-anyjump",
       -- Filter
       "Shougo/ddu-filter-sorter_alpha",
       "Shougo/ddu-filter-matcher_substring",
