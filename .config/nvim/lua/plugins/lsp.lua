@@ -29,13 +29,6 @@ local efm_opts = function()
       ".textlintrc.yaml",
       ".textlintrc.json",
     },
-    eslint = {
-      ".eslintrc.js",
-      ".eslintrc.yml",
-      ".eslintrc.yaml",
-      ".eslintrc.json",
-      "eslint.config.js",
-    },
   }
 
   local prettier = {
@@ -68,32 +61,14 @@ local efm_opts = function()
     rootMarkers = rootMarkers.textlint,
   }
 
-  local eslint = {
-    lintCommand = "node_modules/.bin/eslint -f visualstudio --stdin --stdin-filename ${INPUT}",
-    lintIgnoreExitCode = true,
-    lintStdin = true,
-    lintFormats = {
-      "%f(%l,%c): %tarning %m",
-      "%f(%l,%c): %rror %m",
-    },
-    rootMarkers = rootMarkers.eslint,
-    commands = {
-      {
-        title = "eslint fix",
-        commands = "node_modules/.bin/eslint",
-        arguments = { "--fix", "${INPUT}" },
-      },
-    },
-  }
-
   local languages = {
     html = { prettier },
     css = { prettier },
     scss = { prettier },
-    javascript = { denofmt_or_prettier, eslint },
-    javascriptreact = { denofmt_or_prettier, eslint },
-    typescript = { denofmt_or_prettier, eslint },
-    typescriptreact = { denofmt_or_prettier, eslint },
+    javascript = { denofmt_or_prettier },
+    javascriptreact = { denofmt_or_prettier },
+    typescript = { denofmt_or_prettier },
+    typescriptreact = { denofmt_or_prettier },
     json = { denofmt_or_prettier },
     jsonc = { denofmt_or_prettier },
     yaml = { prettier },
@@ -259,6 +234,7 @@ return {
         "rust_analyzer",
         "tailwindcss",
         "cssls",
+        "eslint",
         "emmet_language_server",
       },
       automatic_installation = true,
