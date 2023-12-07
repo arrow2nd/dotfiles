@@ -145,11 +145,16 @@ return {
             on_attach = lsp.enable_fmt_on_attach,
           }
 
+          local node_root_dir = lspconfig.util.root_pattern("package.json")
+          local is_node_dir = node_root_dir(buf_full_filename) ~= nil
+
+          local deno_root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
+          local is_deno_dir = deno_root_dir(buf_full_filename) ~= nil
+
           -- denols と tsserver を出し分ける
           -- ref: https://zenn.dev/kawarimidoll/articles/2b57745045b225
           if server == "denols" then
-            local deno_root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
-            if deno_root_dir(buf_full_filename) == nil then
+            if not is_deno_dir then
               return
             end
             opts.root_dir = deno_root_dir
@@ -159,8 +164,7 @@ return {
 
           -- Node.js
           elseif server == "tsserver" then
-            local node_root_dir = lspconfig.util.root_pattern("package.json")
-            if node_root_dir(buf_full_filename) == nil then
+            if is_deno_dir or not is_node_dir then
               return
             end
             opts.root_dir = node_root_dir
