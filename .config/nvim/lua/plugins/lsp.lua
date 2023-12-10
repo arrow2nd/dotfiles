@@ -15,10 +15,6 @@ local efm_opts = function()
       ".prettierrc.json5",
       ".prettierrc.toml",
     },
-    deno = {
-      "deno.json",
-      "deno.jsonc",
-    },
     stylua = {
       "stylua.toml",
       ".stylua.toml",
