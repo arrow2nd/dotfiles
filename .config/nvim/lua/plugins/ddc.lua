@@ -91,9 +91,10 @@ return {
       fn["pum#set_option"]({
         auto_select = true,
         padding = true,
-        border = "none",
+        border = "single",
         preview = false,
         scrollbar_char = "▋",
+        highlight_normal_menu = "Normal",
       })
 
       -- keymaps
