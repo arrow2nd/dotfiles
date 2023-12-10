@@ -43,6 +43,7 @@ return {
           sorters = { "sorter_rank" },
           converters = { "converter_truncate_abbr", "converter_remove_overlap" },
           ignoreCase = true,
+          minAutoCompleteLength = 1,
         },
         around = {
           mark = "[A]",
