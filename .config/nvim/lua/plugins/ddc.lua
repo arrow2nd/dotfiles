@@ -113,7 +113,7 @@ return {
       for _, mode in pairs({ "n", "i", "x" }) do
         h[mode .. "map"](":", "<Cmd>call ddc#enable_cmdline_completion()<CR>:", { noremap = true })
         h[mode .. "map"]("/", "<Cmd>call ddc#enable_cmdline_completion()<CR>/", { noremap = true })
-        h[mode .. "map"]("?", "<Cmd>call ddc#enable_cmdline_completion()<CR>?", { noremap = true })
+        h[mode .. "map"]("/", "<Cmd>call ddc#enable_cmdline_completion()<CR>/", { noremap = true })
       end
 
       fn["ddc#enable"]()
