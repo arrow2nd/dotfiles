@@ -8,6 +8,8 @@
   "ddc-filter-sorter_rank": { "branch": "main", "commit": "fccbd5892dc57f44f07cddcbef9d465838b36cee" },
   "ddc-previewer-floating": { "branch": "main", "commit": "8316c319a3f56f984172a8e37533c6beee6f5416" },
   "ddc-source-around": { "branch": "main", "commit": "645919c9f2ca3f3b95d6d21bf86317f42638073d" },
+  "ddc-source-cmdline": { "branch": "main", "commit": "95f73c7c97d15378e0ef8dd0a63b6af19c71bdaf" },
+  "ddc-source-cmdline-history": { "branch": "main", "commit": "8c5533bc5f5340a3c027672f75ba156c5ed2476e" },
   "ddc-source-file": { "branch": "main", "commit": "72335138349133361e38fe7a0d320a3ff1788839" },
   "ddc-source-lsp": { "branch": "main", "commit": "eb761ebc952980b4d824cd27e09a826e6c383829" },
   "ddc-source-vsnip": { "branch": "main", "commit": "81483f0d0e218193388e6bbc9b5ec6c3ceed1308" },
