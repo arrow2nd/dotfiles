@@ -15,7 +15,6 @@ return {
       "Shougo/ddc-source-lsp",
       "LumaKernel/ddc-source-file",
       "uga-rosa/ddc-source-vsnip",
-      "Shougo/ddc-source-cmdline-history",
       "Shougo/ddc-source-cmdline",
       -- Filter
       "Shougo/ddc-filter-matcher_head",
@@ -48,7 +47,6 @@ return {
 
       patch_global("cmdlineSources", {
         [":"] = {
-          "cmdline-history",
           "cmdline",
           "around",
         },

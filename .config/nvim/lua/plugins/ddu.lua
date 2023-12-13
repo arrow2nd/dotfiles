@@ -20,6 +20,7 @@ return {
       "matsui54/ddu-source-help",
       "uga-rosa/ddu-source-lsp",
       "kyoh86/ddu-source-quickfix_history",
+      "matsui54/ddu-source-command_history",
       "Omochice/ddu-source-anyjump",
       -- Filter
       "Shougo/ddu-filter-sorter_alpha",
@@ -44,6 +45,7 @@ return {
       h.nmap(";q", "<Cmd>Ddu quickfix_history<CR>")
       h.nmap("gD", "<Cmd>Ddu anyjump_definition -ui=ff<CR>")
       h.nmap("gR", "<Cmd>Ddu anyjump_reference -ui=ff<CR>")
+      h.cmap("<C-h>", [[<C-u><ESC><Cmd>Ddu command_history<CR>]])
     end,
     config = function()
       local reset_ui = function()
@@ -153,6 +155,9 @@ return {
           },
           quickfix_history = {
             defaultAction = "open",
+          },
+          command_history = {
+            defaultAction = "edit",
           },
         },
       })
