@@ -166,14 +166,6 @@ return {
             opts.root_dir = node_root_dir
             opts.on_attach = lsp.disable_fmt_on_attach
 
-            -- tailwind
-          elseif server == "tailwindcss" then
-            local tailwind_root_dir = lspconfig.util.root_pattern("tailwind.config.{js,cjs,ts}", "twind.config.{js,ts}")
-            if tailwind_root_dir(buf_full_filename) == nil then
-              return
-            end
-            opts.root_dir = tailwind_root_dir
-
           -- css
           elseif server == "cssls" then
             opts.filetypes = { "css", "scss", "sass", "less" }
@@ -232,7 +224,6 @@ return {
         "yamlls",
         "jsonls",
         "rust_analyzer",
-        "tailwindcss",
         "cssls",
         "eslint",
         "emmet_language_server",
