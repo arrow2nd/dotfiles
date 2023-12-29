@@ -20,7 +20,7 @@ eval "$(sheldon source)"
 # Git
 abbrev-alias g='git'
 abbrev-alias ga='git add'
-abbrev-alias gd='git diff'
+abbrev-alias gd='GIT_EXTERNAL_DIFF=difft git diff'
 abbrev-alias gs='git status'
 abbrev-alias gp='git push'
 abbrev-alias gpu='git pull'
