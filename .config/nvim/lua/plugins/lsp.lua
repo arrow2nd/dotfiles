@@ -182,6 +182,10 @@ return {
           elseif server == "efm" then
             opts = vim.tbl_deep_extend("force", opts, efm_opts())
 
+          -- emmet
+            elseif server == "emmet_language_server" then
+            opts.filetypes = { "html", "css", "scss", "sass", "less" }
+
             -- 内蔵フォーマッタを無効化
           elseif server == "html" or server == "jsonls" or server == "lua_ls" then
             opts.on_attach = lsp.disable_fmt_on_attach
