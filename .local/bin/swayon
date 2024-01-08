@@ -24,10 +24,11 @@ export GDK_DPI_SCALE=1
 export QT_SCALE_FACTOR=1
 
 # keyring
-export SSH_AUTH_SOCK="/run/user/$(id -u)/keyring/ssh"
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
 
 # browser
-export BROWSER="vivaldi-stable"
+export BROWSER="chromium"
 
 # sway
 /sbin/sway
