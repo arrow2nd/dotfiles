@@ -21,10 +21,7 @@
     "persistent_workspaces": {
       "1": [],
       "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "6": []
+      "3": []
     },
     "all-outputs": true,
     "active-only": false,
@@ -54,47 +51,47 @@
     "format-alt": "{:%Y-%m-%d}"
   },
   "cpu": {
-    "format": "CPU {usage}%",
+    "format": "󰄛 {usage}%",
     "tooltip": true,
     "on-click": "swaymsg exec \\$term_float bashtop"
   },
   "memory": {
-    "format": "MEM {}%",
+    "format": "󰍛 {}%",
     "tooltip": true
   },
   "temperature": {
     "critical-threshold": 80,
-    "format": "TEMP {temperatureC}°C"
+    "format": " {temperatureC}°C"
   },
   "battery": {
     "states": {
       "warning": 30,
       "critical": 15
     },
-    "format": "BAT {capacity}%",
-    "format-charging": "CHARGING {capacity}%",
-    "format-plugged": "AC {capacity}%"
+    "format": "󰁹 {capacity}%",
+    "format-charging": "󱐋 {capacity}%",
+    "format-plugged": "  {capacity}%"
   },
   "network": {
     "interval": 5,
-    "format-wifi": "WIRELESS",
-    "format-ethernet": "ETHERNET",
-    "format-disconnected": "DISCONNECTED",
+    "format-wifi": "󰤨",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "",
     "tooltip-format": "{essid} ({ifname}) : {ipaddr}",
     "on-click": "swaymsg exec \\$term_float nmtui"
   },
   "bluetooth": {
-    "format": "BT on",
-    "format-disabled": "BT off",
+    "format": "",
+    "format-disabled": "󰂲",
     "on-click": "swaymsg exec \\$term_float bluetuith",
     "on-click-right": "rfkill toggle bluetooth"
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": "VOL {volume}%{format_source}",
-    "format-muted": "MUTED{format_source}",
-    "format-source": "",
-    "format-source-muted": " MIC MUTED",
+    "format": "󰕾 {volume}%{format_source}",
+    "format-muted": "󰸈{format_source}",
+    "format-source": " 󰍬",
+    "format-source-muted": " 󰍭",
     "on-click": "pavucontrol",
     "on-click-right": "swaymsg exec \\$volume_toggle_mute",
     "on-scroll-up": "swaymsg exec \\$volume_up",
