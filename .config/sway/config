@@ -87,6 +87,7 @@ exec swayidle -w \
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 #
+input 1046:911:Goodix_Capacitive_TouchScreen map_to_output eDP-1
 
 ### Indicator:
 #
