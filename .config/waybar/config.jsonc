@@ -76,7 +76,7 @@
     "interval": 5,
     "format-wifi": "󰤨",
     "format-ethernet": "󰈀",
-    "format-disconnected": "",
+    "format-disconnected": "OFFLINE",
     "tooltip-format": "{essid} ({ifname}) : {ipaddr}",
     "on-click": "swaymsg exec \\$term_float nmtui"
   },
