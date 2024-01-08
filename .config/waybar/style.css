@@ -1,0 +1,129 @@
+/* waybar (iceberg 風味) */
+
+* {
+  font-family: "PlemolJP Console NF";
+  font-size: 14px;
+}
+
+window#waybar {
+  color: #c6c8d1;
+  background-color: #1e2132;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  border-radius: 0;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+button {
+  border: none;
+  border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+  background: inherit;
+}
+
+#workspaces button {
+  padding: 2px;
+  background-color: transparent;
+}
+
+#workspaces button.urgent {
+  color: #e2a478;
+  background-color: transparent;
+}
+
+#tray,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#bluetooth,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+  margin: 4px 2px;
+  padding: 0 8px;
+  border-radius: 4px;
+  color: #c6c8d1;
+}
+
+#window,
+#workspaces {
+  margin: 4px;
+}
+
+#mode {
+  background-color: #a093c7;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: #1e2132;
+  background-color: #b4be82;
+}
+
+#battery.warning:not(.charging) {
+  color: #1e2132;
+  background-color: #e2a478;
+}
+
+@keyframes blink {
+  to {
+    color: #1e2132;
+    background-color: #e27878;
+  }
+}
+
+#battery.critical:not(.charging) {
+  color: #1e2132;
+  background-color: #e2a478;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: #000000;
+}
+
+#network.disconnected {
+  color: #1e2132;
+  background-color: #e27878;
+}
+
+#pulseaudio.muted {
+  color: #1e2132;
+  background-color: #d2d4de;
+}
+
+#temperature.critical {
+  color: #1e2132;
+  background-color: #e27878;
+}
+
+#tray>.passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+}
