@@ -24,8 +24,7 @@ export GDK_DPI_SCALE=1
 export QT_SCALE_FACTOR=1
 
 # keyring
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
+export SSH_AUTH_SOCK="/run/user/1000/keyring/ssh
 
 # browser
 export BROWSER="chromium"
