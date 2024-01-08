@@ -14,7 +14,7 @@ set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 # Application
 set $term wezterm
 set $term_float wezterm start --class term_float
-# set $menu wofi
+set $menu wofi
 set $screenshot /usr/share/sway/scripts/grimshot --notify
 # Application launcher
 # Mixer
@@ -87,15 +87,6 @@ exec swayidle -w \
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 #
-# TouchPad
-input type:touchpad {
-  tap enabled
-  dwt enabled
-  natural_scroll enabled
-  accel_profile adaptive
-  pointer_accel 0.2
-  scroll_factor 0.4
-}
 
 ### Indicator:
 #
@@ -302,16 +293,16 @@ include /etc/sway/config.d/*
 
 ### Theme:
 #
-# exec_always {
-#   gsettings set org.gnome.desktop.interface gtk-theme "Nordic-bluish-accent"
-#   gsettings set org.gnome.desktop.interface icon-theme "Nordzy-dark"
-#   gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
-#   kvantummanager --set "Nordic-bluish"
-# }
+exec_always {
+  gsettings set org.gnome.desktop.interface gtk-theme "Nordic-bluish-accent"
+  gsettings set org.gnome.desktop.interface icon-theme "Nordzy-dark"
+  gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
+  kvantummanager --set "Nordic-bluish"
+}
 
 ### AutoStart:
 #
 # notify (mako)
-# exec mako
+exec mako
 # WebRTC
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
