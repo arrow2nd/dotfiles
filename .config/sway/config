@@ -67,7 +67,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 # GPD Pocket 2
 output eDP-1 transform 90
-output eDP-1 scale 1.25
+output eDP-1 scale 1.5
 
 ### Idle:
 #
