@@ -9,7 +9,19 @@ opt.fileencoding = "utf-8"
 opt.termguicolors = true
 
 -- statusline を下部に固定
-opt.laststatus = 3
+-- NOTE: pum.vimのポップアップを出すとなんかチラつくのでやめてる
+-- opt.laststatus = 3
+
+-- ウィンドウ分割の罫線
+opt.fillchars = {
+  horiz = '━',
+  horizup = '┻',
+  horizdown = '┳',
+  vert = '┃',
+  vertleft  = '┫',
+  vertright = '┣',
+  verthoriz = '╋',
+}
 
 -- intro を非表示
 opt.shortmess = "I"

@@ -60,6 +60,7 @@ return {
             local git = MiniStatusline.section_git({ trunc_width = 75 })
             local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
             local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+            local searchcount = MiniStatusline.section_searchcount({ trunc_width = 75 })
 
             local filename = function()
               if vim.bo.buftype == "terminal" then
@@ -84,15 +85,28 @@ return {
               "%<", -- Mark general truncate point
               { hl = "MiniStatuslineFilename", strings = { filename() } },
               "%=", -- End left alignment
-              { hl = "MiniStatuslineFilename", strings = { get_lsp_progress() } },
+              { hl = "MiniStatuslineFilename", strings = { get_lsp_progress(),  searchcount } },
               { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
               { hl = mode_hl, strings = { "L%l" } },
             })
           end,
-          inactive = nil,
+          inactive = function ()
+            local filename = function()
+              if vim.bo.buftype == "terminal" then
+                return "%t"
+              else
+                return "%f%m%r"
+              end
+            end
+
+            return MiniStatusline.combine_groups({
+              "%=", -- End left alignment
+              { hl = "MiniStatuslineFilename", strings = { filename() } },
+            })
+          end,
         },
         use_icons = true,
-        set_vim_settings = false,
+        set_vim_settings = true,
       })
 
       -- iceberg
