@@ -1,0 +1,309 @@
+# config for sway
+
+### Variables:
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# wob
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+# Application
+set $term wezterm
+set $term_float wezterm start --class term_float
+set $menu wofi
+set $screenshot /usr/share/sway/scripts/grimshot --notify
+# Application launcher
+# Mixer
+set $volume_up pamixer -ui 2 && pamixer --get-volume > $WOBSOCK
+set $volume_down pamixer -ud 2 && pamixer --get-volume > $WOBSOCK
+set $volume_toggle_mute pamixer -t
+# Colors (iceberg)
+set $c_black     #1e2132
+set $c_red       #e27878
+set $c_green     #b4be82
+set $c_yellow    #e2a478
+set $c_blue      #84a0c6
+set $c_magenta   #a093c7
+set $c_cyan      #89b8c2
+set $c_white     #c6c8d1
+set $c_black_b   #6b7089
+set $c_red_b     #e98989
+set $c_green_b   #c0ca8e
+set $c_yellow_b  #e9b189
+set $c_blue_b    #91acd1
+set $c_magenta_b #ada0d3
+set $c_cyan_b    #95c4ce
+set $c_white_b   #d2d4de
+
+### Window color:
+#
+# Property Name         Border     BG         Text       Indicator Child Border
+client.focused          $c_blue    $c_blue_b  $c_black   $c_cyan   $c_blue_b
+client.focused_inactive $c_black   $c_black_b $c_magenta $c_yellow $c_black
+client.unfocused        $c_black   $c_black   $c_magenta $c_cyan   $c_black
+client.urgent           $c_black_b $c_black_b $c_black   $c_red_b  $c_black_b
+client.placeholder      $c_black   $c_black   $c_magenta $c_black  $c_black
+client.background       $c_white
+
+### Border:
+#
+default_border pixel 2
+smart_borders none
+
+### Gap:
+#
+smart_gaps on
+gaps inner 5px
+gaps outer 5px
+
+### Output:
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+# GPD Pocket 2
+output eDP-1 transform 90
+output eDP-1 scale 1.65
+
+### Idle:
+#
+# Example configuration:
+#
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
+
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+## Input:
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+#
+input 1046:911:Goodix_Capacitive_TouchScreen map_to_output eDP-1
+
+### Indicator:
+#
+exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+### Key bindings:
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+
+    # Start your launcher
+    bindsym $mod+d exec $menu -S drun
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Ctrl+Shift+Alt+e exec swaynag -t warning \
+            -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' \
+            -B 'Yes, exit sway' 'swaymsg exit'
+    
+    # VIME
+    bindsym $mod+i exec ~/.config/sway/vime.sh --clear
+    bindsym $mod+Shift+i exec ~/.config/sway/vime.sh
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# ScreenShot:
+#
+    # アクティブウィンドウ
+    bindsym $mod+Ctrl+2 exec $screenshot copy window
+    bindsym $mod+Ctrl+Shift+2 exec $screenshot save window $HOME/Pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
+    # フルスクリーン
+    bindsym $mod+Ctrl+3 exec $screenshot copy output
+    bindsym $mod+Ctrl+Shift+3 exec $screenshot save output $HOME/Pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
+    # 選択範囲
+    bindsym $mod+Ctrl+4 exec $screenshot copy area
+    bindsym $mod+Ctrl+Shift+4 exec $screenshot save area $HOME/Pictures/screenshots/$(date "+%y%m%d_%H%M%S").png
+#
+# Brightness:
+#
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+    bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+#
+# Volume:
+#
+    bindsym XF86AudioRaiseVolume exec $volume_up
+    bindsym XF86AudioLowerVolume exec $volume_down
+#
+# Resizing containers:
+#
+set $mode_resize "<span foreground='$c_black'><b>RESIZE</b></span> \
+<span foreground='$c_black'>( h j k l )</span>"
+mode --pango_markup $mode_resize {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode $mode_resize
+#
+# Power containers:
+#
+set $mode_shutdown "\
+<span foreground='$c_black'><b>POWER</b></span> \
+<span foreground='$c_black'> \
+<span>(<b>h</b>)</span>hibernate \
+<span>(<b>l</b>)</span>lock \
+<span>(<b>e</b>)</span>logout \
+<span>(<b>r</b>)</span>reboot \
+<span>(<b>u</b>)</span>suspend \
+<span>(<b>s</b>)</span>shutdown \
+</span>"
+mode --pango_markup $mode_shutdown {
+    # lock
+    bindsym l mode "default", exec swaylock
+    # logout
+    bindsym e exec loginctl terminate-user $USER
+    # suspend
+    bindsym u mode "default", exec systemctl suspend
+    # hibernate
+    bindsym h mode "default", exec systemctl hibernate
+    # shutdown
+    bindsym s exec systemctl poweroff
+    # reboot
+    bindsym r exec systemctl reboot
+    # Return to default mode
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode $mode_shutdown
+
+### Floating:
+#
+for_window [app_id="" title=".*共有インジケーター$"] floating enable, sticky enable
+for_window [app_id="" title="ピクチャー\s*イン\s*ピクチャー"] floating enable, sticky enable
+for_window [app_id="" title="Bitwarden"] floating enable, sticky enable
+for_window [app_id="clamtk" title=""] floating enable, sticky enable
+for_window [app_id="pavucontrol" title=""] floating enable, sticky enable
+for_window [app_id="neonview" title=""] floating enable, sticky enable
+for_window [app_id="firefox" title="^Library$"] floating enable, border pixel 1, sticky enable
+for_window [app_id="vime"] floating enabled, resize set 650 300
+for_window [app_id="term_float"] floating enabled, resize set 800 500
+
+### Status Bar:
+#
+bar {
+  position top
+  swaybar_command waybar
+}
+
+include /etc/sway/config.d/*
+
+### Theme:
+#
+exec_always {
+  gsettings set org.gnome.desktop.interface gtk-theme "Nordic-bluish-accent"
+  gsettings set org.gnome.desktop.interface icon-theme "Nordzy-dark"
+  gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
+  kvantummanager --set "Nordic-bluish"
+}
+
+### AutoStart:
+#
+# notify (mako)
+exec mako
+# WebRTC
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway

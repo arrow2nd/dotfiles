@@ -64,12 +64,6 @@ local hyperlink_rules = {
 
 local font_size = 12
 
-local hostname = wezterm.hostname()
-if string.match(hostname, "exotic") then
-  -- GPD Pocket 2
-  font_size = 11
-end
-
 local colors = {
   tab_bar = {
     background = "#1e2132",
