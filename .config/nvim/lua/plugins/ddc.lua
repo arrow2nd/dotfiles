@@ -22,7 +22,6 @@ return {
       "Shougo/ddc-filter-converter_truncate_abbr",
       "Shougo/ddc-filter-converter_remove_overlap",
       -- Preview
-      "uga-rosa/ddc-previewer-floating",
       "matsui54/denops-signature_help",
     },
     config = function()
@@ -115,7 +114,6 @@ return {
       end
 
       fn["ddc#enable"]()
-      require("ddc_previewer_floating").enable()
     end,
   },
   {
@@ -125,7 +123,10 @@ return {
         auto_select = true,
         padding = true,
         border = "single",
-        preview = false,
+        preview = true,
+        preview_border = "single",
+        preview_delay = 250,
+        preview_width = 72,
         scrollbar_char = "▋",
         highlight_normal_menu = "Normal",
       })
@@ -144,22 +145,6 @@ return {
       h.cmap("<C-p>", "<cmd>call pum#map#select_relative(-1)<CR>", { noremap = true })
       h.cmap("<C-y>", "<cmd>call pum#map#confirm()<CR>", { noremap = true })
       h.cmap("<C-e>", "<cmd>call pum#map#cancel()<CR>", { noremap = true })
-    end,
-  },
-  {
-    "uga-rosa/ddc-previewer-floating",
-    config = function()
-      require("ddc_previewer_floating").setup({
-        ui = "pum",
-        border = "single",
-        window_options = {
-          wrap = false,
-          number = false,
-          signcolumn = "no",
-          cursorline = false,
-          foldenable = false,
-        },
-      })
     end,
   },
   {
