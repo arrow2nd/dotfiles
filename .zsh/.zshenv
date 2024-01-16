@@ -10,6 +10,12 @@ export EDITOR=nvim
 # 自作スクリプト
 export PATH="$HOME/.local/bin:$PATH"
 
+# Neovim
+export NEOVIM_HOME=$HOME/.local/nvim
+if [ -d "${NEOVIM_HOME}" ]; then
+  export PATH="${NEOVIM_HOME}/bin:$PATH"
+fi
+
 # Node.js (Volta)
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
