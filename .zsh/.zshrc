@@ -42,6 +42,7 @@ abbrev-alias cls='clear'
 abbrev-alias v="nvim"
 abbrev-alias zmv='noglob zmv -W'
 abbrev-alias dot='cd ~/dotfiles'
+abbrev-alias qrcode='deno run --allow-read npm:qrcode'
 
 # ブランチ切り替え
 alias gswf='git switch $(git branch -l | fzf | tr -d "* ")'
