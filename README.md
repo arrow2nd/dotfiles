@@ -1,5 +1,7 @@
 # dotfiles
 
+<img width="1416" alt="on macOS" src="https://github.com/arrow2nd/dotfiles/assets/44780846/7dbea9da-0306-4cc2-958c-5ffea8a49eb3">
+
 ## 環境
 
 - macOS (Apple Silicon) or Arch Linux (Sway / GPD Pocket 2)
