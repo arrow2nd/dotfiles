@@ -259,7 +259,7 @@ return {
           h.nmap("K", '<Cmd>call ddu#ui#do_action("togglePreview")<CR>', opts)
           -- 一括でQuickfixに流しこむ
           h.nmap("<C-q>", function()
-            vim.fn["ddu#ui#ff#multi_actions"]({
+            vim.fn["ddu#ui#multi_actions"]({
               { "clearSelectAllItems" },
               { "toggleAllItems" },
               { "itemAction", { name = "quickfix" } },
@@ -277,7 +277,7 @@ return {
           h.imap("<CR>", "<Cmd>close<CR><Cmd>stopinsert<CR>", opts)
           -- 一括でQuickfixに流しこむ
           h.imap("<C-q>", function()
-            vim.fn["ddu#ui#ff#multi_actions"]({
+            vim.fn["ddu#ui#multi_actions"]({
               { "clearSelectAllItems" },
               { "toggleAllItems" },
               { "itemAction", { name = "quickfix" } },
