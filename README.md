@@ -27,5 +27,6 @@ cd ./dotfiles
 - node は自動で入らないので `volta install node` とかすること
 - GPG 鍵のインポート、git との紐付けは別でやること
 - SKK の辞書は `jisyo d` すると入る
+- nvim のビルドは適当にやってね
 - Git のコミットテンプレートは
   [ここ](https://gist.github.com/arrow2nd/45056915238a1ed84982b4cfff5210d5)
