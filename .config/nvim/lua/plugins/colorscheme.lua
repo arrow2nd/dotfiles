@@ -13,11 +13,21 @@ return {
   {
     "arrow2nd/aqua",
     -- dir = "~/workspace/github.com/arrow2nd/aqua",
-    enabled = true,
+    enabled = false,
     lazy = false,
     priority = 1000,
     config = function()
       vim.cmd([[colorscheme aqua]])
+    end,
+  },
+  {
+    "arrow2nd/minai",
+    -- dir = "~/workspace/github.com/arrow2nd/minai",
+    enabled = true,
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd([[colorscheme minai]])
     end,
   },
 }
