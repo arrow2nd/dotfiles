@@ -1,6 +1,6 @@
 # dotfiles
 
-<img width="1416" alt="on macOS" src="https://github.com/arrow2nd/dotfiles/assets/44780846/7dbea9da-0306-4cc2-958c-5ffea8a49eb3">
+<img width="1000" alt="macOS" src="https://github.com/arrow2nd/dotfiles/assets/44780846/7e384437-32b5-447d-843c-68dd2e817dd1">
 
 ## 環境
 
@@ -27,6 +27,6 @@ cd ./dotfiles
 - node は自動で入らないので `volta install node` とかすること
 - GPG 鍵のインポート、git との紐付けは別でやること
 - SKK の辞書は `jisyo d` すると入る
-- nvim のビルドは適当にやってね
+- nvim は自動でインストールされないので、適当にソースからビルドすること
 - Git のコミットテンプレートは
   [ここ](https://gist.github.com/arrow2nd/45056915238a1ed84982b4cfff5210d5)
