@@ -125,7 +125,7 @@ local colors = {
     '#b3b8c2',
   },
   brights = {
-    '#404040',
+    '#818181',
     '#D46A74',
     '#CED9D9',
     '#E0BF9D',
