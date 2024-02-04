@@ -73,8 +73,8 @@ local colors = {
   cursor_bg = "#E8E2D6",
   cursor_border = "#E8E2D6",
 
-  selection_fg = '#232935',
-  selection_bg = '#DFC2BA',
+  selection_fg = "#232935",
+  selection_bg = "#DFC2BA",
 
   split = "#818181",
 
@@ -82,8 +82,8 @@ local colors = {
     background = "#090B0A",
 
     active_tab = {
-      bg_color = "#92214A",
-      fg_color = "#000000",
+      bg_color = "#7ea1b6",
+      fg_color = "#090B0A",
       intensity = "Bold",
       underline = "None",
       italic = false,
@@ -115,37 +115,37 @@ local colors = {
   },
 
   ansi = {
-    '#262626',
-    '#c66471',
-    '#bbcacb',
-    '#d4af8d',
-    '#7ea1b6',
-    '#9b8ea8',
-    '#85a3a1',
-    '#b3b8c2',
+    "#262626",
+    "#c66471",
+    "#bbcacb",
+    "#d4af8d",
+    "#7ea1b6",
+    "#9b8ea8",
+    "#85a3a1",
+    "#b3b8c2",
   },
   brights = {
-    '#818181',
-    '#D46A74',
-    '#CED9D9',
-    '#E0BF9D',
-    '#82ACC2',
-    '#ABA1B5',
-    '#99B0B0',
-    '#BAC4CF',
+    "#818181",
+    "#D46A74",
+    "#CED9D9",
+    "#E0BF9D",
+    "#82ACC2",
+    "#ABA1B5",
+    "#99B0B0",
+    "#BAC4CF",
   },
 
   compose_cursor = "#d4af8d",
 
-  copy_mode_active_highlight_bg = { Color = '#d4af8d' },
-  copy_mode_active_highlight_fg = { Color = '#E8E2D6' },
-  copy_mode_inactive_highlight_bg = { Color = '#B06E82' },
-  copy_mode_inactive_highlight_fg = { Color = '#E8E2D6' },
+  copy_mode_active_highlight_bg = { Color = "#d4af8d" },
+  copy_mode_active_highlight_fg = { Color = "#E8E2D6" },
+  copy_mode_inactive_highlight_bg = { Color = "#B06E82" },
+  copy_mode_inactive_highlight_fg = { Color = "#E8E2D6" },
 
-  quick_select_label_bg = { Color = '#B06E82' },
-  quick_select_label_fg = { Color = '#E8E2D6' },
-  quick_select_match_bg = { Color = '#d4af8d' },
-  quick_select_match_fg = { Color = '#E8E2D6' },
+  quick_select_label_bg = { Color = "#B06E82" },
+  quick_select_label_fg = { Color = "#E8E2D6" },
+  quick_select_match_bg = { Color = "#d4af8d" },
+  quick_select_match_fg = { Color = "#E8E2D6" },
 }
 
 return {
