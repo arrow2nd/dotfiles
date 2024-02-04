@@ -183,7 +183,7 @@ return {
             opts = vim.tbl_deep_extend("force", opts, efm_opts())
 
           -- emmet
-            elseif server == "emmet_language_server" then
+          elseif server == "emmet_language_server" then
             opts.filetypes = { "html", "css", "scss", "sass", "less" }
 
             -- 内蔵フォーマッタを無効化
