@@ -4,7 +4,7 @@
 
 ## 環境
 
-- macOS (Apple Silicon) or Arch Linux (Sway / GPD Pocket 2)
+- macOS (Apple Silicon) or Manjaro GNOME
 - git, curl, make 導入済み
 - Neovim (HEAD)
 
