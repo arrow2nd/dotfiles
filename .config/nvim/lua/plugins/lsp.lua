@@ -72,21 +72,6 @@ local efm_opts = function()
     lua = { stylua },
   }
 
-  -- cspellが実行できるなら追加
-  if vim.fn.executable("cspell") then
-    languages["="] = {
-      {
-        lintCommand = "cspell --no-progress --no-summary --no-color --config=~/.config/cspell/cspell.json ${INPUT}",
-        lintIgnoreExitCode = true,
-        lintFormats = {
-          "%f:%l:%c - %m",
-          "%f:%l:%c %m",
-        },
-        lintSeverity = 4, -- hint
-      },
-    }
-  end
-
   return {
     init_options = {
       documentFormatting = true,
@@ -107,19 +92,6 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "Shougo/ddc-source-lsp",
     },
-    init = function()
-      -- vim辞書がなければダウンロード
-      if vim.fn.filereadable("~/.local/share/cspell/vim.txt.gz") ~= 1 then
-        local vim_dictionary_url = "https://github.com/iamcco/coc-spell-checker/raw/master/dicts/vim/vim.txt.gz"
-        io.popen("curl -fsSLo ~/.local/share/cspell/vim.txt.gz --create-dirs " .. vim_dictionary_url)
-      end
-
-      -- ユーザー辞書がなければ作成
-      if vim.fn.filereadable("~/.local/share/cspell/user.txt") ~= 1 then
-        io.popen("mkdir -p ~/.local/share/cspell")
-        io.popen("touch ~/.local/share/cspell/user.txt")
-      end
-    end,
     config = function()
       -- ポップアップウィンドウのボーダースタイルを設定
       require("lspconfig.ui.windows").default_options.border = "single"
@@ -186,7 +158,14 @@ return {
           elseif server == "emmet_language_server" then
             opts.filetypes = { "html", "css", "scss", "sass", "less" }
 
-            -- 内蔵フォーマッタを無効化
+          -- typos
+          elseif server == "typos_lsp" then
+            opts.init_options = {
+              config = "~/.config/typos/.typos.toml",
+              diagnosticSeverity = "Hint",
+            }
+
+          -- 内蔵フォーマッタを無効化
           elseif server == "html" or server == "jsonls" or server == "lua_ls" then
             opts.on_attach = lsp.disable_fmt_on_attach
           end
@@ -231,6 +210,7 @@ return {
         "cssls",
         "eslint",
         "emmet_language_server",
+        "typos_lsp",
       },
       automatic_installation = true,
     },
