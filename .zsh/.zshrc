@@ -37,9 +37,12 @@ abbrev-alias lt='eza -T'
 # brew
 abbrev-alias brewu='brew upgrade && brew autoremove && brew cleanup -s'
 
+# Neovim
+abbrev-alias v="nvim"
+abbrev-alias nvim-rebuild='make distclean && make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/.local/nvim && make install'
+
 # 雑多
 abbrev-alias cls='clear'
-abbrev-alias v="nvim"
 abbrev-alias zmv='noglob zmv -W'
 abbrev-alias dot='cd ~/dotfiles'
 abbrev-alias qrcode='deno run --allow-read npm:qrcode'
