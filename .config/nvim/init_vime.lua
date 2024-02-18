@@ -8,10 +8,10 @@ vim.opt.rtp:prepend(vim.fn.stdpath("data") .. "/lazy/lazy.nvim")
 
 require("lazy").setup({
   {
-    "arrow2nd/aqua",
+    "arrow2nd/minai",
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme aqua]])
+      vim.cmd([[colorscheme minai]])
     end,
   },
   {
