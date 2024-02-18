@@ -148,13 +148,12 @@ local colors = {
   quick_select_match_fg = { Color = "#E8E2D6" },
 }
 
-return {
+local config = {
   check_for_updates = false,
   front_end = "WebGpu",
   font = wezterm.font("PlemolJP Console NF"),
   font_size = font_size,
   colors = colors,
-  window_decorations = "RESIZE",
   use_fancy_tab_bar = false,
   hide_tab_bar_if_only_one_tab = true,
   scrollback_lines = 3500,
@@ -163,3 +162,10 @@ return {
   key_tables = key_tables,
   hyperlink_rules = hyperlink_rules,
 }
+
+-- macOS
+if wezterm.target_triple == "aarch64-apple-darwin" then
+  config.window_decorations = "RESIZE"
+end
+
+return config
