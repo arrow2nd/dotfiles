@@ -15,6 +15,9 @@ local efm_opts = function()
       ".prettierrc.json5",
       ".prettierrc.toml",
     },
+    biome = {
+      "biome.json",
+    },
     stylua = {
       "stylua.toml",
       ".stylua.toml",
@@ -38,8 +41,15 @@ local efm_opts = function()
     formatStdin = true,
   }
 
-  -- Prettier の設定がなければ denofmt を使う
-  local denofmt_or_prettier = fs.has_file(rootMarkers.prettier) and prettier or denofmt
+  local javascriptFormatter
+
+  if fs.has_file(rootMarkers.biome) then
+    -- Biome の設定があればすべて無効
+    javascriptFormatter = nil
+  else
+    -- Prettier の設定がなければ denofmt を使う
+    javascriptFormatter = fs.has_file(rootMarkers.prettier) and prettier or denofmt
+  end
 
   local stylua = {
     formatCommand = "stylua --color Never -",
@@ -61,14 +71,14 @@ local efm_opts = function()
     html = { prettier },
     css = { prettier },
     scss = { prettier },
-    javascript = { denofmt_or_prettier },
-    javascriptreact = { denofmt_or_prettier },
-    typescript = { denofmt_or_prettier },
-    typescriptreact = { denofmt_or_prettier },
-    json = { denofmt_or_prettier },
-    jsonc = { denofmt_or_prettier },
+    javascript = { javascriptFormatter },
+    javascriptreact = { javascriptFormatter },
+    typescript = { javascriptFormatter },
+    typescriptreact = { javascriptFormatter },
+    json = { javascriptFormatter },
+    jsonc = { javascriptFormatter },
     yaml = { prettier },
-    markdown = { denofmt_or_prettier, textlint },
+    markdown = { javascriptFormatter, textlint },
     lua = { stylua },
   }
 
@@ -209,6 +219,7 @@ return {
         "rust_analyzer",
         "cssls",
         "eslint",
+        "biome",
         "emmet_language_server",
         "typos_lsp",
       },
