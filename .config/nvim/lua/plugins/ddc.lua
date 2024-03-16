@@ -15,7 +15,6 @@ return {
       "Shougo/ddc-source-lsp",
       "LumaKernel/ddc-source-file",
       "uga-rosa/ddc-source-vsnip",
-      "Shougo/ddc-source-cmdline",
       -- Filter
       "Shougo/ddc-filter-matcher_head",
       "Shougo/ddc-filter-sorter_rank",
@@ -33,7 +32,6 @@ return {
         "InsertEnter",
         "TextChangedI",
         "TextChangedP",
-        "CmdlineChanged",
       })
 
       patch_global("sources", {
@@ -42,19 +40,6 @@ return {
         "vsnip",
         "file",
         "around",
-      })
-
-      patch_global("cmdlineSources", {
-        [":"] = {
-          "cmdline",
-          "around",
-        },
-        ["/"] = {
-          "around",
-        },
-        ["?"] = {
-          "around",
-        },
       })
 
       patch_global("sourceOptions", {
@@ -88,12 +73,6 @@ return {
           isVolatile = true,
           minAutoCompleteLength = 2,
         },
-        cmdline = {
-          mark = "[CMD]",
-        },
-        ["cmdline-history"] = {
-          mark = "[HIST]",
-        },
       })
 
       patch_global("sourceParams", {
@@ -106,12 +85,6 @@ return {
           confirmBehavior = "replace",
         },
       })
-
-      for _, mode in pairs({ "n", "i", "x" }) do
-        h[mode .. "map"](":", "<Cmd>call ddc#enable_cmdline_completion()<CR>:", { noremap = true })
-        h[mode .. "map"]("/", "<Cmd>call ddc#enable_cmdline_completion()<CR>/", { noremap = true })
-        h[mode .. "map"]("/", "<Cmd>call ddc#enable_cmdline_completion()<CR>/", { noremap = true })
-      end
 
       fn["ddc#enable"]()
     end,
@@ -137,14 +110,6 @@ return {
       h.imap("<C-p>", "<cmd>call pum#map#select_relative(-1)<CR>", opts)
       h.imap("<C-y>", "<cmd>call pum#map#confirm()<CR>", opts)
       h.imap("<C-e>", "<cmd>call pum#map#cancel()<CR>", opts)
-
-      -- Commandline
-      h.cmap("<Tab>", "<Cmd>call pum#map#select_relative(+1)<CR>", { noremap = true })
-      h.cmap("<S-Tab>", "<Cmd>call pum#map#select_relative(-1)<CR>", { noremap = true })
-      h.cmap("<C-n>", "<cmd>call pum#map#select_relative(+1)<CR>", { noremap = true })
-      h.cmap("<C-p>", "<cmd>call pum#map#select_relative(-1)<CR>", { noremap = true })
-      h.cmap("<C-y>", "<cmd>call pum#map#confirm()<CR>", { noremap = true })
-      h.cmap("<C-e>", "<cmd>call pum#map#cancel()<CR>", { noremap = true })
     end,
   },
   {
