@@ -2,7 +2,10 @@ local h = require("util.helper")
 
 return {
   {
-    "tkmpypy/chowcho.nvim",
+    "arrow2nd/chowcho.nvim",
+    branch = "fix-format-arg",
+    -- dir = "~/workspace/github.com/arrow2nd/chowcho.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     init = function()
       -- Neovimの<C-w><C-w>をchowcho.nvimで拡張する
       -- ref: https://zenn.dev/kawarimidoll/articles/daa39da5838567
@@ -37,9 +40,27 @@ return {
     end,
     config = function()
       require("chowcho").setup({
-        icon_enabled = true,
-        active_border_color = "#d162cb",
-        border_style = "default",
+        selector = {
+          float = {
+            border_style = "single",
+            icon_enabled = true,
+            color = {
+              label = {
+                active = "#c8cfff",
+                inactive = "#ababab",
+              },
+              text = {
+                active = "#fefefe",
+                inactive = "#d0d0d0",
+              },
+              border = {
+                active = "#d162cb",
+                inactive = "#fefefe",
+              },
+            },
+            zindex = 1,
+          },
+        },
       })
     end,
   },
