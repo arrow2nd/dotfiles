@@ -108,7 +108,7 @@ return {
           end,
         },
         use_icons = true,
-        set_vim_settings = true,
+        set_vim_settings = false,
       })
     end,
   },

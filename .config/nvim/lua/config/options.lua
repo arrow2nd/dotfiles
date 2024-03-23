@@ -10,17 +10,17 @@ opt.termguicolors = true
 
 -- statusline を下部に固定
 -- NOTE: pum.vimのポップアップを出すとなんかチラつくのでやめてる
--- opt.laststatus = 3
+opt.laststatus = 3
 
 -- ウィンドウ分割の罫線
 opt.fillchars = {
-  horiz = '━',
-  horizup = '┻',
-  horizdown = '┳',
-  vert = '┃',
-  vertleft  = '┫',
-  vertright = '┣',
-  verthoriz = '╋',
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vert = "┃",
+  vertleft = "┫",
+  vertright = "┣",
+  verthoriz = "╋",
 }
 
 -- intro を非表示
