@@ -45,13 +45,9 @@ abbrev-alias nvim-rebuild='make distclean && make CMAKE_BUILD_TYPE=Release CMAKE
 abbrev-alias cls='clear'
 abbrev-alias zmv='noglob zmv -W'
 abbrev-alias dot='cd ~/dotfiles'
-abbrev-alias qrcode='deno run --allow-read npm:qrcode'
 
 # ブランチ切り替え
 alias gswf='git switch $(git branch -l | fzf | tr -d "* ")'
-
-# ghq + fzf
-alias q='cd $(ghq list -p | fzf)'
 
 # マージ済のブランチをまとめて消す
 alias g-delete-merged-branches='git branch --merged | grep -v "*" | xargs git branch -d'
@@ -63,10 +59,25 @@ alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:
 # ZLE
 #
 
+# ghq + fzf でリポジトリへ移動
+function ghq-fzf() {
+  local dir=$(ghq list -p | fzf)
+
+  if [ -n "$dir" ]; then
+    BUFFER="cd ${dir}"
+    zle accept-line
+  fi
+
+  zle clear-screen
+}
+
+zle -N ghq-fzf
+bindkey "^x" ghq-fzf
+
 # コマンド履歴を検索
 function select-history() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m)
-  CURSOR=${#BUFFER}
+  zle clear-screen
 }
 
 zle -N select-history
