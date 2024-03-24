@@ -4,7 +4,7 @@ return {
   "rlane/pounce.nvim",
   cmd = { "Pounce", "PounceRepeat" },
   init = function()
-    h.nmap("<Leader>j", "<Cmd>Pounce<CR>")
-    h.nmap("<Leader>J", "<Cmd>PounceRepeat<CR>")
+    h.nmap("<C-j>", "<Cmd>Pounce<CR>")
+    h.nmap("<C-S-j>", "<Cmd>PounceRepeat<CR>")
   end,
 }
