@@ -82,8 +82,8 @@ local colors = {
     background = "#090B0A",
 
     active_tab = {
-      bg_color = "#7ea1b6",
-      fg_color = "#090B0A",
+      bg_color = "#232934",
+      fg_color = "#E8E2D6",
       intensity = "Bold",
       underline = "None",
       italic = false,
@@ -91,7 +91,7 @@ local colors = {
     },
 
     inactive_tab = {
-      bg_color = "#262626",
+      bg_color = "#090B0A",
       fg_color = "#B3B8C2",
       italic = true,
     },
