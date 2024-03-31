@@ -16,9 +16,8 @@ if [ -d "${NEOVIM_HOME}" ]; then
   export PATH="${NEOVIM_HOME}/bin:$PATH"
 fi
 
-# Node.js (Volta)
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+# mise
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 # Deno
 export PATH="$HOME/.deno/bin:$PATH"
