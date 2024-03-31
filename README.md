@@ -4,7 +4,7 @@
 
 ## 環境
 
-- macOS (Apple Silicon) or Manjaro GNOME
+- macOS (Apple Silicon)
 - git, curl, make 導入済み
 - Neovim (HEAD)
 
@@ -24,7 +24,7 @@ cd ./dotfiles
 
 ### 追記
 
-- node は自動で入らないので `volta install node` とかすること
+- node は自動で入らないので `mise use --global node@lts` とかすること
 - GPG 鍵のインポート、git との紐付けは別でやること
 - SKK の辞書は `jisyo d` すると入る
 - nvim は自動でインストールされないので、適当にソースからビルドすること
