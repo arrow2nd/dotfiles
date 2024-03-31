@@ -1,6 +1,5 @@
 {
   "bufpreview.vim": { "branch": "master", "commit": "9b3df1e6f508a6df6951b6bc5353e8f822a0c186" },
-  "chowcho.nvim": { "branch": "main", "commit": "5bb3b465cded9d150557ca10be619bf4a78160de" },
   "ddc-filter-converter_remove_overlap": { "branch": "main", "commit": "e94330b06c47f63a46ce705927bb4deaff611c21" },
   "ddc-filter-converter_truncate_abbr": { "branch": "main", "commit": "d2716afa8333586349f92666c302e2de9f222716" },
   "ddc-filter-matcher_head": { "branch": "main", "commit": "17b656e38221743290bd0cd26f5b177efe318d77" },
