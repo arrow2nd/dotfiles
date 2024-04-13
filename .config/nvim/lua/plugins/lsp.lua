@@ -98,92 +98,10 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      "lsp_node_servers",
       "Shougo/ddc-source-lsp",
     },
-    config = function()
-      -- ポップアップウィンドウのボーダースタイルを設定
-      require("lspconfig.ui.windows").default_options.border = "single"
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-      vim.diagnostic.config({ float = { border = "single" } })
-
-      require("mason").setup()
-      require("mason-lspconfig").setup()
-
-      local lspconfig = require("lspconfig")
-      local ddc_source_lsp = require("ddc_source_lsp")
-
-      require("mason-lspconfig").setup_handlers({
-        function(server)
-          local buf_full_filename = vim.api.nvim_buf_get_name(0)
-
-          local opts = {
-            capabilities = ddc_source_lsp.make_client_capabilities(),
-            on_attach = lsp.enable_fmt_on_attach,
-          }
-
-          local node_root_dir = lspconfig.util.root_pattern("package.json")
-          local is_node_dir = node_root_dir(buf_full_filename) ~= nil
-
-          local deno_root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
-          local is_deno_dir = deno_root_dir(buf_full_filename) ~= nil
-
-          -- denols と tsserver を出し分ける
-          -- ref: https://zenn.dev/kawarimidoll/articles/2b57745045b225
-          if server == "denols" then
-            if not is_deno_dir then
-              return
-            end
-            opts.root_dir = deno_root_dir
-            opts.cmd = { "deno", "lsp", "--unstable" }
-            opts.init_options = { lint = true, unstable = true }
-            opts.on_attach = lsp.disable_fmt_on_attach
-
-          -- Node.js
-          elseif server == "tsserver" then
-            if is_deno_dir or not is_node_dir then
-              return
-            end
-            opts.root_dir = node_root_dir
-            opts.on_attach = lsp.disable_fmt_on_attach
-
-          -- css
-          elseif server == "cssls" then
-            opts.filetypes = { "css", "scss", "sass", "less" }
-
-          -- yaml
-          elseif server == "yamlls" then
-            opts.settings = {
-              yaml = {
-                keyOrdering = false,
-              },
-            }
-
-          -- efm
-          elseif server == "efm" then
-            opts = vim.tbl_deep_extend("force", opts, efm_opts())
-
-          -- emmet
-          elseif server == "emmet_language_server" then
-            opts.filetypes = { "html", "css", "scss", "sass", "less" }
-
-          -- typos
-          elseif server == "typos_lsp" then
-            opts.init_options = {
-              config = "~/.config/typos/.typos.toml",
-              diagnosticSeverity = "Hint",
-            }
-
-          -- 内蔵フォーマッタを無効化
-          elseif server == "html" or server == "jsonls" or server == "lua_ls" then
-            opts.on_attach = lsp.disable_fmt_on_attach
-          end
-
-          lspconfig[server].setup(opts)
-        end,
-      })
-
+    init = function()
       -- global keymaps
       h.nmap("gE", "<CMD>Ddu lsp_diagnostic -unique<CR>", { desc = "Lists all the diagnostics" })
       h.nmap("ge", "<CMD>lua vim.diagnostic.open_float()<CR>", { desc = "Show diagnostic" })
@@ -203,40 +121,122 @@ return {
         end,
       })
     end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    config = {
-      ensure_installed = {
-        "astro",
-        "efm",
-        "denols",
-        "gopls",
-        "tsserver",
-        "lua_ls",
-        "yamlls",
-        "jsonls",
-        "rust_analyzer",
-        "cssls",
-        "eslint",
-        "biome",
-        "emmet_language_server",
-        "typos_lsp",
-      },
-      automatic_installation = true,
-    },
-  },
-  {
-    "williamboman/mason.nvim",
-    config = {
-      ui = {
-        border = "single",
-        icons = {
-          package_installed = " ",
-          package_pending = "↻ ",
-          package_uninstalled = " ",
+    config = function()
+      -- ポップアップウィンドウのボーダースタイルを設定
+      require("lspconfig.ui.windows").default_options.border = "single"
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+      vim.diagnostic.config({ float = { border = "single" } })
+
+      local lspconfig = require("lspconfig")
+      local ddc_source_lsp = require("ddc_source_lsp")
+      local buf_full_filename = vim.api.nvim_buf_get_name(0)
+
+      -- efm
+      lspconfig.efm.setup(vim.tbl_deep_extend("force", {
+        capabilities = ddc_source_lsp.make_client_capabilities(),
+        on_attach = lsp.enable_fmt_on_attach,
+      }, efm_opts()))
+
+      -- JavaScript / TypeScript
+      local node_root_dir = lspconfig.util.root_pattern("package.json")
+      local is_node_dir = node_root_dir(buf_full_filename) ~= nil
+
+      local deno_root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
+      local is_deno_dir = deno_root_dir(buf_full_filename) ~= nil
+
+      if is_deno_dir then
+        -- Deno LSPのcodefencesを適切にハイライトするため
+        vim.g.markdown_fenced_languages = {
+          "ts=typescript",
+        }
+
+        -- Deno
+        lspconfig.denols.setup({
+          cmd = {
+            "deno",
+            "lsp",
+          },
+          init_options = {
+            lint = true,
+            unstable = true,
+          },
+          capabilities = ddc_source_lsp.make_client_capabilities(),
+          on_attach = lsp.disable_fmt_on_attach,
+        })
+      elseif is_node_dir then
+        -- Node.js
+        lspconfig.tsserver.setup({
+          -- NOTE: bun run --bun するとめちゃ早いけどめちゃメモリ喰った
+          cmd = { "typescript-language-server", "--stdio" },
+          on_attach = lsp.disable_fmt_on_attach,
+        })
+      end
+
+      -- Golang
+      lspconfig.gopls.setup({
+        capabilities = ddc_source_lsp.make_client_capabilities(),
+        on_attach = lsp.enable_fmt_on_attach,
+      })
+
+      -- Lua
+      lspconfig.lua_ls.setup({})
+
+      -- Angular
+      lspconfig.angularls.setup({})
+
+      -- Astro
+      lspconfig.astro.setup({})
+
+      -- ESLint
+      lspconfig.eslint.setup({})
+
+      -- biome
+      lspconfig.biome.setup({
+        cmd = {
+          "node_modules/.bin/biome",
+          "lsp-proxy",
         },
-      },
-    },
+      })
+
+      -- HTML
+      lspconfig.html.setup({
+        on_attach = lsp.disable_fmt_on_attach,
+      })
+
+      -- CSS
+      lspconfig.cssls.setup({
+        filetypes = { "css", "scss", "sass", "less" },
+      })
+
+      -- Tailwind CSS
+      lspconfig.tailwindcss.setup({})
+
+      -- JSON
+      lspconfig.jsonls.setup({
+        cmd = { "vscode-json-language-server", "--stdio" },
+        on_attach = lsp.disable_fmt_on_attach,
+      })
+
+      -- YAML
+      lspconfig.yamlls.setup({
+        settings = {
+          yaml = {
+            keyOrdering = false,
+          },
+        },
+      })
+
+      -- emmet LSP
+      lspconfig.emmet_language_server.setup({
+        filetypes = { "html", "css", "scss", "sass", "less" },
+      })
+    end,
   },
 }
+
+--     -- typos
+--     elseif server == "typos_lsp" then
+--       opts.init_options = {
+--         config = "~/.config/typos/.typos.toml",
+--         diagnosticSeverity = "Hint",
+--       }
