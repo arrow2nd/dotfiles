@@ -8,6 +8,7 @@ find . -type f \
        -not -path "*.md" \
        -not -path "*scripts*" \
        -not -path "*.git*" \
+       -not -path "*node_modules*" \
        -not -path "*.DS_Store" \
        -not -path "*.luarc.json" \
        -not -path "*stylua.toml" \

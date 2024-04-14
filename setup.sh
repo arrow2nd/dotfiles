@@ -11,7 +11,7 @@ if ! type -p git >/dev/null; then
 fi
 
 if [[ ! -d "$SCRIPTS_DIR" ]]; then
-  echo "error: unsupport environment ($(uname))" >&2
+  echo "error: unsupported environment ($(uname))" >&2
   exit 1
 fi
 

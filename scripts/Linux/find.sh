@@ -3,6 +3,7 @@
 find . -type f \
        -path "*/.*" \
        -not -path "*.git*" \
+       -not -path "*node_modules*" \
        -not -path "*.DS_Store" \
        -not -path "*.Brewfile" \
        -not -path "*luarc.json" \

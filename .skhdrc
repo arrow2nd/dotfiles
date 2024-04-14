@@ -1,5 +1,5 @@
 # launch vime
-shift + cmd - i : vime --new
+# shift + cmd - i : vime --new
 
 # Reload yabai
 shift + cmd - c : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
