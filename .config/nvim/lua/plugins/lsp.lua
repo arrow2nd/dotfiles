@@ -44,10 +44,10 @@ local efm_opts = function()
   local javascriptFormatter
 
   if fs.has_file(rootMarkers.biome) then
-    -- Biome の設定があればすべて無効
+    -- Biome の設定ファイルがあればすべて無効
     javascriptFormatter = nil
   else
-    -- Prettier の設定がなければ denofmt を使う
+    -- prettierrc があれば Prettier を なければ denofmt を使う
     javascriptFormatter = fs.has_file(rootMarkers.prettier) and prettier or denofmt
   end
 
@@ -95,9 +95,22 @@ end
 
 return {
   {
+    "tekumara/typos-lsp",
+    build = "cargo build --release",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function(spec)
+      local Path = require("plenary.path")
+      local dir = spec.dir
+
+      local BIN_DIR = Path:new(dir, "target", "release")
+      vim.env.PATH = BIN_DIR:absolute() .. ":" .. vim.env.PATH
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
+      "tekumara/typos-lsp",
       "lsp_node_servers",
       "Shougo/ddc-source-lsp",
     },
@@ -166,7 +179,10 @@ return {
       elseif is_node_dir then
         -- Node.js
         lspconfig.tsserver.setup({
-          -- NOTE: bun run --bun するとめちゃ早いけどめちゃメモリ喰った
+          -- NOTE:
+          -- bun run --bun するとめちゃ早いけどめちゃメモリ喰った
+          -- Node : 200 - 400MB
+          -- bun : 350 - 600MB
           cmd = { "typescript-language-server", "--stdio" },
           on_attach = lsp.disable_fmt_on_attach,
         })
