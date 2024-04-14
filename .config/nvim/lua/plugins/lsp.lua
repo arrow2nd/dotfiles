@@ -112,6 +112,7 @@ return {
     dependencies = {
       "tekumara/typos-lsp",
       "lsp_node_servers",
+      "uga-rosa/ddc-source-lsp-setup",
       "Shougo/ddc-source-lsp",
     },
     init = function()
@@ -138,15 +139,20 @@ return {
       -- ポップアップウィンドウのボーダースタイルを設定
       require("lspconfig.ui.windows").default_options.border = "single"
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-      vim.diagnostic.config({ float = { border = "single" } })
+      vim.diagnostic.config({
+        float = {
+          border = "single",
+        },
+      })
+
+      --  client_capabilities と forceCompletionPattern を設定
+      require("ddc_source_lsp_setup").setup()
 
       local lspconfig = require("lspconfig")
-      local ddc_source_lsp = require("ddc_source_lsp")
       local buf_full_filename = vim.api.nvim_buf_get_name(0)
 
       -- efm
       lspconfig.efm.setup(vim.tbl_deep_extend("force", {
-        capabilities = ddc_source_lsp.make_client_capabilities(),
         on_attach = lsp.enable_fmt_on_attach,
       }, efm_opts()))
 
@@ -173,7 +179,6 @@ return {
             lint = true,
             unstable = true,
           },
-          capabilities = ddc_source_lsp.make_client_capabilities(),
           on_attach = lsp.disable_fmt_on_attach,
         })
       elseif is_node_dir then
@@ -183,14 +188,12 @@ return {
           -- bun run --bun するとめちゃ早いけどめちゃメモリ喰った
           -- Node : 200 - 400MB
           -- bun : 350 - 600MB
-          cmd = { "typescript-language-server", "--stdio" },
           on_attach = lsp.disable_fmt_on_attach,
         })
       end
 
       -- Golang
       lspconfig.gopls.setup({
-        capabilities = ddc_source_lsp.make_client_capabilities(),
         on_attach = lsp.enable_fmt_on_attach,
       })
 
@@ -226,9 +229,6 @@ return {
         filetypes = { "css", "scss", "sass", "less" },
       })
 
-      -- Tailwind CSS
-      lspconfig.tailwindcss.setup({})
-
       -- JSON
       lspconfig.jsonls.setup({
         cmd = { "vscode-json-language-server", "--stdio" },
@@ -242,11 +242,6 @@ return {
             keyOrdering = false,
           },
         },
-      })
-
-      -- emmet LSP
-      lspconfig.emmet_language_server.setup({
-        filetypes = { "html", "css", "scss", "sass", "less" },
       })
 
       -- typos LSP
