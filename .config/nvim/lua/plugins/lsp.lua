@@ -179,7 +179,9 @@ return {
       })
 
       -- Lua
-      lspconfig.lua_ls.setup({})
+      lspconfig.lua_ls.setup({
+        on_attach = lsp.disable_fmt_on_attach,
+      })
 
       -- Angular
       lspconfig.angularls.setup({})
