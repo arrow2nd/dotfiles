@@ -230,13 +230,14 @@ return {
       lspconfig.emmet_language_server.setup({
         filetypes = { "html", "css", "scss", "sass", "less" },
       })
+
+      -- typos LSP
+      lspconfig.typos_lsp.setup({
+        init_options = {
+          config = "~/.config/typos/.typos.toml",
+          diagnosticSeverity = "Hint",
+        },
+      })
     end,
   },
 }
-
---     -- typos
---     elseif server == "typos_lsp" then
---       opts.init_options = {
---         config = "~/.config/typos/.typos.toml",
---         diagnosticSeverity = "Hint",
---       }
