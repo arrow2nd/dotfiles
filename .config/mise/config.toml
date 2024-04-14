@@ -2,3 +2,4 @@
 node = "lts"
 bun = "latest"
 pnpm = "latest"
+usage = "latest"
