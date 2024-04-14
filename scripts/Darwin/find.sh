@@ -13,4 +13,5 @@ find . -type f \
        -not -path "*.luarc.json" \
        -not -path "*stylua.toml" \
        -not -path "*bashtop*" \
+       -not -path "*renovate.json*" \
        | cut -c 3-

@@ -11,4 +11,5 @@ find . -type f \
        -not -path "*.yabairc" \
        -not -path "*.skhdrc" \
        -not -path "*Library*" \
+       -not -path "*renovate.json*" \
        | cut -c 3-
