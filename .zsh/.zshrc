@@ -83,6 +83,26 @@ function select-history() {
 zle -N select-history
 bindkey "^h" select-history
 
+# vime
+function vime() {
+  local tmp="/tmp/vime"
+  [[ -f ${tmp} ]] && rm "${tmp}"
+  touch "${tmp}"
+
+  nvim -u ~/.config/nvim/init_vime.lua -c start "${tmp}"
+
+  if [ "$(uname)" = 'Darwin' ]; then
+    cat $tmp | tr -d '\n' | pbcopy
+  else
+    cat $tmp | tr -d '\n' | xsel -bi
+  fi
+
+  zle clear-screen
+}
+
+zle -N vime
+bindkey "^v" vime
+
 #
 # ローカル設定
 #
