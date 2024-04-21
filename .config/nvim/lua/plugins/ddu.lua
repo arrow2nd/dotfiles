@@ -126,6 +126,7 @@ return {
         sourceOptions = {
           _ = {
             matchers = { "matcher_multi_regex" },
+            ignoreCase = true,
           },
         },
         filterParams = {
