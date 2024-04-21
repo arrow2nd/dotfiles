@@ -18,9 +18,7 @@ return {
       "Shougo/ddc-source-cmdline",
       "Shougo/ddc-source-cmdline-history",
       -- Filter
-      "Shougo/ddc-filter-matcher_head",
-      "Shougo/ddc-filter-sorter_rank",
-      "Shougo/ddc-filter-converter_truncate_abbr",
+      "tani/ddc-fuzzy",
       "Shougo/ddc-filter-converter_remove_overlap",
       -- Preview
       "matsui54/denops-signature_help",
@@ -61,11 +59,11 @@ return {
 
       patch_global("sourceOptions", {
         _ = {
-          matchers = { "matcher_head" },
-          sorters = { "sorter_rank" },
-          converters = { "converter_truncate_abbr", "converter_remove_overlap" },
-          ignoreCase = true,
+          matchers = { "matcher_fuzzy" },
+          sorters = { "sorter_fuzzy" },
+          converters = { "converter_fuzzy", "converter_remove_overlap" },
           minAutoCompleteLength = 1,
+          ignoreCase = true,
         },
         around = {
           mark = "[A]",
@@ -75,7 +73,7 @@ return {
           dup = "keep",
           keywordPattern = "[a-zA-Z0-9_À-ÿ$#\\-*]*",
           forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
-          sorters = { "sorter_lsp-kind", "sorter_rank" },
+          sorters = { "sorter_lsp-kind", "sorter_fuzzy" },
         },
         file = {
           mark = "[F]",
@@ -95,6 +93,12 @@ return {
         },
         ["cmdline-history"] = {
           mark = "[H]",
+        },
+      })
+
+      patch_global("filterParams", {
+        matcher_fuzzy = {
+          splitMode = "word",
         },
       })
 

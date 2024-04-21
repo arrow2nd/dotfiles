@@ -24,7 +24,8 @@ return {
       "Omochice/ddu-source-anyjump",
       -- Filter
       "Shougo/ddu-filter-sorter_alpha",
-      "Shougo/ddu-filter-matcher_substring",
+      "mityu/ddu-filter-matcher_multi_regex",
+      -- "Shougo/ddu-filter-matcher_substring",
       -- Kind
       "Shougo/ddu-kind-file",
       "Shougo/ddu-kind-word",
@@ -124,12 +125,11 @@ return {
         },
         sourceOptions = {
           _ = {
-            ignoreCase = true,
-            matchers = { "matcher_substring" },
+            matchers = { "matcher_multi_regex" },
           },
         },
         filterParams = {
-          matcher_substring = {
+          matcher_multi_regex = {
             highlightMatched = "Search",
           },
         },
