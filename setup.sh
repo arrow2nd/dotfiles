@@ -26,12 +26,6 @@ function script_run {
 
 function install_tools {
   echo "[ Install tools ]"
-
-  if ! type -p volta >/dev/null; then
-    echo "[ Volta (Node.js version manager) ]"
-    curl https://get.volta.sh | bash -s -- --skip-setup
-  fi
-
   script_run "$SCRIPTS_DIR/install.sh"
 }
 

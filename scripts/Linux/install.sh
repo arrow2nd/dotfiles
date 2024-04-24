@@ -14,6 +14,7 @@ fi
 
 echo "[ Tools ]"
 yay -S --noconfirm \
+  bat \
   make \
   zsh \
   unzip \
@@ -21,7 +22,6 @@ yay -S --noconfirm \
   ffmpeg \
   go \
   xsel \
-  ngrok \
   ripgrep \
   rustup \
   openssh \
@@ -31,11 +31,9 @@ yay -S --noconfirm \
   fzf \
   eza \
   fd \
-  bat \
   trash-cli \
   bashtop \
   yazi \
-  wezterm
 
 go install github.com/x-motemen/ghq@latest
 go install github.com/arrow2nd/anct@latest
