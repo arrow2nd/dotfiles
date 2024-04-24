@@ -16,7 +16,6 @@ return {
       "LumaKernel/ddc-source-file",
       "uga-rosa/ddc-source-vsnip",
       "Shougo/ddc-source-cmdline",
-      "Shougo/ddc-source-cmdline-history",
       -- Filter
       "tani/ddc-fuzzy",
       "Shougo/ddc-filter-converter_remove_overlap",
@@ -45,7 +44,6 @@ return {
 
       patch_global("cmdlineSources", {
         [":"] = {
-          "cmdline-history",
           "cmdline",
           "around",
         },
@@ -91,9 +89,6 @@ return {
         cmdline = {
           mark = "[C]",
         },
-        ["cmdline-history"] = {
-          mark = "[H]",
-        },
       })
 
       patch_global("filterParams", {
@@ -116,7 +111,7 @@ return {
       for _, mode in pairs({ "n", "i", "x" }) do
         h[mode .. "map"](":", "<Cmd>call ddc#enable_cmdline_completion()<CR>:", { noremap = true })
         h[mode .. "map"]("/", "<Cmd>call ddc#enable_cmdline_completion()<CR>/", { noremap = true })
-        h[mode .. "map"]("/", "<Cmd>call ddc#enable_cmdline_completion()<CR>/", { noremap = true })
+        h[mode .. "map"]("?", "<Cmd>call ddc#enable_cmdline_completion()<CR>?", { noremap = true })
       end
 
       fn["ddc#enable"]()
