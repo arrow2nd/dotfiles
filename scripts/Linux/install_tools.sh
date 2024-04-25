@@ -4,7 +4,7 @@
 
 set -eu
 
-sh -c "$HOME/.zshenv"
+source $HOME/.zshenv
 
 echo "🧰 Install Tools"
 sudo apt-get update -y
