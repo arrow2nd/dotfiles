@@ -17,6 +17,16 @@ if [[ ! -d "$SCRIPTS_DIR" ]]; then
   exit 1
 fi
 
+# スクリプトを実行
+function script_run {
+  if [[ ! -f "$1" ]]; then
+    echo "❌️ $1 does not exist"
+    exit 1
+  fi
+
+  sh -c "$1"
+}
+
 # ツールをインストール
 function install_tools {
   echo "[ Install tools ]"
@@ -25,7 +35,7 @@ function install_tools {
 
 # .config/ 以下のシンボリックリンクを作成
 function link_dotfiles {
-  echo "[ Link dotfiles ]"
+  echo "🔗 Link dotfiles"
 
   local links=$(script_run "$SCRIPTS_DIR/find.sh")
   IFS=$'\n'
