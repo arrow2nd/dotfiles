@@ -60,6 +60,7 @@ if ! type -p nvim >/dev/null; then
   echo "✒️ Install Neovim"
   sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential
   ghq get https://github.com/neovim/neovim.git
+  cd $HOME/workspace/github.com/neovim/neovim
   make distclean && make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/.local/nvim && make install
 fi
 
@@ -70,3 +71,4 @@ jisyo d
 echo "⚡️ Switch to zsh"
 sudo chsh "$(id -un)" --shell $(which zsh)
 exec -l $SHELL
+cd
