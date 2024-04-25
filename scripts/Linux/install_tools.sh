@@ -71,6 +71,10 @@ echo "📚️ Install SKK JISYO"
 mkdir $HOME/.skk
 jisyo d
 
+echo "🇯🇵 Setup locale"
+sudo apt-get install -y locales
+sudo locale-gen ja_JP.UTF-8
+
 echo "⚡️ Switch to zsh"
 sudo chsh "$(id -un)" --shell $(which zsh)
 cd
