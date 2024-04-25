@@ -19,6 +19,9 @@ require("lazy").setup({
     { import = "plugins" },
   },
   concurrency = 10,
+  git = {
+    timeout = 6000,
+  },
   install = { colorscheme = { "aqua" } },
   performance = {
     cache = { enabled = true },
