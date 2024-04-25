@@ -55,6 +55,7 @@ if ! type -p sheldon >/dev/null; then
 fi
 
 echo "🧰 Install Go CLI tools"
+export PATH="$HOME/go/bin:$PATH"
 go install github.com/arrow2nd/anct@latest
 go install github.com/arrow2nd/jisyo@latest
 
