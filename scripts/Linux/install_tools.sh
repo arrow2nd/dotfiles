@@ -37,7 +37,7 @@ if ! type -p mise >/dev/null; then
   echo "🍴 Install mise"
   curl https://mise.run | sh
   export PATH="$HOME/.local/share/mise/shims:$PATH"
-  mise install
+  mise install -y
 fi
 
 if ! type -p aqua >/dev/null; then

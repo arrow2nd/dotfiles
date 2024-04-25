@@ -10,3 +10,7 @@ fi
 
 echo "🧰 Install Tools"
 brew bundle --file=~/dotfiles/scripts/Darwin/Brewfile
+
+echo "🔧 Install Language & Toolchain"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+mise install -y
