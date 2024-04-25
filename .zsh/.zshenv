@@ -7,6 +7,10 @@ export LC_CTYPE=en_US.UTF-8
 # エディタ
 export EDITOR=nvim
 
+# aqua
+export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
+export AQUA_GLOBAL_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/aqua/aqua.yaml"
+
 # 自作スクリプト
 export PATH="$HOME/.local/bin:$PATH"
 

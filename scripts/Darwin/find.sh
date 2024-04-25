@@ -1,7 +1,6 @@
 #!/bin/bash
 
-set -eu 
-
+# 除外するもの
 find . -type f \
        -path "*/*" \
        -not -path "*.sh" \

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# 除外するもの
 find . -type f \
        -path "*/.*" \
        -not -path "*.git*" \

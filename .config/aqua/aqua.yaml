@@ -1,0 +1,29 @@
+---
+# aqua - Declarative CLI Version Manager
+# https://aquaproj.github.io/
+# checksum:
+#   enabled: true
+#   require_checksum: true
+#   supported_envs:
+#   - all
+registries:
+- type: standard
+  ref: v4.166.0 # renovate: depName=aquaproj/aqua-registry
+packages:
+- name: sharkdp/bat@v0.24.0
+- name: Wilfred/difftastic@0.57.0
+- name: mattn/efm-langserver@v0.0.53
+- name: arrow2nd/nimotsu@v1.3.3
+- name: junegunn/fzf@0.50.0
+- name: x-motemen/ghq@v1.6.1
+- name: sharkdp/fd@v9.0.0
+- name: BurntSushi/ripgrep@14.1.0
+- name: oberblastmeister/trashy@v2.0.0
+- name: eza-community/eza@v0.18.11
+- name: cli/cli@v2.48.0
+- name: LuaLS/lua-language-server@3.8.3
+- name: jqlang/jq@jq-1.7.1
+- name: dylanaraps/neofetch@7.1.0
+- name: sharkdp/pastel@v0.9.0
+- name: JohnnyMorganz/StyLua@v0.20.0
+- name: sxyazi/yazi@v0.2.5
