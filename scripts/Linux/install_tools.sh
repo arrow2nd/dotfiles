@@ -15,10 +15,6 @@ if ! type -p unzip >/dev/null; then
   sudo apt-get install -y unzip
 fi
 
-if ! type -p deno >/dev/null; then
-  curl -fsSL https://deno.land/x/install/install.sh | sh
-fi
-
 if ! type -p gpg >/dev/null; then
   sudo apt-get install -y gpg
 fi
@@ -27,6 +23,10 @@ if ! type -p go >/dev/null; then
   sudo apt-get install -y golang-go
 fi
 
+if ! type -p deno >/dev/null; then
+  echo "🦕 Install Deno"
+  curl -fsSL https://deno.land/x/install/install.sh | sh
+fi
 
 if ! type -p rustup >/dev/null; then
   echo "🦀 Install Rust"
@@ -41,6 +41,7 @@ fi
 if ! type -p aqua >/dev/null; then
   echo "💧 Install aqua"
   curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.0/aqua-installer | bash
+  export PATH=${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH
   aqua i -a
 fi
 
