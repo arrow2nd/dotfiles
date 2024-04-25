@@ -44,7 +44,7 @@ function link_dotfiles {
 
 echo "dotfiles (for macOS / Ubuntu)"
 
-script_run "$SCRIPTS_DIR/gh.sh"
+script_run "$DOT_DIR/scripts/gh.sh"
 link_dotfiles
 script_run "$SCRIPTS_DIR/install_tools.sh"
 
