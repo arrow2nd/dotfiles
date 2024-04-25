@@ -56,6 +56,13 @@ echo "🧰 Install Go CLI tools"
 go install github.com/arrow2nd/anct@latest
 go install github.com/arrow2nd/jisyo@latest
 
+if ! type -p nvim >/dev/null; then
+  echo "✒️ Install Neovim"
+  sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential
+  ghq get https://github.com/neovim/neovim.git
+  make distclean && make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/.local/nvim && make install
+fi
+
 echo "📚️ Install SKK JISYO"
 mkdir $HOME/.skk
 jisyo d
