@@ -2,7 +2,7 @@
 
 set -eu
 
-DOT_DIR="$HOME/dotfiles"
+DOT_DIR=$(cd $(dirname $0) && pwd)
 SCRIPTS_DIR="$DOT_DIR/scripts/$(uname)"
 
 # gitが無い
