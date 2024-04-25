@@ -4,8 +4,8 @@
 
 ## 環境
 
-- macOS (Apple Silicon)
-- git, curl, make 導入済み
+- macOS (Apple Silicon) or GitHub Codespace
+- git 導入済み
 - Neovim (HEAD)
 
 ### フォント
@@ -19,7 +19,7 @@
 ```sh
 git clone https://github.com/arrow2nd/dotfiles.git $HOME/dotfiles
 cd ./dotfiles
-./setup.sh
+./install.sh
 ```
 
 ### 追記
