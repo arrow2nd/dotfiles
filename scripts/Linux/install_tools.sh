@@ -4,8 +4,6 @@
 
 set -eu
 
-source $HOME/.zshenv
-
 echo "🧰 Install Tools"
 sudo apt-get update -y
 
@@ -43,6 +41,8 @@ fi
 if ! type -p aqua >/dev/null; then
   echo "💧 Install aqua"
   curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.0/aqua-installer | bash
+  export PATH=${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH
+  export AQUA_GLOBAL_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/aqua/aqua.yaml"
   aqua i -a
 fi
 

@@ -27,12 +27,6 @@ function script_run {
   sh -c "$1"
 }
 
-# ツールをインストール
-function install_tools {
-  echo "[ Install tools ]"
-  script_run "$SCRIPTS_DIR/install_tools.sh"
-}
-
 # .config/ 以下のシンボリックリンクを作成
 function link_dotfiles {
   echo "🔗 Link dotfiles"
@@ -51,6 +45,6 @@ function link_dotfiles {
 echo "dotfiles (for macOS / Ubuntu)"
 
 link_dotfiles
-install_tools
+script_run "$SCRIPTS_DIR/install_tools.sh"
 
 echo "✅️ Finished!"
