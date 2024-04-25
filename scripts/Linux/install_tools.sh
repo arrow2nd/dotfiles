@@ -16,7 +16,7 @@ if ! type -p unzip >/dev/null; then
 fi
 
 if ! type -p deno >/dev/null; then
-  sudo apt-get install -y deno
+  curl -fsSL https://deno.land/x/install/install.sh | sh
 fi
 
 if ! type -p gpg >/dev/null; then
