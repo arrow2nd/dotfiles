@@ -73,5 +73,4 @@ jisyo d
 
 echo "⚡️ Switch to zsh"
 sudo chsh "$(id -un)" --shell $(which zsh)
-exec -l $SHELL
 cd
