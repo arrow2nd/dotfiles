@@ -72,7 +72,7 @@ function ghq-fzf() {
 }
 
 zle -N ghq-fzf
-bindkey "^x" ghq-fzf
+bindkey "^f" ghq-fzf
 
 # コマンド履歴を検索
 function select-history() {
