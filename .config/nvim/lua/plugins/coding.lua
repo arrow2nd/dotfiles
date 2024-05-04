@@ -28,4 +28,17 @@ return {
     end,
     config = true,
   },
+  {
+    "github/copilot.vim",
+    lazy = false,
+    config = function()
+      vim.api.nvim_set_keymap("i", "<C-CR>", 'copilot#Accept("\\<CR>")', {
+        noremap = true,
+        expr = true,
+        silent = true,
+      })
+
+      vim.g.copilot_no_maps = true
+    end,
+  },
 }
