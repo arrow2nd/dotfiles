@@ -30,6 +30,7 @@ return {
   },
   {
     "github/copilot.vim",
+    enabled = os.getenv("ENABLED_COPILOT") == "1",
     lazy = false,
     config = function()
       vim.api.nvim_set_keymap("i", "<C-CR>", 'copilot#Accept("\\<CR>")', {
