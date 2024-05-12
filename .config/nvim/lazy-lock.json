@@ -1,4 +1,5 @@
 {
+  "CopilotChat.nvim": { "branch": "canary", "commit": "af18fa2fbc765ddf9bacd22e15c974642f20d19b" },
   "bufpreview.vim": { "branch": "master", "commit": "9b3df1e6f508a6df6951b6bc5353e8f822a0c186" },
   "chowcho.nvim": { "branch": "fix-format", "commit": "065e79f02f73b129e1b7121e5e18d622d2961174" },
   "copilot.vim": { "branch": "release", "commit": "b603990a639bb4b8651d054ef8d5a8fe5db56e0c" },

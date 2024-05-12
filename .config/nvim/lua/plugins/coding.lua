@@ -42,4 +42,23 @@ return {
       vim.g.copilot_no_maps = true
     end,
   },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    enabled = os.getenv("ENABLED_COPILOT") == "1",
+    cmd = {
+      "CopilotChat",
+      "CopilotChatOpen",
+      "CopilotChatToggle",
+      "CopilotChatReview",
+      "CopilotChatFix",
+      "CopilotChatDocs",
+      "CopilotChatTests",
+    },
+    branch = "canary",
+    dependencies = {
+      "github/copilot.vim",
+      "nvim-lua/plenary.nvim",
+    },
+    config = true,
+  },
 }
