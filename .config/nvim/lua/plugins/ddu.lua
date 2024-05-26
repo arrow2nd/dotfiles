@@ -78,8 +78,6 @@ return {
               previewRow = top + 1,
             },
             ff = {
-              filterSplitDirection = "floating",
-              filterFloatingPosition = "top",
               autoResize = false,
               ignoreEmpty = false,
             },
