@@ -54,7 +54,7 @@
   "pum.vim": { "branch": "main", "commit": "0a481b3d7d31566b5d257965a36d702dd39c7576" },
   "skkeleton": { "branch": "main", "commit": "953807bf361aa396c0b7377dddc4688d8e07c3ea" },
   "toggleterm.nvim": { "branch": "main", "commit": "fee58a0473fd92b28c34f8f724e4918b15ba30a3" },
-  "typos-lsp": { "branch": "main", "commit": "7d0429a6cb10d1d90b1456c9254a085fa326d8ae" },
+  "typos-lsp": { "branch": "main", "commit": "1710e72372cca6bbb93498684c91bebc97b00fca" },
   "vim-qfreplace": { "branch": "master", "commit": "db1c4b0161931c9a63942f4f562a0d0f4271ac14" },
   "vim-quickrun": { "branch": "master", "commit": "50f9ced186cf2651f4356aa3548c2306e181ec3b" },
   "vim-vsnip": { "branch": "master", "commit": "02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9" },
