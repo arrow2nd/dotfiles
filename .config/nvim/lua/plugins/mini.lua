@@ -1,8 +1,13 @@
+local nmap = require("util.helper").nmap
+
 return {
   {
     "echasnovski/mini.nvim",
     version = false,
     lazy = false,
+    init = function()
+      nmap("<Leader>gD", "<CMD>lua MiniDiff.toggle_overlay()<CR>", { desc = "Overlay git diff" })
+    end,
     config = function()
       vim.api.nvim_create_autocmd({ "InsertEnter" }, {
         pattern = "*",
