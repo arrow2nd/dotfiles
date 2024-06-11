@@ -44,6 +44,12 @@ function link_dotfiles {
 
 echo "dotfiles (for macOS / Ubuntu)"
 
+# オプション --link-only が指定された場合、リンクのみ作成
+if [[ "$1" == "--link-only" ]]; then
+  link_dotfiles
+  exit 0
+fi
+
 script_run "$DOT_DIR/scripts/gh.sh"
 link_dotfiles
 script_run "$SCRIPTS_DIR/install_tools.sh"
