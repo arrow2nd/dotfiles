@@ -20,6 +20,24 @@ return {
       -- comment
       require("mini.comment").setup({})
 
+      -- diff
+      require("mini.diff").setup({
+        view = {
+          style = "sign",
+          signs = { add = "+", change = "*", delete = "-" },
+          priority = 199,
+        },
+        mappings = {
+          apply = "gh",
+          reset = "gH",
+          textobject = "gh",
+          goto_first = "[H",
+          goto_prev = "[h",
+          goto_next = "]h",
+          goto_last = "]H",
+        },
+      })
+
       -- surround
       require("mini.surround").setup({
         mappings = {

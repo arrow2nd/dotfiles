@@ -10,7 +10,6 @@ return {
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     init = function()
       nmap("<Leader>gd", "<CMD>DiffviewOpen<CR>", { desc = "Show git diff" })
-      nmap("<Leader>gh", "<CMD>DiffviewFileHistory<CR>", { desc = "Show current branch file history" })
       nmap("<Leader>gl", "<CMD>DiffviewFileHistory %<CR>", { desc = "Show current file history" })
     end,
     config = function()
