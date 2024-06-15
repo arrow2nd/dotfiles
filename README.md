@@ -4,7 +4,7 @@
 
 ## 環境
 
-- macOS (Apple Silicon) or GitHub Codespace
+- macOS (Apple Silicon) or GitHub Codespaces
 - git 導入済み
 - Neovim (HEAD)
 
