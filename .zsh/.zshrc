@@ -46,9 +46,6 @@ abbrev-alias cls='clear'
 abbrev-alias zmv='noglob zmv -W'
 abbrev-alias dot='cd ~/dotfiles'
 
-# ブランチ切り替え
-alias gswf='git switch $(git branch -l | fzf | tr -d "* ")'
-
 # マージ済のブランチをまとめて消す
 alias g-delete-merged-branches='git branch --merged | grep -v "*" | xargs git branch -d'
 
@@ -82,6 +79,15 @@ function select-history() {
 
 zle -N select-history
 bindkey "^h" select-history
+
+# ブランチを切り替える
+function ghq-switch() {
+  git switch $(git branch -l | fzf | tr -d "* ")
+  zle clear-screen
+}
+
+zle -N ghq-switch
+bindkey "^b" ghq-switch
 
 # vime
 function vime() {
