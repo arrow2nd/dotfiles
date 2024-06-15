@@ -22,11 +22,16 @@ cd ./dotfiles
 ./install.sh
 ```
 
-### 追記
+## 環境変数
+
+- `NVIM_DISABLE_AUTOFORMATTING_PROJECTS`:
+  自動フォーマットを無効化するプロジェクトのパス (完全一致 / カンマ区切り)
+- `ENABLED_COPILOT`: Copilot を有効化するかどうか
+
+## 追記
 
 - node は自動で入らないので `mise use --global node@lts` とかすること
 - GPG 鍵のインポート、git との紐付けは別でやること
 - SKK の辞書は `jisyo d` すると入る
-- nvim は自動でインストールされないので、適当にソースからビルドすること
 - Git のコミットテンプレートは
   [ここ](https://gist.github.com/arrow2nd/45056915238a1ed84982b4cfff5210d5)
