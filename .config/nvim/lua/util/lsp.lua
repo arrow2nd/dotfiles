@@ -24,15 +24,13 @@ local common_on_attach = function(client, _)
 end
 
 -- 自動フォーマットを有効
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 M.enable_fmt_on_attach = function(client, bufnr)
   common_on_attach(client, bufnr)
 
   -- 保存時に自動フォーマット
   if client.supports_method("textDocument/formatting") and enable_autoformat() then
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {
-      clear = false,
-    })
-
     vim.api.nvim_clear_autocmds({
       group = augroup,
       buffer = bufnr,
@@ -41,7 +39,7 @@ M.enable_fmt_on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       callback = function()
         vim.lsp.buf.format({
-          bufnr = bufnr,
+          async = false,
           timeout_ms = 5000,
         })
       end,
