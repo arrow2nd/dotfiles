@@ -188,6 +188,7 @@ return {
           -- bun run --bun するとめちゃ早いけどめちゃメモリ喰った
           -- Node : 200 - 400MB
           -- bun : 350 - 600MB
+          -- cmd = { "bun", "run", "--bun", "typescript-language-server", "--stdio" },
           on_attach = lsp.disable_fmt_on_attach,
         })
       end
