@@ -28,37 +28,4 @@ return {
     end,
     config = true,
   },
-  {
-    "github/copilot.vim",
-    enabled = os.getenv("ENABLED_COPILOT") == "1",
-    lazy = false,
-    config = function()
-      vim.api.nvim_set_keymap("i", "<C-CR>", 'copilot#Accept("\\<CR>")', {
-        noremap = true,
-        expr = true,
-        silent = true,
-      })
-
-      vim.g.copilot_no_maps = true
-    end,
-  },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    enabled = os.getenv("ENABLED_COPILOT") == "1",
-    cmd = {
-      "CopilotChat",
-      "CopilotChatOpen",
-      "CopilotChatToggle",
-      "CopilotChatReview",
-      "CopilotChatFix",
-      "CopilotChatDocs",
-      "CopilotChatTests",
-    },
-    branch = "canary",
-    dependencies = {
-      "github/copilot.vim",
-      "nvim-lua/plenary.nvim",
-    },
-    config = true,
-  },
 }
