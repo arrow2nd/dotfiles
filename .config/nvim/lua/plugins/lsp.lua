@@ -1,99 +1,50 @@
 local h = require("util.helper")
-local fs = require("util.fs")
 local lsp = require("util.lsp")
 
-local efm_opts = function()
-  local rootMarkers = {
-    prettier = {
-      ".prettierrc",
-      ".prettierrc.js",
-      ".prettierrc.mjs",
-      ".prettierrc.cjs",
-      ".prettierrc.yml",
-      ".prettierrc.yaml",
-      ".prettierrc.json",
-      ".prettierrc.json5",
-      ".prettierrc.toml",
-    },
-    biome = {
-      "biome.json",
-    },
-    stylua = {
-      "stylua.toml",
-      ".stylua.toml",
-    },
-    textlint = {
-      ".textlintrc",
-      ".textlintrc.yml",
-      ".textlintrc.yaml",
-      ".textlintrc.json",
-    },
-  }
-
-  local prettier = {
-    formatCommand = "node_modules/.bin/prettier --stdin --stdin-filepath ${INPUT}",
-    formatStdin = true,
-    rootMarkers = rootMarkers.prettier,
-  }
-
-  local denofmt = {
-    formatCommand = "deno fmt --ext ${FILEEXT} -",
-    formatStdin = true,
-  }
-
-  local javascriptFormatter
-
-  if fs.has_file(rootMarkers.biome) then
-    -- Biome の設定ファイルがあればすべて無効
-    javascriptFormatter = nil
-  else
-    -- prettierrc があれば Prettier を なければ denofmt を使う
-    javascriptFormatter = fs.has_file(rootMarkers.prettier) and prettier or denofmt
-  end
-
-  local stylua = {
-    formatCommand = "stylua --color Never -",
-    formatStdin = true,
-    rootMarkers = rootMarkers.stylua,
-  }
-
-  local textlint = {
-    lintCommand = "node_modules/.bin/textlint --no-color --format compact --stdin --stdin-filename ${INPUT}",
-    lintStdin = true,
-    lintFormats = {
-      "%.%#: line %l, col %c, %trror - %m",
-      "%.%#: line %l, col %c, %tarning - %m",
-    },
-    rootMarkers = rootMarkers.textlint,
-  }
-
-  local languages = {
-    html = { prettier },
-    css = { prettier },
-    scss = { prettier },
-    javascript = { javascriptFormatter },
-    javascriptreact = { javascriptFormatter },
-    typescript = { javascriptFormatter },
-    typescriptreact = { javascriptFormatter },
-    json = { javascriptFormatter },
-    jsonc = { javascriptFormatter },
-    yaml = { prettier },
-    markdown = { javascriptFormatter, textlint },
-    lua = { stylua },
-  }
-
-  return {
-    init_options = {
-      documentFormatting = true,
-      hover = true,
-      codeAction = true,
-    },
-    filetypes = vim.tbl_keys(languages),
-    settings = { languages = languages },
-  }
-end
-
 return {
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local null_ls = require("null-ls")
+
+      null_ls.setup({
+        on_attach = lsp.enable_fmt_on_attach,
+        diagnostics_format = "#{m} (#{s}: #{c})",
+        sources = {
+          -- Prettier
+          null_ls.builtins.formatting.prettier.with({
+            condition = function(utils)
+              return utils.has_file({
+                ".prettierrc",
+                ".prettierrc.js",
+                ".prettier.cjs",
+                ".prettier.json",
+                ".prettier.yml",
+                ".prettier.yaml",
+              })
+            end,
+            prefer_local = "node_modules/.bin",
+          }),
+          -- Stylua
+          null_ls.builtins.formatting.stylua,
+          -- Textlint
+          null_ls.builtins.diagnostics.textlint.with({
+            filetypes = { "markdown" },
+            prefer_local = "node_modules/.bin",
+            condition = function(utils)
+              return utils.has_file({
+                ".textlintrc",
+                ".textlintrc.yml",
+                ".textlintrc.yaml",
+                ".textlintrc.json",
+              })
+            end,
+          }),
+        },
+      })
+    end,
+  },
   {
     "tekumara/typos-lsp",
     build = "cargo build --release",
@@ -114,6 +65,7 @@ return {
       "lsp_node_servers",
       "uga-rosa/ddc-source-lsp-setup",
       "Shougo/ddc-source-lsp",
+      "nvimtools/none-ls.nvim",
     },
     init = function()
       -- global keymaps
@@ -151,11 +103,6 @@ return {
       local lspconfig = require("lspconfig")
       local buf_full_filename = vim.api.nvim_buf_get_name(0)
 
-      -- efm
-      lspconfig.efm.setup(vim.tbl_deep_extend("force", {
-        on_attach = lsp.enable_fmt_on_attach,
-      }, efm_opts()))
-
       -- JavaScript / TypeScript
       local node_root_dir = lspconfig.util.root_pattern("package.json")
       local is_node_dir = node_root_dir(buf_full_filename) ~= nil
@@ -179,7 +126,7 @@ return {
             lint = true,
             unstable = true,
           },
-          on_attach = lsp.disable_fmt_on_attach,
+          on_attach = lsp.enable_fmt_on_attach,
         })
       elseif is_node_dir then
         -- Node.js
@@ -214,6 +161,7 @@ return {
 
       -- biome
       lspconfig.biome.setup({
+        on_attach = lsp.enable_fmt_on_attach,
         cmd = {
           "node_modules/.bin/biome",
           "lsp-proxy",
