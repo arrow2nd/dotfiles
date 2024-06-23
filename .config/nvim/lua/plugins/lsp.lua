@@ -18,10 +18,10 @@ return {
               return utils.has_file({
                 ".prettierrc",
                 ".prettierrc.js",
-                ".prettier.cjs",
-                ".prettier.json",
-                ".prettier.yml",
-                ".prettier.yaml",
+                ".prettierrc.cjs",
+                ".prettierrc.json",
+                ".prettierrc.yml",
+                ".prettierrc.yaml",
               })
             end,
             prefer_local = "node_modules/.bin",
