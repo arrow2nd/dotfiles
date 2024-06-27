@@ -1,5 +1,39 @@
 local wezterm = require("wezterm")
+local tab_title_list = require("tab_icons")
 local act = wezterm.action
+
+local function tab_title(tab_info)
+  local title = tab_info.tab_title
+
+  -- title がないなら、アクティブなペインのタイトルを使う
+  if not title or #title == 0 then
+    local active_title = tab_info.active_pane.title
+
+    -- なんかたまに active_pane.title がないときがある
+    if #active_title == 0 then
+      title = "zsh"
+    else
+      title = active_title
+    end
+  end
+
+  for _, tab in ipairs(tab_title_list) do
+    if string.lower(title):match(tab.title) then
+      return tab.icon
+    end
+  end
+
+  return title
+end
+
+-- タブのタイトルを設定
+wezterm.on("format-tab-title", function(tab)
+  local title = tab_title(tab)
+
+  return {
+    { Text = " #" .. tab.tab_index + 1 .. " " .. title .. "  " },
+  }
+end)
 
 local keybinds = {
   -- CTRL-S, CTRL-S で CTRL-S を送る
@@ -156,6 +190,7 @@ local config = {
   colors = colors,
   use_fancy_tab_bar = false,
   hide_tab_bar_if_only_one_tab = true,
+  show_new_tab_button_in_tab_bar = false,
   scrollback_lines = 3500,
   disable_default_key_bindings = true,
   keys = keybinds,
