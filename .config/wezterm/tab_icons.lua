@@ -1,83 +1,83 @@
 local tab_title_list = {
   {
     title = "^cmake$",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^make$",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^cat$",
-    icon = "󰄛",
+    icon = "󰄛 ",
   },
   {
     title = "^bat$",
-    icon = "󰄛",
+    icon = "󰄛 ",
   },
   {
     title = "^vim",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^nvim",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^bash",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^zsh",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^yazi",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^node",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^deno",
-    icon = "󰛦",
+    icon = "󰛦 ",
   },
   {
     title = "^bun$",
-    icon = "󰛦",
+    icon = "󰛦 ",
   },
   {
     title = "^python",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^ruby",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^go$",
-    icon = "󰟓",
+    icon = "󰟓 ",
   },
   {
     title = "^cargo",
-    icon = "󱘗",
+    icon = "󱘗 ",
   },
   {
     title = "^java",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^git$",
-    icon = "",
+    icon = " ",
   },
   {
     title = "^docker",
-    icon = "󰡨",
+    icon = "󰡨 ",
   },
   {
     title = "^gh$",
-    icon = "",
+    icon = " ",
   },
 }
 

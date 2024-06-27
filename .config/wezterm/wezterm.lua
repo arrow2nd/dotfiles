@@ -31,7 +31,7 @@ wezterm.on("format-tab-title", function(tab)
   local title = tab_title(tab)
 
   return {
-    { Text = " #" .. tab.tab_index + 1 .. " " .. title .. "  " },
+    { Text = " #" .. tab.tab_index + 1 .. " " .. title .. " " },
   }
 end)
 
