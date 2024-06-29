@@ -43,6 +43,18 @@ return {
         },
       })
 
+      -- git
+      require("mini.git").setup({})
+
+      -- ブランチ名のみ
+      local format_summary = function(data)
+        local summary = vim.b[data.buf].minigit_summary
+        vim.b[data.buf].minigit_summary_string = summary.head_name or ""
+      end
+
+      local au_opts = { pattern = "MiniGitUpdated", callback = format_summary }
+      vim.api.nvim_create_autocmd("User", au_opts)
+
       -- surround
       require("mini.surround").setup({
         mappings = {
@@ -82,10 +94,9 @@ return {
         content = {
           active = function()
             local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 9999 }) -- 常にShort表示
-            local git = MiniStatusline.section_git({ trunc_width = 75 })
+            local git = MiniStatusline.section_git({ trunc_width = 40 })
             local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
             local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
-            local searchcount = MiniStatusline.section_searchcount({ trunc_width = 75 })
 
             local filename = function()
               if vim.bo.buftype == "terminal" then
@@ -106,13 +117,9 @@ return {
 
             return MiniStatusline.combine_groups({
               { hl = mode_hl, strings = { mode } },
-              { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
-              "%<", -- Mark general truncate point
-              { hl = "MiniStatuslineFilename", strings = { filename() } },
+              { hl = "MiniStatuslineFilename", strings = { git, diagnostics, filename() } },
               "%=", -- End left alignment
-              { hl = "MiniStatuslineFilename", strings = { get_lsp_progress(), searchcount } },
-              { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
-              { hl = mode_hl, strings = { "L%l" } },
+              { hl = "MiniStatuslineFilename", strings = { get_lsp_progress(), fileinfo, "#%l" } },
             })
           end,
           inactive = function()
