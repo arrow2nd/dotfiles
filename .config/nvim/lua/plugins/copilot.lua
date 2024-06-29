@@ -1,17 +1,10 @@
-local h = require("util.helper")
-
 return {
   {
     "github/copilot.vim",
     enabled = os.getenv("ENABLED_COPILOT") == "1",
     lazy = false,
     config = function()
-      h.imap("<C-CR>", 'copilot#Accept("\\<CR>")', {
-        expr = true,
-        replace_keycodes = false,
-      })
-
-      vim.g.copilot_no_tab_map = true
+      vim.g.copilot_no_tab_map = false
     end,
   },
   {
