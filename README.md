@@ -1,6 +1,6 @@
 # dotfiles
 
-<img width="1000" alt="macOS" src="https://github.com/arrow2nd/dotfiles/assets/44780846/7e384437-32b5-447d-843c-68dd2e817dd1">
+<img width="1421" alt="image" src="https://github.com/arrow2nd/dotfiles/assets/44780846/853b93b6-0a58-43e4-ab27-3eb721b61155">
 
 ## 環境
 
