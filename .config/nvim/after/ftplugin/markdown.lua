@@ -38,6 +38,4 @@ vim.api.nvim_buf_create_user_command(0, "MarkdownCheckbox", function()
   markdown_checkbox()
 end, {})
 
-for _, mode in pairs({ "n", "i", "x" }) do
-  h[mode .. "map"]("<C-CR>", "<CMD>MarkdownCheckbox<CR>", { buffer = true, desc = "Toggle checkbox" })
-end
+h.nmap("<C-CR>", "<CMD>MarkdownCheckbox<CR>", { buffer = true, desc = "Toggle checkbox" })
