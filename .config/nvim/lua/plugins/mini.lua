@@ -87,6 +87,12 @@ return {
       -- starter
       require("mini.starter").setup({
         autoopen = true,
+        header = [[
+              ／l、
+            （ﾟ､ ｡ ７
+              l  ~ヽ
+              じしf_,)ノ
+           ]],
       })
 
       -- statusline
