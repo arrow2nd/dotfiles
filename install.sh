@@ -45,7 +45,7 @@ function link_dotfiles {
 echo "dotfiles (for macOS / Ubuntu)"
 
 # オプション --link-only が指定された場合、リンクのみ作成
-if [[ "$1" == "--link-only" ]]; then
+if [[ "${1:-}" == "--link-only" ]]; then
   link_dotfiles
   exit 0
 fi
