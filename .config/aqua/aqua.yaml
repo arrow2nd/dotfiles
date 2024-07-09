@@ -13,7 +13,7 @@ packages:
 - name: sharkdp/bat@v0.24.0
 - name: Wilfred/difftastic@0.58.0
 - name: arrow2nd/nimotsu@v1.3.3
-- name: junegunn/fzf@0.53.0
+- name: junegunn/fzf@v0.54.0
 - name: x-motemen/ghq@v1.6.1
 - name: sharkdp/fd@v10.1.0
 - name: BurntSushi/ripgrep@14.1.0
