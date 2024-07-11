@@ -1,3 +1,5 @@
+local h = require("util.helper")
+
 -- 参考:
 -- https://x.com/oicchahan/status/1810498672918192629
 local COPILOT_NOJYA_INSTRUCTIONS = [[
@@ -34,6 +36,19 @@ local COPILOT_NOJYA_INSTRUCTIONS = [[
 ]]
 
 return {
+  {
+    "github/copilot.vim",
+    enabled = os.getenv("ENABLED_COPILOT") == "1",
+    lazy = false,
+    config = function()
+      h.imap("<C-CR>", 'copilot#Accept("\\<CR>")', {
+        expr = true,
+        replace_keycodes = false,
+      })
+
+      vim.g.copilot_no_tab_map = true
+    end,
+  },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     enabled = os.getenv("ENABLED_COPILOT") == "1",
