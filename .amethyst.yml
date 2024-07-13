@@ -26,7 +26,7 @@ layouts:
   # - 3column-right
   # - 4column-left
   # - 4column-right
-  - column
+  # - column
   # - row
   # - floating
   # - widescreen-tall
