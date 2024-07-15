@@ -285,7 +285,7 @@ mouse-swaps-windows: false
 mouse-resizes-windows: false
 
 # true to display the name of the layout when a new layout is selected (default true).
-enables-layout-hud: true
+enables-layout-hud: false
 
 # true to display the name of the layout when moving to a new space (default true).
 enables-layout-hud-on-space-change: true
