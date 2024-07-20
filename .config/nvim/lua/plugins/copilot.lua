@@ -70,6 +70,16 @@ return {
       "github/copilot.vim",
       "nvim-lua/plenary.nvim",
     },
+    init = function()
+      for _, mode in pairs({ "n", "x" }) do
+        h[mode .. "map"]("<Leader>cc", "<Cmd>CopilotChat<CR>")
+        h[mode .. "map"]("<Leader>cr", "<Cmd>CopilotChatReview<CR>")
+        h[mode .. "map"]("<Leader>cf", "<Cmd>CopilotChatFix<CR>")
+        h[mode .. "map"]("<Leader>co", "<Cmd>CopilotChatOptimize<CR>")
+        h[mode .. "map"]("<Leader>cd", "<Cmd>CopilotChatDocs<CR>")
+        h[mode .. "map"]("<Leader>ct", "<Cmd>CopilotChatTests<CR>")
+      end
+    end,
     config = function()
       require("CopilotChat").setup({
         system_prompt = COPILOT_NOJYA_INSTRUCTIONS,
