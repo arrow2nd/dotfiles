@@ -35,6 +35,44 @@ wezterm.on("format-tab-title", function(tab)
   }
 end)
 
+local function get_battrey_icon(battery)
+  if battery.state == "Charging" then
+    return "󰂄" .. " " .. math.floor(battery.state_of_charge * 100) .. "%"
+  elseif battery.state == "Unknown" then
+    return "󱧥"
+  elseif battery.state_of_charge < 0.1 then
+    return "󰁺"
+  elseif battery.state_of_charge < 0.2 then
+    return "󰁻"
+  elseif battery.state_of_charge < 0.3 then
+    return "󰁼"
+  elseif battery.state_of_charge < 0.4 then
+    return "󰁽"
+  elseif battery.state_of_charge < 0.5 then
+    return "󰁾"
+  elseif battery.state_of_charge < 0.6 then
+    return "󰁿"
+  elseif battery.state_of_charge < 0.7 then
+    return "󰂀"
+  elseif battery.state_of_charge < 0.8 then
+    return "󰂁"
+  elseif battery.state_of_charge < 0.9 then
+    return "󰂂"
+  else
+    return "󰁹"
+  end
+end
+
+wezterm.on("update-right-status", function(window)
+  local bat = get_battrey_icon(wezterm.battery_info()[1])
+  local time = wezterm.strftime("%H:%M")
+
+  -- Make it italic and underlined
+  window:set_right_status(wezterm.format({
+    { Text = bat .. " " .. time .. " " },
+  }))
+end)
+
 local keybinds = {
   -- CTRL-S, CTRL-S で CTRL-S を送る
   -- { key = 's', mods = 'ALT|CTRL', action = act.SendString '\x01' },
@@ -189,7 +227,7 @@ local config = {
   font_size = font_size,
   colors = colors,
   use_fancy_tab_bar = false,
-  hide_tab_bar_if_only_one_tab = true,
+  hide_tab_bar_if_only_one_tab = false,
   show_new_tab_button_in_tab_bar = false,
   scrollback_lines = 3500,
   disable_default_key_bindings = true,
