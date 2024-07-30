@@ -1,5 +1,5 @@
 [tools]
 node = "lts"
-bun = "latest"
+bun = "1"
 pnpm = "latest"
 usage = "latest"
