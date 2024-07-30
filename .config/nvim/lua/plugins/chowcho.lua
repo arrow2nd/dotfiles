@@ -2,10 +2,7 @@ local h = require("util.helper")
 
 return {
   {
-    -- "tkmpypy/chowcho.nvim",
-    "arrow2nd/chowcho.nvim",
-    branch = "fix-format",
-    -- dir = "~/workspace/github.com/arrow2nd/chowcho.nvim",
+    "tkmpypy/chowcho.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     init = function()
       -- Neovimの<C-w><C-w>をchowcho.nvimで拡張する
