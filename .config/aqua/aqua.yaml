@@ -11,7 +11,7 @@ registries:
   ref: v4.208.1 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: sharkdp/bat@v0.24.0
-- name: Wilfred/difftastic@0.59.0
+- name: Wilfred/difftastic@0.60.0
 - name: arrow2nd/nimotsu@v1.3.3
 - name: junegunn/fzf@v0.54.3
 - name: x-motemen/ghq@v1.6.2
