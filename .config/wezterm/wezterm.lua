@@ -31,7 +31,7 @@ wezterm.on("format-tab-title", function(tab)
   local title = tab_title(tab)
 
   return {
-    { Text = " #" .. tab.tab_index + 1 .. " " .. title .. " " },
+    { Text = " " .. tab.tab_index + 1 .. ". " .. title .. " " },
   }
 end)
 
@@ -67,9 +67,8 @@ wezterm.on("update-right-status", function(window)
   local bat = get_battrey_icon(wezterm.battery_info()[1])
   local time = wezterm.strftime("%H:%M")
 
-  -- Make it italic and underlined
   window:set_right_status(wezterm.format({
-    { Text = bat .. " " .. time .. " " },
+    { Text = bat .. "  " .. time .. " " },
   }))
 end)
 
@@ -156,22 +155,16 @@ local colors = {
     active_tab = {
       bg_color = "#232934",
       fg_color = "#E8E2D6",
-      intensity = "Bold",
-      underline = "None",
-      italic = false,
-      strikethrough = false,
     },
 
     inactive_tab = {
       bg_color = "#090B0A",
       fg_color = "#B3B8C2",
-      italic = true,
     },
 
     inactive_tab_hover = {
       bg_color = "#232934",
       fg_color = "#E8E2D6",
-      italic = true,
     },
 
     new_tab = {
@@ -182,7 +175,6 @@ local colors = {
     new_tab_hover = {
       bg_color = "#232934",
       fg_color = "#E8E2D6",
-      italic = false,
     },
   },
 
@@ -228,7 +220,7 @@ local config = {
   colors = colors,
   use_fancy_tab_bar = false,
   hide_tab_bar_if_only_one_tab = false,
-  show_new_tab_button_in_tab_bar = false,
+  show_new_tab_button_in_tab_bar = true,
   scrollback_lines = 3500,
   disable_default_key_bindings = true,
   keys = keybinds,
