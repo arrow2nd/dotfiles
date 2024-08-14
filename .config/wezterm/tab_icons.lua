@@ -13,7 +13,7 @@ local tab_title_list = {
   },
   {
     title = "^bat$",
-    icon = "󰄛 ",
+    icon = "󰭟 ",
   },
   {
     title = "^vim",
@@ -21,7 +21,7 @@ local tab_title_list = {
   },
   {
     title = "^nvim",
-    icon = " ",
+    icon = " ",
   },
   {
     title = "^bash",
@@ -78,6 +78,14 @@ local tab_title_list = {
   {
     title = "^gh$",
     icon = " ",
+  },
+  {
+    title = "^aqua$",
+    icon = " ",
+  },
+  {
+    title = "^wezterm$",
+    icon = "",
   },
 }
 
