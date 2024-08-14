@@ -8,7 +8,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.212.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.213.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: sharkdp/bat@v0.24.0
 - name: Wilfred/difftastic@0.60.0
