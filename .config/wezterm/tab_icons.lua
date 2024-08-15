@@ -45,7 +45,7 @@ local tab_title_list = {
   },
   {
     title = "^bun$",
-    icon = "󰛦",
+    icon = "󰛦 ",
   },
   {
     title = "^python",
