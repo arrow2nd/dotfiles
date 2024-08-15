@@ -37,29 +37,29 @@ end)
 
 local function get_battrey_icon(battery)
   if battery.state == "Charging" then
-    return "󰂄" .. " " .. math.floor(battery.state_of_charge * 100) .. "%"
+    return " " .. math.floor(battery.state_of_charge * 100) .. "%"
   elseif battery.state == "Unknown" then
-    return "󱧥"
+    return " ?"
   elseif battery.state_of_charge < 0.1 then
-    return "󰁺"
+    return " !"
   elseif battery.state_of_charge < 0.2 then
-    return "󰁻"
+    return " "
   elseif battery.state_of_charge < 0.3 then
-    return "󰁼"
+    return " "
   elseif battery.state_of_charge < 0.4 then
-    return "󰁽"
+    return " "
   elseif battery.state_of_charge < 0.5 then
-    return "󰁾"
+    return " "
   elseif battery.state_of_charge < 0.6 then
-    return "󰁿"
+    return " "
   elseif battery.state_of_charge < 0.7 then
-    return "󰂀"
+    return " "
   elseif battery.state_of_charge < 0.8 then
-    return "󰂁"
+    return " "
   elseif battery.state_of_charge < 0.9 then
-    return "󰂂"
+    return " "
   else
-    return "󰁹"
+    return " "
   end
 end
 
@@ -68,7 +68,10 @@ wezterm.on("update-right-status", function(window)
   local time = wezterm.strftime("%H:%M")
 
   window:set_right_status(wezterm.format({
-    { Text = bat .. "  " .. time .. " " },
+    { Text = bat },
+    { Text = "  " },
+    { Text = time },
+    { Text = " " },
   }))
 end)
 
