@@ -32,7 +32,7 @@ cmd-shift-l = 'move right'
 # cmd-s = 'split horizontal'
 # cmd-v = 'split vertical'
 
-cmd-f = 'fullscreen'
+# cmd-f = 'fullscreen'
 
 cmd-s = 'layout v_accordion' # 'layout stacking' in i3
 cmd-w = 'layout h_accordion' # 'layout tabbed' in i3
