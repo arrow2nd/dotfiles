@@ -39,3 +39,6 @@ apply = ["defer"]
 
 [plugins.zsh-abbrev-alias]
 github = "momo-lab/zsh-abbrev-alias"
+
+[plugins.op]
+local = "~/.config/op"

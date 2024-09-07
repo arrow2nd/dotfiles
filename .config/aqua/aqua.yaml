@@ -25,3 +25,4 @@ packages:
 - name: JohnnyMorganz/StyLua@v0.20.0
 - name: sxyazi/yazi@v0.3.2
 - name: Rigellute/spotify-tui@v0.25.0
+- name: 1password/cli@v2.30.0
