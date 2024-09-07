@@ -52,6 +52,21 @@ alias g-delete-merged-branches='git branch --merged | grep -v "*" | xargs git br
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
 
+# op run
+opr () {
+  if [[ ! -f "$PWD/.env" ]]; then
+      echo ".envがありません"
+      return 1
+  fi
+
+  who=$(op whoami)
+  if [[ $? != 0 ]]; then
+      eval $(op signin)
+  fi
+
+  op run --env-file=$PWD/.env -- "$@"
+}
+
 #
 # ZLE
 #
