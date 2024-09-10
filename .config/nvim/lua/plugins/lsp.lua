@@ -184,15 +184,6 @@ return {
         on_attach = lsp.disable_fmt_on_attach,
       })
 
-      -- YAML
-      lspconfig.yamlls.setup({
-        settings = {
-          yaml = {
-            keyOrdering = false,
-          },
-        },
-      })
-
       -- typos LSP
       lspconfig.typos_lsp.setup({
         init_options = {
