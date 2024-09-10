@@ -54,8 +54,12 @@ alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:
 
 # op run
 opr () {
-  if [[ ! -f "$PWD/.env" ]]; then
-      echo ".envがありません"
+  if [[ -f "$PWD/.env" ]]; then
+      env_file="$PWD/.env"
+  elif [[ -f "$PWD/.env.local" ]]; then
+      env_file="$PWD/.env.local"
+  else
+      echo ".envまたは.env.localがありません"
       return 1
   fi
 
@@ -64,9 +68,8 @@ opr () {
       eval $(op signin)
   fi
 
-  op run --env-file=$PWD/.env -- "$@"
+  op run --env-file="$env_file" -- "$@"
 }
-
 #
 # ZLE
 #
