@@ -130,7 +130,7 @@ return {
         })
       elseif is_node_dir then
         -- Node.js
-        lspconfig.tsserver.setup({
+        lspconfig.ts_ls.setup({
           -- NOTE:
           -- bun run --bun するとめちゃ早いけどめちゃメモリ喰った
           -- Node : 200 - 400MB
