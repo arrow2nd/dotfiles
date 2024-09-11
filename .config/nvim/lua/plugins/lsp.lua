@@ -143,7 +143,8 @@ return {
             plugins = {
               {
                 name = "@vue/typescript-plugin",
-                location = "/Users/arrow2nd/.config/nvim/lua/plugins/lsp_node_servers/node_modules/@vue/language-server",
+                location = os.getenv("HOME")
+                  .. "/.config/nvim/lua/plugins/lsp_node_servers/node_modules/@vue/language-server",
                 languages = { "javascript", "typescript", "vue" },
               },
             },
