@@ -17,6 +17,12 @@ api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   end,
 })
 
+-- mdxをmdとして読む
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.mdx",
+  command = "set filetype=markdown.mdx",
+})
+
 -- 常にインサートモードでTerminalを開く
 -- ref: https://zenn.dev/ryo_kawamata/articles/improve-neovmi-terminal
 api.nvim_create_autocmd({ "TermOpen" }, {
