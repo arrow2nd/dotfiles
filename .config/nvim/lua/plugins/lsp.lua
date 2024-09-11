@@ -104,7 +104,7 @@ return {
       local buf_full_filename = vim.api.nvim_buf_get_name(0)
 
       -- JavaScript / TypeScript
-      local node_root_dir = lspconfig.util.root_pattern("package.json")
+      local node_root_dir = lspconfig.util.root_pattern("package.json", "node_modules")
       local is_node_dir = node_root_dir(buf_full_filename) ~= nil
 
       local deno_root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
@@ -126,11 +126,29 @@ return {
             lint = true,
             unstable = true,
           },
+          root_dir = deno_root_dir,
           on_attach = lsp.enable_fmt_on_attach,
         })
       elseif is_node_dir then
         -- Node.js
         lspconfig.ts_ls.setup({
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+          },
+          init_options = {
+            plugins = {
+              {
+                name = "@vue/typescript-plugin",
+                location = "/Users/arrow2nd/.config/nvim/lua/plugins/lsp_node_servers/node_modules/@vue/language-server",
+                languages = { "javascript", "typescript", "vue" },
+              },
+            },
+          },
+          root_dir = node_root_dir,
           -- NOTE:
           -- bun run --bun するとめちゃ早いけどめちゃメモリ喰った
           -- Node : 200 - 400MB
@@ -139,6 +157,9 @@ return {
           on_attach = lsp.disable_fmt_on_attach,
         })
       end
+
+      -- Vue
+      lspconfig.volar.setup({})
 
       -- Golang
       lspconfig.gopls.setup({
