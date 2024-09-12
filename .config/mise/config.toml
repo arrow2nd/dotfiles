@@ -1,5 +1,6 @@
 [tools]
 node = "lts"
 bun = "1"
-pnpm = "latest"
 usage = "latest"
+yarn = "4"
+pnpm = "9"
