@@ -6,6 +6,7 @@
     "@angular/language-server": "^18.0.0",
     "@astrojs/language-server": "^2.8.4",
     "@vue/language-server": "^2.1.6",
+    "typescript": "^5.6.2",
     "typescript-language-server": "^4.3.3",
     "vscode-langservers-extracted": "^4.8.0"
   }

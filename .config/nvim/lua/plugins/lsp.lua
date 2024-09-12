@@ -104,11 +104,13 @@ return {
       local buf_full_filename = vim.api.nvim_buf_get_name(0)
 
       -- JavaScript / TypeScript
-      local node_root_dir = lspconfig.util.root_pattern("package.json", "node_modules")
-      local is_node_dir = node_root_dir(buf_full_filename) ~= nil
+      local node_modules_dir = os.getenv("HOME") .. "/.config/nvim/lua/plugins/lsp_node_servers/node_modules"
 
       local deno_root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
       local is_deno_dir = deno_root_dir(buf_full_filename) ~= nil
+
+      local node_root_dir = lspconfig.util.root_pattern("package.json", "node_modules")
+      local is_node_dir = node_root_dir(buf_full_filename) ~= nil
 
       if is_deno_dir then
         -- Deno LSPのcodefencesを適切にハイライトするため
@@ -143,8 +145,7 @@ return {
             plugins = {
               {
                 name = "@vue/typescript-plugin",
-                location = os.getenv("HOME")
-                  .. "/.config/nvim/lua/plugins/lsp_node_servers/node_modules/@vue/language-server",
+                location = node_modules_dir .. "/@vue/language-server",
                 languages = { "javascript", "typescript", "vue" },
               },
             },
@@ -160,7 +161,17 @@ return {
       end
 
       -- Vue
-      lspconfig.volar.setup({})
+      lspconfig.volar.setup({
+        init_options = {
+          typescript = {
+            -- NOTE: 指定しないとTS入れてないプロジェクトでエラーが出る
+            tsdk = node_modules_dir .. "/typescript/lib",
+          },
+          vue = {
+            hybridMode = true,
+          },
+        },
+      })
 
       -- Golang
       lspconfig.gopls.setup({
