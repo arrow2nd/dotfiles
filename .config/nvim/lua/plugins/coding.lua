@@ -45,6 +45,9 @@ return {
   {
     "skanehira/denops-translate.vim",
     lazy = false,
+    init = function()
+      h.xmap("<Leader>t", "<Plug>(Translate)")
+    end,
   },
   {
     "kat0h/bufpreview.vim",
