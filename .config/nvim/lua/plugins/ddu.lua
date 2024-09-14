@@ -50,11 +50,11 @@ return {
     end,
     config = function()
       local reset_ui = function()
-        local top = 4
+        local top = 1
         local width = vim.opt.columns:get()
         local height = vim.opt.lines:get()
         local win_width = math.floor(width * 0.8)
-        local win_height = math.floor(height * 0.4)
+        local win_height = math.floor(height * 0.8)
 
         vim.fn["ddu#custom#patch_global"]({
           ui = "ff",
