@@ -5,6 +5,8 @@ return {
     "vim-jp/vimdoc-ja",
     lazy = false,
   },
+  { "nvim-tree/nvim-web-devicons" },
+  { "JoosepAlviste/nvim-ts-context-commentstring" },
   {
     "vim-denops/denops.vim",
     priority = 500, -- 大体のプラグインが依存しているので優先して読み込む
