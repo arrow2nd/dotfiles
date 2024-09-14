@@ -7,6 +7,7 @@ return {
   },
   {
     "vim-denops/denops.vim",
+    priority = 500, -- 大体のプラグインが依存しているので優先して読み込む
     lazy = false,
   },
   {
