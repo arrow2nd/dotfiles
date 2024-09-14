@@ -14,7 +14,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  defaults = { lazy = true },
+  defaults = {
+    lazy = true,
+  },
   spec = {
     { import = "plugins" },
   },
@@ -22,10 +24,17 @@ require("lazy").setup({
   git = {
     timeout = 6000,
   },
-  install = { colorscheme = { "aqua" } },
+  install = {
+    colorscheme = { "aqua" },
+  },
   performance = {
-    cache = { enabled = true },
-    disable_events = { "VimEnter", "BufReadPre" },
+    cache = {
+      enabled = true,
+    },
+    disable_events = {
+      "VimEnter",
+      "BufReadPre",
+    },
     rtp = {
       disabled_plugins = {
         "2html_plugin",
