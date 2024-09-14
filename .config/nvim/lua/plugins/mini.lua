@@ -96,16 +96,30 @@ return {
       require("mini.statusline").setup({
         content = {
           active = function()
-            local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 9999 }) -- 常にShort表示
+            local separator = "|"
+
+            local mode, mode_hl = MiniStatusline.section_mode({
+              trunc_width = 9999, -- 常にShortで表示
+            })
+
+            local diagnostics = MiniStatusline.section_diagnostics({
+              trunc_width = 75,
+            })
+
+            local fileinfo = MiniStatusline.section_fileinfo({
+              trunc_width = 9999,
+            })
+
             local git = MiniStatusline.section_git({ trunc_width = 40 })
-            local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-            local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+            if git ~= "" then
+              git = git .. " " .. separator
+            end
 
             local filename = function()
               if vim.bo.buftype == "terminal" then
                 return "%t"
               else
-                return "%f%m%r"
+                return "%f%m%r" -- フルパス
               end
             end
 
@@ -115,14 +129,23 @@ return {
                 return ""
               end
 
-              return string.format("󰔟 %s", prog:gsub("%%", "%%%%"))
+              return string.format("󰔟 %s %s", prog:gsub("%%", "%%%%"), separator)
             end
 
             return MiniStatusline.combine_groups({
-              { hl = mode_hl, strings = { mode } },
-              { hl = "MiniStatuslineFilename", strings = { git, diagnostics, filename() } },
+              {
+                hl = mode_hl,
+                strings = { mode },
+              },
+              {
+                hl = "MiniStatuslineFilename",
+                strings = { git, diagnostics, filename() },
+              },
               "%=", -- End left alignment
-              { hl = "MiniStatuslineFilename", strings = { get_lsp_progress(), fileinfo, "#%l" } },
+              {
+                hl = "MiniStatuslineFilename",
+                strings = { get_lsp_progress(), fileinfo, separator, "%l" },
+              },
             })
           end,
           inactive = function()
@@ -136,7 +159,10 @@ return {
 
             return MiniStatusline.combine_groups({
               "%=", -- End left alignment
-              { hl = "MiniStatuslineFilename", strings = { filename() } },
+              {
+                hl = "MiniStatuslineFilename",
+                strings = { filename() },
+              },
             })
           end,
         },
