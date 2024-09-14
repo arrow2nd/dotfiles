@@ -6,7 +6,6 @@ return {
     "Shougo/ddc.vim",
     lazy = false,
     dependencies = {
-      "vim-denops/denops.vim",
       -- UI
       "Shougo/pum.vim",
       "Shougo/ddc-ui-pum",
@@ -152,7 +151,6 @@ return {
   },
   {
     "matsui54/denops-signature_help",
-    dependencies = { "vim-denops/denops.vim" },
     config = function()
       vim.g.signature_help_config = {
         contentsStyle = "currentLabel",

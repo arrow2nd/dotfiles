@@ -66,10 +66,6 @@ return {
       "CopilotChatCommitStaged",
     },
     branch = "canary",
-    dependencies = {
-      "github/copilot.vim",
-      "nvim-lua/plenary.nvim",
-    },
     init = function()
       for _, mode in pairs({ "n", "x" }) do
         h[mode .. "map"]("<Leader>cc", "<Cmd>CopilotChat<CR>")

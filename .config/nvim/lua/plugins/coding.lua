@@ -1,9 +1,22 @@
 local h = require("util.helper")
 
 return {
-  { "vim-jp/vimdoc-ja", lazy = false },
-  { "thinca/vim-qfreplace", cmd = "Qfreplace" },
-  { "thinca/vim-quickrun", cmd = "QuickRun" },
+  {
+    "vim-jp/vimdoc-ja",
+    lazy = false,
+  },
+  {
+    "vim-denops/denops.vim",
+    lazy = false,
+  },
+  {
+    "thinca/vim-qfreplace",
+    cmd = "Qfreplace",
+  },
+  {
+    "thinca/vim-quickrun",
+    cmd = "QuickRun",
+  },
   {
     "windwp/nvim-ts-autotag",
     event = "InsertEnter",
@@ -12,12 +25,10 @@ return {
   {
     "skanehira/denops-translate.vim",
     lazy = false,
-    dependencies = { "vim-denops/denops.vim" },
   },
   {
     "kat0h/bufpreview.vim",
     lazy = false,
-    dependencies = { "vim-denops/denops.vim" },
     build = "deno task prepare",
   },
   {

@@ -6,7 +6,6 @@ return {
     lazy = false,
     enabled = true,
     dependencies = {
-      "vim-denops/denops.vim",
       -- UI
       "Shougo/ddu-ui-filer",
       "Shougo/ddu-ui-ff",
@@ -25,7 +24,6 @@ return {
       -- Filter
       "Shougo/ddu-filter-sorter_alpha",
       "mityu/ddu-filter-matcher_multi_regex",
-      -- "Shougo/ddu-filter-matcher_substring",
       -- Kind
       "Shougo/ddu-kind-file",
       "Shougo/ddu-kind-word",

@@ -3,10 +3,10 @@ local nmap = require("util.helper").nmap
 return {
   {
     "sindrets/diffview.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
+    -- dependencies = {
+    --   "nvim-lua/plenary.nvim",
+    --   "nvim-tree/nvim-web-devicons",
+    -- },
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     init = function()
       nmap("<Leader>gd", "<CMD>DiffviewOpen<CR>", { desc = "Show git diff" })

@@ -4,10 +4,10 @@ return {
   {
     "NeogitOrg/neogit",
     cmd = { "Neogit" },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-    },
+    -- dependencies = {
+    --   "nvim-lua/plenary.nvim",
+    --   "sindrets/diffview.nvim",
+    -- },
     init = function()
       nmap("<Leader>gg", "<CMD>Neogit<CR>", { desc = "Open Neogit" })
       nmap("<Leader>gc", "<CMD>Neogit commit<CR>", { desc = "git commit" })
