@@ -1,6 +1,6 @@
 # dotfiles
 
-<img width="1421" alt="image" src="https://github.com/arrow2nd/dotfiles/assets/44780846/853b93b6-0a58-43e4-ab27-3eb721b61155">
+<img width="1440" alt="スクリーンショット" src="https://github.com/user-attachments/assets/26a7bf5d-8659-483a-919c-f0412bf85206">
 
 ## 環境
 
