@@ -103,6 +103,10 @@ return {
               trunc_width = 9999, -- 常にShortで表示
             })
 
+            if mode == "N" then
+              mode = "✝"
+            end
+
             local diagnostics = MiniStatusline.section_diagnostics({
               trunc_width = 75,
             })
