@@ -91,6 +91,10 @@ local tab_title_list = {
     title = "^spt$",
     icon = " ",
   },
+  {
+    title = "^op$",
+    icon = "󰯅 ",
+  },
 }
 
 return tab_title_list
