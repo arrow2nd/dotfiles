@@ -140,16 +140,16 @@ return {
       }
 
       -- Insert
-      for _, mode in pairs({ "i", "c" }) do
-        h[mode .. "map"]("<C-n>", "<cmd>call pum#map#select_relative(+1)<CR>", opts)
-        h[mode .. "map"]("<C-p>", "<cmd>call pum#map#select_relative(-1)<CR>", opts)
-        h[mode .. "map"]("<C-y>", "<cmd>call pum#map#confirm()<CR>", opts)
-        h[mode .. "map"]("<C-e>", "<cmd>call pum#map#cancel()<CR>", opts)
-      end
+      h.imap("<C-n>", "<cmd>call pum#map#select_relative(+1)<CR>", opts)
+      h.imap("<C-p>", "<cmd>call pum#map#select_relative(-1)<CR>", opts)
+      h.imap("<C-y>", "<cmd>call pum#map#confirm()<CR>", opts)
+      h.imap("<C-e>", "<cmd>call pum#map#cancel()<CR>", opts)
 
       -- コマンドライン
-      h.cmap("<Tab>", "<Cmd>call pum#map#select_relative(+1)<CR>", opts)
-      h.cmap("<S-Tab>", "<Cmd>call pum#map#select_relative(-1)<CR>", opts)
+      h.cmap("<C-n>", "<cmd>call pum#map#insert_relative(+1)<CR>", { noremap = true })
+      h.cmap("<C-p>", "<cmd>call pum#map#insert_relative(-1)<CR>", { noremap = true })
+      h.cmap("<C-y>", "<cmd>call pum#map#confirm()<CR>", { noremap = true })
+      h.cmap("<C-e>", "<cmd>call pum#map#cancel()<CR>", { noremap = true })
     end,
   },
   {
