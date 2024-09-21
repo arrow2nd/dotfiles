@@ -57,6 +57,10 @@ opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 
+-- 括弧
+opt.showmatch = true
+opt.matchtime = 1
+
 -- 検索
 opt.ignorecase = true
 opt.smartcase = true
