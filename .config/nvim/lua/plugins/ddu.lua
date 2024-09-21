@@ -4,7 +4,6 @@ return {
   {
     "Shougo/ddu.vim",
     lazy = false,
-    enabled = true,
     dependencies = {
       -- UI
       "Shougo/ddu-ui-filer",

@@ -4,7 +4,6 @@ return {
   {
     "vim-skk/skkeleton",
     lazy = false,
-    -- dependencies = { "vim-denops/denops.vim" },
     init = function()
       h.imap("<C-j>", "<Plug>(skkeleton-enable)")
       h.cmap("<C-j>", "<Plug>(skkeleton-enable)")
