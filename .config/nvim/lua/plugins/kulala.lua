@@ -10,7 +10,7 @@ return {
         },
       })
 
-      h.nmap("<Leader>k", ":lua require('kulala').scratchpad()><CR>")
+      h.nmap("<Leader>k", ":lua require('kulala').scratchpad()<CR>")
     end,
     opts = {
       curl_path = "curl",
