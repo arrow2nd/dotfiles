@@ -1,3 +1,5 @@
+local h = require("util.helper")
+
 return {
   {
     "mistweaverco/kulala.nvim",
@@ -7,6 +9,8 @@ return {
           ["http"] = "http",
         },
       })
+
+      h.nmap("<Leader>k", ":lua require('kulala').scratchpad()><CR>")
     end,
     opts = {
       curl_path = "curl",
