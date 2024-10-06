@@ -79,9 +79,9 @@ return {
     config = function()
       require("CopilotChat").setup({
         system_prompt = COPILOT_NOJYA_INSTRUCTIONS,
-        question_header = "## あなた ",
+        question_header = "## You ",
         answer_header = "## 🦊 ",
-        error_header = "## えらー ",
+        error_header = "## Error ",
         prompts = {
           Explain = {
             prompt = "/COPILOT_EXPLAIN Write an explanation for the active selection as paragraphs of text.",
