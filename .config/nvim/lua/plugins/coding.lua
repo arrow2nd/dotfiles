@@ -7,6 +7,11 @@ return {
   },
   { "nvim-tree/nvim-web-devicons" },
   {
+    "ryoppippi/vim-bun-lock",
+    branch = "lua",
+    lazy = false,
+  },
+  {
     "vim-denops/denops.vim",
     priority = 500, -- 大体のプラグインが依存しているので優先して読み込む
     lazy = false,

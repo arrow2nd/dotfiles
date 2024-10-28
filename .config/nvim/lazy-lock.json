@@ -56,6 +56,7 @@
   "skkeleton": { "branch": "main", "commit": "2cdd414c1bfa8c363505b8dfc9f50ef2f446ea61" },
   "toggleterm.nvim": { "branch": "main", "commit": "137d06fb103952a0fb567882bb8527e2f92d327d" },
   "typos-lsp": { "branch": "main", "commit": "0269511f2609127bdc881b268b1c1d6576f16500" },
+  "vim-bun-lock": { "branch": "lua", "commit": "5c6d40f2364b11a8cbd5dc0d3ee8791948827d74" },
   "vim-qfreplace": { "branch": "master", "commit": "707a895f9f86eeed106f64da0bd9fa07b3cd9cee" },
   "vim-quickrun": { "branch": "master", "commit": "77b4d6ea9972a206f02c736882c2398c36d2983c" },
   "vim-vsnip": { "branch": "master", "commit": "02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9" },
