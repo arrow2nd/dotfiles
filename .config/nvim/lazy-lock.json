@@ -39,6 +39,7 @@
   "dial.nvim": { "branch": "master", "commit": "ed4d6a5bbd5e479b4c4a3019d148561a2e6c1490" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "git-messenger.vim": { "branch": "master", "commit": "edc603d4cda7894a743e383e16c638e206d03148" },
+  "hover.nvim": { "branch": "main", "commit": "f8e162daccb2f117e19f3d5ad3647ac0cefb02e3" },
   "kulala.nvim": { "branch": "main", "commit": "3fc84b71f250408bfc4d863f663c5e273f42180a" },
   "lazy.nvim": { "branch": "main", "commit": "b1134ab82ee4279e31f7ddf7e34b2a99eb9b7bc9" },
   "minai": { "branch": "main", "commit": "07dc42a53a638021123abd3a8f8875ab7c14d0ca" },
