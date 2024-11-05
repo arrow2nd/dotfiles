@@ -88,8 +88,11 @@ return {
     end,
     config = function()
       -- ポップアップウィンドウのボーダースタイルを設定
-      require("lspconfig.ui.windows").default_options.border = "single"
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+      -- FIXME: v0.11.0-dev-1097+gf5b84c1a44で効かない
+      -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+      -- vim.lsp.handlers["textDocument/signatureHelp"] =
+      --   vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+
       vim.diagnostic.config({
         float = {
           border = "single",
