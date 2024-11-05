@@ -70,7 +70,6 @@ return {
     init = function()
       -- global keymaps
       h.nmap("gE", "<CMD>Ddu lsp_diagnostic -unique<CR>", { desc = "Lists all the diagnostics" })
-      h.nmap("ge", "<CMD>lua vim.diagnostic.open_float()<CR>", { desc = "Show diagnostic" })
       h.nmap("]g", "<CMD>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
       h.nmap("[g", "<CMD>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to previous diagnostic" })
 
@@ -88,11 +87,6 @@ return {
     end,
     config = function()
       -- ポップアップウィンドウのボーダースタイルを設定
-      -- FIXME: v0.11.0-dev-1097+gf5b84c1a44で効かない
-      -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-      -- vim.lsp.handlers["textDocument/signatureHelp"] =
-      --   vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
-
       vim.diagnostic.config({
         float = {
           border = "single",
