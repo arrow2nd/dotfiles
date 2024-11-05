@@ -119,6 +119,7 @@ return {
   },
   {
     "Shougo/pum.vim",
+    commit = "c50cbf6",
     config = function()
       fn["pum#set_option"]({
         auto_select = true,
