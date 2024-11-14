@@ -28,6 +28,7 @@
   "ddu-source-help": { "branch": "main", "commit": "007fe7d24d65b031c36d77f59374fc59f63f8323" },
   "ddu-source-lsp": { "branch": "main", "commit": "b9df7182658ca7955cc20416d86efc935e685e7d" },
   "ddu-source-quickfix_history": { "branch": "main", "commit": "c578883b22da7ba2d244de1a11343bdfc1a41c29" },
+  "ddu-source-register": { "branch": "main", "commit": "94c71a4193ff30d7d80b6076fb39b94f5cf10fe3" },
   "ddu-source-rg": { "branch": "main", "commit": "4e856b8ae2fc67b4e43c7c085577835ea1ac395f" },
   "ddu-ui-ff": { "branch": "main", "commit": "eb65558992583ea48e2a7beeaced7c855eb3edc8" },
   "ddu-ui-filer": { "branch": "main", "commit": "987fd68eb2ab4207d00eba7bdd097116e10ff629" },

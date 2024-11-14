@@ -20,6 +20,7 @@ return {
       "kyoh86/ddu-source-quickfix_history",
       "matsui54/ddu-source-command_history",
       "Omochice/ddu-source-anyjump",
+      "Shougo/ddu-source-register",
       -- Filter
       "Shougo/ddu-filter-sorter_alpha",
       "mityu/ddu-filter-matcher_multi_regex",
@@ -38,6 +39,7 @@ return {
       h.nmap(";h", "<Cmd>Ddu help<CR>")
       h.nmap(";B", "<Cmd>Ddu buffer<CR>")
       h.nmap(";o", "<Cmd>Ddu file_old<CR>")
+      h.nmap(";r", "<Cmd>Ddu register<CR>")
       h.nmap(";gg", "<Cmd>Ddu -name=grep<CR>")
       h.nmap(";gt", "<Cmd>Todo<CR>")
       h.nmap(";gf", "<Cmd>Fixme<CR>")
