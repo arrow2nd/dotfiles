@@ -8,18 +8,18 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.249.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.250.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: sharkdp/bat@v0.24.0
 - name: Wilfred/difftastic@0.61.0
-- name: arrow2nd/nimotsu@v1.3.3
+- name: arrow2nd/nimotsu@v1.3.4
 - name: junegunn/fzf@v0.56.2
 - name: x-motemen/ghq@v1.7.1
 - name: sharkdp/fd@v10.2.0
 - name: BurntSushi/ripgrep@14.1.1
 - name: oberblastmeister/trashy@v2.0.0
 - name: eza-community/eza@0.20.7
-- name: LuaLS/lua-language-server@3.12.0
+- name: LuaLS/lua-language-server@3.13.0
 - name: jqlang/jq@jq-1.7.1
 - name: sharkdp/pastel@v0.10.0
 - name: JohnnyMorganz/StyLua@v0.20.0
