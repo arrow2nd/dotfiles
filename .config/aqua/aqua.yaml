@@ -22,7 +22,7 @@ packages:
 - name: LuaLS/lua-language-server@3.13.0
 - name: jqlang/jq@jq-1.7.1
 - name: sharkdp/pastel@v0.10.0
-- name: JohnnyMorganz/StyLua@v2.0.0
+- name: JohnnyMorganz/StyLua@v2.0.1
 - name: sxyazi/yazi@v0.3.3
 - name: Rigellute/spotify-tui@v0.25.0
 - name: 1password/cli@v2.30.0
