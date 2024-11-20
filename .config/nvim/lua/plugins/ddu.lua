@@ -5,6 +5,7 @@ return {
     "Shougo/ddu.vim",
     lazy = false,
     dependencies = {
+      "vim-denops/denops.vim",
       -- UI
       "Shougo/ddu-ui-filer",
       "Shougo/ddu-ui-ff",

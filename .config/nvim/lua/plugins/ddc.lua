@@ -6,6 +6,7 @@ return {
     "Shougo/ddc.vim",
     lazy = false,
     dependencies = {
+      "vim-denops/denops.vim",
       -- UI
       "Shougo/pum.vim",
       "Shougo/ddc-ui-pum",

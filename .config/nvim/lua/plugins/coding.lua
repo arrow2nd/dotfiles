@@ -12,11 +12,6 @@ return {
     lazy = false,
   },
   {
-    "vim-denops/denops.vim",
-    priority = 500, -- 大体のプラグインが依存しているので優先して読み込む
-    lazy = false,
-  },
-  {
     "thinca/vim-qfreplace",
     cmd = "Qfreplace",
   },
@@ -50,6 +45,7 @@ return {
   {
     "skanehira/denops-translate.vim",
     lazy = false,
+    dependencies = { "vim-denops/denops.vim" },
     init = function()
       h.xmap("<Leader>t", "<Plug>(Translate)")
     end,
@@ -57,6 +53,7 @@ return {
   {
     "kat0h/bufpreview.vim",
     lazy = false,
+    dependencies = { "vim-denops/denops.vim" },
     build = "deno task prepare",
   },
   {
