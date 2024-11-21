@@ -15,8 +15,15 @@ require("lazy").setup({
     end,
   },
   {
+    "vim-denops/denops.vim",
+    priority = 500, -- 大体のプラグインが依存しているので優先して読み込む
+    lazy = false,
+    init = function()
+      vim.g.denops_server_addr = '127.0.0.1:32123'
+    end,
+  },
+  {
     "vim-skk/skkeleton",
-    dependencies = { "vim-denops/denops.vim" },
     config = function()
       h.imap("<C-j>", "<Plug>(skkeleton-enable)")
 
@@ -44,7 +51,6 @@ require("lazy").setup({
   {
     "Shougo/ddc.vim",
     dependencies = {
-      "vim-denops/denops.vim",
       "Shougo/pum.vim",
       "Shougo/ddc-ui-pum",
     },
