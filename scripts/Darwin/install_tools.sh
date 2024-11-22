@@ -8,6 +8,11 @@ if ! type -p brew >/dev/null; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+if ! type -p deno >/dev/null; then
+  echo "🦕 Install Deno"
+  curl -fsSL https://deno.land/install.sh | sh
+fi
+
 echo "🧰 Install Tools"
 brew bundle --file=~/dotfiles/scripts/Darwin/Brewfile
 

@@ -25,7 +25,7 @@ fi
 
 if ! type -p deno >/dev/null; then
   echo "🦕 Install Deno"
-  curl -fsSL https://deno.land/x/install/install.sh | sh
+  curl -fsSL https://deno.land/install.sh | sh
 fi
 
 if ! type -p rustup >/dev/null; then

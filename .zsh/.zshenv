@@ -26,6 +26,9 @@ export PATH="$HOME/.local/share/mise/shims:$PATH"
 # Deno
 export PATH="$HOME/.deno/bin:$PATH"
 
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
+
 # Golang
 export PATH="$HOME/go/bin:$PATH"
 
