@@ -1,0 +1,73 @@
+[[plugins]]
+repo = "Shougo/ddc.vim"
+depends = ["denops.vim"]
+lua_source = """
+require("config.ddc")
+"""
+
+[[plugins]]
+repo = "Shougo/pum.vim"
+rev = "c50cbf6"
+lua_source = """
+require("config.pum")
+"""
+
+[[plugins]]
+repo = "Shougo/ddc-ui-pum"
+depends = ["ddc.vim"]
+
+[[plugins]]
+repo = "Shougo/ddc-source-around"
+depends = ["ddc.vim"]
+
+[[plugins]]
+repo = "Shougo/ddc-source-lsp"
+depends = ["ddc.vim"]
+
+[[plugins]]
+repo = "LumaKernel/ddc-source-file"
+depends = ["ddc.vim"]
+
+[[plugins]]
+repo = "uga-rosa/ddc-source-vsnip"
+depends = ["ddc.vim"]
+
+[[plugins]]
+repo = "Shougo/ddc-source-cmdline"
+depends = ["ddc.vim"]
+
+[[plugins]]
+repo = "tani/ddc-fuzzy"
+depends = ["ddc.vim"]
+
+[[plugins]]
+repo = "Shougo/ddc-filter-converter_remove_overlap"
+depends = ["ddc.vim"]
+
+[[plugins]]
+repo = "matsui54/denops-signature_help"
+depends = ["ddc.vim"]
+lua_source = """
+vim.g.signature_help_config = {
+  contentsStyle = "currentLabel",
+  viewStyle = "virtual",
+}
+
+vim.fn["signature_help#enable"]()
+"""
+
+[[plugins]]
+repo = "hrsh7th/vim-vsnip"
+lua_source = """
+vim.g.vsnip_snippet_dir = "~/.config/vsnip"
+vim.cmd('imap <expr> <C-l> vsnip#jumpable(1) ? "<Plug>(vsnip-jump-next)" : "<C-l>"')
+vim.cmd('smap <expr> <C-l> vsnip#jumpable(1) ? "<Plug>(vsnip-jump-next)" : "<C-l>"')
+vim.cmd('imap <expr> <C-h> vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-h>"')
+vim.cmd('smap <expr> <C-h> vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-h>"')
+"""
+
+[[plugins]]
+repo = "vim-skk/skkeleton"
+lua_source = """
+require("config.skk")
+"""

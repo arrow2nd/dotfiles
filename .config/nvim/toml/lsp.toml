@@ -1,0 +1,15 @@
+[[plugins]]
+repo = "williamboman/mason-lspconfig.nvim"
+
+[[plugins]]
+repo = "neovim/nvim-lspconfig"
+
+[[plugins]]
+repo = "uga-rosa/ddc-source-lsp-setup"
+
+[[plugins]]
+repo = "williamboman/mason.nvim"
+depends = ["mason-lspconfig.nvim", "nvim-lspconfig", "ddc-source-lsp-setup"]
+lua_source = """
+require("config.lsp")
+"""

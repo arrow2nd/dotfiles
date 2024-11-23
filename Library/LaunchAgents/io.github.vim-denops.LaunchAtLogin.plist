@@ -9,7 +9,7 @@
     <array>
       <string>/bin/zsh</string>
       <string>-c</string>
-      <string>source $HOME/.zsh/.zshenv && deno run -q --no-lock -A $HOME/.local/share/nvim/lazy/denops.vim/denops/@denops-private/cli.ts --hostname 127.0.0.1 --port 32123</string>
+      <string>source $HOME/.zsh/.zshenv && deno run -q --no-lock -A $HOME/.cache/nvim/dpp/repos/github.com/vim-denops/denops.vim/denops/@denops-private/cli.ts --hostname 127.0.0.1 --port 32123</string>
     </array>
 
     <key>RunAtLoad</key>

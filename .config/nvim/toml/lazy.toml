@@ -1,0 +1,72 @@
+[[plugins]]
+repo = "nvim-treesitter/nvim-treesitter"
+on_event = ["BufRead"]
+lua_source = """
+require("config.treesitter")
+"""
+
+[[plugins]]
+repo = "thinca/vim-qfreplace"
+on_cmd = ["Qfreplace"]
+
+[[plugins]]
+repo = "JoosepAlviste/nvim-ts-context-commentstring"
+on_event = ["InsertEnter"]
+lua_add = """
+-- ref: https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#native-commenting-in-neovim-010
+local get_option = vim.filetype.get_option
+
+vim.filetype.get_option = function(filetype, option)
+  return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
+    or get_option(filetype, option)
+end
+"""
+lua_source = """
+require("ts_context_commentstring").setup({
+  enable_autocmd = false,
+})
+"""
+
+[[plugins]]
+repo = "akinsho/toggleterm.nvim"
+on_cmd = ["ToggleTerm"]
+lua_source = """
+require("toggleterm").setup()
+"""
+
+[[plugins]]
+repo = "rhysd/git-messenger.vim"
+on_cmd = ["GitMessenger"]
+lua_source = """
+vim.g.git_messenger_floating_win_opts = { border = "single" }
+"""
+
+[[plugins]]
+repo = "CopilotC-Nvim/CopilotChat.nvim"
+rev = "canary"
+depends = ["copilot.vim", "plenary.nvim"]
+on_cmd = [
+  "CopilotChat",
+  "CopilotChatOpen",
+  "CopilotChatToggle",
+  "CopilotChatReview",
+  "CopilotChatFix",
+  "CopilotChatOptimize",
+  "CopilotChatDocs",
+  "CopilotChatTests",
+  "CopilotChatFixDiagnostic",
+  "CopilotChatCommit",
+  "CopilotChatCommitStaged",
+]
+lua_source = """
+require("config.chat")
+"""
+
+[[plugins]]
+repo = "oysandvik94/curl.nvim"
+depends = ["plenary.nvim"]
+on_cmd = ["CurlOpen", "CurlCollection"]
+lua_source = """
+require("curl").setup()
+"""
+

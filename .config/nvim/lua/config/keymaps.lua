@@ -32,3 +32,18 @@ h.nmap("]q", "<Cmd>cnext<CR>")
 
 -- ESCでターミナルを抜ける
 h.tmap("<ESC>", "<C-\\><C-n>")
+
+-- toggleterm
+h.nmap("<Leader><Space>", "<CMD>ToggleTerm<CR>")
+
+-- denops-translate
+h.xmap("<Leader>t", "<Plug>(Translate)")
+
+-- git-messenger
+h.nmap("<C-k>", "<CMD>GitMessenger<CR>", { desc = "Show git blame on the current line" })
+
+-- copilot.vim
+h.imap("<C-CR>", 'copilot#Accept("\\<CR>")', {
+	expr = true,
+	replace_keycodes = false,
+})
