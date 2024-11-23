@@ -19,7 +19,7 @@ export class Config extends BaseConfig {
         "around",
       ],
       cmdlineSources: {
-        "_": ["cmdline", "cmdline-history", "around"],
+        ":": ["cmdline", "cmdline-history", "around"],
         "/": ["around"],
         "?": ["around"],
       },
