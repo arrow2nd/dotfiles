@@ -14,13 +14,13 @@ opt.laststatus = 3
 
 -- ウィンドウ分割の罫線
 opt.fillchars = {
-  horiz = "━",
-  horizup = "┻",
-  horizdown = "┳",
-  vert = "┃",
-  vertleft = "┫",
-  vertright = "┣",
-  verthoriz = "╋",
+	horiz = "━",
+	horizup = "┻",
+	horizdown = "┳",
+	vert = "┃",
+	vertleft = "┫",
+	vertright = "┣",
+	verthoriz = "╋",
 }
 
 -- intro を非表示
@@ -76,37 +76,37 @@ opt.pumheight = 24
 -- LSPの警告フォーマット
 -- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = {
-    format = function(diagnostic)
-      if not diagnostic.source then
-        return diagnostic.message
-      end
+	virtual_text = {
+		format = function(diagnostic)
+			if not diagnostic.source then
+				return diagnostic.message
+			end
 
-      return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
-    end,
-  },
+			return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+		end,
+	},
 })
 
 -- 数字だけのシンプルなタブライン
 function TabLine()
-  local s = ""
-  local tab_length = vim.fn.tabpagenr("$")
-  if tab_length <= 1 then
-    return s
-  end
+	local s = ""
+	local tab_length = vim.fn.tabpagenr("$")
+	if tab_length <= 1 then
+		return s
+	end
 
-  for i = 1, tab_length do
-    -- select the highlighting
-    if i == vim.fn.tabpagenr() then
-      s = s .. "%#TabLineSel#"
-    else
-      s = s .. "%#TabLine#"
-    end
+	for i = 1, tab_length do
+		-- select the highlighting
+		if i == vim.fn.tabpagenr() then
+			s = s .. "%#TabLineSel#"
+		else
+			s = s .. "%#TabLine#"
+		end
 
-    s = s .. " " .. tostring(i) .. " "
-  end
+		s = s .. " " .. tostring(i) .. " "
+	end
 
-  return s .. "%#TabLineFill#%T"
+	return s .. "%#TabLineFill#%T"
 end
 
 opt.tabline = "%!v:lua.TabLine()"
