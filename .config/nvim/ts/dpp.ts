@@ -62,45 +62,6 @@ export class Config extends BaseConfig {
 
     let multipleHooks: MultipleHook[] = [];
 
-    // toml
-    // const tomls: Toml[] = [];
-    // const toml = (await args.dpp.extAction(
-    //   args.denops,
-    //   context,
-    //   options,
-    //   "toml",
-    //   "load",
-    //   {
-    //     path: `${tomlDir}/${tomlList[0][0]}`,
-    //     options: {
-    //       lazy: tomlList[0][1],
-    //     },
-    //   },
-    // )) as Toml | undefined;
-    //
-    // if (toml) {
-    //   tomls.push(toml);
-    // }
-    //
-    // // Merge toml results
-    // for (const toml of tomls) {
-    //   for (const plugin of toml.plugins ?? []) {
-    //     recordPlugins[plugin.name] = plugin;
-    //   }
-    //
-    //   if (toml.ftplugins) {
-    //     mergeFtplugins(ftplugins, toml.ftplugins);
-    //   }
-    //
-    //   if (toml.multiple_hooks) {
-    //     multipleHooks = multipleHooks.concat(toml.multiple_hooks);
-    //   }
-    //
-    //   if (toml.hooks_file) {
-    //     hooksFiles.push(toml.hooks_file);
-    //   }
-    // }
-
     const [tomlExtension, tomlOptions, tomlParams] = await args.denops
       .dispatcher
       .getExt(
@@ -149,18 +110,6 @@ export class Config extends BaseConfig {
       }
     }
 
-    // lazy
-    // const lazyResult = (await args.dpp.extAction(
-    //   args.denops,
-    //   context,
-    //   options,
-    //   "lazy",
-    //   "makeState",
-    //   {
-    //     plugins: Object.values(recordPlugins),
-    //   },
-    // )) as LazyMakeStateResult | undefined;
-
     const [lazyExtension, lazyOptions, lazyParams] = await args.denops
       .dispatcher.getExt(
         "lazy",
@@ -187,11 +136,6 @@ export class Config extends BaseConfig {
     const checkFiles = [...expandGlobSync(`${tomlDir}/*`)].map((file) =>
       file.path
     );
-
-    // const checkFiles = [];
-    // for await (const file of expandGlob(`${tomlDir}/*`)) {
-    //   checkFiles.push(file.path);
-    // }
 
     return {
       checkFiles,
