@@ -50,12 +50,13 @@ h.nmap(";h", "<Cmd>Ddu help<CR>")
 h.nmap(";B", "<Cmd>Ddu buffer<CR>")
 h.nmap(";o", "<Cmd>Ddu file_old<CR>")
 h.nmap(";r", "<Cmd>Ddu register<CR>")
-h.nmap(";gg", "<Cmd>Ddu -name=grep<CR>")
-h.nmap(";gt", "<Cmd>Todo<CR>")
-h.nmap(";gf", "<Cmd>Fixme<CR>")
+h.nmap(";g", "<Cmd>Ddu -name=grep<CR>")
+h.nmap(";T", "<Cmd>Todo<CR>")
+h.nmap(";F", "<Cmd>Fixme<CR>")
 h.nmap(";b", [[<Cmd>Ddu -name=filer -searchPath=`expand('%:p')`<CR>]])
 h.nmap(";q", "<Cmd>Ddu quickfix_history<CR>")
 h.nmap("<Leader>gg", "<Cmd>Ddu git_status<CR>")
+h.nmap("<Leader>gl", "<Cmd>Ddu git_log<CR>")
 h.nmap("gE", "<CMD>Ddu lsp_diagnostic -unique<CR>", { desc = "Lists all the diagnostics" })
 h.nmap("gD", "<Cmd>Ddu anyjump_definition -ui=ff<CR>")
 h.nmap("gR", "<Cmd>Ddu anyjump_reference -ui=ff<CR>")
@@ -89,7 +90,7 @@ local common_keymaps = function()
 	h.nmap("<C-CR>", '<Cmd>call ddu#ui#do_action("chooseAction")<CR>', opts)
 
 	-- プレビュー
-	h.nmap("K", '<Cmd>call ddu#ui#do_action("togglePreview")<CR>', opts)
+	h.nmap("K", '<Cmd>call ddu#ui#do_action("togglePreview")<CR><Cmd>stopinsert<CR>', opts)
 end
 
 vim.api.nvim_create_autocmd("FileType", {
