@@ -22,12 +22,6 @@ cd ./dotfiles
 ./install.sh
 ```
 
-## 環境変数
-
-- `NVIM_DISABLE_AUTOFORMATTING_PROJECTS`:
-  自動フォーマットを無効化するプロジェクトのパス (完全一致 / カンマ区切り)
-- `ENABLED_COPILOT`: Copilot を有効化するかどうか
-
 ## 追記
 
 - node は自動で入らないので `mise use --global node@lts` とかすること

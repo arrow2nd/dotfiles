@@ -1,0 +1,102 @@
+# denops
+[[plugins]]
+repo = "vim-denops/denops.vim"
+hook_source = """
+let g:denops#deno = exepath("deno")
+"""
+
+[[plugins]]
+repo = "vim-denops/denops-shared-server.vim"
+
+# dpp.vim
+[[plugins]]
+repo = "Shougo/dpp-ext-installer"
+
+[[plugins]]
+repo = "Shougo/dpp-ext-toml"
+
+[[plugins]]
+repo = "Shougo/dpp-protocol-git"
+
+[[plugins]]
+repo = "Shougo/dpp-ext-lazy"
+
+# colorscheme
+[[plugins]]
+repo = "arrow2nd/minai"
+hook_source = """
+colorscheme minai
+"""
+
+# いろいろ
+[[plugins]]
+repo = "vim-jp/vimdoc-ja"
+
+[[plugins]]
+repo = "nvim-tree/nvim-web-devicons"
+
+[[plugins]]
+repo = "nvim-lua/plenary.nvim"
+
+[[plugins]]
+repo = "ryoppippi/vim-bun-lock"
+rev = "lua"
+
+[[plugins]]
+repo = "windwp/nvim-ts-autotag"
+lua_source = """
+require('nvim-ts-autotag').setup()
+"""
+
+[[plugins]]
+repo = "JoosepAlviste/nvim-ts-context-commentstring"
+lua_source = """
+require("ts_context_commentstring").setup({
+  enable_autocmd = false,
+})
+
+-- ref: https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#native-commenting-in-neovim-010
+local get_option = vim.filetype.get_option
+
+vim.filetype.get_option = function(filetype, option)
+  return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
+    or get_option(filetype, option)
+end
+"""
+
+[[plugins]]
+repo = "skanehira/denops-translate.vim"
+depends = ["denops.vim"]
+
+[[plugins]]
+repo = "kat0h/bufpreview.vim"
+depends = ["denops.vim"]
+build = "deno task prepare"
+
+[[plugins]]
+repo = "echasnovski/mini.nvim"
+lua_source = """
+require("config.mini")
+"""
+
+[[plugins]]
+repo = "monaqa/dial.nvim"
+lua_source = """
+require("config.dial")
+"""
+
+[[plugins]]
+repo = "github/copilot.vim"
+lua_source = """
+vim.g.copilot_no_tab_map = true
+"""
+
+[[plugins]]
+repo = "lewis6991/hover.nvim"
+lua_source = """
+require("config.hover")
+"""
+
+[[plugins]]
+repo = "lambdalisue/vim-gin"
+depends = ["denops.vim"]
