@@ -34,14 +34,13 @@ h.nmap("]q", "<Cmd>cnext<CR>")
 h.tmap("<ESC>", "<C-\\><C-n>")
 
 -- toggleterm
-local h = require("util.helper")
 h.nmap("<Leader><Space>", "<CMD>ToggleTerm<CR>")
 
 -- denops-translate
 h.xmap("<Leader>t", "<Plug>(Translate)")
 
 -- git-messenger
-h.nmap("<C-k>", "<CMD>GitMessenger<CR>", { desc = "Show git blame on the current line" })
+h.nmap("<C-k>", "<CMD>GitMessenger<CR>")
 
 -- copilot.vim
 h.imap("<C-CR>", 'copilot#Accept("\\<CR>")', {
