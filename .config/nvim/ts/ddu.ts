@@ -1,4 +1,3 @@
-import { ActionFlags } from "jsr:@shougo/ddu-vim@~6.4.0/types";
 import {
   BaseConfig,
   type ConfigArguments,
