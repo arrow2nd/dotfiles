@@ -62,7 +62,6 @@ end
 h.nmap("<Leader>ga", "<CMD>Gin add %<CR>")
 h.nmap("<Leader>gA", "<CMD>Gin add .<CR>")
 h.nmap("<Leader>gu", "<CMD>Gin restore --staged %<CR>")
-h.nmap("<Leader>gs", "<CMD>GinStatus ++opener=split<CR>")
 h.nmap("<Leader>gc", "<CMD>Gin commit -v<CR>")
 h.nmap("<Leader>gd", "<CMD>GinBuffer diff<CR>")
 h.nmap("<Leader>gP", "<CMD>Gin push origin HEAD<CR>")
