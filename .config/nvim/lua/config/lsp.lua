@@ -110,6 +110,7 @@ require("mason-lspconfig").setup({
 		"denols",
 		"gopls",
 		"ts_ls",
+		"volar",
 		"lua_ls",
 		"yamlls",
 		"jsonls",
@@ -127,42 +128,54 @@ require("ddc_source_lsp_setup").setup()
 
 local lspconfig = require("lspconfig")
 
+local is_node_dir = function()
+	return lspconfig.util.root_pattern("package.json")(vim.fn.getcwd())
+end
+
 require("mason-lspconfig").setup_handlers({
 	function(server)
-		local buf_full_filename = vim.api.nvim_buf_get_name(0)
+		local node_root_dir = lspconfig.util.root_pattern("package.json", "node_modules")
 
 		local opts = {
 			on_attach = lsp.enable_fmt_on_attach,
 		}
 
-		local node_root_dir = lspconfig.util.root_pattern("package.json")
-		local is_node_dir = node_root_dir(buf_full_filename) ~= nil
-
-		local deno_root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
-		local is_deno_dir = deno_root_dir(buf_full_filename) ~= nil
-
 		-- denols と tsserver を出し分ける
-		-- ref: https://zenn.dev/kawarimidoll/articles/2b57745045b225
 		if server == "denols" then
-			if not is_deno_dir then
+			if is_node_dir() then
 				return
 			end
-			opts.root_dir = deno_root_dir
+
 			opts.cmd = { "deno", "lsp" }
 			opts.init_options = { lint = true, unstable = true }
+			opts.root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
 			opts.on_attach = lsp.disable_fmt_on_attach
 
-		-- Node.js
-		elseif server == "tsserver" then
-			if is_deno_dir or not is_node_dir then
+			-- Node.js
+		elseif server == "ts_ls" then
+			if not is_node_dir() then
 				return
 			end
+
+			local mason_registry = require("mason-registry")
+			local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+				.. "/node_modules/@vue/language-server"
+
 			opts.filetypes = {
 				"javascript",
 				"javascriptreact",
 				"typescript",
 				"typescriptreact",
 				"vue",
+			}
+			opts.init_options = {
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = vue_language_server_path,
+						languages = { "javascript", "typescript", "vue" },
+					},
+				},
 			}
 			opts.root_dir = node_root_dir
 			opts.on_attach = lsp.disable_fmt_on_attach
