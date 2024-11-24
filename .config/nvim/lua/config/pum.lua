@@ -30,4 +30,3 @@ h.cmap("<C-n>", "<cmd>call pum#map#insert_relative(+1)<CR>", { noremap = true })
 h.cmap("<C-p>", "<cmd>call pum#map#insert_relative(-1)<CR>", { noremap = true })
 h.cmap("<C-y>", "<cmd>call pum#map#confirm()<CR>", { noremap = true })
 h.cmap("<C-e>", "<cmd>call pum#map#cancel()<CR>", { noremap = true })
-

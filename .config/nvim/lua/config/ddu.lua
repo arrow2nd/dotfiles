@@ -55,6 +55,7 @@ h.nmap(";gt", "<Cmd>Todo<CR>")
 h.nmap(";gf", "<Cmd>Fixme<CR>")
 h.nmap(";b", [[<Cmd>Ddu -name=filer -searchPath=`expand('%:p')`<CR>]])
 h.nmap(";q", "<Cmd>Ddu quickfix_history<CR>")
+h.nmap("<Leader>gg", "<Cmd>Ddu git_status<CR>")
 h.nmap("gE", "<CMD>Ddu lsp_diagnostic -unique<CR>", { desc = "Lists all the diagnostics" })
 h.nmap("gD", "<Cmd>Ddu anyjump_definition -ui=ff<CR>")
 h.nmap("gR", "<Cmd>Ddu anyjump_reference -ui=ff<CR>")
@@ -64,8 +65,10 @@ local nowait = { buffer = true, silent = true, noremap = true, nowait = true }
 
 local common_keymaps = function()
 	vim.wo.cursorline = true
+
 	-- 開く
 	h.nmap("<CR>", '<Cmd>call ddu#ui#do_action("itemAction")<CR>', opts)
+
 	-- 分割して開く
 	h.nmap("os", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "open", "params": {"command": "split"}})<CR>', opts)
 	h.nmap(
@@ -73,49 +76,29 @@ local common_keymaps = function()
 		'<Cmd>call ddu#ui#do_action("itemAction", {"name": "open", "params": {"command": "vsplit"}})<CR>',
 		opts
 	)
+
 	-- 選択
 	h.nmap("<SPACE>", '<Cmd>call ddu#ui#do_action("toggleSelectItem")<CR>', opts)
+
 	-- 閉じる
 	h.nmap("<ESC>", '<Cmd>call ddu#ui#do_action("quit")<CR>', nowait)
 	h.nmap("q", '<Cmd>call ddu#ui#do_action("quit")<CR>', nowait)
+
 	-- アクション選択
 	h.nmap("a", '<Cmd>call ddu#ui#do_action("chooseAction")<CR>', opts)
-end
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "ddu-filer",
-	callback = function()
-		common_keymaps()
-		-- ファイル操作
-		h.nmap("y", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "copy"})<CR>', opts)
-		h.nmap("p", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "paste"})<CR>', opts)
-		h.nmap("d", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "delete"})<CR>', opts)
-		h.nmap("r", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "rename"})<CR>', opts)
-		h.nmap("m", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "move"})<CR>', opts)
-		h.nmap("c", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newFile"})<CR>', opts)
-		h.nmap("C", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newDirectory"})<CR>', opts)
-		-- ディレクトリなら展開、ファイルなら何もしない
-		vim.cmd([[nnoremap <buffer><expr> <Tab>
-             \ ddu#ui#get_item()->get('isTree', v:false)
-             \ ? "<Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
-             \ : "<Tab>"]])
-		-- ディレクトリなら展開、ファイルなら開く
-		vim.cmd([[nnoremap <buffer><expr> <CR>
-             \ ddu#ui#get_item()->get('isTree', v:false)
-             \ ? "<Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
-             \ : "<Cmd>call ddu#ui#do_action('itemAction', {'name': 'open'})<CR>"]])
-		h.nmap("K", '<Cmd>call ddu#ui#do_action("togglePreview")<CR>', opts)
-	end,
-})
+	-- プレビュー
+	h.nmap("K", '<Cmd>call ddu#ui#do_action("togglePreview")<CR>', opts)
+end
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "ddu-ff",
 	callback = function()
 		common_keymaps()
-		-- フィルターを開く
+
+		-- フィルターにフォーカス
 		h.nmap("i", '<Cmd>call ddu#ui#do_action("openFilterWindow")<CR>', opts)
-		-- プレビュー
-		h.nmap("K", '<Cmd>call ddu#ui#do_action("togglePreview")<CR>', opts)
+
 		-- 一括でQuickfixに流しこむ
 		h.nmap("<C-q>", function()
 			vim.fn["ddu#ui#multi_actions"]({
@@ -124,23 +107,37 @@ vim.api.nvim_create_autocmd("FileType", {
 				{ "itemAction", { name = "quickfix" } },
 			})
 		end, opts)
+
+		-- git_status
+		h.nmap("s", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "add"})<CR>', opts)
+		h.nmap("u", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "restore"})<CR>', opts)
 	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "ddu-ff-filter",
+	pattern = "ddu-filer",
 	callback = function()
-		-- 閉じる
-		h.nmap("q", "<Cmd>close<CR>", nowait)
-		h.nmap("<ESC>", "<Cmd>close<CR>", nowait)
-		h.imap("<CR>", "<Cmd>close<CR><Cmd>stopinsert<CR>", opts)
-		-- 一括でQuickfixに流しこむ
-		h.imap("<C-q>", function()
-			vim.fn["ddu#ui#multi_actions"]({
-				{ "clearSelectAllItems" },
-				{ "toggleAllItems" },
-				{ "itemAction", { name = "quickfix" } },
-			})
-		end, opts)
+		common_keymaps()
+
+		-- ファイル操作
+		h.nmap("y", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "copy"})<CR>', opts)
+		h.nmap("p", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "paste"})<CR>', opts)
+		h.nmap("d", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "delete"})<CR>', opts)
+		h.nmap("r", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "rename"})<CR>', opts)
+		h.nmap("m", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "move"})<CR>', opts)
+		h.nmap("c", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newFile"})<CR>', opts)
+		h.nmap("C", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "newDirectory"})<CR>', opts)
+
+		-- ディレクトリなら展開、ファイルなら何もしない
+		vim.cmd([[nnoremap <buffer><expr> <Tab>
+             \ ddu#ui#get_item()->get('isTree', v:false)
+             \ ? "<Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
+             \ : "<Tab>"]])
+
+		-- ディレクトリなら展開、ファイルなら開く
+		vim.cmd([[nnoremap <buffer><expr> <CR>
+             \ ddu#ui#get_item()->get('isTree', v:false)
+             \ ? "<Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
+             \ : "<Cmd>call ddu#ui#do_action('itemAction', {'name': 'open'})<CR>"]])
 	end,
 })

@@ -1,3 +1,4 @@
+import { ActionFlags } from "jsr:@shougo/ddu-vim@~6.4.0/types";
 import {
   BaseConfig,
   type ConfigArguments,
@@ -47,6 +48,9 @@ export class Config extends BaseConfig {
           matchers: ["matcher_multi_regex"],
           ignoreCase: true,
         },
+        git_status: {
+          converters: ["converter_git_status"],
+        },
       },
       filterParams: {
         matcher_multi_regex: {
@@ -76,6 +80,9 @@ export class Config extends BaseConfig {
           defaultAction: "apply",
         },
         quickfix_history: {
+          defaultAction: "open",
+        },
+        git_status: {
           defaultAction: "open",
         },
       },

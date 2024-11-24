@@ -58,7 +58,7 @@ repo = "Shougo/ddu-source-register"
 depends = ["ddu.vim"]
 
 [[plugins]]
-repo = "Shougo/ddc-source-cmdline-history"
+repo = "kuuote/ddu-source-git_status"
 depends = ["ddu.vim"]
 
 [[plugins]]
