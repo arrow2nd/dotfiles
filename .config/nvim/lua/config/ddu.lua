@@ -79,13 +79,14 @@ local common_keymaps = function()
 
 	-- 選択
 	h.nmap("<SPACE>", '<Cmd>call ddu#ui#do_action("toggleSelectItem")<CR>', opts)
+	h.nmap("a", '<Cmd>call ddu#ui#do_action("toggleAllItems")<CR>', opts)
 
 	-- 閉じる
 	h.nmap("<ESC>", '<Cmd>call ddu#ui#do_action("quit")<CR>', nowait)
 	h.nmap("q", '<Cmd>call ddu#ui#do_action("quit")<CR>', nowait)
 
 	-- アクション選択
-	h.nmap("a", '<Cmd>call ddu#ui#do_action("chooseAction")<CR>', opts)
+	h.nmap("<C-CR>", '<Cmd>call ddu#ui#do_action("chooseAction")<CR>', opts)
 
 	-- プレビュー
 	h.nmap("K", '<Cmd>call ddu#ui#do_action("togglePreview")<CR>', opts)
