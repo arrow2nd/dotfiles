@@ -34,6 +34,7 @@ h.nmap("]q", "<Cmd>cnext<CR>")
 h.tmap("<ESC>", "<C-\\><C-n>")
 
 -- toggleterm
+local h = require("util.helper")
 h.nmap("<Leader><Space>", "<CMD>ToggleTerm<CR>")
 
 -- denops-translate
@@ -47,3 +48,21 @@ h.imap("<C-CR>", 'copilot#Accept("\\<CR>")', {
 	expr = true,
 	replace_keycodes = false,
 })
+
+-- copilot-chat
+for _, mode in pairs({ "n", "x" }) do
+	h[mode .. "map"]("<Leader>cc", "<Cmd>CopilotChat<CR>")
+	h[mode .. "map"]("<Leader>cr", "<Cmd>CopilotChatReview<CR>")
+	h[mode .. "map"]("<Leader>cf", "<Cmd>CopilotChatFix<CR>")
+	h[mode .. "map"]("<Leader>co", "<Cmd>CopilotChatOptimize<CR>")
+	h[mode .. "map"]("<Leader>cd", "<Cmd>CopilotChatDocs<CR>")
+	h[mode .. "map"]("<Leader>ct", "<Cmd>CopilotChatTests<CR>")
+end
+
+-- gin.vim
+h.nmap("<Leader>ga", "<CMD>Gin add %<CR>")
+h.nmap("<Leader>gu", "<CMD>Gin restore --staged %<CR>")
+h.nmap("<Leader>gs", "<CMD>GinStatus ++opener=split<CR>")
+h.nmap("<Leader>gc", "<CMD>Gin commit -v<CR>")
+h.nmap("<Leader>gd", "<CMD>GinBuffer diff %<CR>")
+h.nmap("<Leader>gl", "<CMD>GinLog --graph --pretty --no-show-signature %<CR>")

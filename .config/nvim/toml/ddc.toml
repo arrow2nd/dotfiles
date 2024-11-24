@@ -37,6 +37,10 @@ repo = "Shougo/ddc-source-cmdline"
 depends = ["ddc.vim"]
 
 [[plugins]]
+repo = "Shougo/ddc-source-shell-native"
+depends = ["ddc.vim"]
+
+[[plugins]]
 repo = "tani/ddc-fuzzy"
 depends = ["ddc.vim"]
 

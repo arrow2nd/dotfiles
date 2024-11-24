@@ -33,7 +33,6 @@ require("mini.diff").setup({
 
 -- git
 require("mini.git").setup({})
-h.nmap("<Leader>gD", "<CMD>lua MiniDiff.toggle_overlay()<CR>", { desc = "Overlay git diff" })
 
 -- ブランチ名のみ
 local format_summary = function(data)

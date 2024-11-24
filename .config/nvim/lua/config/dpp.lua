@@ -42,7 +42,9 @@ for _, url in ipairs(extension_urls) do
 end
 
 -- denopsの共有サーバーの設定
-vim.g.denops_server_addr = "127.0.0.1:32123"
+-- NOTE: メモリリークする
+-- https://github.com/vim-denops/denops.vim/issues/277
+-- vim.g.denops_server_addr = "127.0.0.1:32123"
 
 if dpp.load_state(dpp_base_dir) then
 	-- denops

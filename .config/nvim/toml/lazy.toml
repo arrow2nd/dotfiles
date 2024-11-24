@@ -10,24 +10,6 @@ repo = "thinca/vim-qfreplace"
 on_cmd = ["Qfreplace"]
 
 [[plugins]]
-repo = "JoosepAlviste/nvim-ts-context-commentstring"
-on_event = ["InsertEnter"]
-lua_add = """
--- ref: https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#native-commenting-in-neovim-010
-local get_option = vim.filetype.get_option
-
-vim.filetype.get_option = function(filetype, option)
-  return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
-    or get_option(filetype, option)
-end
-"""
-lua_source = """
-require("ts_context_commentstring").setup({
-  enable_autocmd = false,
-})
-"""
-
-[[plugins]]
 repo = "akinsho/toggleterm.nvim"
 on_cmd = ["ToggleTerm"]
 lua_source = """
@@ -69,4 +51,3 @@ on_cmd = ["CurlOpen", "CurlCollection"]
 lua_source = """
 require("curl").setup()
 """
-

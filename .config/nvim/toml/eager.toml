@@ -44,8 +44,24 @@ rev = "lua"
 
 [[plugins]]
 repo = "windwp/nvim-ts-autotag"
-lua_add = """
+lua_source = """
 require('nvim-ts-autotag').setup()
+"""
+
+[[plugins]]
+repo = "JoosepAlviste/nvim-ts-context-commentstring"
+lua_source = """
+require("ts_context_commentstring").setup({
+  enable_autocmd = false,
+})
+
+-- ref: https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#native-commenting-in-neovim-010
+local get_option = vim.filetype.get_option
+
+vim.filetype.get_option = function(filetype, option)
+  return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
+    or get_option(filetype, option)
+end
 """
 
 [[plugins]]
@@ -80,3 +96,7 @@ repo = "lewis6991/hover.nvim"
 lua_source = """
 require("config.hover")
 """
+
+[[plugins]]
+repo = "lambdalisue/vim-gin"
+depends = ["denops.vim"]

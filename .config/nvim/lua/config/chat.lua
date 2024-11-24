@@ -1,5 +1,3 @@
-local h = require("util.helper")
-
 -- 参考:
 -- https://x.com/oicchahan/status/1810498672918192629
 local COPILOT_NOJYA_INSTRUCTIONS = [[
@@ -40,6 +38,7 @@ require("CopilotChat").setup({
 	question_header = "## You ",
 	answer_header = "## Okitsune-sama ",
 	error_header = "## Error ",
+	highlight_selection = false,
 	prompts = {
 		Explain = {
 			prompt = "/COPILOT_EXPLAIN アクティブな選択範囲の説明をテキストの段落として書き込んでください",
@@ -70,12 +69,3 @@ require("CopilotChat").setup({
 		},
 	},
 })
-
-for _, mode in pairs({ "n", "x" }) do
-	h[mode .. "map"]("<Leader>cc", "<Cmd>CopilotChat<CR>")
-	h[mode .. "map"]("<Leader>cr", "<Cmd>CopilotChatReview<CR>")
-	h[mode .. "map"]("<Leader>cf", "<Cmd>CopilotChatFix<CR>")
-	h[mode .. "map"]("<Leader>co", "<Cmd>CopilotChatOptimize<CR>")
-	h[mode .. "map"]("<Leader>cd", "<Cmd>CopilotChatDocs<CR>")
-	h[mode .. "map"]("<Leader>ct", "<Cmd>CopilotChatTests<CR>")
-end
