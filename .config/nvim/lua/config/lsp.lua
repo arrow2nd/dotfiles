@@ -40,8 +40,7 @@ local efm_opts = function()
 	-- Prettier の設定がなければ denofmt を使う
 	local lspconfig = require("lspconfig")
 	local rootdir = lspconfig.util.root_pattern(rootMarkers.prettier)
-	local buf_full_filename = vim.api.nvim_buf_get_name(0)
-	local denofmt_or_prettier = rootdir(buf_full_filename) and prettier or denofmt
+	local denofmt_or_prettier = rootdir(vim.fn.getcwd()) and prettier or denofmt
 
 	local stylua = {
 		formatCommand = "stylua --color Never -",
