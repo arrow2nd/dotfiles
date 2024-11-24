@@ -56,6 +56,7 @@ for _, mode in pairs({ "n", "x" }) do
 	h[mode .. "map"]("<Leader>co", "<Cmd>CopilotChatOptimize<CR>")
 	h[mode .. "map"]("<Leader>cd", "<Cmd>CopilotChatDocs<CR>")
 	h[mode .. "map"]("<Leader>ct", "<Cmd>CopilotChatTests<CR>")
+	h[mode .. "map"]("<Leader>cn", "<Cmd>CopilotChatNaming<CR>")
 end
 
 -- gin.vim

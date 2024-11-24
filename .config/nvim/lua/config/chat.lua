@@ -40,9 +40,6 @@ require("CopilotChat").setup({
 	error_header = "## Error ",
 	highlight_selection = false,
 	prompts = {
-		Explain = {
-			prompt = "/COPILOT_EXPLAIN アクティブな選択範囲の説明をテキストの段落として書き込んでください",
-		},
 		Review = {
 			prompt = "選択範囲のコードをレビューしてください",
 		},
@@ -66,6 +63,9 @@ require("CopilotChat").setup({
 		},
 		CommitStaged = {
 			prompt = "この変更に対するコミットメッセージを日本語で書いてください。タイトルは最大50文字、本文は72文字で折り返されるようにしてください",
+		},
+		Naming = {
+			prompt = "この変数、もしくは関数に適切な名前を付けてください",
 		},
 	},
 })

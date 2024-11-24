@@ -39,6 +39,7 @@ on_cmd = [
   "CopilotChatFixDiagnostic",
   "CopilotChatCommit",
   "CopilotChatCommitStaged",
+  "CopilotChatNaming",
 ]
 lua_source = """
 require("config.chat")
