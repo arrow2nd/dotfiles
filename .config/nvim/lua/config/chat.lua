@@ -35,9 +35,9 @@ local COPILOT_NOJYA_INSTRUCTIONS = [[
 
 require("CopilotChat").setup({
 	system_prompt = COPILOT_NOJYA_INSTRUCTIONS,
-	question_header = "## You ",
-	answer_header = "## Okitsune-sama ",
-	error_header = "## Error ",
+	question_header = "## YOU ",
+	answer_header = "## NOJYA-COPILOT ",
+	error_header = "## ERROR ",
 	highlight_selection = false,
 	prompts = {
 		Review = {
