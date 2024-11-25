@@ -37,14 +37,14 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # macOS
 if [[ $(uname) == "Darwin" ]]; then
+  # https://kiririmode.hatenablog.jp/entry/20161106/1478394313
+  setopt no_global_rcs
+
   # Homebrew
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  export PATH="/opt/homebrew/bin:$PATH"
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   autoload -Uz compinit
   compinit
-
-  # Rancher Desktop
-  export PATH="$HOME/.rd/bin:$PATH"
 fi
 
 # ローカル設定
