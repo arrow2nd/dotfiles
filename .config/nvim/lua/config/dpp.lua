@@ -44,7 +44,9 @@ end
 -- denopsの共有サーバーの設定
 -- NOTE: メモリリークする
 -- https://github.com/vim-denops/denops.vim/issues/277
--- vim.g.denops_server_addr = "127.0.0.1:32123"
+if os.getenv("ENABLE_DENOPS_SHARED_SERVER") == "1" then
+	vim.g.denops_server_addr = "127.0.0.1:32123"
+end
 
 if dpp.load_state(dpp_base_dir) then
 	-- denops
