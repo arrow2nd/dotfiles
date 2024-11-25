@@ -55,8 +55,10 @@ h.nmap(";T", "<Cmd>Todo<CR>")
 h.nmap(";F", "<Cmd>Fixme<CR>")
 h.nmap(";b", [[<Cmd>Ddu -name=filer -searchPath=`expand('%:p')`<CR>]])
 h.nmap(";q", "<Cmd>Ddu quickfix_history<CR>")
-h.nmap("<Leader>gs", "<Cmd>Ddu git_status<CR>")
+h.nmap("<Leader>gg", "<Cmd>Ddu git_status<CR>")
+h.nmap("<Leader>gs", "<Cmd>Ddu git_stash<CR>")
 h.nmap("<Leader>gl", "<Cmd>Ddu git_log<CR>")
+h.nmap("<Leader>gb", "<Cmd>Ddu git_branch<CR>")
 h.nmap("gE", "<CMD>Ddu lsp_diagnostic -unique<CR>", { desc = "Lists all the diagnostics" })
 h.nmap("gD", "<Cmd>Ddu anyjump_definition -ui=ff<CR>")
 h.nmap("gR", "<Cmd>Ddu anyjump_reference -ui=ff<CR>")
@@ -112,7 +114,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 		-- git_status
 		h.nmap("s", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "add"})<CR>', opts)
-		h.nmap("u", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "restore"})<CR>', opts)
+		h.nmap("u", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "reset"})<CR>', opts)
 	end,
 })
 

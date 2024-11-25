@@ -84,6 +84,9 @@ export class Config extends BaseConfig {
         git_status: {
           defaultAction: "open",
         },
+        git_branch: {
+          defaultAction: "switch",
+        },
       },
     });
 
