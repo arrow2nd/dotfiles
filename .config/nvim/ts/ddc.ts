@@ -1,7 +1,6 @@
 import { BaseConfig, ConfigArguments } from "jsr:@shougo/ddc-vim@~8.1.0/config";
 
 export class Config extends BaseConfig {
-  // deno-lint-ignore require-await
   override async config(args: ConfigArguments): Promise<void> {
     args.contextBuilder.patchGlobal({
       ui: "pum",
@@ -72,9 +71,10 @@ export class Config extends BaseConfig {
       },
       sourceParams: {
         lsp: {
-          snippetEngine:
-            `denops#callback#register({ body -> vsnip#anonymous(body) })`,
           enableResolveItem: true,
+          snippetEngine: await args.denops.eval(
+            "denops#callback#register({ body -> vsnip#anonymous(body) })",
+          ),
           enableAdditionalTextEdit: true,
           confirmBehavior: "replace",
         },
