@@ -8,7 +8,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.259.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.261.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: sharkdp/bat@v0.24.0
 - name: Wilfred/difftastic@0.61.0
@@ -26,4 +26,4 @@ packages:
 - name: sxyazi/yazi@v0.3.3
 - name: Rigellute/spotify-tui@v0.25.0
 - name: 1password/cli@v2.30.0
-- name: mattn/efm-langserver@v0.0.53
+- name: mattn/efm-langserver@v0.0.54
