@@ -14,6 +14,9 @@ local efm_opts = function()
 			".prettierrc.json5",
 			".prettierrc.toml",
 		},
+		biome = {
+			"biome.json",
+		},
 		stylua = {
 			"stylua.toml",
 			".stylua.toml",
@@ -37,10 +40,21 @@ local efm_opts = function()
 		formatStdin = true,
 	}
 
-	-- Prettier の設定がなければ denofmt を使う
+	-- Prettier / biome / denofmt の出し分け
 	local lspconfig = require("lspconfig")
-	local rootdir = lspconfig.util.root_pattern(rootMarkers.prettier)
-	local denofmt_or_prettier = rootdir(vim.fn.getcwd()) and prettier or denofmt
+	local prettier_rootdir = lspconfig.util.root_pattern(rootMarkers.prettier)
+	local biome_rootdir = lspconfig.util.root_pattern(rootMarkers.biome)
+
+	local denofmt_or_prettier = denofmt
+	local cwd = vim.fn.getcwd()
+
+	if prettier_rootdir(cwd) then
+		-- Prettier の設定がある場合は Prettier を使う
+		denofmt_or_prettier = prettier
+	elseif biome_rootdir(cwd) then
+		-- biome の設定がある場合は無効に
+		denofmt_or_prettier = nil
+	end
 
 	local stylua = {
 		formatCommand = "stylua --color Never -",
