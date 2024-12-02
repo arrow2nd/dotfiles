@@ -63,8 +63,8 @@ h.nmap(";b", [[<Cmd>Ddu -name=filer -searchPath=`expand('%:p')`<CR>]])
 
 -- git
 h.nmap("<Leader>gg", "<Cmd>Ddu git_status<CR>")
-h.nmap("<Leader>gl", "<Cmd>Ddu git_log<CR>")
-h.nmap("<Leader>gb", [[<Cmd>Ddu -name=git_branch -path=`expand('%:p')`<CR>]])
+h.nmap("<Leader>gl", [[<Cmd>Ddu -name=git_log -path=`expand('%:p')`<CR>]])
+h.nmap("<Leader>gb", "<Cmd>Ddu git_branch<CR>")
 
 -- lsp
 h.nmap("gE", "<CMD>Ddu lsp_diagnostic -unique<CR>", { desc = "Lists all the diagnostics" })
