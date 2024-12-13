@@ -70,6 +70,7 @@ opr () {
 
   op run --env-file="$env_file" -- "$@"
 }
+
 #
 # ZLE
 #
