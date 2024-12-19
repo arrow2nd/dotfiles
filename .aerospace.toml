@@ -10,6 +10,7 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+# ワークスペースの割り当て
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'main'
@@ -17,14 +18,8 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 4 = 'main'
 0 = 'secondary'
 
+# キーバインド
 [mode.main.binding]
-# See: https://nikitabobko.github.io/AeroSpace/goodness#open-a-new-window-with-applescript
-# tell application "Terminal"
-#     do script
-#     activate
-# end tell'
-# '''
-
 cmd-h = 'focus left'
 cmd-j = 'focus down'
 cmd-k = 'focus up'
@@ -71,6 +66,7 @@ cmd-shift-c = 'reload-config'
 
 cmd-r = 'mode resize'
 
+# リサイズのキーバインド
 [mode.resize.binding]
 h = 'resize width -50'
 j = 'resize height +50'
@@ -78,3 +74,8 @@ k = 'resize height -50'
 l = 'resize width +50'
 enter = 'mode main'
 esc = 'mode main'
+
+# タイリングしないアプリケーション
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+run = 'layout floating'
