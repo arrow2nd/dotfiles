@@ -10,7 +10,7 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
-# ワークスペースの割り当て
+# ワークスペースとモニターの割り当て
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'main'
@@ -74,6 +74,19 @@ k = 'resize height -50'
 l = 'resize width +50'
 enter = 'mode main'
 esc = 'mode main'
+
+# ワークスペースに割り当てるアプリケーション
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 3'
 
 # タイリングしないアプリケーション
 [[on-window-detected]]
