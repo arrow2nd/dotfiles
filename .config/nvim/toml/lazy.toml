@@ -46,9 +46,6 @@ require("config.chat")
 """
 
 [[plugins]]
-repo = "oysandvik94/curl.nvim"
-depends = ["plenary.nvim"]
-on_cmd = ["CurlOpen", "CurlCollection"]
+repo = "mistweaverco/kulala.nvim"
 lua_source = """
-require("curl").setup()
 """
