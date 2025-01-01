@@ -43,8 +43,3 @@ on_cmd = [
 lua_source = """
 require("config.chat")
 """
-
-[[plugins]]
-repo = "mistweaverco/kulala.nvim"
-lua_source = """
-"""
