@@ -18,7 +18,7 @@ packages:
 - name: sharkdp/fd@v10.2.0
 - name: BurntSushi/ripgrep@14.1.1
 - name: oberblastmeister/trashy@v2.0.0
-- name: eza-community/eza@0.20.15
+- name: eza-community/eza@0.20.16
 - name: LuaLS/lua-language-server@3.13.5
 - name: jqlang/jq@jq-1.7.1
 - name: sharkdp/pastel@v0.10.0
