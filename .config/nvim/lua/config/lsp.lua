@@ -157,7 +157,8 @@ require("mason-lspconfig").setup_handlers({
     local node_root_dir = lspconfig.util.root_pattern("package.json", "node_modules")
 
     local opts = {
-      on_attach = lsp.enable_fmt_on_attach,
+      on_init = lsp.on_init,
+      on_attach = lsp.on_attach_with_enable_format,
     }
 
     -- denols と tsserver を出し分ける
@@ -169,7 +170,7 @@ require("mason-lspconfig").setup_handlers({
       opts.cmd = { "deno", "lsp" }
       opts.init_options = { lint = true, unstable = true }
       opts.root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
-      opts.on_attach = lsp.disable_fmt_on_attach
+      opts.on_init = lsp.on_init_with_disable_format
 
       -- Node.js
     elseif server == "ts_ls" then
@@ -198,7 +199,7 @@ require("mason-lspconfig").setup_handlers({
         },
       }
       opts.root_dir = node_root_dir
-      opts.on_attach = lsp.disable_fmt_on_attach
+      opts.on_init = lsp.on_init_with_disable_format
 
     -- css
     elseif server == "cssls" then
@@ -217,7 +218,8 @@ require("mason-lspconfig").setup_handlers({
 
     -- 内蔵フォーマッタを無効化
     elseif server == "html" or server == "jsonls" or server == "lua_ls" then
-      opts.on_attach = lsp.disable_fmt_on_attach
+      opts.on_init = lsp.on_init_with_disable_format
+      opts.on_attach = nil
     end
 
     lspconfig[server].setup(opts)
