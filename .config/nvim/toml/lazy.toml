@@ -26,6 +26,7 @@ vim.g.git_messenger_floating_win_opts = { border = "single" }
 [[plugins]]
 repo = "CopilotC-Nvim/CopilotChat.nvim"
 depends = ["copilot.vim", "plenary.nvim"]
+build = "make tiktoken"
 on_cmd = [
   "CopilotChat",
   "CopilotChatOpen",
