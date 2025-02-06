@@ -19,7 +19,7 @@ packages:
 - name: BurntSushi/ripgrep@14.1.1
 - name: oberblastmeister/trashy@v2.0.0
 - name: eza-community/eza@0.20.19
-- name: LuaLS/lua-language-server@3.13.5
+- name: LuaLS/lua-language-server@3.13.6
 - name: jqlang/jq@jq-1.7.1
 - name: sharkdp/pastel@v0.10.0
 - name: JohnnyMorganz/StyLua@v2.0.2
