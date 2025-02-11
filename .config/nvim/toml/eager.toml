@@ -111,9 +111,6 @@ require("config.hover")
 repo = "lambdalisue/vim-gin"
 depends = ["denops.vim"]
 
-# [[plugins]]
-# repo = "stevearc/dressing.nvim"
-
 [[plugins]]
 repo = "MunifTanjim/nui.nvim"
 
@@ -122,9 +119,8 @@ repo = "MeanderingProgrammer/render-markdown.nvim"
 
 [[plugins]]
 repo = "yetone/avante.nvim" 
-build = "make"
+build = "make && ln -s $HOME/.config/nvim/avanterules/ $HOME/.cache/nvim/dpp/nvim/.dpp/build"
 depends = [
-  # "dressing.nvim",
   "plenary.nvim",
   "nui.nvim",
   "nvim-web-devicons",
