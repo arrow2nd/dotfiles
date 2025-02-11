@@ -48,17 +48,6 @@ h.imap("<C-CR>", 'copilot#Accept("\\<CR>")', {
   replace_keycodes = false,
 })
 
--- copilot-chat
-for _, mode in pairs({ "n", "x" }) do
-  h[mode .. "map"]("<Leader>cc", "<Cmd>CopilotChat<CR>")
-  h[mode .. "map"]("<Leader>cr", "<Cmd>CopilotChatReview<CR>")
-  h[mode .. "map"]("<Leader>cf", "<Cmd>CopilotChatFix<CR>")
-  h[mode .. "map"]("<Leader>co", "<Cmd>CopilotChatOptimize<CR>")
-  h[mode .. "map"]("<Leader>cd", "<Cmd>CopilotChatDocs<CR>")
-  h[mode .. "map"]("<Leader>ct", "<Cmd>CopilotChatTests<CR>")
-  h[mode .. "map"]("<Leader>cn", "<Cmd>CopilotChatNaming<CR>")
-end
-
 -- gin.vim
 h.nmap("<Leader>ga", "<CMD>Gin add %<CR>")
 h.nmap("<Leader>gA", "<CMD>Gin add .<CR>")

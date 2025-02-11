@@ -86,9 +86,19 @@ require("config.dial")
 """
 
 [[plugins]]
-repo = "github/copilot.vim"
+repo = "zbirenbaum/copilot.lua"
 lua_source = """
-vim.g.copilot_no_tab_map = true
+require("copilot").setup({
+  panel = {
+    enabled = false,
+  },
+  suggestion = {
+    auto_trigger = true,
+    keymap = {
+      accept = "<C-CR>",
+    },
+  },
+})
 """
 
 [[plugins]]
@@ -100,3 +110,27 @@ require("config.hover")
 [[plugins]]
 repo = "lambdalisue/vim-gin"
 depends = ["denops.vim"]
+
+[[plugins]]
+repo = "stevearc/dressing.nvim"
+
+[[plugins]]
+repo = "MunifTanjim/nui.nvim"
+
+[[plugins]]
+repo = "MeanderingProgrammer/render-markdown.nvim"
+
+[[plugins]]
+repo = "yetone/avante.nvim" 
+build = "make"
+depends = [
+  "dressing.nvim",
+  "plenary.nvim",
+  "nui.nvim",
+  "nvim-web-devicons",
+  "copilot.lua",
+  "render-markdown.nvim"
+]
+lua_source = """
+require('config.avante')
+"""
