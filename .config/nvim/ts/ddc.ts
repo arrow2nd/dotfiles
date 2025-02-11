@@ -18,7 +18,7 @@ export class Config extends BaseConfig {
         "around",
       ],
       cmdlineSources: {
-        ":": ["cmdline", "shell-native", "around"],
+        ":": ["cmdline", "around"],
         "/": ["around"],
         "?": ["around"],
       },
@@ -60,9 +60,6 @@ export class Config extends BaseConfig {
         cmdlineHistory: {
           mark: "[H]",
         },
-        "shell-native": {
-          mark: "[S]",
-        },
       },
       filterParams: {
         matcher_fuzzy: {
@@ -77,9 +74,6 @@ export class Config extends BaseConfig {
           ),
           enableAdditionalTextEdit: true,
           confirmBehavior: "replace",
-        },
-        "shell-native": {
-          shell: "zsh",
         },
       },
     });
