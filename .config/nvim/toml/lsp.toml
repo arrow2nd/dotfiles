@@ -2,6 +2,9 @@
 repo = "williamboman/mason-lspconfig.nvim"
 
 [[plugins]]
+repo = "WhoIsSethDaniel/mason-tool-installer.nvim"
+
+[[plugins]]
 repo = "neovim/nvim-lspconfig"
 
 [[plugins]]
@@ -9,7 +12,7 @@ repo = "uga-rosa/ddc-source-lsp-setup"
 
 [[plugins]]
 repo = "williamboman/mason.nvim"
-depends = ["mason-lspconfig.nvim", "nvim-lspconfig", "ddc-source-lsp-setup"]
+depends = ["mason-lspconfig.nvim", "mason-tool-installer.nvim", "nvim-lspconfig", "ddc-source-lsp-setup"]
 lua_source = """
 require("config.lsp")
 """
