@@ -61,11 +61,6 @@ h.nmap(";F", "<Cmd>Fixme<CR>")
 -- ファイラー
 h.nmap(";b", [[<Cmd>Ddu -name=filer -searchPath=`expand('%:p')`<CR>]])
 
--- git
-h.nmap("<Leader>gg", "<Cmd>Ddu git_status<CR>")
-h.nmap("<Leader>gl", "<Cmd>Ddu git_log<CR>")
-h.nmap("<Leader>gb", "<Cmd>Ddu git_branch<CR>")
-
 -- lsp
 h.nmap("gE", "<CMD>Ddu lsp_diagnostic -unique<CR>", { desc = "Lists all the diagnostics" })
 h.nmap("gD", "<Cmd>Ddu anyjump_definition -ui=ff<CR>")
@@ -115,11 +110,6 @@ vim.api.nvim_create_autocmd("FileType", {
         { "itemAction", { name = "quickfix" } },
       })
     end, opts)
-
-    -- git_status
-    h.nmap("s", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "add"})<CR>', opts)
-    h.nmap("u", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "reset"})<CR>', opts)
-    h.nmap("x", '<Cmd>call ddu#ui#do_action("itemAction", {"name": "restore"})<CR>', opts)
   end,
 })
 

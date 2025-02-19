@@ -58,18 +58,6 @@ repo = "Shougo/ddu-source-register"
 depends = ["ddu.vim"]
 
 [[plugins]]
-repo = "kuuote/ddu-source-git_status"
-depends = ["ddu.vim"]
-
-[[plugins]]
-repo = "kyoh86/ddu-source-git_log"
-depends = ["ddu.vim"]
-
-[[plugins]]
-repo = "kyoh86/ddu-source-git_branch"
-depends = ["ddu.vim"]
-
-[[plugins]]
 repo = "Shougo/ddu-filter-sorter_alpha"
 depends = ["ddu.vim"]
 

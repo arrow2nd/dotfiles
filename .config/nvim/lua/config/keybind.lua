@@ -20,7 +20,7 @@ h.nmap("]b", "<CMD>bnext<CR>", { desc = "Switch to next buffer" })
 h.nmap("[b", "<CMD>bprevious<CR>", { desc = "Switch to previous buffer" })
 
 -- ハイライト解除
-h.nmap("<ESC><ESC>", "<CMD>nohlsearch<CR>", { desc = "Unhighlight" })
+h.nmap("<C-ESC>", "<CMD>nohlsearch<CR>", { desc = "Unhighlight" })
 
 -- ヒストリ選択
 h.omap("<C-p>", "<Up>")
@@ -49,9 +49,6 @@ h.imap("<C-CR>", 'copilot#Accept("\\<CR>")', {
 })
 
 -- gin.vim
-h.nmap("<Leader>ga", "<CMD>Gin add %<CR>")
-h.nmap("<Leader>gA", "<CMD>Gin add .<CR>")
-h.nmap("<Leader>gu", "<CMD>Gin restore --staged %<CR>")
+h.nmap("<Leader>gg", "<CMD>GinStatus<CR>")
+h.nmap("<Leader>gl", "<CMD>GinLog<CR>")
 h.nmap("<Leader>gc", "<CMD>Gin commit -v<CR>")
-h.nmap("<Leader>gd", "<CMD>GinDiff -- %<CR>")
-h.nmap("<Leader>gP", "<CMD>Gin push origin HEAD<CR>")
