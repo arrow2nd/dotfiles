@@ -217,7 +217,7 @@ require("mason-lspconfig").setup_handlers({
       }
 
     -- 内蔵フォーマッタを無効化
-    elseif server == "html" or server == "jsonls" or server == "lua_ls" then
+    elseif server == "html" or server == "jsonls" or server == "lua_ls" or server == "eslint" then
       opts.on_init = lsp.on_init_with_disable_format
       opts.on_attach = nil
     end
