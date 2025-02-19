@@ -41,13 +41,6 @@ for _, url in ipairs(extension_urls) do
   vim.opt.runtimepath:append(ext_path)
 end
 
--- denopsの共有サーバーの設定
--- NOTE: メモリリークする
--- https://github.com/vim-denops/denops.vim/issues/277
-if os.getenv("ENABLE_DENOPS_SHARED_SERVER") == "1" then
-  vim.g.denops_server_addr = "127.0.0.1:32123"
-end
-
 if dpp.load_state(dpp_base_dir) then
   -- denops
   vim.opt.runtimepath:prepend(denops_src_path)
