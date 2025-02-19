@@ -20,7 +20,7 @@ h.nmap("]b", "<CMD>bnext<CR>", { desc = "Switch to next buffer" })
 h.nmap("[b", "<CMD>bprevious<CR>", { desc = "Switch to previous buffer" })
 
 -- ハイライト解除
-h.nmap("<C-ESC>", "<CMD>nohlsearch<CR>", { desc = "Unhighlight" })
+h.nmap("<ESC>", "<CMD>nohlsearch<CR>", { desc = "Unhighlight" })
 
 -- ヒストリ選択
 h.omap("<C-p>", "<Up>")
@@ -56,3 +56,6 @@ h.nmap("<Leader>gP", "<CMD>Gin push origin HEAD<CR>")
 
 -- zen-mode.nvim
 h.nmap("<Leader>zz", "<CMD>ZenMode<CR>")
+
+-- fuzzy-motion
+h.nmap("<Leader>f", "<CMD>FuzzyMotion<CR>")

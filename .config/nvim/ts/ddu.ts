@@ -28,27 +28,11 @@ export class Config extends BaseConfig {
         file_external: {
           cmd: ["fd", ".", "-H", "-E", ".git", "-t", "f"],
         },
-        rg: {
-          inputType: "regex",
-          args: [
-            "--json",
-            "--column",
-            "--no-heading",
-            "--color",
-            "never",
-            "--hidden",
-            "--glob",
-            "!.git",
-          ],
-        },
       },
       sourceOptions: {
         "_": {
           matchers: ["matcher_multi_regex"],
           ignoreCase: true,
-        },
-        git_status: {
-          converters: ["converter_git_status"],
         },
       },
       filterParams: {
@@ -81,18 +65,25 @@ export class Config extends BaseConfig {
         quickfix_history: {
           defaultAction: "open",
         },
-        git_status: {
-          defaultAction: "open",
-        },
-        git_branch: {
-          defaultAction: "switch",
-        },
       },
     });
 
     // Live grep
     args.contextBuilder.patchLocal("grep", {
       sources: [{ name: "rg" }],
+      sourceParams: {
+        rg: {
+          inputType: "regex",
+          // inputType: "migemo",
+          args: [
+            "--json",
+            "--ignore-case",
+            "--hidden",
+            "--glob",
+            "!.git",
+          ],
+        },
+      },
       sourceOptions: {
         rg: {
           matchers: [],

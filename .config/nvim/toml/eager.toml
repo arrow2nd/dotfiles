@@ -5,9 +5,6 @@ hook_source = """
 let g:denops#deno = exepath("deno")
 """
 
-[[plugins]]
-repo = "vim-denops/denops-shared-server.vim"
-
 # dpp.vim
 [[plugins]]
 repo = "Shougo/dpp-ext-installer"
@@ -43,6 +40,19 @@ repo = "ryoppippi/vim-bun-lock"
 rev = "lua"
 
 [[plugins]]
+repo = "echasnovski/mini.nvim"
+lua_source = """
+require("config.mini")
+"""
+
+[[plugins]]
+repo = "lewis6991/hover.nvim"
+lua_source = """
+require("config.hover")
+"""
+
+# 編集系
+[[plugins]]
 repo = "windwp/nvim-ts-autotag"
 lua_source = """
 require('nvim-ts-autotag').setup()
@@ -65,6 +75,13 @@ require('Comment').setup {
 """
 
 [[plugins]]
+repo = "monaqa/dial.nvim"
+lua_source = """
+require("config.dial")
+"""
+
+# denops系
+[[plugins]]
 repo = "skanehira/denops-translate.vim"
 depends = ["denops.vim"]
 
@@ -74,17 +91,17 @@ depends = ["denops.vim"]
 build = "deno task prepare"
 
 [[plugins]]
-repo = "echasnovski/mini.nvim"
+repo = "lambdalisue/kensaku.vim"
+depends = ["denops.vim"]
 lua_source = """
-require("config.mini")
-"""
+vim.g.fuzzy_motion_matchers = "kensaku"
+""""
 
 [[plugins]]
-repo = "monaqa/dial.nvim"
-lua_source = """
-require("config.dial")
-"""
+repo = "yuki-yano/fuzzy-motion.vim"
+depends = ["denops.vim", "kensaku.vim"]
 
+# AI支援系
 [[plugins]]
 repo = "zbirenbaum/copilot.lua"
 lua_source = """
@@ -100,20 +117,6 @@ require("copilot").setup({
   },
 })
 """
-
-[[plugins]]
-repo = "lewis6991/hover.nvim"
-lua_source = """
-require("config.hover")
-"""
-
-[[plugins]]
-repo = "lambdalisue/vim-gin"
-depends = ["denops.vim"]
-
-[[plugins]]
-repo = "ogaken-1/nvim-gin-preview"
-depends = ["vim-gin"]
 
 [[plugins]]
 repo = "MunifTanjim/nui.nvim"
@@ -134,3 +137,12 @@ depends = [
 lua_source = """
 require('config.avante')
 """
+
+# Git系
+[[plugins]]
+repo = "lambdalisue/vim-gin"
+depends = ["denops.vim"]
+
+[[plugins]]
+repo = "ogaken-1/nvim-gin-preview"
+depends = ["vim-gin"]
