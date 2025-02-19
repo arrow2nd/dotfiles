@@ -30,9 +30,6 @@ colorscheme minai
 repo = "vim-jp/vimdoc-ja"
 
 [[plugins]]
-repo = "nvim-tree/nvim-web-devicons"
-
-[[plugins]]
 repo = "nvim-lua/plenary.nvim"
 
 [[plugins]]
@@ -127,7 +124,6 @@ build = "make && ln -s $HOME/.cache/nvim/dpp/repos/github.com/yetone/avante.nvim
 depends = [
   "plenary.nvim",
   "nui.nvim",
-  "nvim-web-devicons",
   "copilot.lua",
   "render-markdown.nvim"
 ]

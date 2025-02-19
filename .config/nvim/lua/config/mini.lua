@@ -11,6 +11,9 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, {
   once = true,
 })
 
+-- icons
+require("mini.icons").setup({})
+
 -- diff
 require("mini.diff").setup({
   view = {
