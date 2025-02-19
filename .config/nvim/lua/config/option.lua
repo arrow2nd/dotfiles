@@ -118,3 +118,6 @@ function TabLine()
 end
 
 opt.tabline = "%!v:lua.TabLine()"
+
+-- fuzzy-motionのやつ
+vim.g.fuzzy_motion_matchers = { "fzf", "kensaku" }

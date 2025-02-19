@@ -73,8 +73,7 @@ export class Config extends BaseConfig {
       sources: [{ name: "rg" }],
       sourceParams: {
         rg: {
-          inputType: "regex",
-          // inputType: "migemo",
+          inputType: "migemo",
           args: [
             "--json",
             "--ignore-case",

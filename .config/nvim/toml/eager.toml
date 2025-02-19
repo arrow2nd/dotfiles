@@ -93,9 +93,6 @@ build = "deno task prepare"
 [[plugins]]
 repo = "lambdalisue/kensaku.vim"
 depends = ["denops.vim"]
-lua_source = """
-vim.g.fuzzy_motion_matchers = "kensaku"
-""""
 
 [[plugins]]
 repo = "yuki-yano/fuzzy-motion.vim"
