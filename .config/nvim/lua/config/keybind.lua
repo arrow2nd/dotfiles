@@ -52,3 +52,4 @@ h.imap("<C-CR>", 'copilot#Accept("\\<CR>")', {
 h.nmap("<Leader>gg", "<CMD>GinStatus<CR>")
 h.nmap("<Leader>gl", "<CMD>GinLog<CR>")
 h.nmap("<Leader>gc", "<CMD>Gin commit -v<CR>")
+h.nmap("<Leader>gP", "<CMD>Gin push origin HEAD<CR>")
