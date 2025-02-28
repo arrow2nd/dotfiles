@@ -39,11 +39,11 @@ require("avante").setup({
     },
     edit = {
       border = "single",
-      start_insert = true,
+      start_insert = false,
     },
     ask = {
       floating = false,
-      start_insert = true,
+      start_insert = false,
       border = "single",
       focus_on_apply = "ours",
     },
