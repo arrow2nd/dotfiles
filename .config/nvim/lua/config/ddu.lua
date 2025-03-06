@@ -57,9 +57,7 @@ h.nmap(";q", "<Cmd>Ddu quickfix_history<CR>")
 h.nmap("<Leader>gg", "<Cmd>Ddu git_status<CR>")
 
 -- grep
-h.nmap(";gg", "<Cmd>Ddu -name=grep<CR>")
-h.nmap(";gt", "<Cmd>Todo<CR>")
-h.nmap(";gf", "<Cmd>Fixme<CR>")
+h.nmap(";g", "<Cmd>Ddu -name=grep<CR>")
 
 -- ファイラー
 h.nmap(";b", [[<Cmd>Ddu -name=filer -searchPath=`expand('%:p')`<CR>]])
