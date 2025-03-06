@@ -55,4 +55,4 @@ h.nmap("<Leader>gc", "<CMD>Gin commit -v<CR>")
 h.nmap("<Leader>gP", "<CMD>Gin push origin HEAD<CR>")
 
 -- zen-mode.nvim
-h.nmap("<Leader>zz", "<CMD>ZenMode<CR>")
+h.nmap("<Leader>z", "<CMD>ZenMode<CR>")

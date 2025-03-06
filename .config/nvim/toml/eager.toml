@@ -127,7 +127,3 @@ require('config.avante')
 [[plugins]]
 repo = "lambdalisue/vim-gin"
 depends = ["denops.vim"]
-
-[[plugins]]
-repo = "ogaken-1/nvim-gin-preview"
-depends = ["vim-gin"]
