@@ -42,12 +42,6 @@ lua_source = """
 require("config.mini")
 """
 
-[[plugins]]
-repo = "lewis6991/hover.nvim"
-lua_source = """
-require("config.hover")
-"""
-
 # 編集系
 [[plugins]]
 repo = "windwp/nvim-ts-autotag"
