@@ -28,6 +28,9 @@ export class Config extends BaseConfig {
         file_external: {
           cmd: ["fd", ".", "-H", "-E", ".git", "-t", "f"],
         },
+        git_status: {
+          converters: ["converter_git_status"],
+        },
       },
       sourceOptions: {
         "_": {
@@ -65,6 +68,9 @@ export class Config extends BaseConfig {
         quickfix_history: {
           defaultAction: "open",
         },
+        git_status: {
+          defaultAction: "open",
+        },
       },
     });
 
@@ -73,10 +79,13 @@ export class Config extends BaseConfig {
       sources: [{ name: "rg" }],
       sourceParams: {
         rg: {
-          inputType: "migemo",
+          inputType: "regex",
           args: [
             "--json",
-            "--ignore-case",
+            "--column",
+            "--no-heading",
+            "--color",
+            "never",
             "--hidden",
             "--glob",
             "!.git",

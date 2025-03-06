@@ -31,7 +31,7 @@ depends = ["ddu.vim"]
 
 [[plugins]]
 repo = "shun/ddu-source-rg"
-depends = ["ddu.vim", "kensaku.vim"]
+depends = ["ddu.vim"]
 
 [[plugins]]
 repo = "shun/ddu-source-buffer"
@@ -55,6 +55,10 @@ depends = ["ddu.vim"]
 
 [[plugins]]
 repo = "Shougo/ddu-source-register"
+depends = ["ddu.vim"]
+
+[[plugins]]
+repo = "kuuote/ddu-source-git_status"
 depends = ["ddu.vim"]
 
 [[plugins]]

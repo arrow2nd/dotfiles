@@ -53,10 +53,13 @@ h.nmap(";o", "<Cmd>Ddu file_old<CR>")
 h.nmap(";r", "<Cmd>Ddu register<CR>")
 h.nmap(";q", "<Cmd>Ddu quickfix_history<CR>")
 
+-- git
+h.nmap("<Leader>gg", "<Cmd>Ddu git_status<CR>")
+
 -- grep
-h.nmap(";g", "<Cmd>Ddu -name=grep<CR>")
-h.nmap(";T", "<Cmd>Todo<CR>")
-h.nmap(";F", "<Cmd>Fixme<CR>")
+h.nmap(";gg", "<Cmd>Ddu -name=grep<CR>")
+h.nmap(";gt", "<Cmd>Todo<CR>")
+h.nmap(";gf", "<Cmd>Fixme<CR>")
 
 -- ファイラー
 h.nmap(";b", [[<Cmd>Ddu -name=filer -searchPath=`expand('%:p')`<CR>]])

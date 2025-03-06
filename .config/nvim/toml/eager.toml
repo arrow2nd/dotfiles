@@ -87,14 +87,6 @@ repo = "kat0h/bufpreview.vim"
 depends = ["denops.vim"]
 build = "deno task prepare"
 
-[[plugins]]
-repo = "lambdalisue/kensaku.vim"
-depends = ["denops.vim"]
-
-[[plugins]]
-repo = "yuki-yano/fuzzy-motion.vim"
-depends = ["denops.vim", "kensaku.vim"]
-
 # AI支援系
 [[plugins]]
 repo = "zbirenbaum/copilot.lua"
