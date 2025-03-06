@@ -27,7 +27,8 @@ opt.fillchars = {
 opt.shortmess = "I"
 
 -- 行
-opt.number = false
+opt.number = true
+opt.nuw = 4
 opt.signcolumn = "yes"
 opt.cursorline = true
 
@@ -56,6 +57,21 @@ opt.tabstop = 2
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
+
+-- 折り畳み
+opt.foldmethod = "indent"
+vim.opt.foldlevel = 99
+
+-- 折り畳みのテキストをいい感じにする
+-- @see https://mogulla3.tech/articles/2024-10-14-customising-neovim-folds-for-ease-of-use/
+function Foldtext()
+  local line = vim.fn.getline(vim.v.foldstart)
+  local count = vim.v.foldend - vim.v.foldstart + 1
+  return string.format("%s (%d lines folded)", line, count)
+end
+
+vim.opt.foldtext = "v:lua.Foldtext()"
+vim.opt.fillchars = { fold = " " }
 
 -- 括弧
 opt.showmatch = true
