@@ -130,6 +130,8 @@ vim.api.nvim_create_autocmd("FileType", {
       h.xmap("<<", ':call ddu#ui#do_action("itemAction", {"name": "add"})<CR>', opts)
       h.nmap(">>", ':call ddu#ui#do_action("itemAction", {"name": "reset"})<CR>', opts)
       h.xmap(">>", ':call ddu#ui#do_action("itemAction", {"name": "reset"})<CR>', opts)
+      h.nmap("X", ':call ddu#ui#do_action("itemAction", {"name": "restore"})<CR>', opts)
+      h.xmap("X", ':call ddu#ui#do_action("itemAction", {"name": "restore"})<CR>', opts)
     end
   end,
 })
