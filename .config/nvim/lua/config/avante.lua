@@ -25,7 +25,7 @@ require("render-markdown").setup({
 require("avante").setup({
   provider = "copilot",
   copilot = {
-    model = "claude-3.5-sonnet",
+    model = "claude-3.7-sonnet",
   },
   window = {
     position = "right",

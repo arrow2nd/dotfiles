@@ -118,9 +118,8 @@ require("img-clip").setup({
 })
 """
 
- [[plugins]]
+[[plugins]]
 repo = "yetone/avante.nvim"
-rev = "9c9fadd256d6138d771e17b9ca68905908e16c17"
 build = "make && ln -s $HOME/.cache/nvim/dpp/repos/github.com/yetone/avante.nvim/build $HOME/.cache/nvim/dpp/nvim/.dpp/build"
 depends = [
   "plenary.nvim",
