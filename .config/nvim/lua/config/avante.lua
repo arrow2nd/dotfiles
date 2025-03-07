@@ -1,5 +1,5 @@
-local Path = require("plenary.path")
-local avante_path = require("avante.path")
+-- local Path = require("plenary.path")
+-- local avante_path = require("avante.path")
 
 require("avante_lib").load()
 
@@ -24,6 +24,9 @@ require("render-markdown").setup({
 
 require("avante").setup({
   provider = "copilot",
+  copilot = {
+    model = "claude-3.5-sonnet",
+  },
   window = {
     position = "right",
     wrap = true,
@@ -50,16 +53,17 @@ require("avante").setup({
   },
 })
 
-local cache_path = vim.fn.expand("~/.config/nvim/avanterules")
-
--- デフォルトプロンプトを上書きする
--- NOTE: @see https://github.com/yetone/avante.nvim/issues/874
-avante_path.prompts.get = function()
-  local static_dir = Path:new(cache_path)
-
-  if not static_dir:exists() then
-    error("Static directory does not exist: " .. static_dir:absolute(), 2)
-  end
-
-  return static_dir:absolute()
-end
+-- FIXME: 上書きできなくなってる
+-- local cache_path = vim.fn.expand("~/.config/nvim/avanterules")
+--
+-- -- デフォルトプロンプトを上書きする
+-- -- NOTE: @see https://github.com/yetone/avante.nvim/issues/874
+-- avante_path.prompts.get = function()
+--   local static_dir = Path:new(cache_path)
+--
+--   if not static_dir:exists() then
+--     error("Static directory does not exist: " .. static_dir:absolute(), 2)
+--   end
+--
+--   return static_dir:absolute()
+-- end
