@@ -252,7 +252,6 @@ require("mason-lspconfig").setup_handlers({
       opts.settings = {
         stylelintplus = {
           autoFixOnSave = true,
-          autoFixOnFormat = true,
         },
       }
 
