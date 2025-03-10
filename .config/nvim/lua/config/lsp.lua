@@ -177,6 +177,7 @@ require("mason-tool-installer").setup({
     "biome",
     "typos_lsp",
     "eslint_d",
+    "stylelint_lsp",
   },
   run_on_start = true,
   integrations = {
@@ -245,6 +246,15 @@ require("mason-lspconfig").setup_handlers({
     -- css
     elseif server == "cssls" then
       opts.filetypes = { "css", "scss", "sass", "less" }
+
+    -- Stylelint
+    elseif server == "stylelint_lsp" then
+      opts.settings = {
+        stylelintplus = {
+          autoFixOnSave = true,
+          autoFixOnFormat = true,
+        },
+      }
 
     -- efm
     elseif server == "efm" then
