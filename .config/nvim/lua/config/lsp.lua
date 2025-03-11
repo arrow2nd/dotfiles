@@ -14,22 +14,6 @@ local efm_opts = function()
       ".prettierrc.json5",
       ".prettierrc.toml",
     },
-    eslint = {
-      ".eslintrc",
-      ".eslintrc.js",
-      ".eslintrc.mjs",
-      ".eslintrc.cjs",
-      ".eslintrc.yml",
-      ".eslintrc.yaml",
-      ".eslintrc.json",
-      ".eslintrc.json5",
-      "eslint.config.js",
-      "eslint.config.mjs",
-      "eslint.config.cjs",
-      "eslint.config.ts",
-      "eslint.config.mts",
-      "eslint.config.cts",
-    },
     biome = {
       "biome.json",
     },
@@ -72,22 +56,6 @@ local efm_opts = function()
     denofmt_or_prettier = nil
   end
 
-  local eslint = {
-    lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
-    lintIgnoreExitCode = true,
-    lintStdin = true,
-    lintFormats = {
-      "%f(%l,%c): %tarning %m",
-      "%f(%l,%c): %rror %m",
-    },
-    formatCommand = "eslint_d --stdin --fix-to-stdout --stdin-filename ${INPUT}",
-    formatStdin = true,
-    initOptions = {
-      documentFormatting = true,
-    },
-    rootMarkers = rootMarkers.eslint,
-  }
-
   local stylua = {
     formatCommand = "stylua --color Never -",
     formatStdin = true,
@@ -108,11 +76,10 @@ local efm_opts = function()
     html = { prettier },
     css = { prettier },
     scss = { prettier },
-    javascript = { denofmt_or_prettier, eslint },
-    javascriptreact = { denofmt_or_prettier, eslint },
-    typescript = { denofmt_or_prettier, eslint },
-    typescriptreact = { denofmt_or_prettier, eslint },
-    vue = { eslint },
+    javascript = { denofmt_or_prettier },
+    javascriptreact = { denofmt_or_prettier },
+    typescript = { denofmt_or_prettier },
+    typescriptreact = { denofmt_or_prettier },
     json = { denofmt_or_prettier },
     jsonc = { denofmt_or_prettier },
     yaml = { prettier },
@@ -146,9 +113,6 @@ vim.diagnostic.config({
 })
 
 require("mason").setup({
-  ensure_installed = {
-    "eslint_d",
-  },
   ui = {
     border = "single",
     icons = {
@@ -175,8 +139,8 @@ require("mason-tool-installer").setup({
     "rust_analyzer",
     "cssls",
     "biome",
+    "eslint",
     "typos_lsp",
-    "eslint_d",
     "stylelint_lsp",
   },
   run_on_start = true,
