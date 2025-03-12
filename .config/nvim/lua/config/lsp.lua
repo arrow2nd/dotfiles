@@ -209,6 +209,7 @@ require("mason-lspconfig").setup_handlers({
 
     -- css
     elseif server == "cssls" then
+      opts.on_init = lsp.on_init_with_disable_format
       opts.filetypes = { "css", "scss", "sass", "less" }
 
     -- Stylelint
