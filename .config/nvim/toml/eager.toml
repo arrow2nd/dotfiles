@@ -105,20 +105,6 @@ repo = "MunifTanjim/nui.nvim"
 repo = "MeanderingProgrammer/render-markdown.nvim"
 
 [[plugins]]
-repo = "HakonHarnes/img-clip.nvim"
-lua_source = """
-require("img-clip").setup({
-  default = {
-    embed_image_as_base64 = false,
-    prompt_for_file_name = false,
-    drag_and_drop = {
-      insert_mode = true,
-    },
-  },
-})
-"""
-
-[[plugins]]
 repo = "yetone/avante.nvim"
 build = "make && ln -s $HOME/.cache/nvim/dpp/repos/github.com/yetone/avante.nvim/build $HOME/.cache/nvim/dpp/nvim/.dpp/build"
 depends = [
@@ -126,7 +112,6 @@ depends = [
   "nui.nvim",
   "copilot.lua",
   "render-markdown.nvim",
-  "img-clip.nvim",
 ]
 lua_source = """
 require('config.avante')
