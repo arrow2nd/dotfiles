@@ -5,7 +5,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 M.on_attach_with_enable_format = function(client, bufnr)
   -- 保存時に自動フォーマット
-  if client.supports_method("textDocument/formatting") then
+  if client:supports_method("textDocument/formatting") then
     vim.api.nvim_clear_autocmds({
       group = augroup,
       buffer = bufnr,
