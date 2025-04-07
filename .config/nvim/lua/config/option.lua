@@ -12,7 +12,7 @@ opt.termguicolors = true
 -- NOTE: pum.vimのポップアップを出すとなんかチラつくのでやめてる
 opt.laststatus = 3
 
--- ウィンドウ分割の罫線
+-- ウィンドウのボーダー
 opt.fillchars = {
   horiz = "━",
   horizup = "┻",
@@ -22,6 +22,9 @@ opt.fillchars = {
   vertright = "┣",
   verthoriz = "╋",
 }
+
+-- windowのボーダー
+vim.o.winborder = "single"
 
 -- intro を非表示
 opt.shortmess = "I"

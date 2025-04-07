@@ -105,13 +105,6 @@ local node_bin = "/.local/share/mise/installs/node/lts/bin"
 vim.g.node_host_prog = home_dir .. node_bin .. "/node"
 vim.cmd("let $PATH = '" .. home_dir .. node_bin .. ":' . $PATH")
 
--- ポップアップウィンドウのボーダースタイルを設定
-vim.diagnostic.config({
-  float = {
-    border = "single",
-  },
-})
-
 require("mason").setup({
   ui = {
     border = "single",
@@ -251,13 +244,3 @@ h.nmap("gn", "<CMD>lua vim.lsp.buf.rename()<CR>", { desc = "Rename definition" }
 h.nmap("ga", "<CMD>Ddu lsp_codeAction -unique<CR>", { desc = "Show available code actions" })
 h.nmap("gd", "<CMD>Ddu lsp_definition<CR>", { desc = "Lists all the definition" })
 h.nmap("gr", "<CMD>Ddu lsp_references -unique<CR>", { desc = "Lists all the references" })
-
--- フローティングウィンドウのボーダースタイルを設定
--- @see https://github.com/neovim/neovim/issues/32242#issuecomment-2683744917
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
----@diagnostic disable-next-line: duplicate-set-field
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or "single"
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
