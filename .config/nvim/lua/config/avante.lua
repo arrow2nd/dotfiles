@@ -1,4 +1,4 @@
--- local Path = require("plenary.path")
+-- local jkath = require("plenary.path")
 -- local avante_path = require("avante.path")
 
 require("avante_lib").load()
@@ -27,13 +27,13 @@ require("avante").setup({
   copilot = {
     model = "claude-3.7-sonnet",
   },
-  window = {
+  windows = {
     position = "right",
     wrap = true,
-    width = 32,
+    width = 30,
     sidebar_header = {
       enabled = true,
-      align = "center",
+      align = "left",
       rounded = false,
     },
     input = {
