@@ -88,7 +88,7 @@ local tab_title_list = {
     icon = "",
   },
   {
-    title = "^spt$",
+    title = "^spotify_player$",
     icon = " ",
   },
   {
