@@ -14,6 +14,9 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, {
 -- icons
 require("mini.icons").setup({})
 
+-- notify
+require("mini.notify").setup()
+
 -- diff
 require("mini.diff").setup({
   view = {
@@ -120,14 +123,14 @@ require("mini.statusline").setup({
         end
       end
 
-      local get_lsp_progress = function()
-        local prog = vim.lsp.status()
-        if prog == "" then
-          return ""
-        end
-
-        return string.format("󰔟 %s %s", prog:gsub("%%", "%%%%"), separator)
-      end
+      -- local get_lsp_progress = function()
+      --   local prog = vim.lsp.status()
+      --   if prog == "" then
+      --     return ""
+      --   end
+      --
+      --   return string.format("󰔟 %s %s", prog:gsub("%%", "%%%%"), separator)
+      -- end
 
       return MiniStatusline.combine_groups({
         {
@@ -141,7 +144,7 @@ require("mini.statusline").setup({
         "%=", -- End left alignment
         {
           hl = "MiniStatuslineFilename",
-          strings = { get_lsp_progress(), fileinfo, separator, "%l" },
+          strings = { fileinfo, separator, "%l" },
         },
       })
     end,
