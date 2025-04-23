@@ -123,15 +123,6 @@ require("mini.statusline").setup({
         end
       end
 
-      -- local get_lsp_progress = function()
-      --   local prog = vim.lsp.status()
-      --   if prog == "" then
-      --     return ""
-      --   end
-      --
-      --   return string.format("󰔟 %s %s", prog:gsub("%%", "%%%%"), separator)
-      -- end
-
       return MiniStatusline.combine_groups({
         {
           hl = mode_hl,
