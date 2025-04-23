@@ -7,7 +7,6 @@ require("config.ddc")
 
 [[plugins]]
 repo = "Shougo/pum.vim"
-rev = "c50cbf6"
 lua_source = """
 require("config.pum")
 """
