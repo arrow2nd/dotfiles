@@ -1,7 +1,5 @@
 local lsp = require("util.lsp")
-local mason_registry = require("mason-registry")
-local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-  .. "/node_modules/@vue/language-server"
+local vue_language_server_path = vim.fn.exepath("vue-language-server") .. "/node_modules/@vue/language-server"
 
 return {
   -- @see https://github.com/kyoh86/dotfiles/blob/0fafb25ec68ea9027b5373fbf82f66ed5d3b5fd1/nvim/lsp/denols.lua#L27-L34
