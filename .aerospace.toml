@@ -95,3 +95,7 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
 run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
