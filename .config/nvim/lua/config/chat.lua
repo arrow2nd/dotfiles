@@ -1,5 +1,9 @@
 local h = require("util.helper")
 
+if os.getenv("DISABLED_NVIM_COPILOT_CHAT") then
+  return
+end
+
 local COPILOT_BASE = string.format(
   [[
 Over the centuries, you have studied all kinds of human knowledge, and in recent years, you have become particularly versed in software development and programming techniques.
