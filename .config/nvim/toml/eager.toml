@@ -88,6 +88,14 @@ source = """
 vim.g.copilot_no_tab_map = true
 """
 
+[[plugins]]
+repo = "CopilotC-Nvim/CopilotChat.nvim"
+depends = ["copilot.vim", "plenary.nvim"]
+build = "make tiktoken"
+lua_source = """
+require("config.chat")
+"""
+
 # Git系
 [[plugins]]
 repo = "lambdalisue/vim-gin"

@@ -23,6 +23,9 @@ opt.fillchars = {
   verthoriz = "╋",
 }
 
+-- splitの位置
+vim.o.splitright = true
+
 -- windowのボーダー
 vim.o.winborder = "single"
 
