@@ -11,12 +11,6 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, {
   once = true,
 })
 
--- icons
-require("mini.icons").setup({})
-
--- notify
-require("mini.notify").setup()
-
 -- diff
 require("mini.diff").setup({
   view = {
@@ -35,18 +29,6 @@ require("mini.diff").setup({
   },
 })
 
--- git
-require("mini.git").setup({})
-
--- ブランチ名のみ
-local format_summary = function(data)
-  local summary = vim.b[data.buf].minigit_summary
-  vim.b[data.buf].minigit_summary_string = summary.head_name or ""
-end
-
-local au_opts = { pattern = "MiniGitUpdated", callback = format_summary }
-vim.api.nvim_create_autocmd("User", au_opts)
-
 -- surround
 require("mini.surround").setup({
   mappings = {
@@ -62,6 +44,23 @@ require("mini.surround").setup({
   },
 })
 
+-- VSCode Neovim なら以下のプラグインは不要なので早期リターン
+if vim.g.vscode then
+  return
+end
+
+-- git
+require("mini.git").setup({})
+
+-- ブランチ名のみ
+local format_summary = function(data)
+  local summary = vim.b[data.buf].minigit_summary
+  vim.b[data.buf].minigit_summary_string = summary.head_name or ""
+end
+
+local au_opts = { pattern = "MiniGitUpdated", callback = format_summary }
+vim.api.nvim_create_autocmd("User", au_opts)
+
 -- hipatterns
 local hipatterns = require("mini.hipatterns")
 hipatterns.setup({
@@ -75,6 +74,12 @@ hipatterns.setup({
 
 -- indentscope
 require("mini.indentscope").setup({ symbol = "┆" })
+
+-- icons
+require("mini.icons").setup({})
+
+-- notify
+require("mini.notify").setup()
 
 -- starter
 require("mini.starter").setup({
