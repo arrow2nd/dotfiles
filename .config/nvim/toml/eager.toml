@@ -42,6 +42,12 @@ lua_source = """
 require("config.mini")
 """
 
+[[plugins]]
+repo = "akinsho/toggleterm.nvim"
+lua_source = """
+require("config.toggleterm")
+"""
+
 # 編集系
 [[plugins]]
 repo = "windwp/nvim-ts-autotag"

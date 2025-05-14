@@ -33,9 +33,6 @@ h.nmap("]q", "<Cmd>cnext<CR>")
 -- ESCでターミナルを抜ける
 h.tmap("<ESC>", "<C-\\><C-n>")
 
--- toggleterm
-h.nmap("<Leader><Space>", "<CMD>ToggleTerm<CR>")
-
 -- denops-translate
 h.xmap("<Leader>t", "<Plug>(Translate)")
 
@@ -51,5 +48,5 @@ h.imap("<C-CR>", 'copilot#Accept("\\<CR>")', {
 -- gin.vim
 h.nmap("<Leader>gs", "<CMD>GinStatus<CR>")
 h.nmap("<Leader>gl", "<CMD>GinLog<CR>")
-h.nmap("<Leader>gc", "<CMD>Gin commit -v<CR>")
-h.nmap("<Leader>gP", "<CMD>Gin push origin HEAD<CR>")
+-- h.nmap("<Leader>gc", "<CMD>Gin commit -v<CR>")
+-- h.nmap("<Leader>gP", "<CMD>Gin push origin HEAD<CR>")

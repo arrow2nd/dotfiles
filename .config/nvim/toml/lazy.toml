@@ -10,13 +10,6 @@ repo = "thinca/vim-qfreplace"
 on_cmd = ["Qfreplace"]
 
 [[plugins]]
-repo = "akinsho/toggleterm.nvim"
-on_cmd = ["ToggleTerm"]
-lua_source = """
-require("toggleterm").setup()
-"""
-
-[[plugins]]
 repo = "rhysd/git-messenger.vim"
 on_cmd = ["GitMessenger"]
 lua_source = """
