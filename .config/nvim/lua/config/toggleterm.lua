@@ -9,7 +9,12 @@ h.nmap("<Leader><Space>", "<CMD>ToggleTerm<CR>")
 -- git commit
 local git_commit = Terminal:new({
   cmd = "git commit -v",
-  hidden = true,
+  close_on_exit = false,
+  on_exit = function(t, job, exit_code, name)
+    if exit_code == 0 then
+      t:close()
+    end
+  end,
 })
 
 h.nmap("<Leader>gc", function()
@@ -19,7 +24,13 @@ end, { desc = "Git commit" })
 -- git push
 local git_push = Terminal:new({
   cmd = "git push origin HEAD",
-  hidden = true,
+  -- hidden = true,
+  close_on_exit = false,
+  on_exit = function(t, job, exit_code, name)
+    if exit_code == 0 then
+      t:close()
+    end
+  end,
 })
 
 h.nmap("<Leader>gP", function()
