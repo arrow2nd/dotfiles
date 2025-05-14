@@ -12,7 +12,7 @@ local git_commit = Terminal:new({
   close_on_exit = false,
   on_exit = function(t, job, exit_code, name)
     if exit_code == 0 then
-      t:close()
+      t:shutdown()
     end
   end,
 })
@@ -24,11 +24,10 @@ end, { desc = "Git commit" })
 -- git push
 local git_push = Terminal:new({
   cmd = "git push origin HEAD",
-  -- hidden = true,
   close_on_exit = false,
   on_exit = function(t, job, exit_code, name)
     if exit_code == 0 then
-      t:close()
+      t:shutdown()
     end
   end,
 })
