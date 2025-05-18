@@ -48,6 +48,12 @@ lua_source = """
 require("config.toggleterm")
 """
 
+[[plugins]]
+repo = "tkmpypy/chowcho.nvim"
+lua_source = """
+require("config.chowcho")
+"""
+
 # 編集系
 [[plugins]]
 repo = "windwp/nvim-ts-autotag"
