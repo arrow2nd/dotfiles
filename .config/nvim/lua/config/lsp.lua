@@ -28,7 +28,7 @@ require("mason-tool-installer").setup({
     "denols",
     "gopls",
     "ts_ls",
-    "volar",
+    "vue_ls",
     "lua_ls",
     "yamlls",
     "jsonls",
