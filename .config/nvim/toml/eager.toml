@@ -87,6 +87,10 @@ require("config.dial")
 [[plugins]]
 repo = "skanehira/denops-translate.vim"
 depends = ["denops.vim"]
+lua_source = """
+local h = require("util.helper")
+h.xmap("<Leader>t", "<Plug>(Translate)")
+"""
 
 [[plugins]]
 repo = "kat0h/bufpreview.vim"
@@ -96,8 +100,8 @@ build = "deno task prepare"
 # AI支援系
 [[plugins]]
 repo = "github/copilot.vim"
-source = """
-vim.g.copilot_no_tab_map = true
+lua_source = """
+require("config.copilot")
 """
 
 [[plugins]]
@@ -112,3 +116,8 @@ require("config.chat")
 [[plugins]]
 repo = "lambdalisue/vim-gin"
 depends = ["denops.vim"]
+lua_source = """
+local h = require("util.helper")
+h.nmap("<Leader>gs", "<CMD>GinStatus<CR>")
+h.nmap("<Leader>gl", "<CMD>GinLog<CR>")
+"""

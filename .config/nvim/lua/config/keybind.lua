@@ -33,20 +33,8 @@ h.nmap("]q", "<Cmd>cnext<CR>")
 -- ESCでターミナルを抜ける
 h.tmap("<ESC>", "<C-\\><C-n>")
 
--- denops-translate
-h.xmap("<Leader>t", "<Plug>(Translate)")
-
 -- git-messenger
 h.nmap("<C-k>", "<CMD>GitMessenger<CR>")
 
--- copilot.vim
-h.imap("<C-CR>", 'copilot#Accept("\\<CR>")', {
-  expr = true,
-  replace_keycodes = false,
-})
-
--- gin.vim
-h.nmap("<Leader>gs", "<CMD>GinStatus<CR>")
-h.nmap("<Leader>gl", "<CMD>GinLog<CR>")
--- h.nmap("<Leader>gc", "<CMD>Gin commit -v<CR>")
--- h.nmap("<Leader>gP", "<CMD>Gin push origin HEAD<CR>")
+-- zen-mode
+h.nmap("<Leader>z", "<CMD>ZenMode<CR>")

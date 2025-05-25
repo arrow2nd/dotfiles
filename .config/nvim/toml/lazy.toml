@@ -15,3 +15,20 @@ on_cmd = ["GitMessenger"]
 lua_source = """
 vim.g.git_messenger_floating_win_opts = { border = "single" }
 """
+
+[[plugins]]
+repo = "folke/zen-mode.nvim"
+on_cmd = ["ZenMode"]
+lua_source = """
+require("zen-mode").setup({
+  wezterm = {
+    enabled = true,
+    font = "+4", -- (10% increase per step)
+  },
+  plugins = {
+    options = {
+      winborder = "none",
+    },
+  },
+})
+"""
