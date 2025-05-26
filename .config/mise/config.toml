@@ -4,3 +4,6 @@ bun = "1"
 usage = "latest"
 yarn = "4"
 pnpm = "9"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
