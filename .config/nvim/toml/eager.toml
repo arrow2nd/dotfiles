@@ -54,6 +54,14 @@ lua_source = """
 require("config.chowcho")
 """
 
+[[plugins]]
+repo = "yuki-yano/fuzzy-motion.vim"
+depends = ["denops.vim"]
+lua_source = """
+local h = require("util.helper")
+h.nmap("<C-j>", "<CMD>FuzzyMotion<CR>")
+"""
+
 # 編集系
 [[plugins]]
 repo = "windwp/nvim-ts-autotag"
