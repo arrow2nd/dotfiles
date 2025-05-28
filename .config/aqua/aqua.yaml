@@ -23,6 +23,6 @@ packages:
 - name: jqlang/jq@jq-1.7.1
 - name: sharkdp/pastel@v0.10.0
 - name: JohnnyMorganz/StyLua@v2.1.0
-- name: sxyazi/yazi@v25.4.8
+- name: sxyazi/yazi@v25.5.28
 - name: 1password/cli@v2.30.0
 - name: mattn/efm-langserver@v0.0.54
