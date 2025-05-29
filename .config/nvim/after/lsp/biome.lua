@@ -1,5 +1,15 @@
 local augroup = vim.api.nvim_create_augroup("BiomeLspFormatting", {})
 
+local included_filetypes = {
+  "javascript",
+  "javascriptreact",
+  "typescript",
+  "typescriptreact",
+  "vue",
+  "svelte",
+  "astro",
+}
+
 return {
   on_attach = function(_, bufnr)
     vim.api.nvim_clear_autocmds({
@@ -14,6 +24,13 @@ return {
           async = false,
           timeout_ms = 5000,
         })
+
+        local filetype = vim.bo[bufnr].filetype
+        local do_organize_imports = vim.tbl_contains(included_filetypes, filetype)
+
+        if not do_organize_imports then
+          return
+        end
 
         -- importのソート
         vim.lsp.buf.code_action({
