@@ -10,8 +10,23 @@ local included_filetypes = {
   "astro",
 }
 
+-- @see https://zenn.dev/izumin/articles/b8046e64eaa2b5
+local function code_action_sync(client, bufnr, cmd)
+  local params = vim.lsp.util.make_range_params()
+  params.context = { only = { cmd }, diagnostics = {} }
+
+  local res = client.request_sync("textDocument/codeAction", params, 3000, bufnr)
+
+  for _, r in pairs(res and res.result or {}) do
+    if r.edit then
+      local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+      vim.lsp.util.apply_workspace_edit(r.edit, enc)
+    end
+  end
+end
+
 return {
-  on_attach = function(_, bufnr)
+  on_attach = function(client, bufnr)
     vim.api.nvim_clear_autocmds({
       group = augroup,
       buffer = bufnr,
@@ -32,13 +47,8 @@ return {
           return
         end
 
-        -- importのソート
-        vim.lsp.buf.code_action({
-          context = {
-            only = { "source.organizeImports" },
-          },
-          apply = true,
-        })
+        code_action_sync(client, bufnr, "source.organizeImports")
+        code_action_sync(client, bufnr, "source.fixAll")
       end,
       group = augroup,
       buffer = bufnr,
