@@ -1,5 +1,4 @@
 local augroup = vim.api.nvim_create_augroup("BiomeLspFormatting", {})
-
 local included_filetypes = {
   "javascript",
   "javascriptreact",
@@ -12,15 +11,14 @@ local included_filetypes = {
 
 -- @see https://zenn.dev/izumin/articles/b8046e64eaa2b5
 local function code_action_sync(client, bufnr, cmd)
-  local params = vim.lsp.util.make_range_params()
+  local params = vim.lsp.util.make_range_params(nil, client.offset_encoding)
   params.context = { only = { cmd }, diagnostics = {} }
-
   local res = client.request_sync("textDocument/codeAction", params, 3000, bufnr)
-
-  for _, r in pairs(res and res.result or {}) do
-    if r.edit then
-      local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
-      vim.lsp.util.apply_workspace_edit(r.edit, enc)
+  if res and res.result then
+    for _, r in pairs(res.result) do
+      if r.edit then
+        vim.lsp.util.apply_workspace_edit(r.edit, client.offset_encoding)
+      end
     end
   end
 end
@@ -42,7 +40,6 @@ return {
 
         local filetype = vim.bo[bufnr].filetype
         local do_organize_imports = vim.tbl_contains(included_filetypes, filetype)
-
         if not do_organize_imports then
           return
         end
