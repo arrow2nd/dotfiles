@@ -1,5 +1,5 @@
 [tools]
-node = "lts"
+node = "24"
 bun = "1"
 usage = "latest"
 yarn = "4"
