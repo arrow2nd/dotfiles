@@ -38,14 +38,14 @@ return {
           timeout_ms = 5000,
         })
 
+        code_action_sync(client, bufnr, "source.fixAll")
+
         local filetype = vim.bo[bufnr].filetype
         local do_organize_imports = vim.tbl_contains(included_filetypes, filetype)
-        if not do_organize_imports then
-          return
-        end
 
-        code_action_sync(client, bufnr, "source.organizeImports")
-        code_action_sync(client, bufnr, "source.fixAll")
+        if do_organize_imports then
+          code_action_sync(client, bufnr, "source.organizeImports")
+        end
       end,
       group = augroup,
       buffer = bufnr,
