@@ -123,7 +123,7 @@ function edit_current_line() {
 }
 
 zle -N edit_current_line
-bindkey '^w' edit_current_line
+bindkey '^v' edit_current_line
 
 #
 # ローカル設定
