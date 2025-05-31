@@ -120,6 +120,13 @@ lua_source = """
 require("config.chat")
 """
 
+[[plugins]]
+repo = "greggh/claude-code.nvim"
+depends = ["plenary.nvim"]
+lua_source = """
+require("config.claude")
+"""
+
 # Git系
 [[plugins]]
 repo = "lambdalisue/vim-gin"
