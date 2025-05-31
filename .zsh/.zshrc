@@ -108,6 +108,23 @@ function ghq-switch() {
 zle -N ghq-switch
 bindkey "^b" ghq-switch
 
+function edit_current_line() {
+  local tmpfile=$(mktemp)
+  echo "$BUFFER" > $tmpfile
+  local cmd="normal! $"
+  if [ -z "$BUFFER" ]; then
+    cmd="startinsert!"
+  fi
+  nvim $tmpfile -c "${cmd}" -c "set filetype=zsh"
+  BUFFER="$(cat $tmpfile)"
+  CURSOR=${#BUFFER}
+  rm $tmpfile
+  zle reset-prompt
+}
+
+zle -N edit_current_line
+bindkey '^w' edit_current_line
+
 #
 # ローカル設定
 #
