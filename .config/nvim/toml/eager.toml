@@ -107,17 +107,25 @@ build = "deno task prepare"
 
 # AI支援系
 [[plugins]]
-repo = "github/copilot.vim"
+repo = "zbirenbaum/copilot.lua"
 lua_source = """
 require("config.copilot")
 """
 
 [[plugins]]
-repo = "CopilotC-Nvim/CopilotChat.nvim"
-depends = ["copilot.vim", "plenary.nvim"]
-build = "make tiktoken"
+repo = "MunifTanjim/nui.nvim"
+
+[[plugins]]
+repo = "yetone/avante.nvim"
+build = "make -C $HOME/.cache/nvim/dpp/repos/github.com/yetone/avante.nvim && ln -s $HOME/.cache/nvim/dpp/repos/github.com/yetone/avante.nvim/build $HOME/.cache/nvim/dpp/nvim/.dpp/build"
+depends = [
+  "plenary.nvim",
+  "nui.nvim",
+  "copilot.lua",
+  "render-markdown.nvim",
+]
 lua_source = """
-require("config.chat")
+require('config.avante')
 """
 
 [[plugins]]
