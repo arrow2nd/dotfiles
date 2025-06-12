@@ -108,6 +108,7 @@ function ghq-switch() {
 zle -N ghq-switch
 bindkey "^b" ghq-switch
 
+# カレント行をnvimで編集
 function edit_current_line() {
   local tmpfile=$(mktemp)
   echo "$BUFFER" > $tmpfile

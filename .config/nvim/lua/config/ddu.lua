@@ -156,10 +156,10 @@ vim.api.nvim_create_autocmd("FileType", {
              \ ? ":call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
              \ : "<Tab>"]])
 
-    -- ディレクトリなら展開、ファイルなら開く
+    -- ディレクトリなら展開、そうでないならアクションを実行
     vim.cmd([[nnoremap <buffer><expr> <CR>
-             \ ddu#ui#get_item()->get('isTree', v:false)
-             \ ? ":call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
-             \ : ":call ddu#ui#do_action('itemAction', {'name': 'open'})<CR>"]])
+               \ ddu#ui#get_item()->get('isTree', v:false)
+               \ ? ":call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>"
+               \ : ":call ddu#ui#do_action('itemAction')<CR>"]])
   end,
 })
