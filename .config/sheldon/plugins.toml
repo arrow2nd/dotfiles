@@ -48,3 +48,4 @@ github = "subnixr/minimal"
 
 [plugins."gwt.zsh"]
 github = "arrow2nd/gwt.zsh"
+# local = "~/workspace/github.com/arrow2nd/gwt.zsh"
