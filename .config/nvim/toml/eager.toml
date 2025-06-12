@@ -116,19 +116,6 @@ require("config.copilot")
 repo = "MunifTanjim/nui.nvim"
 
 [[plugins]]
-repo = "yetone/avante.nvim"
-build = "make -C $HOME/.cache/nvim/dpp/repos/github.com/yetone/avante.nvim && ln -s $HOME/.cache/nvim/dpp/repos/github.com/yetone/avante.nvim/build $HOME/.cache/nvim/dpp/nvim/.dpp/build"
-depends = [
-  "plenary.nvim",
-  "nui.nvim",
-  "copilot.lua",
-  "render-markdown.nvim",
-]
-lua_source = """
-require('config.avante')
-"""
-
-[[plugins]]
 repo = "greggh/claude-code.nvim"
 depends = ["plenary.nvim"]
 lua_source = """
