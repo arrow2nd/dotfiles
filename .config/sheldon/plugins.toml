@@ -14,6 +14,7 @@ shell = "zsh"
 
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
+proto = "ssh"
 
 [templates]
 defer = '{% for file in files %}zsh-defer source "{{ file }}"{% endfor %}'
@@ -21,27 +22,37 @@ fpath_comp = 'fpath=("{{ dir }}/completions" $fpath)'
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
+proto = "ssh"
 
 [plugins.zsh-autosuggestions]
 github = 'zsh-users/zsh-autosuggestions'
 use = ['{{ name }}.zsh']
 apply = ["defer"]
+proto = "ssh"
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 apply = ["defer"]
+proto = "ssh"
 
 [plugins.zsh-abbrev-alias]
 github = "momo-lab/zsh-abbrev-alias"
+proto = "ssh"
 
 [plugins.op]
 local = "~/.config/op"
 
 [plugins.ni]
 github = "azu/ni.zsh"
+proto = "ssh"
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
 
 [plugins.minimal]
 github = "subnixr/minimal"
+proto = "ssh"
+
+[plugins."gwt.zsh"]
+github = "arrow2nd/gwt.zsh"
+proto = "ssh"
