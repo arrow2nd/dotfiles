@@ -28,6 +28,7 @@ abbrev-alias gb='git branch'
 abbrev-alias gc='git commit'
 abbrev-alias gf='git fetch'
 abbrev-alias gsw='git switch'
+abbrev-alias git-remote-http-to-ssh="git remote set-url origin $(git remote get-url origin | sed 's|https://github.com/|git@github.com:|')"
 
 # eza
 abbrev-alias l='eza -la'
@@ -100,13 +101,7 @@ zle -N select-history
 bindkey "^h" select-history
 
 # ブランチを切り替える
-function ghq-switch() {
-  git switch $(git branch -l | fzf | tr -d "* ")
-  zle clear-screen
-}
-
-zle -N ghq-switch
-bindkey "^b" ghq-switch
+bindkey -s "^b" "gwt move\n"
 
 # カレント行をnvimで編集
 function edit_current_line() {
