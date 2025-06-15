@@ -143,6 +143,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
     -- ファイル操作
     h.nmap("y", ':call ddu#ui#do_action("itemAction", {"name": "copy"})<CR>', opts)
+    h.nmap("Y", ':call ddu#ui#do_action("itemAction", {"name": "yank"})<CR>', opts)
     h.nmap("p", ':call ddu#ui#do_action("itemAction", {"name": "paste"})<CR>', opts)
     h.nmap("d", ':call ddu#ui#do_action("itemAction", {"name": "delete"})<CR>', opts)
     h.nmap("r", ':call ddu#ui#do_action("itemAction", {"name": "rename"})<CR>', opts)
