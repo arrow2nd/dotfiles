@@ -28,7 +28,7 @@ abbrev-alias gb='git branch'
 abbrev-alias gc='git commit'
 abbrev-alias gf='git fetch'
 abbrev-alias gsw='git switch'
-abbrev-alias git-remote-http-to-ssh="git remote set-url origin $(git remote get-url origin | sed 's|https://github.com/|git@github.com:|')"
+alias git-remote-http-to-ssh='current_url=$(git remote get-url origin 2>/dev/null) && if [[ "$current_url" =~ ^https://github\.com/ ]]; then git remote set-url origin "$(echo "$current_url" | sed "s|https://github.com/|git@github.com:|")"; else echo "Remote is already SSH or not a GitHub HTTPS URL: $current_url"; fi'
 
 # eza
 abbrev-alias l='eza -la'
