@@ -34,12 +34,13 @@ export class Config extends BaseConfig {
       },
       sourceOptions: {
         "_": {
-          matchers: ["matcher_multi_regex"],
+          matchers: ["matcher_fzf"],
+          sorters: ["sorter_fzf"],
           ignoreCase: true,
         },
       },
       filterParams: {
-        matcher_multi_regex: {
+        matcher_fzf: {
           highlightMatched: "Search",
         },
       },
