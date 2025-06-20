@@ -33,6 +33,9 @@ repo = "vim-jp/vimdoc-ja"
 repo = "nvim-lua/plenary.nvim"
 
 [[plugins]]
+repo = "folke/snacks.nvim"
+
+[[plugins]]
 repo = "ryoppippi/vim-bun-lock"
 rev = "lua"
 
@@ -116,8 +119,8 @@ require("config.copilot")
 repo = "MunifTanjim/nui.nvim"
 
 [[plugins]]
-repo = "greggh/claude-code.nvim"
-depends = ["plenary.nvim"]
+repo = "coder/claudecode.nvim"
+depends = ["snacks.nvim"]
 lua_source = """
 require("config.claude")
 """
