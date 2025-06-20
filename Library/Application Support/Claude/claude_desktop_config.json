@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "vv-mcp": {
+      "command": "mise",
+      "args": [
+        "exec",
+        "bun@1",
+        "--",
+        "bunx",
+        "-y",
+        "@arrow2nd/vv-mcp"
+      ],
+      "env": {
+        "VOICEVOX_URL": "http://localhost:50021",
+        "DEFAULT_VOICE_ID": "47",
+        "DEFAULT_SPEED": "1.0"
+      }
+    }
+  }
+}
