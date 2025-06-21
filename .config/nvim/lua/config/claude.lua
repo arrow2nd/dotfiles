@@ -3,7 +3,7 @@ local h = require("util.helper")
 require("claudecode").setup()
 
 -- keymaps
-h.nmap("<Leader>ac", "<CMD>ClaudeCode<CR>")
+h.nmap("<Leader>aa", "<CMD>ClaudeCode<CR>")
 h.nmap("<Leader>af", "<CMD>ClaudeCodeFocus<CR>")
 h.nmap("<Leader>ar", "<CMD>ClaudeCode --resume<CR>")
 h.nmap("<Leader>ac", "<CMD>ClaudeCode --continue<CR>")
