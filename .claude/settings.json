@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "mcp__vv-mcp__*"
+      "mcp__vv-mcp__*",
+      "vv-mcp:*"
     ],
     "deny": []
   }
