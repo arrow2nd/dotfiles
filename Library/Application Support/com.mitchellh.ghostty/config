@@ -1,0 +1,107 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+# Font Settings
+window-title-font-family = "PlemolJP Console NF"
+font-family = "PlemolJP Console NF"
+font-size = 12
+
+# Cursor Style
+cursor-style = block
+cursor-style-blink = false
+
+# Window Settings
+window-padding-x = 16
+window-padding-y = 4,8
+
+# Appearance Settings
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
+mouse-hide-while-typing = true
+
+# Colors - Minai Color Scheme
+background = #232934
+foreground = #E8E2D6
+
+# Cursor
+cursor-color = #E8E2D6
+cursor-text = #232934
+
+# Selection
+selection-background = #DFC2BA
+selection-foreground = #232935
+
+# 256 Color Palette (ANSI colors)
+# Standard colors (0-7)
+palette = 0=#262626
+palette = 1=#c66471
+palette = 2=#bbcacb
+palette = 3=#d4af8d
+palette = 4=#7ea1b6
+palette = 5=#9b8ea8
+palette = 6=#85a3a1
+palette = 7=#b3b8c2
+
+# Bright colors (8-15)
+palette = 8=#818181
+palette = 9=#D46A74
+palette = 10=#CED9D9
+palette = 11=#E0BF9D
+palette = 12=#82ACC2
+palette = 13=#ABA1B5
+palette = 14=#99B0B0
+palette = 15=#BAC4CF
+
+# Window Settings
+window-decoration = auto
+scrollback-limit = 3500
+
+# Keybindings
+# Copy & Paste
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+
+# Tab management
+keybind = alt+t=new_tab
+keybind = alt+left_bracket=previous_tab
+keybind = alt+right_bracket=next_tab
+keybind = alt+shift+left_bracket=move_tab:-1
+keybind = alt+shift+right_bracket=move_tab:1
+
+# Tab switching (1-5)
+keybind = alt+one=goto_tab:1
+keybind = alt+two=goto_tab:2
+keybind = alt+three=goto_tab:3
+keybind = alt+four=goto_tab:4
+keybind = alt+five=goto_tab:5
+
+# Pane/Split management
+keybind = alt+v=new_split:right
+keybind = alt+s=new_split:down
+keybind = alt+x=close_surface
+keybind = alt+h=goto_split:left
+keybind = alt+l=goto_split:right
+keybind = alt+k=goto_split:up
+keybind = alt+j=goto_split:down
+keybind = alt+nine=toggle_split_zoom
+
+# quick terminal
+keybind = global:cmd+g=toggle_quick_terminal
+
+# Application Settings
+shell-integration = zsh
+quit-after-last-window-closed = false
+copy-on-select = true
+shell-integration-features = no-cursor
