@@ -34,6 +34,7 @@ opt.shortmess = "I"
 
 -- 行
 opt.number = true
+opt.relativenumber = true
 opt.nuw = 4
 opt.signcolumn = "yes"
 opt.cursorline = true
