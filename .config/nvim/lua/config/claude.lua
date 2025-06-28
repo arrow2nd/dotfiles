@@ -1,6 +1,10 @@
 local h = require("util.helper")
 
-require("claudecode").setup()
+require("claudecode").setup({
+  terminal = {
+    provider = "native",
+  },
+})
 
 -- keymaps
 h.nmap("<Leader>ac", "<CMD>ClaudeCode<CR>")

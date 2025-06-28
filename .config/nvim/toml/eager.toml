@@ -120,7 +120,6 @@ repo = "MunifTanjim/nui.nvim"
 
 [[plugins]]
 repo = "coder/claudecode.nvim"
-depends = ["snacks.nvim"]
 lua_source = """
 require("config.claude")
 """
