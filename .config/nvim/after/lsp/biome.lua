@@ -13,7 +13,7 @@ local included_filetypes = {
 local function code_action_sync(client, bufnr, cmd)
   local params = vim.lsp.util.make_range_params(nil, client.offset_encoding)
   params.context = { only = { cmd }, diagnostics = {} }
-  local res = client.request_sync("textDocument/codeAction", params, 3000, bufnr)
+  local res = client:request_sync("textDocument/codeAction", params, 3000, bufnr)
   if res and res.result then
     for _, r in pairs(res.result) do
       if r.edit then
