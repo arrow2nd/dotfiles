@@ -80,10 +80,6 @@ local tab_title_list = {
     icon = " ",
   },
   {
-    title = "^aqua$",
-    icon = " ",
-  },
-  {
     title = "^wezterm$",
     icon = "",
   },

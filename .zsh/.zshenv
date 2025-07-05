@@ -10,10 +10,6 @@ export SHELL=$(which zsh)
 # fzf
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 
-# aqua
-export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
-export AQUA_GLOBAL_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/aqua/aqua.yaml"
-
 # 自作スクリプト
 export PATH="$HOME/.local/bin:$PATH"
 

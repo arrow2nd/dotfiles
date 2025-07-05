@@ -1,4 +1,3 @@
-tap "aquaproj/aqua"
 tap "arrow2nd/tap"
 tap "goreleaser/tap"
 tap "homebrew/bundle"
@@ -41,7 +40,6 @@ brew "sheldon"
 brew "trash-cli", link: true
 brew "vim"
 brew "wget"
-brew "aquaproj/aqua/aqua"
 brew "arrow2nd/tap/anct"
 brew "arrow2nd/tap/jisyo"
 brew "goreleaser/tap/goreleaser"
