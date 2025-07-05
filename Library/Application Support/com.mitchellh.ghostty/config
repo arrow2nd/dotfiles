@@ -69,6 +69,11 @@ palette = 15=#BAC4CF
 window-decoration = auto
 scrollback-limit = 3500
 
+# Copy
+copy-on-select = true
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = true
+
 # Keybindings
 # Copy & Paste
 keybind = ctrl+shift+c=copy_to_clipboard
