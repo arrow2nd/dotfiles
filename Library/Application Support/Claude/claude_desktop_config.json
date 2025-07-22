@@ -8,7 +8,7 @@
         "--",
         "bunx",
         "-y",
-        "@arrow2nd/vv-mcp"
+        "@arrow2nd/vv-mcp@latest"
       ],
       "env": {
         "VOICEVOX_URL": "http://localhost:50021",
