@@ -58,6 +58,7 @@ h.nmap("<Leader>gg", ":Ddu git_status -name=git_status<CR>")
 
 -- grep
 h.nmap(";g", ":Ddu -name=grep<CR>")
+h.nmap(";G", ':execute "Ddu -name=grep -input=" . expand("<cword>")<CR>')
 
 -- ファイラー
 h.nmap(";b", [[:Ddu -name=filer -searchPath=`expand('%:p')`<CR>]])
