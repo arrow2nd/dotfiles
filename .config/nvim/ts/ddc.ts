@@ -15,12 +15,12 @@ export class Config extends BaseConfig {
         "lsp",
         "vsnip",
         "file",
-        "around",
+        "buffer",
       ],
       cmdlineSources: {
-        ":": ["cmdline", "around"],
-        "/": ["around"],
-        "?": ["around"],
+        ":": ["cmdline", "buffer"],
+        "/": ["buffer"],
+        "?": ["buffer"],
       },
       sourceOptions: {
         "_": {
@@ -30,8 +30,8 @@ export class Config extends BaseConfig {
           minAutoCompleteLength: 1,
           ignoreCase: true,
         },
-        around: {
-          mark: "[A]",
+        buffer: {
+          mark: "[B]",
         },
         lsp: {
           mark: "[L]",
@@ -74,6 +74,12 @@ export class Config extends BaseConfig {
           ),
           enableAdditionalTextEdit: true,
           confirmBehavior: "replace",
+        },
+        buffer: {
+          requireSameFiletype: false,
+          limitBytes: 5000000,
+          fromAltBuf: true,
+          forceCollect: true,
         },
       },
     });

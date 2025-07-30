@@ -16,7 +16,7 @@ repo = "Shougo/ddc-ui-pum"
 depends = ["ddc.vim"]
 
 [[plugins]]
-repo = "Shougo/ddc-source-around"
+repo = "matsui54/ddc-source-buffer"
 depends = ["ddc.vim"]
 
 [[plugins]]
