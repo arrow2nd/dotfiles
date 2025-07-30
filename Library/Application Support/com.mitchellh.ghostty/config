@@ -70,9 +70,8 @@ window-decoration = auto
 scrollback-limit = 3500
 
 # Copy
-copy-on-select = true
+copy-on-select = clipboard
 clipboard-trim-trailing-spaces = true
-clipboard-paste-protection = true
 
 # Keybindings
 # Copy & Paste
@@ -109,5 +108,4 @@ keybind = global:cmd+g=toggle_quick_terminal
 # Application Settings
 shell-integration = zsh
 quit-after-last-window-closed = false
-copy-on-select = true
 shell-integration-features = no-cursor
