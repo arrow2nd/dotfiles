@@ -12,6 +12,7 @@ export class Config extends BaseConfig {
       ],
       sources: [
         "skkeleton",
+        "skkeleton_okuri",
         "lsp",
         "vsnip",
         "file",
@@ -48,11 +49,18 @@ export class Config extends BaseConfig {
         },
         skkeleton: {
           mark: "[SKK]",
-          matchers: ["skkeleton"],
+          matchers: [],
           sorters: [],
           converters: [],
           isVolatile: true,
-          minAutoCompleteLength: 2,
+          minAutoCompleteLength: 1,
+        },
+        skkeleton_okuri: {
+          mark: "[SKK*]",
+          matchers: [],
+          sorters: [],
+          converters: [],
+          isVolatile: true,
         },
         cmdline: {
           mark: "[C]",
