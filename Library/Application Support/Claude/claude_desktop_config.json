@@ -16,6 +16,17 @@
         "DEFAULT_SPEED": "1.0"
       }
     },
+    "playwright": {
+      "command": "mise",
+      "args": [
+        "exec",
+        "bun@1",
+        "--",
+        "bunx",
+        "-y",
+        "@playwright/mcp@latest"
+      ]
+    },
     "todoist-mcp": {
       "command": "sh",
       "args": [
