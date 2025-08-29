@@ -16,12 +16,35 @@
         "DEFAULT_SPEED": "1.0"
       }
     },
+    "playwright": {
+      "command": "mise",
+      "args": [
+        "exec",
+        "bun@1",
+        "--",
+        "bunx",
+        "-y",
+        "@playwright/mcp@latest"
+      ]
+    },
     "todoist-mcp": {
       "command": "sh",
       "args": [
         "-c",
         "TODOIST_API_KEY=$(op read 'op://Personal/elpvl2jyy2ltlzrspt4pgemewe/4gu4tenem7kc3mz56qpquajj2a') mise exec bun@1 -- bun ~/workspace/github.com/Doist/todoist-mcp/build/index.js"
       ]
+    },
+    "claude_code": {
+      "command": "mise",
+      "args": [
+        "exec",
+        "claude@1",
+        "--",
+        "claude",
+        "mcp",
+        "serve"
+      ],
+      "env": {}
     }
   }
 }
