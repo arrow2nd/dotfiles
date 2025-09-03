@@ -90,6 +90,8 @@ export class Config extends BaseConfig {
             "--hidden",
             "--glob",
             "!.git",
+            "--glob",
+            "!*.{jpg,jpeg,png,gif,bmp,svg,webp,ico}",
           ],
         },
       },
