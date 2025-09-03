@@ -1,0 +1,148 @@
+#!/bin/bash
+
+# say-vv - VOICEVOX用シンプル音声合成コマンド
+
+# 設定
+WORK_DIR="$HOME/.cache/voicevox"
+VOICEVOX_URL="127.0.0.1:50021"
+DEFAULT_VOICE_ID=47
+DEFAULT_SPEED=1.0
+
+# ヘルプ表示
+show_help() {
+  cat << EOF
+使用方法: say-vv [オプション] "テキスト"
+
+オプション:
+  -v, --voice <id>    音声ID (デフォルト: $DEFAULT_VOICE_ID)
+  -s, --speed <num>   話速 (デフォルト: $DEFAULT_SPEED)
+  -l, --list          利用可能な音声一覧を表示
+  -h, --help          このヘルプを表示
+
+例:
+  say-vv "こんにちは、世界"
+  say-vv -v 3 "ずんだもんの声です"
+  say-vv -s 1.5 "早口で話します"
+  say-vv -v 8 -s 0.8 "春日部つむぎでゆっくり"
+EOF
+}
+
+# 音声一覧表示
+list_voices() {
+  echo "利用可能な音声:"
+  curl -s "$VOICEVOX_URL/speakers" | jq -r '
+    .[] | 
+    .name as $character | 
+    .styles[] | 
+    "  \($character) - \(.name) (ID: \(.id))"
+  ' 2>/dev/null || {
+    echo "エラー: VOICEVOX ENGINEに接続できません"
+    exit 1
+  }
+}
+
+# 音声合成と再生を実行
+synthesize_and_play() {
+  local text="$1"
+  local voice_id="$2"
+  local speed="$3"
+  
+  # VOICEVOX ENGINEへの接続テスト
+  if ! curl -s --connect-timeout 3 "$VOICEVOX_URL/speakers" >/dev/null; then
+    echo "エラー: VOICEVOX ENGINEに接続できません ($VOICEVOX_URL)" >&2
+    return 1
+  fi
+  
+  # 一時的な作業ディレクトリ作成
+  local work_dir=$(mktemp -d)
+  trap "rm -rf '$work_dir'" EXIT
+  
+  # 音声クエリ作成
+  curl -s \
+    -X POST \
+    "$VOICEVOX_URL/audio_query?speaker=$voice_id" \
+    --get --data-urlencode "text=$text" \
+    > "$work_dir/query.json"
+  
+  # クエリの確認
+  if [[ ! -f "$work_dir/query.json" ]] || [[ ! -s "$work_dir/query.json" ]]; then
+    echo "エラー: 音声クエリの作成に失敗しました" >&2
+    return 1
+  fi
+  
+  # 話速調整
+  if [[ "$speed" != "$DEFAULT_SPEED" ]]; then
+    sed -i.bak -E "s/\"speedScale\":[0-9.]+/\"speedScale\":$speed/" "$work_dir/query.json"
+  fi
+  
+  # 音声合成
+  curl -s \
+    -H "Content-Type: application/json" \
+    -X POST \
+    -d @"$work_dir/query.json" \
+    "$VOICEVOX_URL/synthesis?speaker=$voice_id" \
+    > "$work_dir/audio.wav"
+  
+  # 音声ファイルの確認と再生
+  if [[ -f "$work_dir/audio.wav" ]] && [[ -s "$work_dir/audio.wav" ]]; then
+    # WAVヘッダーチェック
+    local header=$(head -c 4 "$work_dir/audio.wav" 2>/dev/null)
+    if [[ "$header" == "RIFF" ]]; then
+      afplay "$work_dir/audio.wav"
+    else
+      echo "エラー: 不正な音声ファイルが生成されました" >&2
+      return 1
+    fi
+  else
+    echo "エラー: 音声ファイルの生成に失敗しました" >&2
+    return 1
+  fi
+}
+
+
+# メイン処理
+main() {
+  local text=""
+  local voice_id=$DEFAULT_VOICE_ID
+  local speed=$DEFAULT_SPEED
+  
+  # オプション解析
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -v|--voice)
+        voice_id="$2"
+        shift 2
+        ;;
+      -s|--speed)
+        speed="$2"
+        shift 2
+        ;;
+      -l|--list)
+        list_voices
+        exit 0
+        ;;
+      -h|--help)
+        show_help
+        exit 0
+        ;;
+      *)
+        text="$*"
+        break
+        ;;
+    esac
+  done
+  
+  # 引数チェック
+  if [[ -z "$text" ]]; then
+    echo "エラー: テキストが指定されていません"
+    echo ""
+    show_help
+    exit 1
+  fi
+  
+  # 音声合成と再生を実行
+  synthesize_and_play "$text" "$voice_id" "$speed"
+}
+
+# スクリプト実行
+main "$@"

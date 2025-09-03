@@ -13,10 +13,13 @@
           {
             "type": "command",
             "command": "osascript -e 'display notification \"ユーザーの介入を求めています\" with title \"Claude Code\"'"
+          },
+          {
+            "type": "command",
+            "command": "say-vv '確認お願いします'"
           }
         ]
       }
     ]
   }
 }
-
