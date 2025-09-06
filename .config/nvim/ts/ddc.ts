@@ -36,7 +36,7 @@ export class Config extends BaseConfig {
         },
         lsp: {
           mark: "[L]",
-          sorters: ["sorter_lsp-kind", "sorter_fuzzy"],
+          sorters: ["sorter_fuzzy"],
           dup: "keep",
           keywordPattern: "[a-zA-Z0-9_À-ÿ$#\\-*]*",
           forceCompletionPattern: "\\.\\w*|::\\w*|->\\w*",
