@@ -16,7 +16,7 @@
           },
           {
             "type": "command",
-            "command": "say-vv '確認お願いします'"
+            "command": "afplay /System/Library/Sounds/Funk.aiff"
           }
         ]
       }
