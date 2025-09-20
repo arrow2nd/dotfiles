@@ -31,6 +31,7 @@ window-padding-y = 4,8
 macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
 mouse-hide-while-typing = true
+macos-window-buttons = hidden
 
 # Colors - Minai Color Scheme
 background = #232934
@@ -104,6 +105,7 @@ keybind = alt+nine=toggle_split_zoom
 
 # quick terminal
 keybind = global:cmd+g=toggle_quick_terminal
+quick-terminal-size = 50%,80%
 
 # Application Settings
 shell-integration = zsh
