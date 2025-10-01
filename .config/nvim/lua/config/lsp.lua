@@ -38,6 +38,7 @@ require("mason-tool-installer").setup({
     "eslint",
     "typos_lsp",
     "stylelint_lsp",
+    "copilot",
   },
   run_on_start = true,
   integrations = {
@@ -54,6 +55,8 @@ vim.lsp.config("*", {
 })
 
 vim.lsp.enable(require("mason-lspconfig").get_installed_servers())
+
+vim.lsp.inline_completion.enable()
 
 -- キーマップ
 h.nmap("ge", "<CMD>lua vim.diagnostic.open_float()<CR>", { desc = "Show diagnostic" })

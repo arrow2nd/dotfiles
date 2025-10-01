@@ -110,18 +110,9 @@ build = "deno task prepare"
 
 # AI支援系
 [[plugins]]
-repo = "zbirenbaum/copilot.lua"
+repo = "folke/sidekick.nvim"
 lua_source = """
-require("config.copilot")
-"""
-
-[[plugins]]
-repo = "MunifTanjim/nui.nvim"
-
-[[plugins]]
-repo = "coder/claudecode.nvim"
-lua_source = """
-require("config.claude")
+require("config.sidekick")
 """
 
 # Git系
