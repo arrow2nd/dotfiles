@@ -34,7 +34,7 @@ require("sidekick").setup({
   },
 })
 
--- keymaps
+-- サジェストの受け入れ
 for _, mode in pairs({ "n", "i" }) do
   h[mode .. "map"]("<c-cr>", function()
     -- if there is a next edit, jump to it, otherwise apply it if any
@@ -51,6 +51,7 @@ for _, mode in pairs({ "n", "i" }) do
   end, { expr = true, desc = "Goto/Apply Next Edit Suggestion" })
 end
 
+-- フォーカス移動
 for _, mode in pairs({ "n", "x", "i", "t" }) do
   h[mode .. "map"]("<c-.>", function()
     require("sidekick.cli").focus()
@@ -58,14 +59,22 @@ for _, mode in pairs({ "n", "x", "i", "t" }) do
 end
 
 for _, mode in pairs({ "n", "v" }) do
+  -- CLIのトグル
   h[mode .. "map"]("<leader>aa", function()
     require("sidekick.cli").toggle({ focus = true })
   end, { desc = "Sidekick Toggle CLI" })
 
+  -- Claude Code
   h[mode .. "map"]("<leader>ac", function()
     require("sidekick.cli").toggle({ name = "claude", focus = true })
   end, { desc = "Sidekick Claude Toggle" })
 
+  -- Codex
+  h[mode .. "map"]("<leader>ao", function()
+    require("sidekick.cli").toggle({ name = "codex", focus = true })
+  end, { desc = "Sidekick Codex Toggle" })
+
+  -- プロンプト選択
   h[mode .. "map"]("<leader>ap", function()
     require("sidekick.cli").select_prompt()
   end, { desc = "Sidekick Ask Prompt" })
