@@ -4,7 +4,7 @@ bun = "1"
 usage = "latest"
 yarn = "4"
 pnpm = "9"
-"npm:@anthropic-ai/claude-code" = "1"
+"npm:@anthropic-ai/claude-code" = "2"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
