@@ -9,6 +9,9 @@ local rootMarkers = {
     ".prettierrc.json",
     ".prettierrc.json5",
     ".prettierrc.toml",
+    "prettier.config.js",
+    "prettier.config.cjs",
+    "prettier.config.mjs",
   },
   biome = {
     "biome.json",
