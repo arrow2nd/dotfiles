@@ -86,44 +86,38 @@ for _, mode in pairs({ "n", "v" }) do
     local buf = vim.api.nvim_get_current_buf()
 
     -- ノーマルモードではファイル名のみ、ビジュアルモードでは行・列情報も含める
-    local loc_opts = mode == "n" and { row = false, col = false } or {}
-    local loc = " " .. require("sidekick.cli.context").get_location(buf, loc_opts)
+    local kind = mode == "n" and "file" or "position"
+    local ctx = require("sidekick.cli.context").ctx()
+    ctx.buf = buf
+    local loc_text = require("sidekick.cli.context.location").get(ctx, { kind = kind })
+    local Text = require("sidekick.text")
+    local loc = " " .. table.concat(Text.lines(loc_text), "\n")
 
     -- ビジュアルモードの場合は選択を解除
     if mode == "v" then
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
     end
 
-    -- Sidekickがまだ開いていなければ開く
+    -- Sidekickを開いて、ファイル情報を送信
     local cli = require("sidekick.cli")
-    local terminals = cli.get_terminals({ name = "claude" })
 
-    if #terminals == 0 then
-      -- Claudeのterminalがなければ開く
-      cli.show({
-        name = "claude",
-        focus = true,
-        on_show = function(terminal)
-          -- terminalが開いたら、ファイル情報を送信
-          if loc then
-            terminal:send(loc)
-          end
-        end,
+    -- まず表示してフォーカス
+    cli.show({
+      name = "claude",
+      focus = true,
+    })
+
+    -- 少し待ってからファイル情報を送信
+    vim.defer_fn(function()
+      local State = require("sidekick.cli.state")
+      State.with(function(state)
+        if state.session and loc then
+          state.session:send(loc)
+        end
+      end, {
+        filter = { name = "claude" },
       })
-    else
-      -- すでに開いている場合は、そのterminalにファイル情報を送信
-      local terminal = terminals[1]
-      if loc then
-        terminal:send(loc)
-      end
-      -- フォーカスを移動
-      if terminal:is_open() then
-        terminal:focus()
-      else
-        terminal:show()
-        terminal:focus()
-      end
-    end
+    end, 100)
   end)
 end
 
