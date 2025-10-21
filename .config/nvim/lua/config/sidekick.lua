@@ -4,6 +4,7 @@ local h = require("util.helper")
 _G.sidekick_active_terminal = nil
 
 require("sidekick").setup({
+  nes = { enabled = false },
   cli = {
     win = {
       keys = {
