@@ -91,7 +91,7 @@ for _, mode in pairs({ "n", "v" }) do
     ctx.buf = buf
     local loc_text = require("sidekick.cli.context.location").get(ctx, { kind = kind })
     local Text = require("sidekick.text")
-    local loc = " " .. table.concat(Text.lines(loc_text), "\n")
+    local loc = "A" .. table.concat(Text.lines(loc_text), "\n"):gsub(" :", ":")
 
     -- ビジュアルモードの場合は選択を解除
     if mode == "v" then
