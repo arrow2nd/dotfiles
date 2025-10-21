@@ -9,10 +9,10 @@ spoon.SpoonInstall.repos.PaperWM = {
 spoon.SpoonInstall:andUse("PaperWM", {
   repo = "PaperWM",
   config = {
-    screen_margin = 16,
+    screen_margin = 24,
     window_gap = 2,
-    swipe_fingers = 0,
-    swipe_gain = 1.0,
+    swipe_fingers = 4,
+    swipe_gain = 1.5,
   },
   start = true,
   hotkeys = {
@@ -28,10 +28,10 @@ spoon.SpoonInstall:andUse("PaperWM", {
     focus_next = { { "ctrl", "cmd" }, "j" },
 
     -- move windows around in tiled grid
-    swap_left = { { "ctrl", "cmd", "shift" }, "left" },
-    swap_right = { { "ctrl", "cmd", "shift" }, "right" },
-    swap_up = { { "ctrl", "cmd", "shift" }, "up" },
-    swap_down = { { "ctrl", "cmd", "shift" }, "down" },
+    swap_left = { { "ctrl", "cmd", "shift" }, "h" },
+    swap_right = { { "ctrl", "cmd", "shift" }, "l" },
+    swap_up = { { "ctrl", "cmd", "shift" }, "k" },
+    swap_down = { { "ctrl", "cmd", "shift" }, "j" },
 
     -- alternative: swap entire columns, rather than
     -- individual windows (to be used instead of
@@ -56,18 +56,18 @@ spoon.SpoonInstall:andUse("PaperWM", {
     barf_out = { { "ctrl", "cmd" }, "o" },
 
     -- move the focused window into / out of the tiling layer
-    toggle_floating = { { "alt", "cmd", "shift" }, "escape" },
+    toggle_floating = { { "ctrl", "cmd", "shift" }, "space" },
 
     -- focus the first / second / etc window in the current space
-    focus_window_1 = { { "cmd", "shift" }, "1" },
-    focus_window_2 = { { "cmd", "shift" }, "2" },
-    focus_window_3 = { { "cmd", "shift" }, "3" },
-    focus_window_4 = { { "cmd", "shift" }, "4" },
-    focus_window_5 = { { "cmd", "shift" }, "5" },
-    focus_window_6 = { { "cmd", "shift" }, "6" },
-    focus_window_7 = { { "cmd", "shift" }, "7" },
-    focus_window_8 = { { "cmd", "shift" }, "8" },
-    focus_window_9 = { { "cmd", "shift" }, "9" },
+    focus_window_1 = { { "cmd" }, "1" },
+    focus_window_2 = { { "cmd" }, "2" },
+    focus_window_3 = { { "cmd" }, "3" },
+    focus_window_4 = { { "cmd" }, "4" },
+    focus_window_5 = { { "cmd" }, "5" },
+    focus_window_6 = { { "cmd" }, "6" },
+    focus_window_7 = { { "cmd" }, "7" },
+    focus_window_8 = { { "cmd" }, "8" },
+    focus_window_9 = { { "cmd" }, "9" },
 
     -- switch to a new Mission Control space
     -- switch_space_l = { { "alt", "cmd" }, "," },
