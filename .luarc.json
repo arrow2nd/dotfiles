@@ -1,4 +1,6 @@
 {
-  "diagnostics.globals": ["vim", "MiniStatusline"],
+  "diagnostics.globals": ["vim", "MiniStatusline",
+        "hs",
+        "spoon"],
   "diagnostics.disable": ["undefined-field", "different-requires"]
 }
