@@ -1,0 +1,32 @@
+font=BIZTER 10
+
+sort=-time
+max-history=6
+default-timeout=10000
+
+layer=overlay
+width=400
+height=200
+margin=8
+padding=8,12
+
+border-size=0
+border-radius=4
+
+icon-path=/usr/share/icons/Nordzy:/usr/share/icons/Nordzy-dark
+
+[urgency=normal]
+background-color=#6b7089dd
+text-color=#c6c8d1
+
+[urgency=low]
+background-color=#e2a478dd
+text-color=#1e2132
+
+[urgency=critical]
+background-color=#e27878
+text-color=#1e2132
+on-notify=exec paplay /usr/share/sounds/freedesktop/stereo/message.oga
+
+[mode=silent]
+invisible=1
