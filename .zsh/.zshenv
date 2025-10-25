@@ -46,5 +46,13 @@ if [[ $(uname) == "Darwin" ]]; then
   compinit
 fi
 
+# Linux
+if [[ $(uname) == "Linux" ]]; then
+  export GTK_IM_MODULE=fcitx
+  export QT_IM_MODULE=fcitx
+  export QT4_IM_MODULE=fcitx
+  export XMODIFIERS=@im=fcitx
+fi
+
 # ローカル設定
 [ -f $ZDOTDIR/.zshenv_local ] && . $ZDOTDIR/.zshenv_local
