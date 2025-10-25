@@ -85,6 +85,11 @@ sudo pacman -S --noconfirm \
 
 yay -S niri ly vicinae-bin
 
+echo "[ IME ]"
+sudo pacman -S --noconfirm \
+    fcitx5-skk\
+    fcitx5-configtool
+
 echo "[ systemctl ]"
 sudo systemctl enable ly.service
 
