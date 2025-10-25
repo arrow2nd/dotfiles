@@ -44,7 +44,7 @@ button:hover {
   padding-top: 3px;
   transition: none;
   border: 1px solid #384153;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 /* -- Island group separations -- */
@@ -87,11 +87,13 @@ button:hover {
 
 /* Group ends */
 #memory {
+  margin-left: 0;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
 #bluetooth {
+  margin-left: 0;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
