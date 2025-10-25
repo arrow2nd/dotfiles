@@ -10,23 +10,18 @@ height=200
 margin=8
 padding=8,12
 
-border-size=0
-border-radius=4
-
-icon-path=/usr/share/icons/Nordzy:/usr/share/icons/Nordzy-dark
-
-[urgency=normal]
-background-color=#384153dd
+border-size=1
+border-radius=10
+background-color=#232934
 text-color=#e8e2d6
+border-color=#384153
+progress-color=over #384153
 
 [urgency=low]
-background-color=#d4af8ddd
-text-color=#232934
+border-color=#d4af8d
 
 [urgency=critical]
-background-color=#c66471
-text-color=#232934
-on-notify=exec paplay /usr/share/sounds/freedesktop/stereo/message.oga
+border-color=#c66471
 
 [mode=silent]
 invisible=1
