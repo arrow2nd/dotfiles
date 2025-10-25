@@ -13,22 +13,37 @@
     "battery",
     "network",
     "bluetooth",
-    "clock"
+    "clock",
+    "custom/notification"
   ],
   "niri/workspaces": {
-    "persistent_workspaces": {
-      "1": [],
-      "2": [],
-      "3": []
-    },
     "all-outputs": true,
-    "active-only": false,
     "format": "{icon}",
     "format-icons": {
       "urgent": "!!",
       "focused": "",
       "default": ""
     }
+  },
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   },
   "tray": {
     "icon-size": 14,
@@ -46,10 +61,6 @@
   "memory": {
     "format": "󰍛 {}%",
     "tooltip": true
-  },
-  "temperature": {
-    "critical-threshold": 80,
-    "format": " {temperatureC}°C"
   },
   "battery": {
     "states": {
