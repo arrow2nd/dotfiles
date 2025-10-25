@@ -73,7 +73,6 @@ yay -S niri ly vicinae-bin
 
 echo "[ systemctl ]"
 sudo systemctl enable ly.service
-systemctl --user enable vicinae.service
 
 echo "[ Go CLI tools ]"
 export PATH="$HOME/go/bin:$PATH"

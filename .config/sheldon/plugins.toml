@@ -34,11 +34,17 @@ apply = ["defer"]
 [plugins.zsh-abbrev-alias]
 github = "momo-lab/zsh-abbrev-alias"
 
-[plugins.op]
-local = "~/.config/op"
+# [plugins.op]
+# local = "~/.config/op"
 
 [plugins.ni]
 github = "azu/ni.zsh"
+apply = ["defer"]
+
+[plugins."gwt.zsh"]
+github = "arrow2nd/gwt.zsh"
+apply = ["defer"]
+# local = "~/workspace/github.com/arrow2nd/gwt.zsh"
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
@@ -46,6 +52,3 @@ inline = 'autoload -Uz compinit && zsh-defer compinit'
 [plugins.minimal]
 github = "subnixr/minimal"
 
-[plugins."gwt.zsh"]
-github = "arrow2nd/gwt.zsh"
-# local = "~/workspace/github.com/arrow2nd/gwt.zsh"
