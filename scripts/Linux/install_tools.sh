@@ -70,7 +70,7 @@ sudo ufw default allow outgoing
 echo "[ Desktop ]"
 sudo pacman -S --noconfirm \
   waybar \
-  mako \
+  swaync \
   wob \
   ghostty \
   swaybg \

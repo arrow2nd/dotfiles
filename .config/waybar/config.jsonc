@@ -4,20 +4,18 @@
   "height": 32, // Waybar height (to be removed for auto height)
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
-  "modules-left": ["sway/workspaces"],
-  "modules-center": ["sway/mode"],
+  "modules-left": ["niri/workspaces"],
   "modules-right": [
     "tray",
     "cpu",
     "memory",
-    "temperature",
     "pulseaudio",
     "battery",
     "network",
     "bluetooth",
     "clock"
   ],
-  "sway/workspaces": {
+  "niri/workspaces": {
     "persistent_workspaces": {
       "1": [],
       "2": [],
@@ -32,16 +30,6 @@
       "default": ""
     }
   },
-  "sway/mode": {
-    "format": "<span style=\"italic\">{}</span>"
-  },
-  "sway/scratchpad": {
-    "format": "{icon} {count}",
-    "show-empty": false,
-    "format-icons": ["", ""],
-    "tooltip": true,
-    "tooltip-format": "{app}: {title}"
-  },
   "tray": {
     "icon-size": 14,
     "spacing": 10
@@ -53,7 +41,7 @@
   "cpu": {
     "format": "󰄛 {usage}%",
     "tooltip": true,
-    "on-click": "swaymsg exec \\$term_float bashtop"
+    "on-click": "niri msg action spawn -- $term_float bashtop"
   },
   "memory": {
     "format": "󰍛 {}%",
@@ -78,12 +66,12 @@
     "format-ethernet": "󰈀",
     "format-disconnected": "OFFLINE",
     "tooltip-format": "{essid} ({ifname}) : {ipaddr}",
-    "on-click": "swaymsg exec \\$term_float nmtui"
+    "on-click": "niri msg action spawn -- $term_float nmtui"
   },
   "bluetooth": {
     "format": "",
     "format-disabled": "󰂲",
-    "on-click": "swaymsg exec \\$term_float bluetuith",
+    "on-click": "niri msg action spawn -- $term_float bluetuith",
     "on-click-right": "rfkill toggle bluetooth"
   },
   "pulseaudio": {
@@ -93,8 +81,8 @@
     "format-source": " 󰍬",
     "format-source-muted": " 󰍭",
     "on-click": "pavucontrol",
-    "on-click-right": "swaymsg exec \\$volume_toggle_mute",
-    "on-scroll-up": "swaymsg exec \\$volume_up",
-    "on-scroll-down": "swaymsg exec \\$volume_down"
+    "on-click-right": "niri msg action spawn -- $volume_toggle_mute",
+    "on-scroll-up": "niri msg action spawn -- $volume_up",
+    "on-scroll-down": "niri msg action spawn -- $volume_down"
   }
 }
