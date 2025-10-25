@@ -1,4 +1,4 @@
-/* waybar (iceberg 風味) */
+/* waybar (minai 風味) */
 
 * {
   font-family: "PlemolJP Console NF";
@@ -6,8 +6,8 @@
 }
 
 window#waybar {
-  color: #c6c8d1;
-  background-color: #1e2132;
+  color: #e8e2d6;
+  background-color: #232934;
   transition-property: background-color;
   transition-duration: 0.5s;
   border-radius: 0;
@@ -33,7 +33,7 @@ button:hover {
 }
 
 #workspaces button.urgent {
-  color: #e2a478;
+  color: #d4af8d;
   background-color: transparent;
 }
 
@@ -57,7 +57,7 @@ button:hover {
   margin: 4px 2px;
   padding: 0 6px;
   border-radius: 4px;
-  color: #c6c8d1;
+  color: #e8e2d6;
 }
 
 #window,
@@ -66,7 +66,7 @@ button:hover {
 }
 
 #mode {
-  background-color: #a093c7;
+  background-color: #837591;
 }
 
 #clock {
@@ -75,25 +75,25 @@ button:hover {
 
 #battery.charging,
 #battery.plugged {
-  color: #1e2132;
-  background-color: #b4be82;
+  color: #232934;
+  background-color: #bbcacb;
 }
 
 #battery.warning:not(.charging) {
-  color: #1e2132;
-  background-color: #e2a478;
+  color: #232934;
+  background-color: #d4af8d;
 }
 
 @keyframes blink {
   to {
-    color: #1e2132;
-    background-color: #e27878;
+    color: #232934;
+    background-color: #c66471;
   }
 }
 
 #battery.critical:not(.charging) {
-  color: #1e2132;
-  background-color: #e2a478;
+  color: #232934;
+  background-color: #d4af8d;
   animation-name: blink;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -106,18 +106,18 @@ label:focus {
 }
 
 #network.disconnected {
-  color: #1e2132;
-  background-color: #e27878;
+  color: #232934;
+  background-color: #c66471;
 }
 
 #pulseaudio.muted {
-  color: #1e2132;
-  background-color: #d2d4de;
+  color: #232934;
+  background-color: #b3b8c2;
 }
 
 #temperature.critical {
-  color: #1e2132;
-  background-color: #e27878;
+  color: #232934;
+  background-color: #c66471;
 }
 
 #tray>.passive {
