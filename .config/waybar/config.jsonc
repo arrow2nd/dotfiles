@@ -26,8 +26,8 @@
     "spacing": 8
   },
   "clock": {
-    "format": "{:%H:%M | %m/%d %b}",
-    "tooltip-format": "<big>{:%Y %m}</big>\n<tt><small>{calendar}</small></tt>"
+    "format": "{:%m/%d %H:%M}",
+    "tooltip-format": "{calendar}"
   },
   "cpu": {
     "format": "󰍛 {usage}%",
@@ -64,9 +64,9 @@
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
     "format": "󰕾 {volume}%{format_source}",
-    "format-muted": "󰸈{format_source}",
-    "format-source": "| 󰍬",
-    "format-source-muted": "| 󰍭"
+    "format-muted": "󰸈 {format_source}",
+    "format-source": " | 󰍬",
+    "format-source-muted": " | 󰍭"
     // "on-click": "pavucontrol",
     // "on-click-right": "niri msg action spawn -- $volume_toggle_mute",
     // "on-scroll-up": "niri msg action spawn -- $volume_up",
