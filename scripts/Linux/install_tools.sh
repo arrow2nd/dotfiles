@@ -41,6 +41,9 @@ yay -S --noconfirm \
   stylua \
   efm-langserver
 
+echo "[ Fonts ]"
+sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+
 echo "[ Apps ]"
 yay -S ufw zen-browser-bin pamac-aur
 
@@ -53,9 +56,6 @@ sudo pacman -S waybar mako wob ghostty swaybg swayidle swaylock xdg-desktop-port
 yay -S niri ly vicinae-bin
 
 sudo systemctl enable ly.service
-
-echo "[ Fonts ]"
-sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
 mkdir tmp
 cd tmp
