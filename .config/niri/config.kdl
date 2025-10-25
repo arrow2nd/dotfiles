@@ -270,7 +270,6 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "vicinae server"
 spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:

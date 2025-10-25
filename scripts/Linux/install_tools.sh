@@ -44,19 +44,6 @@ yay -S --noconfirm \
 echo "[ Fonts ]"
 sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
-echo "[ Apps ]"
-yay -S ufw zen-browser-bin pamac-aur
-
-echo "[ ufw ]"
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-
-echo "[ Desktop ]"
-sudo pacman -S waybar mako wob ghostty swaybg swayidle swaylock xdg-desktop-portal-gtk xdg-desktop-portal-gnome gnome-keyring
-yay -S niri ly vicinae-bin
-
-sudo systemctl enable ly.service
-
 mkdir tmp
 cd tmp
 curl -sL -o plemoljp.zip https://github.com/yuru7/PlemolJP/releases/download/v3.0.0/PlemolJP_NF_v3.0.0.zip
@@ -67,6 +54,26 @@ unzip bizter.zip
 sudo cp -r ./BIZTER_v0.0.2 /usr/share/fonts/
 cd ../
 rm -rf tmp
+
+echo "[ Apps ]"
+yay -S --noconfirm \
+  ufw \
+  zen-browser-bin \
+  pamac-aur \
+  1password \
+  1password-cli
+
+echo "[ ufw ]"
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+echo "[ Desktop ]"
+sudo pacman -S waybar mako wob ghostty swaybg swayidle swaylock xdg-desktop-portal-gtk xdg-desktop-portal-gnome gnome-keyring
+yay -S niri ly vicinae-bin
+
+echo "[ systemctl ]"
+sudo systemctl enable ly.service
+systemctl --user enable vicinae.service
 
 echo "[ Go CLI tools ]"
 export PATH="$HOME/go/bin:$PATH"
