@@ -80,7 +80,8 @@ sudo pacman -S --noconfirm \
   xdg-desktop-portal-gnome \
   gnome-keyring \
   xwayland-satellite \
-  udiskie
+  udiskie \
+  polkit-gnome
 
 yay -S niri ly vicinae-bin
 
