@@ -1,20 +1,18 @@
-/* waybar (minai 風味) */
-
+/* -- Global rules -- */
 * {
+  border: none;
   font-family: "PlemolJP Console NF";
   font-size: 14px;
+  min-height: 10px;
 }
 
 window#waybar {
-  color: #e8e2d6;
-  background-color: #232934;
-  transition-property: background-color;
-  transition-duration: 0.5s;
-  border-radius: 0;
+  background: rgba(0, 0, 0, 0);
+  opacity: 1;
 }
 
 window#waybar.hidden {
-  opacity: 0.2;
+  opacity: 0;
 }
 
 button {
@@ -22,66 +20,107 @@ button {
   border-radius: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
   background: inherit;
 }
 
-#workspaces button {
-  padding: 2px;
-  background-color: transparent;
-}
-
-#workspaces button.urgent {
-  color: #d4af8d;
-  background-color: transparent;
-}
-
-#tray,
+/* -- General rules for visible modules -- */
+#custom-launcher-icon,
 #clock,
-#battery,
 #cpu,
 #memory,
-#disk,
-#temperature,
-#backlight,
+#tray,
+#battery,
 #network,
 #bluetooth,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-  margin: 4px 2px;
-  padding: 0 6px;
-  border-radius: 4px;
+#pulseaudio {
+  background-color: #232934;
   color: #e8e2d6;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  transition: none;
+  border: 1px solid #384153;
+  opacity: 0.9;
 }
 
-#window,
-#workspaces {
-  margin: 4px;
+/* -- Island group separations -- */
+
+/* Left side - group starts */
+#custom-launcher-icon {
+  margin-left: 4px;
+  border-radius: 10px;
 }
 
-#mode {
-  background-color: #837591;
+#cpu {
+  margin-left: 4px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right: none;
+}
+
+#tray {
+  margin-left: 4px;
+  border-radius: 10px;
+}
+
+/* Right side - group starts */
+#pulseaudio {
+  margin-left: 4px;
+  border-radius: 10px;
+}
+
+#battery {
+  margin-left: 4px;
+  border-radius: 10px;
+}
+
+#network {
+  margin-left: 4px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right: none;
+}
+
+/* Group ends */
+#memory {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#bluetooth {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 #clock {
+  margin-right: 4px;
+  border-radius: 10px;
   font-weight: bold;
+}
+
+/* -- Specific module styles -- */
+
+#custom-launcher-icon {
+  font-size: 18px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 #battery.charging,
 #battery.plugged {
   color: #232934;
   background-color: #bbcacb;
+  border-color: #bbcacb;
 }
 
 #battery.warning:not(.charging) {
   color: #232934;
   background-color: #d4af8d;
+  border-color: #d4af8d;
 }
 
 @keyframes blink {
@@ -94,6 +133,7 @@ button:hover {
 #battery.critical:not(.charging) {
   color: #232934;
   background-color: #d4af8d;
+  border-color: #d4af8d;
   animation-name: blink;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -101,29 +141,36 @@ button:hover {
   animation-direction: alternate;
 }
 
-label:focus {
-  background-color: #000000;
-}
-
 #network.disconnected {
   color: #232934;
   background-color: #c66471;
+  border-color: #c66471;
 }
 
 #pulseaudio.muted {
   color: #232934;
   background-color: #b3b8c2;
+  border-color: #b3b8c2;
 }
 
-#temperature.critical {
-  color: #232934;
-  background-color: #c66471;
-}
-
-#tray>.passive {
+#tray > .passive {
   -gtk-icon-effect: dim;
 }
 
-#tray>.needs-attention {
+#tray > .needs-attention {
   -gtk-icon-effect: highlight;
+}
+
+/* -- Hover effects -- */
+#custom-launcher-icon:hover,
+#cpu:hover,
+#memory:hover,
+#tray:hover,
+#pulseaudio:hover,
+#battery:hover,
+#network:hover,
+#bluetooth:hover,
+#clock:hover {
+  color: #232934;
+  background: #dfc2ba;
 }

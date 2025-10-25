@@ -1,65 +1,41 @@
 {
   // "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 32, // Waybar height (to be removed for auto height)
+  "height": 24, // Waybar height (to be removed for auto height)
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
-  "modules-left": ["niri/workspaces"],
-  "modules-right": [
-    "tray",
+  "modules-left": [
+    "custom/launcher-icon",
     "cpu",
     "memory",
+    "tray"
+  ],
+  "modules-right": [
     "pulseaudio",
     "battery",
     "network",
     "bluetooth",
-    "clock",
-    "custom/notification"
+    "clock"
   ],
-  "niri/workspaces": {
-    "all-outputs": true,
-    "format": "{icon}",
-    "format-icons": {
-      "urgent": "!!",
-      "focused": "",
-      "default": ""
-    }
-  },
-  "custom/notification": {
-    "tooltip": true,
-    "format": "<span size='16pt'>{icon}</span>",
-    "format-icons": {
-      "notification": "󱅫",
-      "none": "󰂜",
-      "dnd-notification": "󰂠",
-      "dnd-none": "󰪓",
-      "inhibited-notification": "󰂛",
-      "inhibited-none": "󰪑",
-      "dnd-inhibited-notification": "󰂛",
-      "dnd-inhibited-none": "󰪑"
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
+  "custom/launcher-icon": {
+    "format": "󰣇",
+    "on-click": "vicinae toggle"
   },
   "tray": {
     "icon-size": 14,
-    "spacing": 10
+    "spacing": 8
   },
   "clock": {
-    "tooltip-format": "<big>{:%Y %m}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%Y-%m-%d}"
+    "format": "{:%H:%M | %m/%d %b}",
+    "tooltip-format": "<big>{:%Y %m}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "cpu": {
-    "format": "󰄛 {usage}%",
-    "tooltip": true,
-    "on-click": "niri msg action spawn -- $term_float bashtop"
+    "format": "󰍛 {usage}%",
+    "tooltip": true
+    // "on-click": "niri msg action spawn -- $term_float bashtop"
   },
   "memory": {
-    "format": "󰍛 {}%",
+    "format": "󱈹 {}%",
     "tooltip": true
   },
   "battery": {
@@ -76,24 +52,24 @@
     "format-wifi": "󰤨",
     "format-ethernet": "󰈀",
     "format-disconnected": "OFFLINE",
-    "tooltip-format": "{essid} ({ifname}) : {ipaddr}",
-    "on-click": "niri msg action spawn -- $term_float nmtui"
+    "tooltip-format": "{essid} ({ifname}) : {ipaddr}"
+    // "on-click": "niri msg action spawn -- $term_float nmtui"
   },
   "bluetooth": {
     "format": "",
-    "format-disabled": "󰂲",
-    "on-click": "niri msg action spawn -- $term_float bluetuith",
-    "on-click-right": "rfkill toggle bluetooth"
+    "format-disabled": "󰂲"
+    // "on-click": "niri msg action spawn -- $term_float bluetuith",
+    // "on-click-right": "rfkill toggle bluetooth"
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
     "format": "󰕾 {volume}%{format_source}",
     "format-muted": "󰸈{format_source}",
-    "format-source": " 󰍬",
-    "format-source-muted": " 󰍭",
-    "on-click": "pavucontrol",
-    "on-click-right": "niri msg action spawn -- $volume_toggle_mute",
-    "on-scroll-up": "niri msg action spawn -- $volume_up",
-    "on-scroll-down": "niri msg action spawn -- $volume_down"
+    "format-source": "| 󰍬",
+    "format-source-muted": "| 󰍭"
+    // "on-click": "pavucontrol",
+    // "on-click-right": "niri msg action spawn -- $volume_toggle_mute",
+    // "on-scroll-up": "niri msg action spawn -- $volume_up",
+    // "on-scroll-down": "niri msg action spawn -- $volume_down"
   }
 }

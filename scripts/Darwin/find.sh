@@ -12,6 +12,7 @@ find . -type f \
        -not -path "*.DS_Store" \
        -not -path "*.luarc.json" \
        -not -path "*stylua.toml" \
+       -not -path "*fontconfig*" \
        -not -path "*niri*" \
        -not -path "*sway*" \
        -not -path "*waybar*" \
