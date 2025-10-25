@@ -68,7 +68,20 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 
 echo "[ Desktop ]"
-sudo pacman -S waybar mako wob ghostty swaybg swayidle swaylock xdg-desktop-portal-gtk xdg-desktop-portal-gnome gnome-keyring
+sudo pacman -S --noconfirm \
+  waybar \
+  mako \
+  wob \
+  ghostty \
+  swaybg \
+  swayidle \
+  swaylock \
+  xdg-desktop-portal-gtk \
+  xdg-desktop-portal-gnome \
+  gnome-keyring \
+  xwayland-satellite \
+  udiskie
+
 yay -S niri ly vicinae-bin
 
 echo "[ systemctl ]"

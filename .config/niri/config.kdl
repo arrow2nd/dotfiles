@@ -365,10 +365,10 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+B hotkey-overlay-title="Open a Browser: Zen" { spawn "zen-browser"; }
-    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+D hotkey-overlay-title="Run an Application: vicinae" { spawn "vicinae toggle"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+B hotkey-overlay-title="Open a Browser: Zen" { spawn-sh "zen-browser"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn-sh "ghostty"; }
+    Mod+D hotkey-overlay-title="Run an Application: vicinae" { spawn-sh "vicinae toggle"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
