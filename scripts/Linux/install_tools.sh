@@ -74,6 +74,7 @@ sudo pacman -S --noconfirm \
   ghostty \
   swaybg \
   swayidle \
+  gtklock \
   xdg-desktop-portal-gtk \
   xdg-desktop-portal-gnome \
   gnome-keyring \
