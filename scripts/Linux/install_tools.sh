@@ -71,19 +71,22 @@ echo "[ Desktop ]"
 sudo pacman -S --noconfirm \
   waybar \
   mako \
-  wob \
   ghostty \
   swaybg \
   swayidle \
-  swaylock \
   xdg-desktop-portal-gtk \
   xdg-desktop-portal-gnome \
   gnome-keyring \
   xwayland-satellite \
   udiskie \
-  polkit-gnome
+  polkit-gnome \
+  brightnessctl \
+  wl-clipboard
 
-yay -S niri ly vicinae-bin
+yay -S \
+  niri \
+  ly \
+  vicinae-bin
 
 echo "[ IME ]"
 sudo pacman -S --noconfirm \

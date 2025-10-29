@@ -31,8 +31,8 @@
   },
   "cpu": {
     "format": "󰍛 {usage}%",
-    "tooltip": true
-    // "on-click": "niri msg action spawn -- $term_float bashtop"
+    "tooltip": true,
+    "on-click": "niri msg action spawn -- ghostty -e bashtop"
   },
   "memory": {
     "format": "󱈹 {}%",
@@ -49,27 +49,32 @@
   },
   "network": {
     "interval": 5,
-    "format-wifi": "󰤨",
+    "format-wifi": "󰤨  {essid}",
     "format-ethernet": "󰈀",
     "format-disconnected": "OFFLINE",
-    "tooltip-format": "{essid} ({ifname}) : {ipaddr}"
-    // "on-click": "niri msg action spawn -- $term_float nmtui"
+    "tooltip-format": "{essid} ({ifname}) : {ipaddr}",
+    "on-click": "niri msg action spawn -- ghostty -e nmtui"
   },
   "bluetooth": {
     "format": "",
-    "format-disabled": "󰂲"
-    // "on-click": "niri msg action spawn -- $term_float bluetuith",
-    // "on-click-right": "rfkill toggle bluetooth"
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-on": "",
+    "format-connected": "  {device_alias}",
+    "format-connected-battery": "  {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "niri msg action spawn -- ghostty -e bluetuith",
+    "on-click-right": "rfkill toggle bluetooth"
   },
   "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    "format": "󰕾 {volume}%{format_source}",
-    "format-muted": "󰸈 {format_source}",
+    "format": "󰕾 {volume}%",
+    "format-muted": "󰸈",
     "format-source": " | 󰍬",
-    "format-source-muted": " | 󰍭"
-    // "on-click": "pavucontrol",
-    // "on-click-right": "niri msg action spawn -- $volume_toggle_mute",
-    // "on-scroll-up": "niri msg action spawn -- $volume_up",
-    // "on-scroll-down": "niri msg action spawn -- $volume_down"
+    "format-source-muted": " | 󰍭",
+    "on-click": "niri msg action spawn -- pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   }
 }

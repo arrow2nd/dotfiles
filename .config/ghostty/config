@@ -14,24 +14,20 @@
 # on Ghostty's website, at https://ghostty.org/docs/config.
 
 # Font Settings
-window-title-font-family = "PlemolJP Console NF"
-font-family = "PlemolJP Console NF"
-font-size = 12
+window-title-font-family = "PlemolJP Console NF Medium"
+font-family = "PlemolJP Console NF Medium"
+font-size = 10
 font-feature = -dlig
 
 # Cursor Style
 cursor-style = block
 cursor-style-blink = false
 
-# Window Settings
-window-padding-x = 16
-window-padding-y = 4,8
-
 # Appearance Settings
 macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
-mouse-hide-while-typing = true
 macos-window-buttons = hidden
+mouse-hide-while-typing = true
 
 # Colors - Minai Color Scheme
 background = #232934
@@ -67,14 +63,19 @@ palette = 14=#99B0B0
 palette = 15=#BAC4CF
 
 # Window Settings
-window-decoration = auto
+window-decoration = none
 scrollback-limit = 3500
+window-theme = ghostty
+window-padding-x = 8
+window-padding-y = 8
 
 # Copy
 copy-on-select = clipboard
 clipboard-trim-trailing-spaces = true
 
 # Keybindings
+keybind = clear
+
 # Copy & Paste
 keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
@@ -103,6 +104,9 @@ keybind = alt+k=goto_split:up
 keybind = alt+j=goto_split:down
 keybind = alt+nine=toggle_split_zoom
 
+# Reload config
+keybind = global:alt+shift+r=reload_config
+
 # quick terminal
 keybind = global:cmd+g=toggle_quick_terminal
 quick-terminal-size = 50%,80%
@@ -111,3 +115,4 @@ quick-terminal-size = 50%,80%
 shell-integration = zsh
 quit-after-last-window-closed = false
 shell-integration-features = no-cursor
+keybind = shift+enter=text:\x1b\r

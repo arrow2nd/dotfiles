@@ -1,0 +1,7 @@
+#!/bin/bash
+
+gtklock \
+  -d \
+  -S \
+  -s ~/.config/gtklock/style.css \
+  -D "%Y/%m/%d"
