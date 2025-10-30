@@ -19,9 +19,8 @@ require("mason").setup({
   },
 })
 
-require("mason-lspconfig").setup()
-
-require("mason-tool-installer").setup({
+require("mason-lspconfig").setup({
+  automatic_installation = true,
   ensure_installed = {
     "astro",
     "efm",
@@ -40,21 +39,12 @@ require("mason-tool-installer").setup({
     "stylelint_lsp",
     "copilot",
   },
-  run_on_start = true,
-  integrations = {
-    ["mason-lspconfig"] = true,
-  },
 })
-
---  client_capabilities と forceCompletionPattern を設定
-require("ddc_source_lsp_setup").setup()
 
 vim.lsp.config("*", {
   on_init = lsp.on_init,
   on_attach = lsp.on_attach_with_enable_format,
 })
-
-vim.lsp.enable(require("mason-lspconfig").get_installed_servers())
 
 vim.lsp.inline_completion.enable()
 
