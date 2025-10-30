@@ -26,9 +26,6 @@ cursor-style = block
 cursor-style-blink = false
 
 # Appearance Settings
-macos-titlebar-style = tabs
-macos-titlebar-proxy-icon = hidden
-macos-window-buttons = hidden
 mouse-hide-while-typing = true
 
 # Colors - Minai Color Scheme
@@ -118,3 +115,6 @@ shell-integration = zsh
 quit-after-last-window-closed = false
 shell-integration-features = no-cursor
 keybind = shift+enter=text:\x1b\r
+
+# for macOS
+config-file = ?config_darwin

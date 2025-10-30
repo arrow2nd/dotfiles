@@ -8,6 +8,9 @@ VOICEVOX_URL="127.0.0.1:50021"
 DEFAULT_VOICE_ID=47
 DEFAULT_SPEED=1.0
 
+# OS判定
+OS_TYPE=$(uname -s)
+
 # ヘルプ表示
 show_help() {
   cat << EOF
@@ -72,7 +75,17 @@ synthesize_and_play() {
   
   # 話速調整
   if [[ "$speed" != "$DEFAULT_SPEED" ]]; then
-    sed -i.bak -E "s/\"speedScale\":[0-9.]+/\"speedScale\":$speed/" "$work_dir/query.json"
+    case "$OS_TYPE" in
+      Darwin)
+        sed -i.bak -E "s/\"speedScale\":[0-9.]+/\"speedScale\":$speed/" "$work_dir/query.json"
+        ;;
+      Linux)
+        sed -i -E "s/\"speedScale\":[0-9.]+/\"speedScale\":$speed/" "$work_dir/query.json"
+        ;;
+      *)
+        sed -i -E "s/\"speedScale\":[0-9.]+/\"speedScale\":$speed/" "$work_dir/query.json"
+        ;;
+    esac
   fi
   
   # 音声合成
@@ -88,7 +101,28 @@ synthesize_and_play() {
     # WAVヘッダーチェック
     local header=$(head -c 4 "$work_dir/audio.wav" 2>/dev/null)
     if [[ "$header" == "RIFF" ]]; then
-      afplay "$work_dir/audio.wav"
+      case "$OS_TYPE" in
+        Darwin)
+          afplay "$work_dir/audio.wav"
+          ;;
+        Linux)
+          # Linuxでは利用可能な音声再生コマンドを探す
+          if command -v paplay &> /dev/null; then
+            paplay "$work_dir/audio.wav"
+          elif command -v aplay &> /dev/null; then
+            aplay "$work_dir/audio.wav"
+          elif command -v ffplay &> /dev/null; then
+            ffplay -nodisp -autoexit "$work_dir/audio.wav" 2>/dev/null
+          else
+            echo "エラー: 音声再生コマンドが見つかりません (paplay, aplay, ffplayのいずれか必要)" >&2
+            return 1
+          fi
+          ;;
+        *)
+          echo "エラー: サポートされていないOS ($OS_TYPE)" >&2
+          return 1
+          ;;
+      esac
     else
       echo "エラー: 不正な音声ファイルが生成されました" >&2
       return 1
