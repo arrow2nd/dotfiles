@@ -19,6 +19,8 @@ font-family = "PlemolJP Console NF Medium"
 font-size = 10
 font-feature = -dlig
 
+alpha-blending = "native"
+
 # Cursor Style
 cursor-style = block
 cursor-style-blink = false
