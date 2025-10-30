@@ -36,7 +36,7 @@ button:hover {
 #pulseaudio {
   background-color: #232934;
   color: #e8e2d6;
-  margin-top: 4px;
+  margin-top: 8px;
   padding: 2px 12px;
   transition: none;
   border: 1px solid #384153;
@@ -47,7 +47,7 @@ button:hover {
 
 /* Left side - group starts */
 #custom-launcher-icon {
-  margin-left: 4px;
+  margin-left: 8px;
   border-radius: 10px;
 }
 
@@ -93,7 +93,7 @@ button:hover {
 
 #clock {
   margin-left: 4px;
-  margin-right: 4px;
+  margin-right: 8px;
   border-radius: 10px;
 }
 
