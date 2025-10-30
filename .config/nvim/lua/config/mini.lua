@@ -104,7 +104,7 @@ require("mini.statusline").setup({
       })
 
       if mode == "N" then
-        mode = "✝" -- 💉
+        mode = "✜" -- 💉
       end
 
       local diagnostics = MiniStatusline.section_diagnostics({
