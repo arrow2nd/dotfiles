@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# notify-send-cross - クロスプラットフォーム対応通知表示コマンド
+
+# 使用方法: notify-send-cross "タイトル" "メッセージ"
+
+# OS判定
+OS_TYPE=$(uname -s)
+
+# 引数チェック
+if [[ $# -lt 2 ]]; then
+  echo "使用方法: notify-send-cross \"タイトル\" \"メッセージ\"" >&2
+  exit 1
+fi
+
+TITLE="$1"
+MESSAGE="$2"
+
+case "$OS_TYPE" in
+  Darwin)
+    # macOS: osascript を使用
+    osascript -e "display notification \"$MESSAGE\" with title \"$TITLE\""
+    ;;
+  Linux)
+    # Linux: notify-send を使用
+    if command -v notify-send &> /dev/null; then
+      notify-send "$TITLE" "$MESSAGE"
+    else
+      echo "エラー: notify-sendがインストールされていません" >&2
+      exit 1
+    fi
+    ;;
+  *)
+    echo "エラー: サポートされていないOS ($OS_TYPE)" >&2
+    exit 1
+    ;;
+esac

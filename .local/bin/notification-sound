@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# notification-sound - クロスプラットフォーム対応通知音再生コマンド
+
+# OS判定
+OS_TYPE=$(uname -s)
+
+case "$OS_TYPE" in
+  Darwin)
+    # macOS: システムサウンドを再生
+    afplay /System/Library/Sounds/Funk.aiff
+    ;;
+  Linux)
+    # Linux: 利用可能な通知音を検索して再生
+    SOUND_FILE=""
+
+    # 通知音の候補パスをチェック
+    for candidate in \
+      "/usr/share/sounds/freedesktop/stereo/message.oga" \
+      "/usr/share/sounds/freedesktop/stereo/bell.oga" \
+      "/usr/share/sounds/ubuntu/stereo/message.ogg" \
+      "/usr/share/sounds/gnome/default/alerts/drip.ogg" \
+      "/usr/share/sounds/sound-icons/xylofon.wav"
+    do
+      if [[ -f "$candidate" ]]; then
+        SOUND_FILE="$candidate"
+        break
+      fi
+    done
+
+    if [[ -z "$SOUND_FILE" ]]; then
+      # 通知音ファイルが見つからない場合はビープ音
+      if command -v paplay &> /dev/null; then
+        paplay /usr/share/sounds/freedesktop/stereo/bell.oga 2>/dev/null || echo -e '\a'
+      else
+        echo -e '\a'
+      fi
+    else
+      # 見つかった通知音を再生
+      if command -v paplay &> /dev/null; then
+        paplay "$SOUND_FILE" 2>/dev/null
+      elif command -v aplay &> /dev/null; then
+        aplay "$SOUND_FILE" 2>/dev/null
+      elif command -v ffplay &> /dev/null; then
+        ffplay -nodisp -autoexit "$SOUND_FILE" 2>/dev/null
+      else
+        # 再生コマンドがない場合はビープ音
+        echo -e '\a'
+      fi
+    fi
+    ;;
+  *)
+    echo "エラー: サポートされていないOS ($OS_TYPE)" >&2
+    exit 1
+    ;;
+esac

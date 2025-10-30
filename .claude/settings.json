@@ -12,11 +12,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"ユーザーの介入を求めています\" with title \"Claude Code\"'"
+            "command": "notify-send-cross \"✹ Claude Code\" \"ユーザーの介入を求めています\""
           },
           {
             "type": "command",
-            "command": "afplay /System/Library/Sounds/Funk.aiff"
+            "command": "notification-sound"
           }
         ]
       }
@@ -24,4 +24,3 @@
   },
   "alwaysThinkingEnabled": true
 }
-
