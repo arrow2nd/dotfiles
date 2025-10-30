@@ -16,6 +16,7 @@ fi
 
 echo "[ Tools ]"
 yay -S --noconfirm \
+  less \
   unzip \
   make \
   cmake \
@@ -37,9 +38,7 @@ yay -S --noconfirm \
   trash-cli \
   bashtop \
   yazi \
-  difftastic \
-  stylua \
-  efm-langserver
+  difftastic
 
 echo "[ Fonts ]"
 sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
