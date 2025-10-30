@@ -35,46 +35,6 @@ wezterm.on("format-tab-title", function(tab)
   }
 end)
 
-local function get_battrey_icon(battery)
-  if battery.state == "Charging" then
-    return " " .. math.floor(battery.state_of_charge * 100) .. "%"
-  elseif battery.state == "Unknown" then
-    return " ?"
-  elseif battery.state_of_charge < 0.1 then
-    return " !"
-  elseif battery.state_of_charge < 0.2 then
-    return " "
-  elseif battery.state_of_charge < 0.3 then
-    return " "
-  elseif battery.state_of_charge < 0.4 then
-    return " "
-  elseif battery.state_of_charge < 0.5 then
-    return " "
-  elseif battery.state_of_charge < 0.6 then
-    return " "
-  elseif battery.state_of_charge < 0.7 then
-    return " "
-  elseif battery.state_of_charge < 0.8 then
-    return " "
-  elseif battery.state_of_charge < 0.9 then
-    return " "
-  else
-    return " "
-  end
-end
-
-wezterm.on("update-right-status", function(window)
-  local bat = get_battrey_icon(wezterm.battery_info()[1])
-  local time = wezterm.strftime("%H:%M")
-
-  window:set_right_status(wezterm.format({
-    { Text = bat },
-    { Text = "  " },
-    { Text = time },
-    { Text = " " },
-  }))
-end)
-
 -- zen mode
 -- @see https://github.com/folke/zen-mode.nvim?tab=readme-ov-file
 wezterm.on("user-var-changed", function(window, pane, name, value)
@@ -145,8 +105,6 @@ local hyperlink_rules = {
     format = "$0",
   },
 }
-
-local font_size = 12
 
 -- 💉 minai
 local colors = {
@@ -229,7 +187,7 @@ local config = {
   check_for_updates = false,
   front_end = "WebGpu",
   font = wezterm.font("PlemolJP Console NF"),
-  font_size = font_size,
+  font_size = 10,
   colors = colors,
   use_fancy_tab_bar = false,
   tab_bar_at_bottom = false,
@@ -239,12 +197,19 @@ local config = {
   scrollback_lines = 3500,
   disable_default_key_bindings = true,
   keys = keybinds,
-  -- key_tables = key_tables,
   hyperlink_rules = hyperlink_rules,
+  window_decorations = "NONE",
+  window_padding = {
+    left = 16,
+    right = 16,
+    top = 16,
+    bottom = 8,
+  },
 }
 
 -- macOS
 if wezterm.target_triple == "aarch64-apple-darwin" then
+  config.font_size = 12
   config.window_decorations = "RESIZE"
 end
 
