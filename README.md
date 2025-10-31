@@ -4,15 +4,13 @@
 
 ## 環境
 
-- macOS (Apple Silicon) or GitHub Codespaces
+- macOS (Apple Silicon) or Arch Linux
 - git 導入済み
 - Neovim (HEAD)
 
 ### フォント
 
 [PlemolJP (Nerd Fonts)](https://github.com/yuru7/PlemolJP)
-
-- macOS の場合は brew 経由で自動でインストールされます
 
 ## 手順
 
