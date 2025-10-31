@@ -370,7 +370,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+E hotkey-overlay-title="Open a Filer: nautilus" { spawn-sh "nautilus"; }
     Mod+B hotkey-overlay-title="Open a Browser: Zen" { spawn-sh "zen-browser"; }
-    Mod+T hotkey-overlay-title="Open a Terminal: wezterm" { spawn-sh "wezterm"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn-sh "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: vicinae" { spawn-sh "vicinae toggle"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: gtklock" { spawn-sh "~/.local/bin/execlock"; }
 
