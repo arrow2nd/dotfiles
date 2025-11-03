@@ -33,7 +33,8 @@ button:hover {
 #battery,
 #network,
 #bluetooth,
-#pulseaudio {
+#pulseaudio,
+#custom-spotify {
   background-color: #232934;
   color: #e8e2d6;
   margin-top: 8px;
@@ -64,7 +65,12 @@ button:hover {
 }
 
 /* Right side - group starts */
+#custom-spotify {
+  border-radius: 10px;
+}
+
 #pulseaudio {
+  margin-left: 4px;
   border-radius: 10px;
 }
 
@@ -148,11 +154,11 @@ button:hover {
   border-color: #b3b8c2;
 }
 
-#tray > .passive {
+#tray>.passive {
   -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
   -gtk-icon-effect: highlight;
 }
 
