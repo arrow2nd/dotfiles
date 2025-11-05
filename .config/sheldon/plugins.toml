@@ -15,6 +15,9 @@ shell = "zsh"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
+
 [templates]
 defer = '{% for file in files %}zsh-defer source "{{ file }}"{% endfor %}'
 fpath_comp = 'fpath=("{{ dir }}/completions" $fpath)'
@@ -46,8 +49,6 @@ github = "arrow2nd/gwt.zsh"
 apply = ["defer"]
 # local = "~/workspace/github.com/arrow2nd/gwt.zsh"
 
-[plugins.compinit]
-inline = 'autoload -Uz compinit && zsh-defer compinit'
 
 [plugins.minimal]
 github = "subnixr/minimal"
