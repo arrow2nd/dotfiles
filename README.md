@@ -1,14 +1,10 @@
 # dotfiles
 
-**🐧 ArchLinux**
-
 <img width="1920" height="1200" alt="Screenshot from 2025-11-05 21-44-48" src="https://github.com/user-attachments/assets/f157a220-31c6-432e-aad2-0c393ac16532" />
-
-**🍎 macOS**
 
 ## 環境
 
-- macOS (Apple Silicon) or Arch Linux
+- Arch Linux or macOS (Apple Silicon)
 - git 導入済み
 - Neovim (HEAD)
 
