@@ -34,7 +34,7 @@ button:hover {
 #network,
 #bluetooth,
 #pulseaudio,
-#custom-spotify {
+#custom-lyrics {
   background-color: #232934;
   color: #e8e2d6;
   margin-top: 8px;
@@ -65,7 +65,7 @@ button:hover {
 }
 
 /* Right side - group starts */
-#custom-spotify {
+#custom-lyrics {
   border-radius: 10px;
 }
 
