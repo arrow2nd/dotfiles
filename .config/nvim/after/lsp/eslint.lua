@@ -1,3 +1,5 @@
+local lsp = require("util.lsp")
+
 return {
   -- @see https://github.com/kyoh86/dotfiles/blob/0fafb25ec68ea9027b5373fbf82f66ed5d3b5fd1/nvim/lsp/denols.lua#L27-L34
   root_dir = function(bufnr, callback)
@@ -23,4 +25,5 @@ return {
       return callback(vim.fs.dirname(found_dirs[1]))
     end
   end,
+  on_attach = lsp.on_attach_with_enable_format,
 }

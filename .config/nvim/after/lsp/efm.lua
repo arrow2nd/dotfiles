@@ -1,3 +1,5 @@
+local lsp = require("util.lsp")
+
 local rootMarkers = {
   prettier = {
     ".prettierrc",
@@ -97,4 +99,5 @@ return {
       lua = { stylua },
     },
   },
+  on_attach = lsp.on_attach_with_enable_format,
 }

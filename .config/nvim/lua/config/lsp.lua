@@ -43,7 +43,6 @@ require("mason-lspconfig").setup({
 
 vim.lsp.config("*", {
   on_init = lsp.on_init,
-  on_attach = lsp.on_attach_with_enable_format,
 })
 
 vim.lsp.inline_completion.enable()

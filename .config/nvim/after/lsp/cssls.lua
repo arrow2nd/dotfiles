@@ -7,5 +7,6 @@ return {
     "sass",
     "less",
   },
+  on_init = lsp.on_init_with_disable_format,
   on_attach = nil,
 }

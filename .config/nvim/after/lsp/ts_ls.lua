@@ -1,3 +1,4 @@
+local lsp = require("util.lsp")
 local vue_language_server_path = vim.fn.exepath("vue-language-server") .. "/node_modules/@vue/language-server"
 
 return {
@@ -29,5 +30,6 @@ return {
       },
     },
   },
+  on_init = lsp.on_init_with_disable_format,
   on_attach = nil,
 }

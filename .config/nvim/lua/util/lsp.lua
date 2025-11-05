@@ -31,4 +31,10 @@ M.on_init = function(client, _)
   end
 end
 
+-- フォーマットを無効
+M.on_init_with_disable_format = function(client, _)
+  M.on_init(client, _)
+  client.server_capabilities.documentFormattingProvider = false
+end
+
 return M

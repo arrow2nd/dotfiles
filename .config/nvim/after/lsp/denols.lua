@@ -23,5 +23,6 @@ return {
     lint = true,
     unstable = true,
   },
+  on_init = lsp.on_init_with_disable_format,
   on_attach = nil,
 }
