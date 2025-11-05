@@ -1,6 +1,10 @@
 # dotfiles
 
-<img width="1440" alt="スクリーンショット" src="https://github.com/user-attachments/assets/1287137c-96e6-4d7a-96ca-cedb040e2cc4" />
+**🐧 ArchLinux**
+
+<img width="1920" height="1200" alt="Screenshot from 2025-11-05 21-44-48" src="https://github.com/user-attachments/assets/f157a220-31c6-432e-aad2-0c393ac16532" />
+
+**🍎 macOS**
 
 ## 環境
 
