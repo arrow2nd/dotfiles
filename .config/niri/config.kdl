@@ -272,7 +272,6 @@ spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "~/.local/bin/execlock" "before-sleep" "~/.local/bin/execlock"
 spawn-at-startup "swaybg" "-i" "/home/arrow2nd/Pictures/Wallpapers/JpbRcFJRfiABMP3Lj1Cads1F.png" "-m" "fill"
-spawn-sh-at-startup "google-drive-ocamlfuse /home/arrow2nd/GoogleDrive"
 spawn-sh-at-startup "vicinae server"
 spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
