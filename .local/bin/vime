@@ -14,9 +14,9 @@ fi
 
 nvim ${opts} ${tmp} || exit 1
 
-# 末尾の改行を消してコピー
+# 改行を保ったままコピー
 if [ "$(uname)" == 'Darwin' ]; then
-  cat $tmp | tr -d '\n' | pbcopy
+  cat $tmp | pbcopy
 else
-  cat $tmp | tr -d '\n' | xsel -bi
+  cat $tmp | xsel -bi
 fi
