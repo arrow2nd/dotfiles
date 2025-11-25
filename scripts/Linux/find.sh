@@ -10,7 +10,6 @@ find . -type f \
        -not -path "*.DS_Store" \
        -not -path "*.Brewfile" \
        -not -path "*_darwin*" \
-       -not -path "*karabiner/*" \
        -not -path "*Library/*" \
        -not -path "*luarc.json" \
        -not -path "*stylua.toml" \
