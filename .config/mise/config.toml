@@ -6,6 +6,7 @@ yarn = "4"
 pnpm = "9"
 "npm:@anthropic-ai/claude-code" = "2"
 "npm:@openai/codex" = "latest"
+"npm:sfw" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
