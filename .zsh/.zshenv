@@ -22,9 +22,6 @@ fi
 # mise
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 
-# Socket Firewall
-export NI_USE_SOCKET_FIREWALL=1
-
 # Deno
 export PATH="$HOME/.deno/bin:$PATH"
 

@@ -5,6 +5,11 @@
 eval "$(sheldon source)"
 
 #
+# Safe-chain Zsh initialization script
+#
+[[ -f ~/.safe-chain/scripts/init-posix.sh ]] && source ~/.safe-chain/scripts/init-posix.sh 
+
+#
 # プロンプト
 #
 
