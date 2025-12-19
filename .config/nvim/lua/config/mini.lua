@@ -1,3 +1,6 @@
+---@diagnostic disable: undefined-global
+local h = require("util.helper")
+
 vim.api.nvim_create_autocmd({ "InsertEnter" }, {
   pattern = "*",
   callback = function()
@@ -10,6 +13,9 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, {
   end,
   once = true,
 })
+
+-- git
+require("mini.git").setup()
 
 -- diff
 require("mini.diff").setup({
@@ -49,6 +55,21 @@ if vim.g.vscode then
   return
 end
 
+-- files
+require("mini.files").setup({
+  options = {
+    use_as_default_explorer = true,
+  },
+  windows = {
+    preview = true,
+    width_preview = 50,
+  },
+})
+
+h.nmap(";b", function()
+  MiniFiles.open(vim.api.nvim_buf_get_name(0))
+end)
+
 -- git
 require("mini.git").setup({})
 
@@ -76,7 +97,8 @@ hipatterns.setup({
 require("mini.indentscope").setup({ symbol = "┆" })
 
 -- icons
-require("mini.icons").setup({})
+require("mini.icons").setup()
+MiniIcons.mock_nvim_web_devicons()
 
 -- notify
 require("mini.notify").setup()

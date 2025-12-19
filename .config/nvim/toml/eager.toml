@@ -1,9 +1,25 @@
-# denops
+# 依存関係
 [[plugins]]
 repo = "vim-denops/denops.vim"
 hook_source = """
 let g:denops#deno = exepath("deno")
 """
+
+[[plugins]]
+repo = "nvim-treesitter/nvim-treesitter"
+build = ":TSUpdate"
+lua_source = """
+require("config.treesitter")
+"""
+
+[[plugins]]
+repo = "vim-jp/vimdoc-ja"
+
+[[plugins]]
+repo = "nvim-lua/plenary.nvim"
+
+[[plugins]]
+repo = "folke/snacks.nvim"
 
 # dpp.vim
 [[plugins]]
@@ -27,30 +43,44 @@ colorscheme minai
 
 # いろいろ
 [[plugins]]
-repo = "vim-jp/vimdoc-ja"
-
-[[plugins]]
-repo = "nvim-lua/plenary.nvim"
-
-[[plugins]]
-repo = "folke/snacks.nvim"
-
-[[plugins]]
-repo = "ryoppippi/vim-bun-lock"
-rev = "lua"
-
-[[plugins]]
 repo = "echasnovski/mini.nvim"
 lua_source = """
 require("config.mini")
 """
 
 [[plugins]]
+repo = "ryoppippi/vim-bun-lock"
+rev = "lua"
+
+# ファジーファインダ
+[[plugins]]
+repo = "nvim-telescope/telescope.nvim"
+rev = "v0.2.0"
+depends = ["plenary.nvim", "telescope-ui-select.nvim", "kensaku.vim"]
+on_cmd = ["Telescope"]
+lua_source = """
+require("config.telescope")
+"""
+
+[[plugins]]
+repo = "nvim-telescope/telescope-ui-select.nvim"
+
+[[plugins]]
+repo = "lambdalisue/kensaku.vim"
+depends = ["denops.vim"]
+
+[[plugins]]
+repo = "Allianaab2m/telescope-kensaku.nvim"
+depends = ["kensaku.vim"]
+
+# ターミナル系
+[[plugins]]
 repo = "akinsho/toggleterm.nvim"
 lua_source = """
 require("config.toggleterm")
 """
 
+# 移動系
 [[plugins]]
 repo = "tkmpypy/chowcho.nvim"
 lua_source = """
@@ -94,7 +124,7 @@ lua_source = """
 require("config.dial")
 """
 
-# denops系
+# 翻訳
 [[plugins]]
 repo = "skanehira/denops-translate.vim"
 depends = ["denops.vim"]
@@ -103,24 +133,15 @@ local h = require("util.helper")
 h.xmap("<Leader>t", "<Plug>(Translate)")
 """
 
+# Markdownプレビュー
 [[plugins]]
 repo = "kat0h/bufpreview.vim"
 depends = ["denops.vim"]
 build = "deno task prepare"
 
-# AI支援系
+# AI支援
 [[plugins]]
 repo = "folke/sidekick.nvim"
 lua_source = """
 require("config.sidekick")
-"""
-
-# Git系
-[[plugins]]
-repo = "lambdalisue/vim-gin"
-depends = ["denops.vim"]
-lua_source = """
-local h = require("util.helper")
-h.nmap("<Leader>gs", "<CMD>GinStatus<CR>")
-h.nmap("<Leader>gl", "<CMD>GinLog<CR>")
 """

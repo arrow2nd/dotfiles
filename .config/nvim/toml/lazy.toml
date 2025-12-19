@@ -1,11 +1,4 @@
 [[plugins]]
-repo = "nvim-treesitter/nvim-treesitter"
-on_event = ["BufRead"]
-lua_source = """
-require("config.treesitter")
-"""
-
-[[plugins]]
 repo = "thinca/vim-qfreplace"
 on_cmd = ["Qfreplace"]
 

@@ -40,7 +40,6 @@ const tomlList: Array<[`${string}.toml`, boolean]> = [
   ["eager.toml", false],
   ["lazy.toml", true],
   ["ddc.toml", false],
-  ["ddu.toml", false],
   ["lsp.toml", false],
 ];
 
