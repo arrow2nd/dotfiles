@@ -67,7 +67,13 @@ require("mini.files").setup({
 })
 
 h.nmap(";b", function()
-  MiniFiles.open(vim.api.nvim_buf_get_name(0))
+  local path = vim.api.nvim_buf_get_name(0)
+
+  if path == "" or vim.fn.filereadable(path) == 0 then
+    MiniFiles.open()
+  else
+    MiniFiles.open(path)
+  end
 end)
 
 -- git
