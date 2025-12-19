@@ -18,9 +18,6 @@ repo = "vim-jp/vimdoc-ja"
 [[plugins]]
 repo = "nvim-lua/plenary.nvim"
 
-[[plugins]]
-repo = "folke/snacks.nvim"
-
 # dpp.vim
 [[plugins]]
 repo = "Shougo/dpp-ext-installer"

@@ -32,6 +32,7 @@ require("sidekick").setup({
         },
       },
     },
+    picker = "telescope",
   },
 })
 
