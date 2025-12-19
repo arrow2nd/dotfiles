@@ -6,6 +6,7 @@ yarn = "4"
 pnpm = "9"
 "npm:@openai/codex" = "latest"
 "npm:@aikidosec/safe-chain" = "latest"
+rust = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
