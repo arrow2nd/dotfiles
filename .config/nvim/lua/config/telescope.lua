@@ -90,7 +90,8 @@ telescope.load_extension("kensaku")
 
 -- keymaps
 h.nmap(";f", "<CMD>Telescope find_files<CR>")
-h.nmap(";g", "<CMD>Telescope kensaku<CR>")
+h.nmap(";g", "<CMD>Telescope live_grep<CR>")
+h.nmap(";G", "<CMD>Telescope kensaku<CR>")
 h.nmap(";h", "<CMD>Telescope help_tags<CR>")
 h.nmap(";o", "<CMD>Telescope oldfiles<CR>")
 h.nmap("<Leader>gg", "<CMD>Telescope git_status<CR>")
