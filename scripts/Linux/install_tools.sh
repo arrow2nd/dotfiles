@@ -93,6 +93,8 @@ sudo pacman -S --noconfirm \
     fcitx5-skk\
     fcitx5-configtool
 
+yay -S yaskkserv2-bin
+
 echo "[ systemctl ]"
 sudo systemctl enable ly.service
 
@@ -104,6 +106,7 @@ go install github.com/arrow2nd/jisyo@latest
 echo "[ SKK JISYO ]"
 mkdir -p $HOME/.skk
 jisyo d
+yaskkserv2_make_dictionary --dictionary-filename=~/.config/yaskkserv2/dictionary.yaskkserv2 .skk/SKK-JISYO.L .skk/skk-jisyo.imas.utf8
 
 echo "[ Switch to zsh ]"
 sudo chsh -s $(which zsh) $(whoami)

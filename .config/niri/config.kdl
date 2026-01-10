@@ -272,7 +272,8 @@ spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "~/.local/bin/execlock" "before-sleep" "~/.local/bin/execlock"
 spawn-at-startup "swaybg" "-i" "/home/arrow2nd/Pictures/Wallpapers/JpbRcFJRfiABMP3Lj1Cads1F.png" "-m" "fill"
-spawn-sh-at-startup "vicinae server"
+spawn-at-startup "vicinae" "server"
+spawn-sh-at-startup "yaskkserv2 ~/.config/yaskkserv2/dictionary.yaskkserv2"
 spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:

@@ -17,6 +17,7 @@ find . -type f \
        -not -path "*niri/*" \
        -not -path "*waybar/*" \
        -not -path "*.local/bin/execlock*" \
+       -not -path "*.local/share/*" \
        -not -path "*.luarc.json" \
        -not -path "*stylua.toml" \
        -not -path "*renovate.json*" \

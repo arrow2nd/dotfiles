@@ -1,0 +1,3 @@
+file=$FCITX_CONFIG_DIR/skk/user.dict,mode=readwrite,type=file
+host=localhost,port=1178,type=server
+encoding=UTF-8,file=/home/arrow2nd/.skk/skk-jisyo-emoji-ja.utf8,mode=readonly,type=file
