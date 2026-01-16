@@ -7,6 +7,7 @@ pnpm = "9"
 "npm:@openai/codex" = "latest"
 "npm:@aikidosec/safe-chain" = "latest"
 rust = "latest"
+"npm:agent-browser" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
