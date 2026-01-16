@@ -72,6 +72,11 @@ for _, mode in pairs({ "n", "v" }) do
   end, { desc = "Sidekick Claude Toggle" })
 
   -- Codex
+  h[mode .. "map"]("<leader>aC", function()
+    require("sidekick.cli").toggle({ name = "codex", focus = true })
+  end, { desc = "Sidekick Codex Toggle" })
+
+  -- Codex
   h[mode .. "map"]("<leader>ao", function()
     require("sidekick.cli").toggle({ name = "codex", focus = true })
   end, { desc = "Sidekick Codex Toggle" })
