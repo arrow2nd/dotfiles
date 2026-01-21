@@ -70,6 +70,7 @@ echo "[ Desktop ]"
 sudo pacman -S --noconfirm \
   waybar \
   mako \
+  wob \
   ghostty \
   swaybg \
   swayidle \
