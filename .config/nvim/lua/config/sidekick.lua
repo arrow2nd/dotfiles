@@ -2,6 +2,8 @@ local h = require("util.helper")
 
 -- Store active sidekick terminal instance globally
 _G.sidekick_active_terminal = nil
+-- Store last prompt for recall
+_G.sidekick_last_prompt = nil
 
 require("sidekick").setup({
   nes = { enabled = false },
@@ -142,6 +144,16 @@ vim.api.nvim_create_autocmd({ "BufReadCmd" }, {
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<c-n>", "<Cmd>q<CR>", { noremap = true, silent = true })
     vim.api.nvim_buf_set_keymap(bufnr, "n", "Q", "<Cmd>q!<CR>", { noremap = true, silent = true })
 
+    -- Recall last prompt with <C-l>
+    vim.keymap.set({ "n", "i" }, "<c-l>", function()
+      if _G.sidekick_last_prompt then
+        vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, _G.sidekick_last_prompt)
+        vim.notify("Last prompt restored", vim.log.levels.INFO)
+      else
+        vim.notify("No saved prompt", vim.log.levels.WARN)
+      end
+    end, { buffer = bufnr, noremap = true, silent = true })
+
     vim.schedule(function()
       vim.cmd("startinsert")
     end)
@@ -156,6 +168,9 @@ vim.api.nvim_create_autocmd({ "BufReadCmd" }, {
 
       local current_win = vim.api.nvim_get_current_win()
       local prompt = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+
+      -- Save the prompt for recall
+      _G.sidekick_last_prompt = prompt
 
       -- Send the prompt content to sidekick
       sidekick_t:send(table.concat(prompt, "\n"))
