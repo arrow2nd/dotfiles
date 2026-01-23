@@ -1,0 +1,10 @@
+[Unit]
+Description=A lightweight overlay volume/backlight/progress/anything bar for Wayland
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Service]
+StandardInput=socket
+ExecStart=/usr/sbin/wob
+
+[Install]
+WantedBy=graphical-session.target
