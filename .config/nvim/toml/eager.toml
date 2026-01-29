@@ -140,17 +140,5 @@ require("config.sidekick")
 repo = "pwntester/octo.nvim"
 depends = ["plenary.nvim", "telescope.nvim"]
 lua_source = """
-require("octo").setup({
-  picker = "telescope",
-  enable_builtin = true,
-})
-
-local h = require("util.helper")
-
-h.nmap("<Leader>op", "<CMD>Octo pr list<CR>")
-h.nmap("<Leader>od", "<CMD>Octo discussion list<CR>")
-h.nmap("<Leader>on", "<CMD>Octo notification list<CR>")
-h.nmap("<Leader>os", function()
-  require("octo.utils").create_base_search_command({ include_current_repo = true })
-end)
+require("config.octo")
 """
