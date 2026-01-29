@@ -328,9 +328,13 @@ require("octo").setup({
 
 local h = require("util.helper")
 
-h.nmap("<Leader>op", "<CMD>Octo pr list<CR>")
-h.nmap("<Leader>od", "<CMD>Octo discussion list<CR>")
-h.nmap("<Leader>on", "<CMD>Octo notification list<CR>")
+h.nmap("<Leader>op", "<CMD>Octo pr list<CR>", { desc = "PR list" })
+h.nmap("<Leader>oc", "<CMD>Octo pr create<CR>", { desc = "PR create" })
+h.nmap("<Leader>oi", "<CMD>Octo issue list<CR>", { desc = "Issue list" })
+h.nmap("<Leader>oI", "<CMD>Octo issue create<CR>", { desc = "Issue create" })
+h.nmap("<Leader>oa", "<CMD>Octo actions<CR>", { desc = "GitHub Actions" })
+h.nmap("<Leader>ob", "<CMD>Octo repo browser<CR>", { desc = "Open in browser" })
+h.nmap("<Leader>on", "<CMD>Octo notification list<CR>", { desc = "Notifications" })
 h.nmap("<Leader>os", function()
   require("octo.utils").create_base_search_command({ include_current_repo = true })
-end)
+end, { desc = "Search" })
