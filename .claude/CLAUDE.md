@@ -9,6 +9,10 @@
 
 </communication>
 
+<conversation>
+本筋から外れる質問には回答後、/rewind の使用を提案する。
+</conversation>
+
 <workflow>
 実装や複雑なレビューを依頼された場合は、Plan モードで要件・影響範囲・方針を整理してから進める。
 ユーザーが画面から離れていても状況を把握できるように、作業の進捗を明確にする。
@@ -62,7 +66,7 @@ const activeUsers = users.filter((u) => u.isActive);
 </shell>
 
 <voicevox>
-vv-mcp（voiceId: 47, useSessionVoice: true）で音声通知する。
-タスク開始時、完了時、エラー発生時、長時間処理前に音声で通知する。
+【必須】vv-mcp（voiceId: 47, useSessionVoice: true）で音声通知する。省略不可。
+タスク開始時、完了時、エラー発生時、長時間処理前に必ず音声で通知する。
 進捗、発見、困っていること、考えていることなど自由に発言してよい。
 </voicevox>
