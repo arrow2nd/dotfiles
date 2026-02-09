@@ -324,6 +324,20 @@ window-rule {
     default-column-width {}
 }
 
+// 透過ウィンドウを常にタイルウィンドウの上に表示するためフローティングで開く
+window-rule {
+    match app-id="ruru"
+    open-floating true
+    max-width 1920
+    max-height 1200
+    default-floating-position x=0 y=0 relative-to="bottom"
+    draw-border-with-background false
+
+    focus-ring {
+      off
+    }
+}
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
