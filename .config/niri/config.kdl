@@ -385,6 +385,7 @@ binds {
     Mod+E hotkey-overlay-title="Open a Filer: nautilus" { spawn-sh "nautilus"; }
     Mod+B hotkey-overlay-title="Open a Browser: Chromium" { spawn-sh "chromium"; }
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn-sh "ghostty"; }
+    Mod+N hotkey-overlay-title="Open a Note: obsidian" { spawn-sh "obsidian"; }
     Mod+D hotkey-overlay-title="Run an Application: vicinae" { spawn-sh "vicinae toggle"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: gtklock" { spawn-sh "~/.local/bin/execlock"; }
 
