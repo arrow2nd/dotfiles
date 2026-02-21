@@ -25,7 +25,6 @@ button:hover {
 }
 
 /* -- General rules for visible modules -- */
-#custom-launcher-icon,
 #clock,
 #cpu,
 #memory,
@@ -38,7 +37,7 @@ button:hover {
   background-color: #232934;
   color: #e8e2d6;
   margin-top: 8px;
-  padding: 2px 12px;
+  padding: 4px 12px;
   transition: none;
   border: 1px solid #384153;
   opacity: 0.8;
@@ -47,69 +46,58 @@ button:hover {
 /* -- Island group separations -- */
 
 /* Left side - group starts */
-#custom-launcher-icon {
-  margin-left: 8px;
-  border-radius: 10px;
-}
-
 #cpu {
   margin-left: 4px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   border-right: none;
 }
 
 #tray {
   margin-left: 4px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 /* Right side - group starts */
 #custom-lyrics {
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 #pulseaudio {
   margin-left: 4px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 #battery {
   margin-left: 4px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 #network {
   margin-left: 4px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   border-right: none;
 }
 
 /* Group ends */
 #memory {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 #bluetooth {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 #clock {
   margin-left: 4px;
   margin-right: 8px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 /* -- Specific module styles -- */
-
-#custom-launcher-icon {
-  font-size: 17px;
-  padding-bottom: 6px;
-  padding-right: 16px;
-}
 
 #battery.charging,
 #battery.plugged {
@@ -163,7 +151,6 @@ button:hover {
 }
 
 /* -- Hover effects -- */
-#custom-launcher-icon:hover,
 #cpu:hover,
 #memory:hover,
 #tray:hover,

@@ -5,7 +5,6 @@
   // "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": [
-    "custom/launcher-icon",
     "cpu",
     "memory",
     "tray"
@@ -18,10 +17,6 @@
     "bluetooth",
     "clock"
   ],
-  "custom/launcher-icon": {
-    "format": "󰣇",
-    "on-click": "vicinae toggle"
-  },
   "tray": {
     "icon-size": 14,
     "spacing": 8
