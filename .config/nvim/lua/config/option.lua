@@ -105,7 +105,7 @@ vim.cmd("let $PATH = '" .. home_dir .. node_bin .. ":' . $PATH")
 
 -- LSPの警告フォーマット
 -- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.diagnostic.config({
   virtual_text = {
     format = function(diagnostic)
       if not diagnostic.source then
