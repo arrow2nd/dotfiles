@@ -1,14 +1,14 @@
-/* -- Global rules -- */
+/* -- Win95 Taskbar Style -- */
 * {
   border: none;
-  font-family: "PlemolJP Console NF";
-  font-size: 14px;
+  font-family: "x12y12pxMaruMinyaM";
+  font-size: 13px;
   min-height: 10px;
 }
 
 window#waybar {
-  background: rgba(0, 0, 0, 0);
-  opacity: 1;
+  background-color: #c0c0c0;
+  border-top: 2px solid #ffffff;
 }
 
 window#waybar.hidden {
@@ -24,7 +24,28 @@ button:hover {
   background: inherit;
 }
 
-/* -- General rules for visible modules -- */
+/* -- Start button: Win95 raised button -- */
+#custom-start {
+  background-color: #c0c0c0;
+  color: #000000;
+  font-weight: bold;
+  padding: 2px 12px;
+  margin: 2px 4px 2px 2px;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #808080;
+  border-right: 2px solid #808080;
+  border-radius: 0;
+}
+
+#custom-start:hover {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+}
+
+/* -- Win95 raised panel style -- */
 #clock,
 #cpu,
 #memory,
@@ -34,123 +55,20 @@ button:hover {
 #bluetooth,
 #pulseaudio,
 #custom-lyrics {
-  background-color: #232934;
-  color: #e8e2d6;
-  margin-top: 8px;
-  padding: 4px 12px;
+  background-color: #c0c0c0;
+  color: #000000;
+  padding: 2px 8px;
+  margin: 2px 1px;
   transition: none;
-  border: 1px solid #384153;
-  opacity: 0.8;
+  /* Win95 sunken border effect */
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-bottom: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+  border-radius: 0;
 }
 
-/* -- Island group separations -- */
-
-/* Left side - group starts */
-#cpu {
-  margin-left: 8px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-right: none;
-}
-
-#tray {
-  margin-left: 4px;
-  border-radius: 8px;
-}
-
-/* Right side - group starts */
-#custom-lyrics {
-  border-radius: 8px;
-}
-
-#pulseaudio {
-  margin-left: 4px;
-  border-radius: 8px;
-}
-
-#battery {
-  margin-left: 4px;
-  border-radius: 8px;
-}
-
-#network {
-  margin-left: 4px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-right: none;
-}
-
-/* Group ends */
-#memory {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-#bluetooth {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-#clock {
-  margin-left: 4px;
-  margin-right: 8px;
-  border-radius: 8px;
-}
-
-/* -- Specific module styles -- */
-
-#battery.charging,
-#battery.plugged {
-  color: #232934;
-  background-color: #bbcacb;
-  border-color: #bbcacb;
-}
-
-#battery.warning:not(.charging) {
-  color: #232934;
-  background-color: #d4af8d;
-  border-color: #d4af8d;
-}
-
-@keyframes blink {
-  to {
-    color: #232934;
-    background-color: #c66471;
-  }
-}
-
-#battery.critical:not(.charging) {
-  color: #232934;
-  background-color: #d4af8d;
-  border-color: #d4af8d;
-  animation-name: blink;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-#network.disconnected {
-  color: #232934;
-  background-color: #c66471;
-  border-color: #c66471;
-}
-
-#pulseaudio.muted {
-  color: #232934;
-  background-color: #b3b8c2;
-  border-color: #b3b8c2;
-}
-
-#tray>.passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray>.needs-attention {
-  -gtk-icon-effect: highlight;
-}
-
-/* -- Hover effects -- */
+/* -- Hover: Win95 pressed button effect -- */
 #cpu:hover,
 #memory:hover,
 #tray:hover,
@@ -159,7 +77,70 @@ button:hover {
 #network:hover,
 #bluetooth:hover,
 #clock:hover {
-  color: #232934;
-  border-color: #dfc2ba;
-  background: #dfc2ba;
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-bottom: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+  background-color: #c0c0c0;
+  color: #000000;
+}
+
+/* -- Clock: Win95 sunken style (always recessed) -- */
+#clock {
+  margin-right: 4px;
+  padding: 2px 12px;
+}
+
+/* -- Left side -- */
+#cpu {
+  margin-left: 4px;
+}
+
+/* -- Battery states -- */
+#battery.charging,
+#battery.plugged {
+  color: #000000;
+  background-color: #c0c0c0;
+}
+
+#battery.warning:not(.charging) {
+  color: #000000;
+  background-color: #ffff00;
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-bottom: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+}
+
+@keyframes blink {
+  to {
+    color: #ffffff;
+    background-color: #ff0000;
+  }
+}
+
+#battery.critical:not(.charging) {
+  color: #ffffff;
+  background-color: #ff0000;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#network.disconnected {
+  color: #808080;
+}
+
+#pulseaudio.muted {
+  color: #808080;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
 }

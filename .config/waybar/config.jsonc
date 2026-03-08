@@ -1,10 +1,11 @@
 {
   // "layer": "top", // Waybar at top layer
-  "position": "top", // Waybar position (top|bottom|left|right)
+  "position": "bottom", // Waybar position (top|bottom|left|right)
   // "height": 24, // Waybar height (to be removed for auto height)
   // "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": [
+    "custom/start",
     "cpu",
     "memory",
     "tray"
@@ -26,12 +27,12 @@
     "tooltip-format": "{calendar}"
   },
   "cpu": {
-    "format": "󰍛 {usage}%",
+    "format": "CPU {usage}%",
     "tooltip": true,
     "on-click": "niri msg action spawn -- ghostty -e bashtop"
   },
   "memory": {
-    "format": "󱈹 {}%",
+    "format": "MEM {}%",
     "tooltip": true
   },
   "battery": {
@@ -39,25 +40,25 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "󰁹 {capacity}%",
-    "format-charging": "󱐋 {capacity}%",
-    "format-plugged": "  {capacity}%"
+    "format": "BAT {capacity}%",
+    "format-charging": "CHG {capacity}%",
+    "format-plugged": "AC {capacity}%"
   },
   "network": {
     "interval": 5,
-    "format-wifi": "󰤨 ",
-    "format-ethernet": "󰈀",
+    "format-wifi": "Wi-Fi",
+    "format-ethernet": "LAN",
     "format-disconnected": "OFFLINE",
     "tooltip-format": "{essid} ({ifname}) : {ipaddr}",
     "on-click": "niri msg action spawn -- ghostty -e nmtui"
   },
   "bluetooth": {
-    "format": "",
-    "format-disabled": "󰂲",
-    "format-off": "󰂲",
-    "format-on": "",
-    "format-connected": "  {device_alias}",
-    "format-connected-battery": "  {device_alias} {device_battery_percentage}%",
+    "format": "BT",
+    "format-disabled": "BT OFF",
+    "format-off": "BT OFF",
+    "format-on": "BT",
+    "format-connected": "BT {device_alias}",
+    "format-connected-battery": "BT {device_alias} {device_battery_percentage}%",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -66,12 +67,17 @@
     "on-click-right": "rfkill toggle bluetooth"
   },
   "pulseaudio": {
-    "format": "󰕾 {volume}%",
-    "format-muted": "󰸈",
-    "format-source": " | 󰍬",
-    "format-source-muted": " | 󰍭",
+    "format": "VOL {volume}%",
+    "format-muted": "MUTE",
+    "format-source": " | MIC",
+    "format-source-muted": " | MIC OFF",
     "on-click": "niri msg action spawn -- pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "custom/start": {
+    "format": "Start",
+    "tooltip": false,
+    "on-click": "vicinae toggle"
   },
   "custom/lyrics": {
     "return-type": "json",
