@@ -328,6 +328,7 @@ require("octo").setup({
 
 local h = require("util.helper")
 
+h.nmap("<Leader>oo", "<CMD>Octo<CR>" )
 h.nmap("<Leader>op", "<CMD>Octo pr list<CR>", { desc = "PR list" })
 h.nmap("<Leader>oc", "<CMD>Octo pr create<CR>", { desc = "PR create" })
 h.nmap("<Leader>oi", "<CMD>Octo issue list<CR>", { desc = "Issue list" })
