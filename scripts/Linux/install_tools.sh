@@ -66,39 +66,6 @@ echo "[ ufw ]"
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 
-echo "[ Desktop ]"
-sudo pacman -S --noconfirm \
-  waybar \
-  mako \
-  wob \
-  ghostty \
-  swaybg \
-  swayidle \
-  gtklock \
-  xdg-desktop-portal-gtk \
-  xdg-desktop-portal-gnome \
-  gnome-keyring \
-  xwayland-satellite \
-  udiskie \
-  polkit-gnome \
-  brightnessctl \
-  wl-clipboard
-
-yay -S \
-  niri \
-  ly \
-  vicinae-bin
-
-echo "[ IME ]"
-sudo pacman -S --noconfirm \
-    fcitx5-skk\
-    fcitx5-configtool
-
-yay -S yaskkserv2-bin
-
-echo "[ systemctl ]"
-sudo systemctl enable ly.service
-
 echo "[ Go CLI tools ]"
 export PATH="$HOME/go/bin:$PATH"
 go install github.com/arrow2nd/anct@latest

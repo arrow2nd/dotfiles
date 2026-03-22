@@ -10,18 +10,18 @@ height=200
 margin=8
 padding=8,12
 
-border-size=2
+border-size=1
 border-radius=0
-background-color=#c0c0c0
-text-color=#000000
-border-color=#ffffff
-progress-color=over #000080
+background-color=#232934
+text-color=#e8e2d6
+border-color=#384153
+progress-color=over #384153
 
 [urgency=low]
-border-color=#808080
+border-color=#d4af8d
 
 [urgency=critical]
-border-color=#ff0000
+border-color=#c66471
 
 [mode=silent]
 invisible=1
