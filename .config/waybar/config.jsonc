@@ -1,11 +1,10 @@
 {
   // "layer": "top", // Waybar at top layer
-  "position": "bottom", // Waybar position (top|bottom|left|right)
+  "position": "top", // Waybar position (top|bottom|left|right)
   // "height": 24, // Waybar height (to be removed for auto height)
   // "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": [
-    "custom/start",
     "cpu",
     "memory",
     "tray"
@@ -41,13 +40,13 @@
       "critical": 15
     },
     "format": "BAT {capacity}%",
-    "format-charging": "CHG {capacity}%",
-    "format-plugged": "AC {capacity}%"
+    "format-charging": "CHR {capacity}%",
+    "format-plugged": "PLUGGED {capacity}%"
   },
   "network": {
     "interval": 5,
     "format-wifi": "Wi-Fi",
-    "format-ethernet": "LAN",
+    "format-ethernet": "ETH",
     "format-disconnected": "OFFLINE",
     "tooltip-format": "{essid} ({ifname}) : {ipaddr}",
     "on-click": "niri msg action spawn -- ghostty -e nmtui"
@@ -56,7 +55,7 @@
     "format": "BT",
     "format-disabled": "BT OFF",
     "format-off": "BT OFF",
-    "format-on": "BT",
+    "format-on": "BT ON",
     "format-connected": "BT {device_alias}",
     "format-connected-battery": "BT {device_alias} {device_battery_percentage}%",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
@@ -68,23 +67,18 @@
   },
   "pulseaudio": {
     "format": "VOL {volume}%",
-    "format-muted": "MUTE",
+    "format-muted": "VOL MUTED",
     "format-source": " | MIC",
-    "format-source-muted": " | MIC OFF",
+    "format-source-muted": " | MIC MUTED",
     "on-click": "niri msg action spawn -- pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-  },
-  "custom/start": {
-    "format": "Start",
-    "tooltip": false,
-    "on-click": "vicinae toggle"
   },
   "custom/lyrics": {
     "return-type": "json",
     "format": "{icon} {0}",
     "hide-empty-text": true,
     "format-icons": {
-      "default": "󰎇"
+      "default": "♪"
     },
     "exec-if": "which lyriflow",
     "exec": "nowplaying-lyriflow",
