@@ -53,8 +53,12 @@ rev = "lua"
 [[plugins]]
 repo = "nvim-telescope/telescope.nvim"
 rev = "v0.2.0"
-depends = ["plenary.nvim", "telescope-ui-select.nvim", "kensaku.vim"]
-on_cmd = ["Telescope"]
+depends = [
+  "plenary.nvim",
+  "telescope-ui-select.nvim",
+  "kensaku.vim",
+  "git-wt.nvim"
+]
 lua_source = """
 require("config.telescope")
 """
@@ -69,6 +73,9 @@ depends = ["denops.vim"]
 [[plugins]]
 repo = "Allianaab2m/telescope-kensaku.nvim"
 depends = ["kensaku.vim"]
+
+[[plugins]]
+repo = "WataruNishimura/git-wt.nvim"
 
 # ターミナル系
 [[plugins]]

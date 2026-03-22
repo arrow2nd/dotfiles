@@ -93,6 +93,7 @@ telescope.setup({
 -- extensions
 telescope.load_extension("ui-select")
 telescope.load_extension("kensaku")
+require("git-wt").setup()
 
 -- keymaps
 h.nmap(";f", "<CMD>Telescope find_files<CR>")
@@ -101,6 +102,7 @@ h.nmap(";G", "<CMD>Telescope kensaku<CR>")
 h.nmap(";h", "<CMD>Telescope help_tags<CR>")
 h.nmap(";o", "<CMD>Telescope oldfiles cwd_only=true<CR>")
 h.nmap(";O", "<CMD>Telescope oldfiles<CR>")
+h.nmap(";B", "<CMD>GitWt<CR>")
 h.nmap("<Leader>gg", "<CMD>Telescope git_status<CR>")
 h.nmap("<Leader>gl", "<CMD>Telescope git_bcommits<CR>")
 h.nmap("<Leader>gL", "<CMD>Telescope git_commits<CR>")

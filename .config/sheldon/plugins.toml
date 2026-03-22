@@ -44,12 +44,6 @@ github = "momo-lab/zsh-abbrev-alias"
 github = "azu/ni.zsh"
 apply = ["defer"]
 
-[plugins."gwt.zsh"]
-github = "arrow2nd/gwt.zsh"
-apply = ["defer"]
-# local = "~/workspace/github.com/arrow2nd/gwt.zsh"
-
-
 [plugins.minimal]
 github = "subnixr/minimal"
 

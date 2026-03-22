@@ -10,6 +10,11 @@ eval "$(sheldon source)"
 [[ -f ~/.safe-chain/scripts/init-posix.sh ]] && source ~/.safe-chain/scripts/init-posix.sh 
 
 #
+# git gwt
+#
+eval "$(git wt --init zsh)"
+
+#
 # プロンプト
 #
 
@@ -33,6 +38,7 @@ abbrev-alias gb='git branch'
 abbrev-alias gc='git commit'
 abbrev-alias gf='git fetch'
 abbrev-alias gsw='git switch'
+abbrev-alias gwt='git wt'
 alias git-remote-http-to-ssh='current_url=$(git remote get-url origin 2>/dev/null) && if [[ "$current_url" =~ ^https://github\.com/ ]]; then git remote set-url origin "$(echo "$current_url" | sed "s|https://github.com/|git@github.com:|")"; else echo "Remote is already SSH or not a GitHub HTTPS URL: $current_url"; fi'
 
 # eza
@@ -106,7 +112,16 @@ zle -N select-history
 bindkey "^h" select-history
 
 # ブランチを切り替える
-bindkey -s "^b" "gwt move\n"
+function select-worktree() {
+  local dir=$(git-wt | fzf --header-lines=1 | awk '{if ($1 == "*") print $2; else print $1}')
+  if [ -n "$dir" ]; then
+    cd "$dir"
+  fi
+  zle clear-screen
+}
+
+zle -N select-worktree
+bindkey "^b" select-worktree
 
 # カレント行をnvimで編集
 function edit_current_line() {
