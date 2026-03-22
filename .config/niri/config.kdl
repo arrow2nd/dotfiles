@@ -117,7 +117,7 @@ cursor {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 8
+    gaps 4
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -162,10 +162,10 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        // off
+        off
 
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        // width 2
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -173,13 +173,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#b3b8c2"
+        // active-color "#b3b8c2"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#384153"
+        // inactive-color "#384153"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -203,12 +203,12 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         off
 
-        width 2
-        active-color "#b3b8c2"
-        inactive-color "#384153"
+        // width 2
+        // active-color "#b3b8c2"
+        // inactive-color "#384153"
 
         // Color of the border around windows that request your attention.
-        urgent-color "#c66471"
+        // urgent-color "#c66471"
 
         // Gradients can use a few different interpolation color spaces.
         // For example, this is a pastel rainbow gradient via in="oklch longer hue".
