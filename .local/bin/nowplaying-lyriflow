@@ -19,5 +19,11 @@ fi
 position=$(playerctl position 2>/dev/null | awk '{print $1 + 1.0}')
 
 # 歌詞を取得
-lyriflow get --waybar --title "$title" --artist "$artist" --album "$album" --position "$position"
+result=$(lyriflow get --waybar --title "$title" --artist "$artist" --album "$album" --position "$position")
+
+if echo "$result" | jq -e -r '.text' 2>/dev/null | grep -q "Lyrics not found"; then
+    echo "$result" | jq -c '.text = "'"$title"' by '"$artist"'"'
+else
+    echo "$result"
+fi
 
