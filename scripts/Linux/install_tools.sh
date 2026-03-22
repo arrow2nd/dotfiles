@@ -38,7 +38,8 @@ yay -S --noconfirm \
   trash-cli \
   bashtop \
   yazi \
-  difftastic
+  difftastic \
+  git-wt
 
 echo "[ Fonts ]"
 sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
