@@ -29,8 +29,8 @@ vim.o.splitright = true
 -- windowのボーダー
 vim.o.winborder = "single"
 
--- intro を非表示
-opt.shortmess = "I"
+-- intro・ファイル情報メッセージを非表示
+opt.shortmess = "IF"
 
 -- 行
 opt.number = true
