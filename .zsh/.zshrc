@@ -33,6 +33,7 @@ abbrev-alias ga='git add'
 abbrev-alias gd='GIT_EXTERNAL_DIFF=difft git diff'
 abbrev-alias gs='git status'
 abbrev-alias gp='git push'
+abbrev-alias gpf='git push --force-with-lease --force-if-includes'
 abbrev-alias gpu='git pull'
 abbrev-alias gb='git branch'
 abbrev-alias gc='git commit'
@@ -58,8 +59,46 @@ abbrev-alias cls='clear'
 abbrev-alias zmv='noglob zmv -W'
 abbrev-alias dot='cd ~/dotfiles'
 
-# マージ済のブランチをまとめて消す
-alias g-delete-merged-branches='git branch --merged | grep -v "*" | grep -v "^+" | xargs git branch -d'
+# リモートで削除済みのブランチとworktreeをまとめて掃除
+g-cleanup () {
+  git fetch --prune
+
+  # worktreeの掃除
+  local wt=""
+  local branch=""
+
+  git worktree list --porcelain | while IFS= read -r line; do
+    case "$line" in
+      worktree\ *)
+        wt="${line#worktree }"
+        branch=""
+        ;;
+      branch\ refs/heads/*)
+        branch="${line#branch refs/heads/}"
+        ;;
+      "")
+        if [[ -n "$branch" && "$branch" != "main" && "$branch" != "master" ]]; then
+          if ! git rev-parse --verify --quiet "refs/remotes/origin/$branch" >/dev/null 2>&1; then
+            echo "removing worktree: $wt ($branch)"
+            git worktree remove "$wt"
+          fi
+        fi
+        wt=""
+        branch=""
+        ;;
+    esac
+  done
+
+  git worktree prune
+
+  # マージ済ブランチも削除
+  git branch --merged | grep -v '*' | grep -v '^+' | while read -r b; do
+    echo "deleting branch: $b"
+    git branch -d "$b"
+  done
+
+  echo "done."
+}
 
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'
