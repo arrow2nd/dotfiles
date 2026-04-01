@@ -37,12 +37,12 @@ apply = ["defer"]
 [plugins.zsh-abbrev-alias]
 github = "momo-lab/zsh-abbrev-alias"
 
-# [plugins.op]
-# local = "~/.config/op"
-
 [plugins.ni]
 github = "azu/ni.zsh"
 apply = ["defer"]
+
+[plugins.git-wt]
+inline = 'zsh-defer eval "$(git wt --init zsh)"'
 
 [plugins.minimal]
 github = "subnixr/minimal"
