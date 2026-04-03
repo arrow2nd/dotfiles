@@ -106,6 +106,12 @@ output "eDP-1" {
     position x=0 y=0
 }
 
+// output "DP-2" {
+//   mode "1920x1080"
+//   scale 1
+//   transform "270"
+// }
+
 cursor {
     xcursor-theme "Adwaita"
     hide-when-typing
@@ -388,10 +394,10 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+E hotkey-overlay-title="Open a Filer: nautilus" { spawn-sh "nautilus"; }
-    Mod+B hotkey-overlay-title="Open a Browser: Chromium" { spawn-sh "chromium"; }
-    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn-sh "ghostty"; }
-    Mod+D hotkey-overlay-title="Run an Application: vicinae" { spawn-sh "vicinae toggle"; }
+    Mod+E hotkey-overlay-title="Open a Filer" { spawn-sh "nautilus"; }
+    Mod+B hotkey-overlay-title="Open a Browser" { spawn-sh "chromium"; }
+    Mod+T hotkey-overlay-title="Open a Termina" { spawn-sh "wezterm"; }
+    Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "vicinae toggle"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "swaylock" "-f"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
