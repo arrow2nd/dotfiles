@@ -36,7 +36,6 @@ require("mason-lspconfig").setup({
     "biome",
     "eslint",
     "typos_lsp",
-    "stylelint_lsp",
     "copilot",
   },
 })
