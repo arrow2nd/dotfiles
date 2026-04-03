@@ -37,6 +37,42 @@ abbrev-alias gsw='git switch'
 abbrev-alias gwt='git wt'
 alias git-remote-http-to-ssh='current_url=$(git remote get-url origin 2>/dev/null) && if [[ "$current_url" =~ ^https://github\.com/ ]]; then git remote set-url origin "$(echo "$current_url" | sed "s|https://github.com/|git@github.com:|")"; else echo "Remote is already SSH or not a GitHub HTTPS URL: $current_url"; fi'
 
+# PRをworktreeでチェックアウト
+function checkout-pr() {
+  local pr_number="$1"
+
+  if [[ -z "$pr_number" ]]; then
+    pr_number=$(gh pr list | fzf | awk '{print $1}')
+    if [[ -z "$pr_number" ]]; then
+      return 1
+    fi
+  fi
+
+  local branch=$(gh pr view "$pr_number" --json headRefName -q .headRefName)
+  if [[ -z "$branch" ]]; then
+    echo "PRの情報を取得できませんでした"
+    return 1
+  fi
+
+  git fetch origin "pull/${pr_number}/head:${branch}" && git wt "$branch"
+}
+
+# マージ済み・不要なworktree・ブランチを削除
+function cleanup-branches() {
+  git fetch --prune
+
+  # worktreeの削除（現在のworktreeを除く）
+  git-wt | tail -n +2 | awk '{if ($1 != "*") print $1}' | while read -r branch; do
+    git wt -d "$branch" 2>/dev/null
+  done
+
+  # worktreeに紐づかないローカルブランチの削除
+  local wt_branches=$(git worktree list --porcelain | grep '^branch ' | sed 's|^branch refs/heads/||')
+  git branch --format='%(refname:short)' | grep -vxF "$wt_branches" | while read -r branch; do
+    git branch -d "$branch" 2>/dev/null
+  done
+}
+
 # eza
 abbrev-alias l='eza -la'
 abbrev-alias la='eza -a'
