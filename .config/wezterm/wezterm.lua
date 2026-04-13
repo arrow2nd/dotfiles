@@ -65,11 +65,33 @@ local keybinds = {
   { key = "c", mods = "SHIFT|CTRL", action = act.CopyTo("Clipboard") },
   { key = "v", mods = "SHIFT|CTRL", action = act.PasteFrom("Clipboard") },
   -- タブ
-  { key = "t", mods = "ALT", action = act.SpawnTab("CurrentPaneDomain") },
+  {
+    key = "t",
+    mods = "ALT",
+    action = wezterm.action_callback(function(window, pane)
+      local mux_window = window:mux_window()
+
+      local current_index = 0
+      for _, tab_info in ipairs(mux_window:tabs_with_info()) do
+        if tab_info.is_active then
+          current_index = tab_info.index
+          break
+        end
+      end
+
+      mux_window:spawn_tab({})
+      window:perform_action(wezterm.action.MoveTab(current_index + 1), pane)
+    end),
+  },
   { key = "[", mods = "ALT", action = act.ActivateTabRelative(-1) },
   { key = "]", mods = "ALT", action = act.ActivateTabRelative(1) },
   { key = "{", mods = "SHIFT|ALT", action = act.MoveTabRelative(-1) },
   { key = "}", mods = "SHIFT|ALT", action = act.MoveTabRelative(1) },
+  {
+    key = 't',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ShowTabNavigator,
+  },
   -- ペイン
   { key = "v", mods = "ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "s", mods = "ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
