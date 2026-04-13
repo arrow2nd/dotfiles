@@ -3,7 +3,7 @@ layout {
         children
         pane size=1 borderless=true {
             plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
-            format_left   "{mode} #[fg=#89B4FA,bold]{session}"
+            format_left   "{mode} #[fg=#82ACC2,bold]{session}"
                 format_right  "{tabs}"
                 format_space  ""
 
@@ -14,8 +14,20 @@ layout {
 
                 hide_frame_for_single_pane "true"
 
-                mode_normal  "#[bg=blue] "
-                mode_tmux    "#[bg=#ffc387] "
+                mode_normal  "#[bg=#7ea1b6] "
+                mode_locked        "#[bg=#c66471] LOCKED "
+                mode_resize        "#[bg=#d4af8d] RESIZE "
+                mode_pane          "#[bg=#85a3a1] PANE "
+                mode_tab           "#[bg=#9b8ea8] TAB "
+                mode_scroll        "#[bg=#bbcacb] SCROLL "
+                mode_enter_search  "#[bg=#E0BF9D] SEARCH "
+                mode_search        "#[bg=#E0BF9D] SEARCH "
+                mode_rename_tab    "#[bg=#ABA1B5] RENAME "
+                mode_rename_pane   "#[bg=#ABA1B5] RENAME "
+                mode_session       "#[bg=#82ACC2] SESSION "
+                mode_move          "#[bg=#d4af8d] MOVE "
+                mode_prompt        "#[bg=#99B0B0] PROMPT "
+                mode_tmux    "#[bg=#E0BF9D] TMUX "
 
                 tab_normal   "#[fg=#6C7086] {name} "
                 tab_active   "#[fg=#9399B2,bold,italic] {name} "
