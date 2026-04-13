@@ -5,7 +5,6 @@ usage = "latest"
 yarn = "4"
 pnpm = "9"
 "npm:@openai/codex" = "latest"
-"npm:@aikidosec/safe-chain" = "latest"
 rust = "latest"
 "npm:agent-browser" = "latest"
 

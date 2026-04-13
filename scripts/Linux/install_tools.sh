@@ -77,6 +77,9 @@ mkdir -p $HOME/.skk
 jisyo d
 yaskkserv2_make_dictionary --dictionary-filename=~/.config/yaskkserv2/dictionary.yaskkserv2 .skk/SKK-JISYO.L .skk/skk-jisyo.imas.utf8
 
+echo "[ safe-chain ]"
+curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh
+
 echo "[ Switch to zsh ]"
 sudo chsh -s $(which zsh) $(whoami)
 cd
