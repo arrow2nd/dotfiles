@@ -4,6 +4,6 @@ font-size = 12
 # Appearance Settings
 window-decoration = auto
 window-theme = auto
-macos-titlebar-style = tabs
+macos-titlebar-style = hidden
 macos-titlebar-proxy-icon = hidden
 macos-window-buttons = hidden

@@ -80,35 +80,35 @@ keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
 
 # Tab management
-keybind = alt+t=new_tab
-keybind = alt+left_bracket=previous_tab
-keybind = alt+right_bracket=next_tab
-keybind = alt+shift+left_bracket=move_tab:-1
-keybind = alt+shift+right_bracket=move_tab:1
+# keybind = alt+t=new_tab
+# keybind = alt+left_bracket=previous_tab
+# keybind = alt+right_bracket=next_tab
+# keybind = alt+shift+left_bracket=move_tab:-1
+# keybind = alt+shift+right_bracket=move_tab:1
 
 # Tab switching (1-5)
-keybind = alt+one=goto_tab:1
-keybind = alt+two=goto_tab:2
-keybind = alt+three=goto_tab:3
-keybind = alt+four=goto_tab:4
-keybind = alt+five=goto_tab:5
+# keybind = alt+one=goto_tab:1
+# keybind = alt+two=goto_tab:2
+# keybind = alt+three=goto_tab:3
+# keybind = alt+four=goto_tab:4
+# keybind = alt+five=goto_tab:5
 
 # Pane/Split management
-keybind = alt+v=new_split:right
-keybind = alt+s=new_split:down
-keybind = alt+x=close_surface
-keybind = alt+h=goto_split:left
-keybind = alt+l=goto_split:right
-keybind = alt+k=goto_split:up
-keybind = alt+j=goto_split:down
-keybind = alt+nine=toggle_split_zoom
+# keybind = alt+v=new_split:right
+# keybind = alt+s=new_split:down
+# keybind = alt+x=close_surface
+# keybind = alt+h=goto_split:left
+# keybind = alt+l=goto_split:right
+# keybind = alt+k=goto_split:up
+# keybind = alt+j=goto_split:down
+# keybind = alt+nine=toggle_split_zoom
 
 # Reload config
 keybind = global:alt+shift+r=reload_config
 
 # quick terminal
-keybind = global:cmd+g=toggle_quick_terminal
-quick-terminal-size = 50%,80%
+# keybind = global:cmd+g=toggle_quick_terminal
+# quick-terminal-size = 50%,80%
 
 # Application Settings
 shell-integration = zsh
