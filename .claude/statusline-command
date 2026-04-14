@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+input=$(cat)
+
+used=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
+remaining=$(echo "$input" | jq -r '.context_window.remaining_percentage // empty')
+total_in=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
+total_out=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0')
+window=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
+
+# メッセージがまだない場合はバーを表示しない
+if [ -z "$used" ] || [ -z "$remaining" ]; then
+  exit 0
+fi
+
+# プログレスバーを生成する（幅20）
+bar_width=20
+used_int=$(printf "%.0f" "$used")
+filled=$(( used_int * bar_width / 100 ))
+empty=$(( bar_width - filled ))
+
+bar=""
+for i in $(seq 1 $filled); do
+  bar="${bar}█"
+done
+for i in $(seq 1 $empty); do
+  bar="${bar}░"
+done
+
+remaining_int=$(printf "%.0f" "$remaining")
+
+# 使用率に応じて色を変える（ANSI カラー）
+if [ "$used_int" -ge 90 ]; then
+  color="\033[0;31m"   # 赤
+elif [ "$used_int" -ge 70 ]; then
+  color="\033[0;33m"   # 黄
+else
+  color="\033[0;32m"   # 緑
+fi
+reset="\033[0m"
+
+total_tokens=$(( total_in + total_out ))
+if [ "$total_tokens" -ge 1000 ]; then
+  total_display="$(printf "%.1fk" "$(echo "scale=1; $total_tokens / 1000" | bc)")"
+else
+  total_display="${total_tokens}"
+fi
+
+printf "${color}[%s]${reset} Context: %d%% used / %d%% remaining  (tokens: %s / %s)" \
+  "$bar" "$used_int" "$remaining_int" "$total_display" "$(printf "%.0fk" "$(echo "scale=0; $window / 1000" | bc)")"
