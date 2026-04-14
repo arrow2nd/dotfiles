@@ -53,3 +53,13 @@ h.nmap("]g", "<CMD>lua vim.diagnostic.jump({ count = 1 })<CR>", { desc = "Go to 
 h.nmap("[g", "<CMD>lua vim.diagnostic.jump({ count = -1 })<CR>", { desc = "Go to previous diagnostic" })
 h.nmap("gf", "<CMD>lua vim.lsp.buf.format({ async = true })<CR>", { desc = "Formatting" })
 h.nmap("gn", "<CMD>lua vim.lsp.buf.rename()<CR>", { desc = "Rename definition" })
+
+-- サジェストの受け入れ
+for _, mode in pairs({ "n", "i" }) do
+  h[mode .. "map"]("<c-cr>", function()
+    if vim.lsp.inline_completion.get() then
+      return
+    end
+    return "<c-cr>"
+  end, { expr = true, desc = "Goto/Apply Next Edit Suggestion" })
+end

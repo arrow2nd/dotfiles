@@ -41,6 +41,9 @@ opt.cursorline = true
 -- ヘルプの言語
 opt.helplang = "ja"
 
+-- 外部でファイルが変更された場合に自動で再読み込み
+opt.autoread = true
+
 -- バックアップ, スワップファイル
 opt.backup = false
 opt.swapfile = false

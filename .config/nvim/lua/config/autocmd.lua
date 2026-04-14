@@ -1,6 +1,12 @@
 local api = vim.api
 local augroup = api.nvim_create_augroup("AutoCommands", {})
 
+-- 外部でファイルが変更された場合に自動で再読み込み
+api.nvim_create_autocmd({ "BufEnter", "FocusGained", "CursorHold" }, {
+	group = augroup,
+	command = "checktime",
+})
+
 -- rdfをxmlとして読む
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	group = augroup,

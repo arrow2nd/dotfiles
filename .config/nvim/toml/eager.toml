@@ -143,9 +143,9 @@ build = "deno task prepare"
 
 # AI支援
 [[plugins]]
-repo = "folke/sidekick.nvim"
+repo = "lambdalisue/nvim-aibo"
 lua_source = """
-require("config.sidekick")
+require("config.aibo")
 """
 
 # GitHub
