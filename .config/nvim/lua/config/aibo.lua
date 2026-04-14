@@ -67,7 +67,7 @@ h.vmap("<leader>ap", function()
     line1 = 1,
     line2 = 0, -- 空レンジ → バッファ内容なし
     input = true,
-    replace = true,
+    replace = false,
     prefix = "@" .. filepath .. ":" .. s .. "-" .. e .. " ",
   })
 end, { desc = "Aibo Prompt Input with location" })
