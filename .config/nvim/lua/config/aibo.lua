@@ -39,6 +39,31 @@ for _, mode in pairs({ "n", "v" }) do
   end, { desc = "Aibo Prompt Input" })
 end
 
+-- 現在のバッファパス付きで入力欄に送る
+h.nmap("<leader>ap", function()
+  local filepath = vim.api.nvim_buf_get_name(0)
+
+  if filepath == "" then
+    vim.notify("No file associated with current buffer", vim.log.levels.WARN)
+    return
+  end
+
+  -- コンソールが現在のタブページに無ければ vsplit で開く
+  local console = require("aibo.internal.console_window")
+
+  if not console.find_info_in_tabpage({ cmd = "claude" }) then
+    vim.cmd("Aibo -opener=vsplit -stay claude")
+  end
+
+  require("aibo.command.aibo_send").call({
+    line1 = 1,
+    line2 = 0,
+    input = true,
+    replace = false,
+    prefix = "@" .. filepath .. " ",
+  })
+end, { desc = "Aibo Prompt Input with path" })
+
 -- 選択範囲の位置情報付きで入力欄に送る
 h.vmap("<leader>ap", function()
   local filepath = vim.api.nvim_buf_get_name(0)
@@ -56,18 +81,23 @@ h.vmap("<leader>ap", function()
   end
 
   -- 選択範囲の行・列番号を取得
-  local s = vim.fn.line("v")
-  local e = vim.fn.line(".")
+  local sl = vim.fn.line("v")
+  local sc = vim.fn.col("v")
+  local el = vim.fn.line(".")
+  local ec = vim.fn.col(".")
 
-  if s > e then
-    s, e = e, s
+  -- 逆順選択を正規化
+  if sl > el or (sl == el and sc > ec) then
+    sl, sc, el, ec = el, ec, sl, sc
   end
+
+  local location = filepath .. " の " .. sl .. "行" .. sc .. "列から" .. el .. "行" .. ec .. "列目"
 
   require("aibo.command.aibo_send").call({
     line1 = 1,
     line2 = 0, -- 空レンジ → バッファ内容なし
     input = true,
     replace = false,
-    prefix = "@" .. filepath .. ":" .. s .. "-" .. e .. " ",
+    prefix = location .. " ",
   })
 end, { desc = "Aibo Prompt Input with location" })
