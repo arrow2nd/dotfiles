@@ -4,7 +4,8 @@
       "mcp__vv-mcp__say",
       "mcp__pencil"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "auto"
   },
   "hooks": {
     "Notification": [
@@ -23,14 +24,21 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command"
+  },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true
   },
   "effortLevel": "high",
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/statusline-command"
-  }
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true,
+  "language": "japanese"
 }

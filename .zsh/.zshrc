@@ -1,3 +1,8 @@
+# Ghostty起動時にzellijを自動起動（zellij内での二重起動を防ぐ）
+if [[ "$TERM_PROGRAM" == "ghostty" && -z "$ZELLIJ" ]]; then
+  exec zellij
+fi
+
 #
 # sheldon
 #
