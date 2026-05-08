@@ -34,10 +34,10 @@ require("sidekick").setup({
         },
       },
     },
-    mux = {
-      enabled = true,
-      backend = "zellij",
-    },
+    -- mux = {
+    --   enabled = true,
+    --   backend = "zellij",
+    -- },
     picker = "telescope",
   },
 })
