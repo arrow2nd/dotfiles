@@ -111,26 +111,21 @@ for _, mode in pairs({ "n", "v" }) do
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
     end
 
-    -- Sidekickを開いて、ファイル情報を送信
-    local cli = require("sidekick.cli")
+    -- 既に開いている session のみ対象（無ければ何もしない）
+    local State = require("sidekick.cli.state")
+    if #State.get({ attached = true }) == 0 then
+      vim.notify("No active Sidekick session", vim.log.levels.WARN)
+      return
+    end
 
-    -- まず表示してフォーカス
-    cli.show({
-      name = "claude",
-      focus = true,
+    -- 複数開いている場合は標準の select UI で選択させる
+    State.with(function(state)
+      if state.session and loc then
+        state.session:send(loc)
+      end
+    end, {
+      filter = { attached = true },
     })
-
-    -- 少し待ってからファイル情報を送信
-    vim.defer_fn(function()
-      local State = require("sidekick.cli.state")
-      State.with(function(state)
-        if state.session and loc then
-          state.session:send(loc)
-        end
-      end, {
-        filter = { name = "claude" },
-      })
-    end, 100)
   end)
 end
 
