@@ -1,6 +1,6 @@
-# Ghostty起動時にzellijを自動起動（zellij内での二重起動を防ぐ）
-if [[ "$TERM_PROGRAM" == "ghostty" && -z "$ZELLIJ" ]]; then
-  exec zellij
+# Ghostty起動時にtmuxを自動起動（tmux内での二重起動を防ぐ）
+if [[ "$TERM_PROGRAM" == "ghostty" && -z "$TMUX" ]] && command -v tmux >/dev/null 2>&1; then
+  exec tmux -f ~/.config/tmux/tmux.conf new-session -A -s nyaan
 fi
 
 #
