@@ -30,15 +30,15 @@
   },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": true
   },
+  "language": "japanese",
   "effortLevel": "high",
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
+  "theme": "dark",
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
-  "language": "japanese"
+  "voiceEnabled": true
 }
