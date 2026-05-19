@@ -10,7 +10,7 @@ find . -type f \
        -not -path "*.git/*" \
        -not -path "*node_modules/*" \
        -not -path "*.DS_Store" \
-       -not -path "*bashtop/*" \
+       -not -path "*btop/*" \
        -not -path "*fontconfig/*" \
        -not -path "*gtklock/*" \
        -not -path "*mako/*" \

@@ -36,7 +36,7 @@ yay -S --noconfirm \
   fd \
   bat \
   trash-cli \
-  bashtop \
+  btop \
   yazi \
   difftastic \
   git-wt

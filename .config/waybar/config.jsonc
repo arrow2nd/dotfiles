@@ -28,7 +28,7 @@
   "cpu": {
     "format": "CPU {usage}%",
     "tooltip": true,
-    "on-click": "niri msg action spawn -- ghostty -e bashtop"
+    "on-click": "niri msg action spawn -- ghostty -e btop"
   },
   "memory": {
     "format": "MEM {}%",

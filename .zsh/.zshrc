@@ -251,3 +251,4 @@ setopt hist_ignore_all_dups
 if [ ~/dotfiles/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
+
