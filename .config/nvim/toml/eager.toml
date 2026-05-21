@@ -147,11 +147,3 @@ repo = "folke/sidekick.nvim"
 lua_source = """
 require("config.sidekick")
 """
-
-# GitHub
-[[plugins]]
-repo = "pwntester/octo.nvim"
-depends = ["plenary.nvim", "telescope.nvim"]
-lua_source = """
-require("config.octo")
-"""
