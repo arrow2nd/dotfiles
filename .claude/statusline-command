@@ -4,47 +4,101 @@ input=$(cat)
 
 used=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 remaining=$(echo "$input" | jq -r '.context_window.remaining_percentage // empty')
-total_in=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
-total_out=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0')
-window=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
 
-# メッセージがまだない場合はバーを表示しない
 if [ -z "$used" ] || [ -z "$remaining" ]; then
   exit 0
 fi
 
-# プログレスバーを生成する（幅20）
-bar_width=20
-used_int=$(printf "%.0f" "$used")
-filled=$(( used_int * bar_width / 100 ))
-empty=$(( bar_width - filled ))
-
-bar=""
-for i in $(seq 1 $filled); do
-  bar="${bar}█"
-done
-for i in $(seq 1 $empty); do
-  bar="${bar}░"
-done
-
-remaining_int=$(printf "%.0f" "$remaining")
-
-# 使用率に応じて色を変える（ANSI カラー）
-if [ "$used_int" -ge 90 ]; then
-  color="\033[0;31m"   # 赤
-elif [ "$used_int" -ge 70 ]; then
-  color="\033[0;33m"   # 黄
-else
-  color="\033[0;32m"   # 緑
-fi
 reset="\033[0m"
+gray="\033[0;90m"
 
-total_tokens=$(( total_in + total_out ))
-if [ "$total_tokens" -ge 1000 ]; then
-  total_display="$(printf "%.1fk" "$(echo "scale=1; $total_tokens / 1000" | bc)")"
-else
-  total_display="${total_tokens}"
+make_bar() {
+  local pct=$1
+  local width=10
+  local filled=$(( pct * width / 100 ))
+  if [ "$filled" -gt "$width" ]; then filled=$width; fi
+  local empty=$(( width - filled ))
+
+  local bar=""
+
+  if [ "$filled" -ge 1 ]; then
+    bar="${bar}"
+    local mid=$(( filled - 2 ))
+    if [ "$mid" -ge 1 ]; then for _ in $(seq 1 $mid); do bar="${bar}"; done; fi
+    if [ "$filled" -ge 2 ]; then
+      if [ "$empty" -eq 0 ]; then bar="${bar}"; else bar="${bar}"; fi
+    fi
+  fi
+
+  if [ "$empty" -ge 1 ]; then
+    if [ "$filled" -eq 0 ]; then
+      bar="${bar}"
+      local emid=$(( empty - 2 ))
+    else
+      local emid=$(( empty - 1 ))
+    fi
+    if [ "$emid" -ge 1 ]; then for _ in $(seq 1 $emid); do bar="${bar}"; done; fi
+    bar="${bar}"
+  fi
+
+  echo "$bar"
+}
+
+get_color() {
+  local pct=$1
+  if [ "$pct" -ge 90 ]; then
+    echo "\033[0;31m"
+  elif [ "$pct" -ge 70 ]; then
+    echo "\033[0;33m"
+  else
+    echo "\033[0;90m"
+  fi
+}
+
+# Context
+used_int=$(printf "%.0f" "$used")
+remaining_int=$(printf "%.0f" "$remaining")
+ctx_color=$(get_color "$used_int")
+context_str=$(printf "${ctx_color}C %s %d%%${reset}" "$(make_bar "$used_int")" "$used_int")
+sep=" | "
+
+# 5h rate limit
+five_hour_str=""
+five_hour_used=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+if [ -n "$five_hour_used" ]; then
+  fh_int=$(printf "%.0f" "$five_hour_used")
+  fh_color=$(get_color "$fh_int")
+  five_hour_str=$(printf "${sep}${fh_color}5h %s %d%%${reset}" "$(make_bar "$fh_int")" "$fh_int")
 fi
 
-printf "${color}[%s]${reset} Context: %d%% used / %d%% remaining  (tokens: %s / %s)" \
-  "$bar" "$used_int" "$remaining_int" "$total_display" "$(printf "%.0fk" "$(echo "scale=0; $window / 1000" | bc)")"
+# 7d rate limit
+seven_day_str=""
+seven_day_used=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+if [ -n "$seven_day_used" ]; then
+  sd_int=$(printf "%.0f" "$seven_day_used")
+  sd_color=$(get_color "$sd_int")
+  seven_day_str=$(printf "${sep}${sd_color}7d %s %d%%${reset}" "$(make_bar "$sd_int")" "$sd_int")
+fi
+
+# Claude status
+claude_status=""
+status_json=$(curl -sf --max-time 3 "https://status.claude.com/api/v2/status.json" 2>/dev/null)
+if [ -n "$status_json" ]; then
+  indicator=$(echo "$status_json" | jq -r '.status.indicator // empty')
+  description=$(echo "$status_json" | jq -r '.status.description // empty' | xargs)
+  if [ -n "$indicator" ] && [ -n "$description" ]; then
+    case "$indicator" in
+      none)        status_color="\033[0;32m"; status_icon=" " ;;
+      minor)       status_color="\033[0;33m"; status_icon=" " ;;
+      major)       status_color="\033[0;31m"; status_icon=" " ;;
+      critical)    status_color="\033[1;31m"; status_icon=" " ;;
+      maintenance) status_color="\033[0;36m"; status_icon="󱁤 " ;;
+      *)           status_color="\033[0;37m"; status_icon="" ;;
+    esac
+    link_start="\033]8;;https://status.claude.com/\033\\"
+    link_end="\033]8;;\033\\"
+    claude_status=$(printf "${sep}${link_start}${status_color}%s %s${reset}${link_end}" "$status_icon" "$description")
+  fi
+fi
+
+printf "%b%b%b%b" "$context_str" "$five_hour_str" "$seven_day_str" "$claude_status"
