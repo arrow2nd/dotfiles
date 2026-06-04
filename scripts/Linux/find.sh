@@ -3,7 +3,7 @@
 find . -type f \
        -not -path ".gitignore" \
        -not -path "*.sh" \
-       -not -path "*.md" \
+       -not -name "README.md" \
        -not -path "*scripts/*" \
        -not -path "*.git/*" \
        -not -path "*node_modules/*" \
