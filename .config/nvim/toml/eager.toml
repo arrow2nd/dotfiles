@@ -45,16 +45,6 @@ lua_source = """
 require("config.mini")
 """
 
-[[plugins]]
-repo = "ryoppippi/vim-bun-lock"
-rev = "lua"
-
-[[plugins]]
-repo = "WilliamHsieh/overlook.nvim"
-lua_source = """
-require("config.overlook")
-"""
-
 # ファジーファインダ
 [[plugins]]
 repo = "nvim-telescope/telescope.nvim"
