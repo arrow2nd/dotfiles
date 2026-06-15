@@ -46,6 +46,11 @@ end
 
 telescope.setup({
   defaults = {
+    layout_strategy = "horizontal",
+    layout_config = {
+      width = 0.9,
+      height = 0.95,
+    },
     mappings = {
       i = {
         ["<C-j>"] = "move_selection_next",
