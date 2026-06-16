@@ -34,6 +34,12 @@ export PATH="$HOME/go/bin:$PATH"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Linux
+if [[ $(uname) == "Linux" ]]; then
+  # 1Password SSH Agent
+  export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+fi
+
 # macOS
 if [[ $(uname) == "Darwin" ]]; then
   # https://kiririmode.hatenablog.jp/entry/20161106/1478394313

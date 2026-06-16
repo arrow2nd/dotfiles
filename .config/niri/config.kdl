@@ -283,10 +283,10 @@ layout {
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
-spawn-at-startup "swaybg" "-i" "/home/arrow2nd/Pictures/Wallpapers/JpbRcFJRfiABMP3Lj1Cads1F.png" "-m" "fill"
+// spawn-at-startup "swaybg" "-i" "/home/arrow2nd/Pictures/Wallpapers/JpbRcFJRfiABMP3Lj1Cads1F.png" "-m" "fill"
 spawn-at-startup "vicinae" "server"
-spawn-sh-at-startup "yaskkserv2 ~/.config/yaskkserv2/dictionary.yaskkserv2"
-spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+// spawn-sh-at-startup "yaskkserv2 ~/.config/yaskkserv2/dictionary.yaskkserv2"
+// spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -395,9 +395,9 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+E hotkey-overlay-title="Open a Filer" { spawn-sh "nautilus"; }
-    Mod+B hotkey-overlay-title="Open a Browser" { spawn-sh "chromium"; }
+    Mod+B hotkey-overlay-title="Open a Browser" { spawn-sh "google-chrome-stable"; }
     Mod+T hotkey-overlay-title="Open a Termina" { spawn-sh "ghostty"; }
-    Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "vicinae toggle"; }
+    Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "swaylock" "-f"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
