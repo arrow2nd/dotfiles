@@ -10,3 +10,7 @@ rust = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
+
+# macOSではデフォルトでこれだけど、Linuxではそうではないので明示的に。NixOS用
+[settings.node]
+compile = false

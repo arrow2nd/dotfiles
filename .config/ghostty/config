@@ -117,4 +117,5 @@ shell-integration-features = no-cursor
 keybind = shift+enter=text:\x1b\r
 
 # for macOS
-config-file = ?config_darwin
+# TODO: あとでなんとかする
+#config-file = ?config_darwin
