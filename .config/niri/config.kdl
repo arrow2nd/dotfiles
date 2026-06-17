@@ -397,7 +397,7 @@ binds {
     Mod+E hotkey-overlay-title="Open a Filer" { spawn-sh "nautilus"; }
     Mod+B hotkey-overlay-title="Open a Browser" { spawn-sh "google-chrome-stable"; }
     Mod+T hotkey-overlay-title="Open a Termina" { spawn-sh "ghostty"; }
-    Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "fuzzel"; }
+    Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "vicinae toggle"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "swaylock" "-f"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
