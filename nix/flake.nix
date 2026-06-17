@@ -19,6 +19,12 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Neovim Nightly Overlay
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
@@ -38,7 +44,6 @@
         specialArgs = { inherit inputs pkgs-unstable; };
         modules = [
           ./hosts/devon/configuration.nix
-          inputs.niri.nixosModules.niri
         ];
       };
 
@@ -51,6 +56,7 @@
         extraSpecialArgs = { inherit inputs pkgs-unstable; };
         modules = [
           ./home/home.nix
+          inputs.niri.homeModules.niri
         ];
       };
     };

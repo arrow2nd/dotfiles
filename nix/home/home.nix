@@ -12,6 +12,7 @@ in
 {
   imports = [
     ./niri.nix
+    ./skk.nix
   ];
 
   home.username = "arrow2nd";
@@ -107,7 +108,6 @@ in
 
   # dotfiles symlink
   xdg.configFile = {
-    "niri/config.kdl".source = link ".config/niri/config.kdl";
     "ghostty".source = link ".config/ghostty";
     "mako".source = link ".config/mako";
     "waybar".source = link ".config/waybar";
@@ -134,10 +134,10 @@ in
     mise
     tmux
 
-    pkgs-unstable.neovim
+    inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default
     tree-sitter
-
     fzf
+    gh
     ghq
     eza
     fd
@@ -147,14 +147,16 @@ in
     btop
     difftastic
     trash-cli
+    bluetuith
+
+    pavucontrol
+    google-chrome
+    ghostty
 
     deno
     go
 
     cmake
     gnumake
-    less
-
-    gh
   ];
 }

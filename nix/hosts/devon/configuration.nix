@@ -93,6 +93,9 @@
   # Wayland / niri
   programs.niri.enable = true;
 
+  # niri-flake が起動する polkit agent を無効化（polkit-gnome つかう）
+  systemd.user.services.niri-flake-polkit.enable = false;
+
   # xdg-desktop-portal
   xdg.portal = {
     enable = true;
@@ -155,17 +158,16 @@
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       noto-fonts-color-emoji
-      
+
       # コーディング用
       plemoljp-nf
-      
+
       # BIZ UD
       biz-ud-gothic
     ];
-    
+
     fontconfig = {
       defaultFonts = {
-        # UIフォント (マルミーニャМ優先、フォールバックでBIZ UDP)
         sansSerif = [ "x12y12pxMaruMinyaM" "BIZ UDPGothic" "Noto Sans CJK JP" ];
         serif = [ "Noto Serif CJK JP" ];
         monospace = [ "PlemolJP Console NF" "Noto Sans Mono CJK JP" ];
@@ -181,9 +183,8 @@
     vim
     curl
     wget
-    htop
+    less
     unzip
-    bluetuith
     usbutils
     pciutils
 
@@ -196,18 +197,13 @@
     wl-clipboard
     brightnessctl
     playerctl
-    pavucontrol
-    xwayland-satellite # X11
     libnotify
     polkit_gnome
     vicinae
 
     # GUI apps
     grim # スクショ
-    swappy # スクショ編集
     slurp # 範囲選択
-    ghostty
-    google-chrome
     nautilus
   ];
 
