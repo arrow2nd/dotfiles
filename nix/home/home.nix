@@ -5,9 +5,10 @@ let
 
   # mkOutOfStoreSymlinkを楽に書くためのヘルパー
   link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
-
   # 1Password SSH agent のソケットパス
   onePassSock = "${config.home.homeDirectory}/.1password/agent.sock";
+
+  gh-q = import ../pkgs/gh-q.nix { inherit pkgs; };
 in
 {
   imports = [
@@ -82,7 +83,7 @@ in
 
   # SSH (1Password SSH agent経由)
   home.sessionVariables.SSH_AUTH_SOCK = onePassSock;
-  
+
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -91,7 +92,7 @@ in
     };
   };
 
-  # Git (1Password SSH agentで署名)
+  # Git
   programs.git = {
     enable = true;
     settings = {
@@ -102,8 +103,20 @@ in
       };
       gpg.format = "ssh";
       "gpg \"ssh\"".program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
-      commit.gpgsign = true;
+      commit = {
+        gpgsign = true;
+        template = "${config.xdg.configHome}/git/commit-template";
+      };
+      core.editor = "nvim";
+      pull.rebase = false;
+      ghq.root = "${config.home.homeDirectory}/workspace";
     };
+  };
+
+  # GitHub CLI
+  programs.gh = {
+    enable = true;
+    extensions = [ gh-q ];
   };
 
   # dotfiles symlink
@@ -112,8 +125,8 @@ in
     "mako".source = link ".config/mako";
     "waybar".source = link ".config/waybar";
     "swaylock".source = link ".config/swaylock";
-    "fontconfig".source = link ".config/fontconfig";
 
+    "git/commit-template".source = link ".config/git/commit-template";
     "bat".source = link ".config/bat";
     "mise".source = link ".config/mise";
     "nvim".source = link ".config/nvim";
@@ -137,7 +150,6 @@ in
     inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default
     tree-sitter
     fzf
-    gh
     ghq
     eza
     fd
