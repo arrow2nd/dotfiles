@@ -10,6 +10,10 @@ let
   onePassSock = "${config.home.homeDirectory}/.1password/agent.sock";
 in
 {
+  imports = [
+    ./niri.nix
+  ];
+
   home.username = "arrow2nd";
   home.homeDirectory = "/home/arrow2nd";
   home.stateVersion = "26.05";
