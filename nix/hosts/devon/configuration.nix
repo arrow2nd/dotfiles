@@ -176,6 +176,27 @@
     };
   };
 
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      (final: prev: {
+        fcitx5-skk = prev.fcitx5-skk.overrideAttrs (old: {
+          cmakeFlags = [
+            "-DENABLE_QT=TRUE"
+            "-DSKK_PATH=${prev.skkDictionaries.l}/share/skk"
+          ];
+          buildInputs = (old.buildInputs or []) ++ [
+            prev.qt6.qtbase
+            prev.qt6Packages.fcitx5-qt
+          ];
+          nativeBuildInputs = (old.nativeBuildInputs or []) ++ [
+            prev.qt6.wrapQtAppsHook
+          ];
+        });
+      })
+    ];
+  };
+
   # Packages
   environment.systemPackages = with pkgs; [
     gcc
@@ -210,8 +231,6 @@
   # nautilus
   services.gvfs.enable = true;
   services.udisks2.enable = true;
-
-  nixpkgs.config.allowUnfree = true; # WIP
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
