@@ -14,6 +14,7 @@ in
   imports = [
     ./niri.nix
     ./skk.nix
+    ./takumi-guard.nix
   ];
 
   home.username = "arrow2nd";
