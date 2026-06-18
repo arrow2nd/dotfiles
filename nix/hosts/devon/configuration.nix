@@ -90,6 +90,18 @@
     polkitPolicyOwners = [ "arrow2nd" ];
   };
 
+  services.onepassword-secrets = {
+    enable = true;
+    tokenFile = "/etc/opnix-token";
+    secrets = {
+      # NAS の SMB クレデンシャル
+      smbCreds = {
+        reference = "op://nixos-devon/omv_smb2/credentials";
+        mode = "0600";
+      };
+    };
+  };
+
   # Wayland / niri
   programs.niri.enable = true;
 
@@ -208,6 +220,7 @@
     unzip
     usbutils
     pciutils
+    cifs-utils # SMB クライアント
 
     # Desktop env
     waybar
@@ -231,6 +244,18 @@
   # nautilus
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+
+  # NAS マウント
+  fileSystems."/mnt/nyas" = {
+    device = "//100.113.168.37/nyas";
+    fsType = "cifs";
+    options = let
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+      smb-creds-path = config.services.onepassword-secrets.secretPaths.smbCreds;
+    in [
+      "${automount_opts},credentials=${smb-creds-path},uid=1000,gid=100,vers=2.0"
+    ];
+  };
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];

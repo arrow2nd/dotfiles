@@ -25,6 +25,12 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # 1Password Service Account 経由でシークレットを管理したいっす！
+    opnix = {
+      url = "github:brizzbuzz/opnix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
@@ -44,6 +50,7 @@
         specialArgs = { inherit inputs pkgs-unstable; };
         modules = [
           ./hosts/devon/configuration.nix
+          inputs.opnix.nixosModules.default
         ];
       };
 
