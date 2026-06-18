@@ -143,32 +143,45 @@ in
 
   # Packages
   home.packages = with pkgs; [
+    # shell
     sheldon
     mise
     tmux
-
-    inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default
-    tree-sitter
     fzf
-    ghq
     eza
     fd
     bat
     ripgrep
-    yazi
-    btop
     difftastic
     trash-cli
-    bluetuith
 
-    pavucontrol
-    google-chrome
-    ghostty
+    # git
+    ghq
+    git-wt
 
+    # nvim
+    inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default
+    tree-sitter
+
+    # lang
     deno
     go
 
+    # build tools
     cmake
     gnumake
+
+    # 自作関係
+    (pkgs.callPackage ../pkgs/anct.nix { })
+
+    # TUI tools
+    btop
+    yazi
+    bluetuith
+
+    # GUI tools
+    pavucontrol
+    google-chrome
+    ghostty
   ];
 }
