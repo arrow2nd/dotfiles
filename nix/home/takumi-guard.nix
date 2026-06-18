@@ -1,25 +1,61 @@
 { config, lib, pkgs, ... }:
+
+let
+  tokenPath = "/var/lib/opnix/secrets/takumiGuardToken";
+in
 {
-  # npm / pnpm / yarn / deno は .npmrc を読む
-  home.file.".npmrc".text = ''
-    registry=https://npm.flatt.tech/
-  '';
-
-  # bun は .bunfig.toml
-  home.file.".bunfig.toml".text = ''
-    [install]
-    registry = "https://npm.flatt.tech/"
-  '';
-
-  # pip → XDG準拠で ~/.config/pip/pip.conf
-  home.file.".config/pip/pip.conf".text = ''
-    [global]
-    index-url = https://pypi.flatt.tech/simple/
-  '';
-
-  # uv, Go は環境変数経由
   home.sessionVariables = {
-    UV_DEFAULT_INDEX = "https://pypi.flatt.tech/simple/";
+    UV_DEFAULT_INDEX = "https://pypi.flatt.tech/simple/"; # あんまつかわんのでトークンなし
     GOPROXY = "https://golang.flatt.tech";
   };
+
+  home.activation.takumiGuard = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    # opnix が展開したトークンファイルを読む
+    if [ -r "${tokenPath}" ]; then
+      TOKEN=$(cat "${tokenPath}" | tr -d '\n')
+    else
+      TOKEN=""
+    fi
+
+    # npm / pnpm / yarn / deno
+    $DRY_RUN_CMD cat > $HOME/.npmrc <<EOF
+registry=https://npm.flatt.tech/
+EOF
+    if [ -n "$TOKEN" ]; then
+      $DRY_RUN_CMD echo "//npm.flatt.tech/:_authToken=$TOKEN" >> $HOME/.npmrc
+    fi
+    $DRY_RUN_CMD chmod 600 $HOME/.npmrc
+
+    # bun
+    $DRY_RUN_CMD cat > $HOME/.bunfig.toml <<EOF
+[install]
+registry = "https://npm.flatt.tech/"
+EOF
+    $DRY_RUN_CMD chmod 600 $HOME/.bunfig.toml
+
+    # pip
+    $DRY_RUN_CMD mkdir -p $HOME/.config/pip
+    if [ -n "$TOKEN" ]; then
+      $DRY_RUN_CMD cat > $HOME/.config/pip/pip.conf <<EOF
+[global]
+index-url = https://token:$TOKEN@pypi.flatt.tech/simple/
+EOF
+    else
+      $DRY_RUN_CMD cat > $HOME/.config/pip/pip.conf <<EOF
+[global]
+index-url = https://pypi.flatt.tech/simple/
+EOF
+    fi
+    $DRY_RUN_CMD chmod 600 $HOME/.config/pip/pip.conf
+
+    # Go (.netrc)
+    if [ -n "$TOKEN" ]; then
+      $DRY_RUN_CMD touch $HOME/.netrc
+      $DRY_RUN_CMD chmod 600 $HOME/.netrc
+      $DRY_RUN_CMD grep -v "golang.flatt.tech" $HOME/.netrc > /tmp/netrc-new 2>/dev/null || touch /tmp/netrc-new
+      $DRY_RUN_CMD echo "machine golang.flatt.tech login token password $TOKEN" >> /tmp/netrc-new
+      $DRY_RUN_CMD mv /tmp/netrc-new $HOME/.netrc
+      $DRY_RUN_CMD chmod 600 $HOME/.netrc
+    fi
+  '';
 }

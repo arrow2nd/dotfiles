@@ -94,10 +94,17 @@
     enable = true;
     tokenFile = "/etc/opnix-token";
     secrets = {
-      # NAS の SMB クレデンシャル
+      # NAS
       smbCreds = {
         reference = "op://nixos-devon/omv_smb2/credentials";
         mode = "0600";
+      };
+
+      takumiGuardToken = {
+        reference = "op://nixos-devon/takumi_guard/token";
+        mode = "0600";
+        owner = "arrow2nd";
+        group = "users";
       };
     };
   };
