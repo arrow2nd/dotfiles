@@ -78,6 +78,13 @@
         ];
       }
       { command = [ "vicinae" "server" ]; }
+      # 壁紙
+      { command = [
+          "swaybg"
+          "-i" "/home/arrow2nd/Pictures/Wallpapers/JpbRcFJRfiABMP3Lj1Cads1F.png"
+          "-m" "fill"
+        ];
+      }
     ];
 
     screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
