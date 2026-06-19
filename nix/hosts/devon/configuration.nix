@@ -5,10 +5,12 @@
 { config, pkgs, inputs, pkgs-unstable, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/nix-settings.nix
+    ../../modules/linux/fonts.nix
+    ../../modules/linux/fcitx5-skk.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -158,64 +160,6 @@
     enable = true;
   };
 
-  # IME
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-skk
-      qt6Packages.fcitx5-configtool
-    ];
-    fcitx5.waylandFrontend = true;
-  };
-
-  # Fonts
-  fonts = {
-    packages = with pkgs; [
-      # 日本語
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      noto-fonts-color-emoji
-
-      # コーディング用
-      plemoljp-nf
-
-      # BIZ UD
-      biz-ud-gothic
-    ];
-
-    fontconfig = {
-      defaultFonts = {
-        sansSerif = [ "x12y12pxMaruMinyaM" "BIZ UDPGothic" "Noto Sans CJK JP" ];
-        serif = [ "Noto Serif CJK JP" ];
-        monospace = [ "PlemolJP Console NF" "Noto Sans Mono CJK JP" ];
-        emoji = [ "Noto Color Emoji" ];
-      };
-    };
-  };
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [
-      (final: prev: {
-        fcitx5-skk = prev.fcitx5-skk.overrideAttrs (old: {
-          cmakeFlags = [
-            "-DENABLE_QT=TRUE"
-            "-DSKK_PATH=${prev.skkDictionaries.l}/share/skk"
-          ];
-          buildInputs = (old.buildInputs or []) ++ [
-            prev.qt6.qtbase
-            prev.qt6Packages.fcitx5-qt
-          ];
-          nativeBuildInputs = (old.nativeBuildInputs or []) ++ [
-            prev.qt6.wrapQtAppsHook
-          ];
-        });
-      })
-    ];
-  };
-
   # Packages
   environment.systemPackages = with pkgs; [
     gcc
@@ -261,20 +205,6 @@
       smb-creds-path = config.services.onepassword-secrets.secretPaths.smbCreds;
     in [
       "${automount_opts},credentials=${smb-creds-path},uid=1000,gid=100,vers=2.0"
-    ];
-  };
-
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    substituters = [
-      "https://cache.nixos.org"
-      "https://nix-community.cachix.org"
-      "https://niri.cachix.org"
-    ];
-    trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
     ];
   };
 

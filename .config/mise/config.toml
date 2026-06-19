@@ -4,9 +4,7 @@ bun = "1"
 usage = "latest"
 yarn = "4"
 pnpm = "9"
-"npm:@openai/codex" = "latest"
 rust = "latest"
-"npm:agent-browser" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]

@@ -62,7 +62,7 @@
         };
         extraSpecialArgs = { inherit inputs pkgs-unstable; };
         modules = [
-          ./home/home.nix
+          ./hosts/devon/home.nix
           inputs.niri.homeModules.niri
         ];
       };
