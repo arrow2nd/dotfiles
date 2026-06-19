@@ -178,7 +178,6 @@
     mako
     swaybg
     swayidle
-    swaylock
     wl-clipboard
     brightnessctl
     playerctl

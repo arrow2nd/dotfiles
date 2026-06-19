@@ -1,0 +1,41 @@
+{ ... }:
+{
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      image = "~/Pictures/Wallpapers/JpbRcFJRfiABMP3Lj1Cads1F.png";
+
+      color = "008080";
+      show-failed-attempts = true;
+
+      font = "x12y12pxMaruMinyaM";
+      indicator-radius = 60;
+      indicator-thickness = 4;
+
+      inside-color = "00000000";
+      inside-clear-color = "00000000";
+      inside-ver-color = "00000000";
+      inside-wrong-color = "00000000";
+
+      ring-color = "00000000";
+      ring-clear-color = "00000000";
+      ring-ver-color = "00000000";
+      ring-wrong-color = "00000000";
+
+      line-color = "00000000";
+      line-clear-color = "00000000";
+      line-ver-color = "00000000";
+      line-wrong-color = "00000000";
+
+      separator-color = "00000000";
+
+      key-hl-color = "000080ff";
+      bs-hl-color = "808080ff";
+
+      text-color = "000000ff";
+      text-clear-color = "000000ff";
+      text-ver-color = "000080ff";
+      text-wrong-color = "ff0000ff";
+    };
+  };
+}

@@ -9,10 +9,7 @@ in
     pavucontrol
   ];
 
-  # TODO: ここもめったに更新しないのでsymlinkやめてもいい
   xdg.configFile = {
-    "mako".source = link ".config/mako";
     "waybar".source = link ".config/waybar";
-    "swaylock".source = link ".config/swaylock";
   };
 }

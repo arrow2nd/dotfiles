@@ -5,5 +5,7 @@
     ./gtk.nix
     ./udiskie.nix
     ./packages.nix
+    ./swaylock.nix
+    ./mako.nix
   ];
 }

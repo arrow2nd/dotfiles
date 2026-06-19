@@ -69,7 +69,6 @@
 
     spawn-at-startup = [
       { command = [ "waybar" ]; }
-      { command = [ "mako" ]; }
       { command = [
           "swayidle" "-w"
           "timeout" "601" "niri msg action power-off-monitors"
