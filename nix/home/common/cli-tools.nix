@@ -6,6 +6,7 @@
     fd
     bat
     ripgrep
+    jq
     difftastic
     trash-cli
     ghq
