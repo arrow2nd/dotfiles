@@ -42,23 +42,6 @@ require("sidekick").setup({
   },
 })
 
--- サジェストの受け入れ
-for _, mode in pairs({ "n", "i" }) do
-  h[mode .. "map"]("<c-cr>", function()
-    -- if there is a next edit, jump to it, otherwise apply it if any
-    -- if require("sidekick").nes_jump_or_apply() then
-    --   return -- jumped or applied
-    -- end
-
-    -- if you are using Neovim's native inline completions
-    if vim.lsp.inline_completion.get() then
-      return
-    end
-
-    return "<c-cr>"
-  end, { expr = true, desc = "Goto/Apply Next Edit Suggestion" })
-end
-
 -- フォーカス移動
 for _, mode in pairs({ "n", "x", "i", "t" }) do
   h[mode .. "map"]("<c-.>", function()

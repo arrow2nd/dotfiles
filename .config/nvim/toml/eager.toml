@@ -137,3 +137,9 @@ repo = "folke/sidekick.nvim"
 lua_source = """
 require("config.sidekick")
 """
+
+[[plugins]]
+repo = "zbirenbaum/copilot.lua"
+lua_source = """
+require("config.copilot")
+"""

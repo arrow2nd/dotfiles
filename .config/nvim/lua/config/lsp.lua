@@ -36,15 +36,12 @@ require("mason-lspconfig").setup({
     "biome",
     "eslint",
     "typos_lsp",
-    "copilot",
   },
 })
 
 vim.lsp.config("*", {
   on_init = lsp.on_init,
 })
-
-vim.lsp.inline_completion.enable()
 
 -- キーマップ
 h.nmap("ge", "<CMD>lua vim.diagnostic.open_float()<CR>", { desc = "Show diagnostic" })
