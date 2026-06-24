@@ -26,6 +26,7 @@ require("nvim-treesitter").install({
   "make",
   "markdown",
   "markdown_inline",
+  "nix",
   "nginx",
   "php",
   "prisma",

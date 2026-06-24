@@ -12,5 +12,7 @@
     git-wt
     btop
     yazi
+    fastfetch
+    oxker
   ];
 }

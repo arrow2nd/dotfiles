@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, inputs, pkgs-unstable, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -10,6 +10,7 @@
     ../../modules/nix-settings.nix
     ../../modules/linux/fonts.nix
     ../../modules/linux/fcitx5-skk.nix
+    ../../modules/linux/docker.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -104,6 +105,13 @@
 
       takumiGuardToken = {
         reference = "op://nixos-devon/takumi_guard/token";
+        mode = "0600";
+        owner = "arrow2nd";
+        group = "users";
+      };
+
+      sakanaApiKey = {
+        reference = "op://nixos-devon/Sakana AI/api_key";
         mode = "0600";
         owner = "arrow2nd";
         group = "users";

@@ -82,9 +82,9 @@ for _, mode in pairs({ "n", "v" }) do
     require("sidekick.cli").toggle({ name = "codex", focus = true })
   end, { desc = "Sidekick Codex Toggle" })
 
-  -- Codex
+  -- OpenCode
   h[mode .. "map"]("<leader>ao", function()
-    require("sidekick.cli").toggle({ name = "codex", focus = true })
+    require("sidekick.cli").toggle({ name = "opencode", focus = true })
   end, { desc = "Sidekick Codex Toggle" })
 
   -- プロンプト選択

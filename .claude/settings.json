@@ -1,8 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "mcp__vv-mcp__say",
-      "mcp__pencil"
+      "mcp__vv-mcp__say"
     ],
     "deny": [],
     "defaultMode": "auto"
@@ -30,16 +29,7 @@
   },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true,
-    "codex@openai-codex": true
-  },
-  "extraKnownMarketplaces": {
-    "openai-codex": {
-      "source": {
-        "source": "github",
-        "repo": "openai/codex-plugin-cc"
-      }
-    }
+    "lua-lsp@claude-plugins-official": true
   },
   "language": "japanese",
   "effortLevel": "high",
@@ -49,5 +39,6 @@
   },
   "theme": "dark",
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "model": "claude-opus-4-7[1m]"
 }

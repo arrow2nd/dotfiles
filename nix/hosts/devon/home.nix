@@ -19,7 +19,11 @@
     cmake
     gnumake
 
-    google-chrome
+    # AMD Radeon 860M (Krackan) が Chrome の GPU blocklist で SwiftShader に
+    # フォールバックされ WebGL が無効化されるため、blocklist を無視して Vulkan/ANGLE を強制する
+    (google-chrome.override {
+      commandLineArgs = "--ignore-gpu-blocklist --enable-features=Vulkan";
+    })
 
     (pkgs.callPackage ../../pkgs/anct.nix { })
   ];

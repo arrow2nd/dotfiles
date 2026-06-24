@@ -1,26 +1,25 @@
 {
   description = "arrow2nd's NixOS + home-manager flake";
 
+  nixConfig = {
+    extra-substituters = ["https://cache.numtide.com"];
+    extra-trusted-public-keys = ["niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="];
+  };
+
   inputs = {
     # nixpkgs (stable)
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
-    # nixpkgs (unstable, neovim等の最新パッケージ用)
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    # home-manager
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # niri-flake
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Neovim Nightly Overlay
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,36 +30,32 @@
       url = "github:brizzbuzz/opnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
-
-      # unstable パッケージへのアクセス用
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
     in
     {
-      # NixOS
       nixosConfigurations.devon = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs pkgs-unstable; };
+        specialArgs = { inherit inputs; };
         modules = [
           ./hosts/devon/configuration.nix
           inputs.opnix.nixosModules.default
         ];
       };
 
-      # home-manager
       homeConfigurations."arrow2nd" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
-        extraSpecialArgs = { inherit inputs pkgs-unstable; };
+        extraSpecialArgs = { inherit inputs; };
         modules = [
           ./hosts/devon/home.nix
           inputs.niri.homeModules.niri

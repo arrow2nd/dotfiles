@@ -9,6 +9,12 @@ in
     GOPROXY = "https://golang.flatt.tech";
   };
 
+  # bun はトークン不要なので宣言的に
+  home.file.".bunfig.toml".text = ''
+    [install]
+    registry = "https://npm.flatt.tech/"
+  '';
+
   home.activation.takumiGuard = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     # opnix が展開したトークンファイルを読む
     if [ -r "${tokenPath}" ]; then
@@ -25,13 +31,6 @@ EOF
       $DRY_RUN_CMD echo "//npm.flatt.tech/:_authToken=$TOKEN" >> $HOME/.npmrc
     fi
     $DRY_RUN_CMD chmod 600 $HOME/.npmrc
-
-    # bun
-    $DRY_RUN_CMD cat > $HOME/.bunfig.toml <<EOF
-[install]
-registry = "https://npm.flatt.tech/"
-EOF
-    $DRY_RUN_CMD chmod 600 $HOME/.bunfig.toml
 
     # pip
     $DRY_RUN_CMD mkdir -p $HOME/.config/pip
