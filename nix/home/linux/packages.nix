@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     bluetuith
     pavucontrol
+    xwayland-satellite
   ];
 
   xdg.configFile = {

@@ -75,6 +75,7 @@
       "audio"
       "input"
       "render"
+      "kvm"
     ];
     shell = pkgs.zsh;
     initialPassword = "nixos";
@@ -197,6 +198,8 @@
     grim # スクショ
     slurp # 範囲選択
     nautilus
+    android-studio
+    android-tools
   ];
 
   # nautilus
