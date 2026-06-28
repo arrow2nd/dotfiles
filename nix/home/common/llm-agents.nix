@@ -75,21 +75,7 @@ in
 
   xdg.configFile."opencode/opencode.json".text = builtins.toJSON {
     "$schema" = "https://opencode.ai/config.json";
-    provider = {
-      fugu = {
-        npm = "@ai-sdk/openai-compatible";
-        name = "Sakana Fugu";
-        options = {
-          baseURL = "https://api.sakana.ai/v1";
-          apiKey = "{env:SAKANA_API_KEY}";
-        };
-        models = {
-          fugu = { name = "Fugu"; };
-          fugu-ultra = { name = "Fugu Ultra"; };
-        };
-      };
-    };
-    model = "fugu/fugu-ultra";
+    model = "opencode-go/deepseek-v4-flash";
   };
 
   home.activation = {
