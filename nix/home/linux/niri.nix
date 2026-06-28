@@ -5,8 +5,6 @@
     environment = {
       # chromium/electron
       NIXOS_OZONE_WL = "1";
-      # xwayland-satellite が提供する X11 ディスプレイ
-      DISPLAY = ":0";
     };
 
     input = {
@@ -70,7 +68,6 @@
     };
 
     spawn-at-startup = [
-      { command = [ "xwayland-satellite" ]; }
       { command = [ "waybar" ]; }
       { command = [
           "swayidle" "-w"

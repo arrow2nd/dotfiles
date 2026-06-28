@@ -198,7 +198,7 @@
     grim # スクショ
     slurp # 範囲選択
     nautilus
-    android-studio
+    (android-studio.override { forceWayland = true; })
     android-tools
   ];
 
