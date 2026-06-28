@@ -19,12 +19,13 @@
     cmake
     gnumake
 
-    # AMD Radeon 860M (Krackan) が Chrome の GPU blocklist で SwiftShader に
-    # フォールバックされ WebGL が無効化されるため、blocklist を無視して ANGLE の
-    # バックエンドだけ Vulkan に切り替える。--enable-features=Vulkan はコンポジタ
-    # 全体を Vulkan 化して動画フレームが真っ白になるので使わない。
+    # AMD Radeon 860M (Krackan) は Chrome の GPU blocklist で SwiftShader に
+    # フォールバックされ WebGL が無効化されるため blocklist を無視する。
+    # ANGLE は GL バックエンドにする。Vulkan バックエンド (--use-angle=vulkan)
+    # にすると WebGL は通るが動画レイヤーの DMA-BUF import が壊れて動画が
+    # 真っ白になる。GL なら WebGL/WebGPU/動画HWデコードが全て HW で揃う。
     (google-chrome.override {
-      commandLineArgs = "--ignore-gpu-blocklist --use-angle=vulkan";
+      commandLineArgs = "--ignore-gpu-blocklist --use-angle=gl";
     })
 
     (pkgs.callPackage ../../pkgs/anct.nix { })
