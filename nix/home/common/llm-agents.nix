@@ -65,6 +65,7 @@ in
     llm.codex
     opencode-wrapped
     llm.agent-browser
+    pkgs.sox
   ];
 
   # 静的設定は直接 symlink
