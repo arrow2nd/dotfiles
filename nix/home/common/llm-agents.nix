@@ -77,6 +77,17 @@ in
   xdg.configFile."opencode/opencode.json".text = builtins.toJSON {
     "$schema" = "https://opencode.ai/config.json";
     model = "opencode-go/deepseek-v4-flash";
+    mcp = {
+      vv-mcp = {
+        type = "local";
+        command = [ "npx" "-y" "@arrow2nd/vv-mcp" ];
+        environment = {
+          VOICEVOX_URL = "http://localhost:50021";
+          DEFAULT_VOICE_ID = "47";
+          DEFAULT_SPEED = "1.0";
+        };
+      };
+    };
   };
 
   home.activation = {
