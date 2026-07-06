@@ -15,5 +15,6 @@
     yazi
     fastfetch
     oxker
+    spotify-player
   ];
 }
