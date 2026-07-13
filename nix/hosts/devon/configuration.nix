@@ -218,6 +218,14 @@
     ];
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+  nix.optimise.automatic = true;
+
   # System Version
   system.stateVersion = "26.05";
 }
