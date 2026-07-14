@@ -200,6 +200,7 @@
     nautilus
     (android-studio.override { forceWayland = true; })
     android-tools
+
   ];
 
   # nautilus
