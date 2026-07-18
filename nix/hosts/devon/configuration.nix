@@ -35,6 +35,12 @@
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.hostName = "devon";
+  networking.hosts = {
+    "127.0.0.1" = [
+      "local.katasu.me"
+      "local.yondako.com"
+    ];
+  };
   networking.networkmanager.enable = true;
 
   # Tailscale
@@ -176,6 +182,7 @@
     vim
     curl
     wget
+    mkcert
     less
     unzip
     usbutils
