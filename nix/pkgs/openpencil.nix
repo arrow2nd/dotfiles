@@ -17,9 +17,9 @@ appimageTools.wrapType2 {
       contents = appimageTools.extractType2 { inherit pname version src; };
     in
     ''
-      install -Dm444 ${contents}/open-pencil.desktop $out/share/applications/open-pencil.desktop
-      substituteInPlace $out/share/applications/open-pencil.desktop \
-        --replace-fail 'Exec=AppRun' 'Exec=openpencil'
+      install -Dm444 ${contents}/OpenPencil.desktop $out/share/applications/OpenPencil.desktop
+      substituteInPlace $out/share/applications/OpenPencil.desktop \
+        --replace-fail 'Exec=OpenPencil' 'Exec=openpencil'
       cp -r ${contents}/usr/share/icons $out/share/icons
     '';
 }
