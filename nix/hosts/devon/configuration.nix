@@ -82,6 +82,7 @@
       "input"
       "render"
       "kvm"
+      "dialout"
     ];
     shell = pkgs.zsh;
     initialPassword = "nixos";
