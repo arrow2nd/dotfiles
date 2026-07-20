@@ -8,17 +8,6 @@ let
     source = config.lib.file.mkOutOfStoreSymlink "${claudeRepo}/${path}";
   };
 
-  # opnix が展開する 1Password 由来の API キー
-  sakanaApiKeyPath = "/var/lib/opnix/secrets/sakanaApiKey";
-
-  # opencode の {env:SAKANA_API_KEY} 解決用に env を注入してから本体を起動
-  opencode-wrapped = pkgs.writeShellScriptBin "opencode" ''
-    if [ -r ${sakanaApiKeyPath} ]; then
-      export SAKANA_API_KEY=$(cat ${sakanaApiKeyPath})
-    fi
-    exec ${llm.opencode}/bin/opencode "$@"
-  '';
-
   mcpServers = {
     vv-mcp = {
       command = "npx";
@@ -63,7 +52,7 @@ in
   home.packages = [
     llm.claude-code
     llm.codex
-    opencode-wrapped
+    llm.opencode
     llm.agent-browser
     pkgs.sox
   ];
