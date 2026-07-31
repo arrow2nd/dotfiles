@@ -48,6 +48,13 @@ if [[ $(uname) == "Darwin" ]]; then
   # Homebrew
   export PATH="/opt/homebrew/bin:$PATH"
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  # PATH自体は nix-darwin 管理の /etc/zshenv が設定してくれる（no_global_rcs より先に読まれる）が、
+  # ↑の Homebrew prepend で順序が逆転するため、重複コマンドが nix 優先になるよう先頭に戻す
+  if [[ -d /run/current-system ]]; then
+    export PATH="/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin:$PATH"
+  fi
+
   autoload -Uz compinit
   compinit
 fi

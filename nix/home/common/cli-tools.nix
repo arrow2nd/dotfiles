@@ -14,7 +14,11 @@
     btop
     yazi
     fastfetch
-    oxker
     spotify-player
+
+    deno
+    go
+    cmake
+    gnumake
   ];
 }

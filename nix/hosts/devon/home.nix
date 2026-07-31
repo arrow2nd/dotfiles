@@ -12,13 +12,12 @@
   home.username = "arrow2nd";
   home.homeDirectory = "/home/arrow2nd";
 
-  home.packages = with pkgs; [
-    # TODO: これは共通に置いてもいいかも
-    deno
-    go
-    cmake
-    gnumake
+  programs.git.settings.user = {
+    email = "44780846+arrow2nd@users.noreply.github.com";
+    signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDY1VNUT5HxHowIXRVmBRK7LEkB5QmTrE2XMrQFSngG6";
+  };
 
+  home.packages = with pkgs; [
     # AMD Radeon 860M (Krackan) は Chrome の GPU blocklist で SwiftShader に
     # フォールバックされ WebGL が無効化されるため blocklist を無視する。
     # ANGLE は GL バックエンドにする。Vulkan バックエンド (--use-angle=vulkan)

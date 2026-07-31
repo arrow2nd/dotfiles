@@ -1,6 +1,8 @@
 { ... }:
 {
   imports = [
+    ./git.nix
+    ./ssh.nix
     ./wayland-services.nix
     ./gtk.nix
     ./udiskie.nix

@@ -6,6 +6,7 @@
     "deny": [],
     "defaultMode": "auto"
   },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "Notification": [
       {
@@ -39,6 +40,5 @@
   },
   "theme": "dark",
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
-  "model": "claude-opus-4-6[1m]"
+  "voiceEnabled": true
 }

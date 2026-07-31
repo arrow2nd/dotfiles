@@ -1,15 +1,9 @@
-{ config, ... }:
-let
-  onePassSock = "${config.home.homeDirectory}/.1password/agent.sock";
-in
+{ ... }:
 {
-  home.sessionVariables.SSH_AUTH_SOCK = onePassSock;
-
+  # 1Password agent のソケットパスはプラットフォームで異なるため
+  # home/{linux,darwin}/ssh.nix 側で設定する
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    settings."*" = {
-      identityAgent = onePassSock;
-    };
   };
 }

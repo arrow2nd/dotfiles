@@ -1,5 +1,5 @@
 {
-  description = "arrow2nd's NixOS + home-manager flake";
+  description = "arrow2nd's NixOS + nix-darwin + home-manager flake";
 
   nixConfig = {
     extra-substituters = ["https://cache.numtide.com"];
@@ -9,6 +9,14 @@
   inputs = {
     # nixpkgs (stable)
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+
+    # darwin 向けの hotfix が先に入るブランチ（macOS ではこちらを使う）
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
+
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -47,6 +55,24 @@
         modules = [
           ./hosts/devon/configuration.nix
           inputs.opnix.nixosModules.default
+        ];
+      };
+
+      # 会社Mac (Apple Silicon)
+      darwinConfigurations."nyan-chot" = inputs.nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/nyan-chot/configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; };
+              users.tanida = import ./hosts/nyan-chot/home.nix;
+              # install.sh が作った既存の symlink と衝突した場合は退避する
+              backupFileExtension = "hm-backup";
+            };
+          }
         ];
       };
 
