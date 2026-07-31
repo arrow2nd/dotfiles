@@ -13,12 +13,6 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 # 自作スクリプト
 export PATH="$HOME/.local/bin:$PATH"
 
-# Neovim
-export NEOVIM_HOME=$HOME/.local/nvim
-if [ -d "${NEOVIM_HOME}" ]; then
-  export PATH="${NEOVIM_HOME}/bin:$PATH"
-fi
-
 # mise
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 
