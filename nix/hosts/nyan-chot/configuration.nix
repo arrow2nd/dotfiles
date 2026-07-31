@@ -31,7 +31,7 @@
       "mysql"
       "mongodb/brew/mongodb-database-tools"
 
-      # nixpkgs に無いカスタム tap のツール
+      # nixpkgs に無い
       "arrow2nd/tap/jisyo"
       "arthur-ficial/tap/apfel"
     ];

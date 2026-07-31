@@ -38,12 +38,7 @@
   ];
 
   programs.git.settings = {
-    # 署名鍵は公開鍵なので載せてもOK
     user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFe940/Cer2W/RU6jigap5y8RNxbAeIouUR3gNr6dF0R";
-
-    # 会社のメールアドレスは公開リポジトリに載せたくないので、
-    # リポジトリ外のローカルファイルから読み込む（無ければ黙って無視される）
-    # セットアップ時に ~/.config/git/config.local へ [user] email = ... を書くこと
     include.path = "${config.xdg.configHome}/git/config.local";
 
     # 大きめのリポジトリで push が失敗するのを回避

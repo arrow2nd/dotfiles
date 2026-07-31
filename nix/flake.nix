@@ -58,7 +58,6 @@
         ];
       };
 
-      # 会社Mac (Apple Silicon)
       darwinConfigurations."nyan-chot" = inputs.nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
         modules = [
