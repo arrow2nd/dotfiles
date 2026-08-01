@@ -13,12 +13,6 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 # 自作スクリプト
 export PATH="$HOME/.local/bin:$PATH"
 
-# Neovim
-export NEOVIM_HOME=$HOME/.local/nvim
-if [ -d "${NEOVIM_HOME}" ]; then
-  export PATH="${NEOVIM_HOME}/bin:$PATH"
-fi
-
 # mise
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 
@@ -26,7 +20,9 @@ export PATH="$HOME/.local/share/mise/shims:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 
 # Add deno completions to search path
-if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
+# ZDOTDIR は dotfiles リポジトリの symlink なので、生成物はリポジトリ外に置く
+ZSH_COMPLETIONS="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/completions"
+if [[ ":$FPATH:" != *":$ZSH_COMPLETIONS:"* ]]; then export FPATH="$ZSH_COMPLETIONS:$FPATH"; fi
 
 # Golang
 export PATH="$HOME/go/bin:$PATH"
@@ -60,4 +56,6 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 # ローカル設定
-[ -f $ZDOTDIR/.zshenv_local ] && . $ZDOTDIR/.zshenv_local
+# ZDOTDIR は dotfiles リポジトリの symlink なので、トークン等はリポジトリ外に置く
+ZSH_LOCAL_ENV="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshenv_local"
+[ -f "$ZSH_LOCAL_ENV" ] && . "$ZSH_LOCAL_ENV"

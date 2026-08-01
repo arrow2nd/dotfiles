@@ -35,16 +35,16 @@ curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable
 初回は darwin-rebuild がまだ無いので↓で
 
 ```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' nix-darwin/nix-darwin-26.05#darwin-rebuild -- switch --flake ~/dotfiles/nix#nyan-chot
+sudo nix run --extra-experimental-features 'nix-command flakes' nix-darwin/nix-darwin-26.05#darwin-rebuild -- switch --flake ~/dotfiles/nix#scottish
 ```
 
 2回目以降はこう
 
 ```sh
-sudo darwin-rebuild switch --flake ~/dotfiles/nix#nyan-chot
+sudo darwin-rebuild switch --flake ~/dotfiles/nix#scottish
 ```
 
-macOS は大体仕事用なので、Git のメアドはここに入れてない
+Git のメアドは macOS 側だと仕事用になることがあるので入れてない
 `~/.config/git/config.local` に `[user]` セクションで書くこと
 
 ## 追記

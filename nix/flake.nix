@@ -75,6 +75,23 @@
         ];
       };
 
+      darwinConfigurations."scottish" = inputs.nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/scottish/configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; };
+              users.arrow2nd = import ./hosts/scottish/home.nix;
+              # install.sh が作った既存の symlink と衝突した場合は退避する
+              backupFileExtension = "hm-backup";
+            };
+          }
+        ];
+      };
+
       homeConfigurations."arrow2nd" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           inherit system;
