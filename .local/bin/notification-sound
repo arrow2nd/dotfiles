@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # notification-sound - クロスプラットフォーム対応通知音再生コマンド
 

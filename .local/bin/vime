@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh -e
 
 # Thanks! : https://gist.github.com/kuuote/4b2feda31d80fc8266fc562fc7f89c7f
 

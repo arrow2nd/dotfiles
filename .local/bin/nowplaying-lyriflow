@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # 再生中のメタデータを取得
 title=$(playerctl metadata title 2>/dev/null)
