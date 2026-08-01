@@ -8,6 +8,16 @@
   home.username = "arrow2nd";
   home.homeDirectory = "/Users/arrow2nd";
 
+  xdg.configFile."1Password/ssh/agent.toml".text = ''
+    [[ssh-keys]]
+    item = "scottish (GitLab)"
+    vault = "jig.jp"
+
+    [[ssh-keys]]
+    item = "SSH鍵 (scottish)"
+    vault = "個人"
+  '';
+
   home.packages = with pkgs; [
     act
     colima

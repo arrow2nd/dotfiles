@@ -12,6 +12,12 @@
   home.username = "arrow2nd";
   home.homeDirectory = "/home/arrow2nd";
 
+  xdg.configFile."1Password/ssh/agent.toml".text = ''
+    [[ssh-keys]]
+    item = "SSHキー (devon)"
+    vault = "個人"
+  '';
+
   programs.git.settings.user = {
     email = "44780846+arrow2nd@users.noreply.github.com";
     signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDY1VNUT5HxHowIXRVmBRK7LEkB5QmTrE2XMrQFSngG6";

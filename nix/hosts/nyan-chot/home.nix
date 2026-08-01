@@ -8,6 +8,12 @@
   home.username = "tanida";
   home.homeDirectory = "/Users/tanida";
 
+  xdg.configFile."1Password/ssh/agent.toml".text = ''
+    [[ssh-keys]]
+    item = "SSH鍵 (chot)"
+    vault = "chot inc."
+  '';
+
   home.packages = with pkgs; [
     act
     awscli2
