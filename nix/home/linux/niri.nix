@@ -36,7 +36,8 @@
     };
 
     cursor = {
-      theme = "Adwaita";
+      theme = config.home.pointerCursor.name;
+      size = config.home.pointerCursor.size;
       hide-when-typing = true;
       hide-after-inactive-ms = 1000;
     };

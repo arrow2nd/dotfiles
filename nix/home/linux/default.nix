@@ -5,6 +5,7 @@
     ./ssh.nix
     ./wayland-services.nix
     ./gtk.nix
+    ./cursor.nix
     ./udiskie.nix
     ./packages.nix
     ./android.nix
