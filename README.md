@@ -1,6 +1,6 @@
 # dotfiles
 
-<img width="1920" height="1200" alt="Screenshot from 2025-11-05 21-44-48" src="https://github.com/user-attachments/assets/f157a220-31c6-432e-aad2-0c393ac16532" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/673b0ec0-154e-467f-913b-a46063a1209b" />
 
 ## 環境
 
