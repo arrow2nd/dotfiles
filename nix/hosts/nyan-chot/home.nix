@@ -10,7 +10,6 @@
 
   xdg.configFile."1Password/ssh/agent.toml".text = ''
     [[ssh-keys]]
-    item = "SSH鍵 (chot)"
     vault = "chot inc."
   '';
 
