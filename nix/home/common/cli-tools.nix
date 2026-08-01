@@ -15,6 +15,7 @@
     yazi
     fastfetch
     spotify-player
+    (callPackage ../../pkgs/lyriflow.nix { })
 
     deno
     go
