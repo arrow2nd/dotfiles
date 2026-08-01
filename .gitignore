@@ -2,5 +2,6 @@
 .DS_Store
 
 .zcompdump
+.zcompcache/
 
 nix/result
