@@ -176,6 +176,13 @@ zle -N edit_current_line
 bindkey '^v' edit_current_line
 
 #
+# direnv
+#
+
+# .envrcのあるリポジトリでflakeのdevShell環境を自動で読み込む
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
+#
 # ローカル設定
 #
 

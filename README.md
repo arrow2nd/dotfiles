@@ -4,9 +4,8 @@
 
 ## 環境
 
-- Arch Linux or macOS (Apple Silicon)
-- git 導入済み
-- Neovim (HEAD)
+- NixOS or macOS (Apple Silicon)
+- Nix (flakes)
 
 ### フォント
 
@@ -16,14 +15,39 @@
 
 ```sh
 git clone https://github.com/arrow2nd/dotfiles.git $HOME/dotfiles
-cd ./dotfiles
-./install.sh
 ```
+
+### NixOS
+
+```sh
+sudo nixos-rebuild switch --flake ~/dotfiles/nix#devon
+home-manager switch --flake ~/dotfiles/nix#arrow2nd
+```
+
+### macOS
+
+[nix-installer](https://github.com/NixOS/nix-installer) で Nix を入れる
+
+```sh
+curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
+```
+
+初回は darwin-rebuild がまだ無いので↓で
+
+```sh
+sudo nix run --extra-experimental-features 'nix-command flakes' nix-darwin/nix-darwin-26.05#darwin-rebuild -- switch --flake ~/dotfiles/nix#scottish
+```
+
+2回目以降はこう
+
+```sh
+sudo darwin-rebuild switch --flake ~/dotfiles/nix#scottish
+```
+
+Git のメアドは macOS 側だと仕事用になることがあるので入れてない
+`~/.config/git/config.local` に `[user]` セクションで書くこと
 
 ## 追記
 
 - node は自動で入らないので `mise use --global node@lts` とかすること
-- GPG 鍵のインポート、git との紐付けは別でやること
 - SKK の辞書は `jisyo d` すると入る
-- Git のコミットテンプレートは
-  [ここ](https://gist.github.com/arrow2nd/45056915238a1ed84982b4cfff5210d5)

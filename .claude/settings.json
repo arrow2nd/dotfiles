@@ -1,12 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "mcp__vv-mcp__say",
-      "mcp__pencil"
+      "mcp__vv-mcp__say"
     ],
     "deny": [],
     "defaultMode": "auto"
   },
+  "model": "claude-opus-5[1m]",
   "hooks": {
     "Notification": [
       {
@@ -30,16 +30,7 @@
   },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true,
-    "codex@openai-codex": true
-  },
-  "extraKnownMarketplaces": {
-    "openai-codex": {
-      "source": {
-        "source": "github",
-        "repo": "openai/codex-plugin-cc"
-      }
-    }
+    "lua-lsp@claude-plugins-official": true
   },
   "language": "japanese",
   "effortLevel": "high",

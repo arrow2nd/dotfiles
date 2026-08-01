@@ -1,0 +1,42 @@
+{ config, pkgs, ... }:
+{
+  imports = [
+    ../../home/common
+    ../../home/darwin
+  ];
+
+  home.username = "arrow2nd";
+  home.homeDirectory = "/Users/arrow2nd";
+
+  home.packages = with pkgs; [
+    act
+    colima
+    curl
+    # Docker Desktop は入れていないので CLI は nix 側から
+    docker-client
+    docker-compose
+    docker-credential-helpers
+    ffmpeg
+    glab
+    gnugrep
+    gnupg
+    httpie
+    imagemagick
+    jqp
+    luarocks
+    mergiraf
+    mkcert
+    pdftk
+    potrace
+    rustup
+    scrcpy
+    SDL2_image
+    vim
+    wget
+  ];
+
+  programs.git.settings = {
+    user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDv6UaKm/gX2q9mKLlxtlB1LZPEpMjGp3P2jv7lpVO+v";
+    include.path = "${config.xdg.configHome}/git/config.local";
+  };
+}
