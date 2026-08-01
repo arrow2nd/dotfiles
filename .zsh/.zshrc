@@ -86,11 +86,6 @@ abbrev-alias lt='eza -T'
 # brew
 abbrev-alias brewu='brew upgrade && brew autoremove && brew cleanup -s'
 
-# NixOS
-abbrev-alias nrs='sudo nixos-rebuild switch --flake ~/dotfiles/nix#devon'
-abbrev-alias nrb='sudo nixos-rebuild build --flake ~/dotfiles/nix#devon'
-abbrev-alias hms='home-manager switch --flake ~/dotfiles/nix#arrow2nd'
-
 # Neovim
 abbrev-alias v="nvim"
 abbrev-alias nvim-rebuild='make distclean && make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/.local/nvim && make install'
