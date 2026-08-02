@@ -21,6 +21,11 @@ require("mason").setup({
 
 require("mason-lspconfig").setup({
   automatic_installation = true,
+  -- mason-lspconfig の astro 設定は同梱の TypeScript から tsdk を解決するが、
+  -- TypeScript 7 には tsserver 用の lib が無いため解決に失敗する。after/lsp/astro.lua を使うので除外する
+  automatic_enable = {
+    exclude = { "astro" },
+  },
   ensure_installed = {
     "astro",
     "efm",
@@ -42,6 +47,8 @@ require("mason-lspconfig").setup({
 vim.lsp.config("*", {
   on_init = lsp.on_init,
 })
+
+vim.lsp.enable("astro")
 
 -- キーマップ
 h.nmap("ge", "<CMD>lua vim.diagnostic.open_float()<CR>", { desc = "Show diagnostic" })

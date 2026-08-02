@@ -1,5 +1,7 @@
 local lsp = require("util.lsp")
-local vue_language_server_path = vim.fn.exepath("vue-language-server") .. "/node_modules/@vue/language-server"
+-- exepath が返すのは mason の bin 配下のシンボリックリンクで、そこを起点にすると実体に辿り着けない
+local vue_language_server_path = vim.fn.stdpath("data")
+  .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
 return {
   -- @see https://github.com/kyoh86/dotfiles/blob/0fafb25ec68ea9027b5373fbf82f66ed5d3b5fd1/nvim/lsp/denols.lua#L27-L34
