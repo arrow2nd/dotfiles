@@ -22,6 +22,7 @@
     act
     colima
     curl
+
     # Docker Desktop は入れていないので CLI は nix 側から
     docker-client
     docker-compose
@@ -45,8 +46,5 @@
     wget
   ];
 
-  programs.git.settings = {
-    user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDv6UaKm/gX2q9mKLlxtlB1LZPEpMjGp3P2jv7lpVO+v";
-    include.path = "${config.xdg.configHome}/git/config.local";
-  };
+  programs.git.settings.include.path = "${config.xdg.configHome}/git/config.local";
 }
