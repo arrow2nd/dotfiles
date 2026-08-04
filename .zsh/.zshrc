@@ -62,19 +62,78 @@ function checkout-pr() {
   git fetch origin "pull/${pr_number}/head:${branch}" && git wt "$branch"
 }
 
-# マージ済み・不要なworktree・ブランチを削除
+# メインブランチにマージ済みのworktree・ブランチを削除
 function cleanup-branches() {
-  git fetch --prune
+  # リモートがない・オフラインでもローカルの判定は可能なため処理は継続する
+  git fetch --prune || echo "git fetch に失敗しました（ローカルの情報で判定します）"
 
-  # worktreeの削除（現在のworktreeを除く）
-  git-wt | tail -n +2 | awk '{if ($1 != "*") print $1}' | while read -r branch; do
-    git wt -d "$branch" 2>/dev/null
+  # origin/HEADが未設定のリポジトリもあるため、慣例的な名前にフォールバックする
+  local main_branch=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's|^origin/||')
+  if [[ -z "$main_branch" ]]; then
+    local candidate
+    for candidate in main master; do
+      if git show-ref --verify --quiet "refs/heads/$candidate"; then
+        main_branch="$candidate"
+        break
+      fi
+    done
+  fi
+  if [[ -z "$main_branch" ]]; then
+    echo "メインブランチを特定できませんでした"
+    return 1
+  fi
+
+  # worktree管理下のブランチは git wt 経由で削除する必要があるため、対応表を作る
+  local -A wt_paths
+  local wt_path line
+  while IFS= read -r line; do
+    case "$line" in
+      worktree\ *) wt_path="${line#worktree }" ;;
+      branch\ *) wt_paths[${${line#branch }#refs/heads/}]="$wt_path" ;;
+    esac
+  done < <(git worktree list --porcelain)
+
+  local current_branch=$(git branch --show-current)
+  local -a wt_targets normal_targets
+  local branch
+  for branch in ${(f)"$(git branch --merged "$main_branch" --format='%(refname:short)')"}; do
+    # メインブランチと作業中のブランチは削除できないため除外
+    if [[ "$branch" == "$main_branch" || "$branch" == "$current_branch" ]]; then
+      continue
+    fi
+    if [[ -n "${wt_paths[$branch]}" ]]; then
+      wt_targets+=("$branch")
+    else
+      normal_targets+=("$branch")
+    fi
   done
 
-  # worktreeに紐づかないローカルブランチの削除
-  local wt_branches=$(git worktree list --porcelain | grep '^branch ' | sed 's|^branch refs/heads/||')
-  git branch --format='%(refname:short)' | grep -vxF "$wt_branches" | while read -r branch; do
-    git branch -d "$branch" 2>/dev/null
+  if (( ${#wt_targets} + ${#normal_targets} == 0 )); then
+    echo "削除対象のブランチはありません"
+    return 0
+  fi
+
+  echo "以下のブランチが ${main_branch} にマージ済みです"
+  for branch in $wt_targets; do
+    echo "  [worktree] ${branch} (${wt_paths[$branch]})"
+  done
+  for branch in $normal_targets; do
+    echo "  [branch]   ${branch}"
+  done
+
+  if ! read -q "?削除しますか? [y/N] "; then
+    echo "\n中止しました"
+    return 1
+  fi
+  echo
+
+  # -d のマージ判定はHEAD基準のため、別worktreeから実行すると失敗する
+  # ${main_branch} へのマージ済み判定は済んでいるので -D で削除する
+  for branch in $wt_targets; do
+    git wt -D "$branch"
+  done
+  for branch in $normal_targets; do
+    git branch -D "$branch"
   done
 }
 
