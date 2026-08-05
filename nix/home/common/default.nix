@@ -10,6 +10,7 @@
     ./gh.nix
     ./ghostty.nix
     ./dotfiles-symlinks.nix
+    ./llama-cpp.nix
     ./llm-agents.nix
   ];
 
