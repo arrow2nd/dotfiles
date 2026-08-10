@@ -36,9 +36,6 @@ h.tmap("<ESC>", "<C-\\><C-n>")
 -- git-messenger
 h.nmap("<C-k>", "<CMD>GitMessenger<CR>")
 
--- zen-mode
-h.nmap("<Leader>z", "<CMD>ZenMode<CR>")
-
 -- git
 h.nmap("<Leader>gc", "<CMD>Git commit -v<CR>")
 h.nmap("<Leader>gp", "<CMD>Git pull origin HEAD<CR>")
