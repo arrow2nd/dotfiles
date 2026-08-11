@@ -10,6 +10,9 @@
 
   programs.zsh.enable = true;
 
+  # Tailscale
+  services.tailscale.enable = true;
+
   # GUI アプリと nix に移さない CLI は Homebrew のまま
   # cleanup = "none": 宣言外のパッケージは消さない（安定してから "zap" を検討）
   homebrew = {
