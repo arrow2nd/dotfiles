@@ -206,6 +206,7 @@
     grim # スクショ
     slurp # 範囲選択
     nautilus
+    gparted
     (android-studio.override { forceWayland = true; })
     android-tools
 
