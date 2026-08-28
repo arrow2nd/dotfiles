@@ -90,4 +90,4 @@ nix run github:NixOS/nixpkgs/nixos-unstable#<pkg>
 
 `nix/home/common/cli-tools.nix` 等の `home.packages` に追記して、ユーザーに
 `home-manager switch --flake .#arrow2nd`(またはそのリポジトリで使われている
-switch コマンド) を促す。Claude が勝手に switch コマンドを実行しない。
+switch コマンド) を促す。エージェントが勝手に switch コマンドを実行しない。

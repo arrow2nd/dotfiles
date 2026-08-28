@@ -21,12 +21,23 @@ let
   };
 
   claudeBin = "${llm.claude-code}/bin/claude";
+  codexBin = "${llm.codex}/bin/codex";
 
   # ~/.claude.json は Claude Code 自身が書き換えるので初期値として CLI 経由で user スコープで登録
-  syncMcpServers = lib.concatStringsSep "\n" (
+  syncClaudeMcpServers = lib.concatStringsSep "\n" (
     lib.mapAttrsToList (name: cfg: ''
       $DRY_RUN_CMD ${claudeBin} mcp remove ${lib.escapeShellArg name} -s user >/dev/null 2>&1 || true
       $DRY_RUN_CMD ${claudeBin} mcp add-json -s user ${lib.escapeShellArg name} ${lib.escapeShellArg (builtins.toJSON cfg)}
+    '') mcpServers
+  );
+
+  syncCodexMcpServers = lib.concatStringsSep "\n" (
+    lib.mapAttrsToList (name: cfg: let
+      envArgs = lib.mapAttrsToList (key: value: "--env ${lib.escapeShellArg "${key}=${value}"}") cfg.env;
+      command = lib.escapeShellArgs ([ cfg.command ] ++ cfg.args);
+    in ''
+      $DRY_RUN_CMD ${codexBin} mcp remove ${lib.escapeShellArg name} >/dev/null 2>&1 || true
+      $DRY_RUN_CMD ${codexBin} mcp add ${lib.escapeShellArg name} ${lib.concatStringsSep " " envArgs} -- ${command}
     '') mcpServers
   );
 
@@ -47,6 +58,14 @@ let
       done
     done
   '';
+
+  syncCodexSkills = ''
+    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}/.agents/skills"
+    for src in "${claudeRepo}/skills"/*; do
+      [ -e "$src" ] || continue
+      $DRY_RUN_CMD ln -sfn "$src" "${config.home.homeDirectory}/.agents/skills/$(basename "$src")"
+    done
+  '';
 in
 {
   home.packages = [
@@ -61,6 +80,7 @@ in
   home.file = {
     ".claude/CLAUDE.md" = linkRepo "CLAUDE.md";
     ".claude/statusline-command" = linkRepo "statusline-command";
+    ".codex/AGENTS.md" = linkRepo "CLAUDE.md";
   };
 
   xdg.configFile."opencode/opencode.json".text = builtins.toJSON {
@@ -80,8 +100,10 @@ in
   };
 
   home.activation = {
-    claudeMcpServers = lib.hm.dag.entryAfter [ "writeBoundary" ] syncMcpServers;
+    claudeMcpServers = lib.hm.dag.entryAfter [ "writeBoundary" ] syncClaudeMcpServers;
     claudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] syncSettings;
     claudeStaticDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] syncStaticDirs;
+    codexMcpServers = lib.hm.dag.entryAfter [ "writeBoundary" ] syncCodexMcpServers;
+    codexSkills = lib.hm.dag.entryAfter [ "writeBoundary" ] syncCodexSkills;
   };
 }
