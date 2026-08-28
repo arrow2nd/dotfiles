@@ -22,6 +22,11 @@ let
 
   claudeBin = "${llm.claude-code}/bin/claude";
   codexBin = "${llm.codex}/bin/codex";
+  codex = pkgs.writeShellScriptBin "codex" ''
+    exec ${codexBin} \
+      --config 'tui.status_line=["context-used","five-hour-limit","weekly-limit"]' \
+      "$@"
+  '';
 
   # ~/.claude.json は Claude Code 自身が書き換えるので初期値として CLI 経由で user スコープで登録
   syncClaudeMcpServers = lib.concatStringsSep "\n" (
@@ -70,7 +75,7 @@ in
 {
   home.packages = [
     llm.claude-code
-    llm.codex
+    codex
     llm.opencode
     llm.agent-browser
     pkgs.sox
