@@ -25,6 +25,7 @@ let
   codex = pkgs.writeShellScriptBin "codex" ''
     exec ${codexBin} \
       --config 'tui.status_line=["context-used","five-hour-limit","weekly-limit"]' \
+      --config 'tui.status_line_use_colors=false' \
       "$@"
   '';
 
@@ -38,7 +39,8 @@ let
 
   syncCodexMcpServers = lib.concatStringsSep "\n" (
     lib.mapAttrsToList (name: cfg: let
-      envArgs = lib.mapAttrsToList (key: value: "--env ${lib.escapeShellArg "${key}=${value}"}") cfg.env;
+      envArgs = lib.mapAttrsToList (key: value: "--env ${lib.escapeShellArg "${key}=${value}"}") cfg.env
+        ++ [ ''--env XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR"'' ];
       command = lib.escapeShellArgs ([ cfg.command ] ++ cfg.args);
     in ''
       $DRY_RUN_CMD ${codexBin} mcp remove ${lib.escapeShellArg name} >/dev/null 2>&1 || true
@@ -76,7 +78,6 @@ in
   home.packages = [
     llm.claude-code
     codex
-    llm.opencode
     llm.agent-browser
     pkgs.sox
   ];
@@ -86,22 +87,6 @@ in
     ".claude/CLAUDE.md" = linkRepo "CLAUDE.md";
     ".claude/statusline-command" = linkRepo "statusline-command";
     ".codex/AGENTS.md" = linkRepo "CLAUDE.md";
-  };
-
-  xdg.configFile."opencode/opencode.json".text = builtins.toJSON {
-    "$schema" = "https://opencode.ai/config.json";
-    model = "opencode-go/deepseek-v4-flash";
-    mcp = {
-      vv-mcp = {
-        type = "local";
-        command = [ "npx" "-y" "@arrow2nd/vv-mcp" ];
-        environment = {
-          VOICEVOX_URL = "http://localhost:50021";
-          DEFAULT_VOICE_ID = "47";
-          DEFAULT_SPEED = "1.0";
-        };
-      };
-    };
   };
 
   home.activation = {
