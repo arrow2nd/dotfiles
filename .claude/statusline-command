@@ -44,6 +44,30 @@ make_bar() {
   echo "$bar"
 }
 
+# resets_at (Unix epoch 秒) までの残り時間。絶対時刻より「あとどれだけ使えるか」が判断しやすいため
+format_remaining() {
+  local epoch=$1
+  local diff=$(( epoch - $(date +%s) ))
+
+  if [ "$diff" -le 0 ]; then
+    echo "0m"
+    return
+  fi
+
+  local d=$(( diff / 86400 ))
+  local h=$(( diff % 86400 / 3600 ))
+  local m=$(( diff % 3600 / 60 ))
+
+  # 幅を抑えるため上位2単位のみ表示
+  if [ "$d" -gt 0 ]; then
+    echo "${d}d${h}h"
+  elif [ "$h" -gt 0 ]; then
+    echo "${h}h${m}m"
+  else
+    echo "${m}m"
+  fi
+}
+
 get_color() {
   local pct=$1
   if [ "$pct" -ge 90 ]; then
@@ -69,6 +93,11 @@ if [ -n "$five_hour_used" ]; then
   fh_int=$(printf "%.0f" "$five_hour_used")
   fh_color=$(get_color "$fh_int")
   five_hour_str=$(printf "${sep}${fh_color}5h %s %d%%${reset}" "$(make_bar "$fh_int")" "$fh_int")
+
+  fh_reset=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
+  if [ -n "$fh_reset" ]; then
+    five_hour_str="${five_hour_str}$(printf " ${gray}󰥔 %s${reset}" "$(format_remaining "$fh_reset")")"
+  fi
 fi
 
 # 7d rate limit
@@ -78,6 +107,11 @@ if [ -n "$seven_day_used" ]; then
   sd_int=$(printf "%.0f" "$seven_day_used")
   sd_color=$(get_color "$sd_int")
   seven_day_str=$(printf "${sep}${sd_color}7d %s %d%%${reset}" "$(make_bar "$sd_int")" "$sd_int")
+
+  sd_reset=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
+  if [ -n "$sd_reset" ]; then
+    seven_day_str="${seven_day_str}$(printf " ${gray}󰥔 %s${reset}" "$(format_remaining "$sd_reset")")"
+  fi
 fi
 
 # Claude status
@@ -97,7 +131,14 @@ if [ -n "$status_json" ]; then
     esac
     link_start="\033]8;;https://status.claude.com/\033\\"
     link_end="\033]8;;\033\\"
-    claude_status=$(printf "${sep}${link_start}${status_color}%s %s${reset}${link_end}" "$status_icon" "$description")
+    # 正常時は説明文が幅を食うだけなのでアイコンのみ。異常時は内容を読ませたいので全文出す
+    if [ "$indicator" = "none" ]; then
+      # アイコン定義は説明文と繋ぐ前提で末尾に空白を含むため、単体表示では除去する
+      status_label="${status_icon% }"
+    else
+      status_label="$status_icon $description"
+    fi
+    claude_status=$(printf "${sep}${link_start}${status_color}%s${reset}${link_end}" "$status_label")
   fi
 fi
 
