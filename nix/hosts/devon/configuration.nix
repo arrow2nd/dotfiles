@@ -47,6 +47,7 @@
   services.tailscale.enable = true;
 
   networking.nftables.enable = true;
+  networking.firewall.interfaces.wlp194s0.allowedTCPPorts = [ 8001 ];
   networking.firewall = {
     enable = true;
     trustedInterfaces = [ "tailscale0" ];
@@ -239,4 +240,3 @@
   # System Version
   system.stateVersion = "26.05";
 }
-
