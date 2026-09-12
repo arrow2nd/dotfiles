@@ -61,7 +61,6 @@
       "shottr"
       "slack"
       "spotify"
-      "swiftbar"
       "visual-studio-code"
       "vivaldi"
       "zed"
