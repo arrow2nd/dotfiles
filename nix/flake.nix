@@ -42,8 +42,6 @@
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
-
-    openscreen.url = "github:getopenscreen/openscreen";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:

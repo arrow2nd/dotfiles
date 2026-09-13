@@ -1,7 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
+  # 設定検証に使う niri を NixOS 側の実行パッケージに揃える
+  programs.niri.package = pkgs.niri;
+
   programs.niri.settings = {
+    xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+
     environment = {
       # chromium/electron
       NIXOS_OZONE_WL = "1";

@@ -1,10 +1,9 @@
-{ pkgs, inputs, linkDotfile, ... }:
+{ pkgs, linkDotfile, ... }:
 {
   home.packages = with pkgs; [
     bluetuith
     pavucontrol
-    inputs.openscreen.packages.${pkgs.stdenv.hostPlatform.system}.default
-    # aarch64-darwin ではテストが落ちてビルドできず、macOS では未使用のためここに
+    (callPackage ../../pkgs/recordly.nix { })
     oxker
   ];
 
