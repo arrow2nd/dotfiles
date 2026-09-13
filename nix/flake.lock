@@ -318,6 +318,40 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1788039129,
+        "narHash": "sha256-pa4Q0qErvCvzCaaUph7Sm37RhR4xvPrYI8Lgz6k85+A=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d2f67949798825fe853f7c5d0492b8bf016d3f88",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "openscreen": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1789244598,
+        "narHash": "sha256-iDaePqnlBmATqKDJy2JSbQpQXBr0XGZpWZswgAyPLy8=",
+        "owner": "getopenscreen",
+        "repo": "openscreen",
+        "rev": "6862a380ca6173bdcad690a658bc402359f02150",
+        "type": "github"
+      },
+      "original": {
+        "owner": "getopenscreen",
+        "repo": "openscreen",
+        "type": "github"
+      }
+    },
     "opnix": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -348,6 +382,7 @@
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-darwin": "nixpkgs-darwin",
+        "openscreen": "openscreen",
         "opnix": "opnix"
       }
     },
