@@ -3,7 +3,8 @@
   home.packages = with pkgs; [
     bluetuith
     pavucontrol
-    (callPackage ../../pkgs/recordly.nix { })
+    wl-screenrec
+    shotcut
     oxker
   ];
 
