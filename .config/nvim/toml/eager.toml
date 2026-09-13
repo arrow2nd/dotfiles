@@ -104,11 +104,9 @@ require("config.dial")
 
 # 翻訳
 [[plugins]]
-repo = "skanehira/denops-translate.vim"
-depends = ["denops.vim"]
+repo = "uga-rosa/translate.nvim"
 lua_source = """
-local h = require("util.helper")
-h.xmap("<Leader>t", "<Plug>(Translate)")
+require("config.translate")
 """
 
 # Markdownプレビュー
