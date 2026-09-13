@@ -6,21 +6,6 @@ fzf.setup({
   winopts = {
     split = "botright 15new",
     preview = { layout = "horizontal", horizontal = "right:50%" },
-    on_create = function(win)
-      vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { buffer = win.bufnr, nowait = true })
-      -- fzf-luaのstartinsertが終わってからノーマルモードに戻す
-      vim.schedule(function()
-        if vim.api.nvim_get_current_buf() == win.bufnr then
-          vim.cmd.stopinsert()
-        end
-      end)
-      -- ノーマルモードでも端末のカーソルではなくfzfの選択候補を操作する
-      for key, input in pairs({ j = "\027[B", k = "\027[A", ["<CR>"] = "\r" }) do
-        vim.keymap.set("n", key, function()
-          vim.fn.chansend(vim.bo[win.bufnr].channel, input)
-        end, { buffer = win.bufnr, nowait = true })
-      end
-    end,
   },
   previewers = { builtin = { treesitter = { enabled = false } } },
   file_ignore_patterns = { "^%.git/" },
