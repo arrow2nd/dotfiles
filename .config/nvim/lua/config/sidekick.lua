@@ -38,7 +38,7 @@ require("sidekick").setup({
     --   enabled = true,
     --   backend = "zellij",
     -- },
-    picker = "telescope",
+    picker = "fzf-lua",
   },
 })
 

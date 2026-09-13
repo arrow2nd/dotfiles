@@ -47,31 +47,17 @@ require("config.mini")
 
 # ファジーファインダ
 [[plugins]]
-repo = "nvim-telescope/telescope.nvim"
-rev = "v0.2.0"
-depends = [
-  "plenary.nvim",
-  "telescope-ui-select.nvim",
-  "kensaku.vim",
-  "git-wt.nvim"
-]
+repo = "ibhagwan/fzf-lua"
 lua_source = """
-require("config.telescope")
+require("config.fzf")
 """
 
 [[plugins]]
-repo = "nvim-telescope/telescope-ui-select.nvim"
-
-[[plugins]]
-repo = "lambdalisue/kensaku.vim"
-depends = ["denops.vim"]
-
-[[plugins]]
-repo = "Allianaab2m/telescope-kensaku.nvim"
-depends = ["kensaku.vim"]
-
-[[plugins]]
 repo = "WataruNishimura/git-wt.nvim"
+depends = ["fzf-lua"]
+lua_source = """
+require("git-wt").setup()
+"""
 
 # ターミナル系
 [[plugins]]
