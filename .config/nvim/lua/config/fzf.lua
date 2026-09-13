@@ -7,9 +7,12 @@ fzf.setup({
     split = "botright 15new",
     preview = { layout = "horizontal", horizontal = "right:50%" },
     on_create = function(win)
-      -- SKKなどのグローバルなターミナルマップより、fzfの候補移動を優先する
-      vim.keymap.set("t", "<C-j>", "<C-j>", { buffer = win.bufnr, noremap = true })
-      vim.keymap.set("t", "<C-k>", "<C-k>", { buffer = win.bufnr, noremap = true })
+      -- ノーマルモードでも端末のカーソルではなくfzfの選択候補を操作する
+      for key, input in pairs({ j = "\027[B", k = "\027[A", ["<CR>"] = "\r" }) do
+        vim.keymap.set("n", key, function()
+          vim.fn.chansend(vim.bo[win.bufnr].channel, input)
+        end, { buffer = win.bufnr, nowait = true })
+      end
     end,
   },
   previewers = { builtin = { treesitter = { enabled = false } } },
