@@ -1,4 +1,8 @@
 [[plugins]]
+repo = "esmuellert/codediff.nvim"
+on_cmd = ["CodeDiff"]
+
+[[plugins]]
 repo = "thinca/vim-qfreplace"
 on_cmd = ["Qfreplace"]
 
