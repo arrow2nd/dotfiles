@@ -40,7 +40,8 @@ let
   syncCodexMcpServers = lib.concatStringsSep "\n" (
     lib.mapAttrsToList (name: cfg: let
       envArgs = lib.mapAttrsToList (key: value: "--env ${lib.escapeShellArg "${key}=${value}"}") cfg.env
-        ++ [ ''--env XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR"'' ];
+        # Linux で PulseAudio / PipeWire のソケットを見つけるために渡す。Mac には無い変数なので Linux 限定
+        ++ lib.optionals pkgs.stdenv.isLinux [ ''--env XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR"'' ];
       command = lib.escapeShellArgs ([ cfg.command ] ++ cfg.args);
     in ''
       $DRY_RUN_CMD ${codexBin} mcp remove ${lib.escapeShellArg name} >/dev/null 2>&1 || true
