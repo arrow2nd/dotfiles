@@ -57,17 +57,27 @@ let
 
   # ディレクトリごと symlink すると終わるのでディレクトリを切ってファイルのリンクを貼る
   syncStaticDirs = ''
-    for subdir in agents commands skills; do
-      $DRY_RUN_CMD mkdir -p "${claudeHome}/$subdir"
+    for subdir in agents commands hooks skills; do
+      dst_dir="${claudeHome}/$subdir"
+      $DRY_RUN_CMD mkdir -p "$dst_dir"
+      # リポジトリから消えた項目のリンク切れを掃除
+      $DRY_RUN_CMD find "$dst_dir" -maxdepth 1 -type l ! -exec test -e {} \; -delete
       for src in "${claudeRepo}/$subdir"/*; do
         [ -e "$src" ] || continue
-        $DRY_RUN_CMD ln -sfn "$src" "${claudeHome}/$subdir/$(basename "$src")"
+        dst="$dst_dir/$(basename "$src")"
+        # 実ディレクトリが残っていると ln -sfn がその中にリンクを作ってしまうので飛ばす
+        if [ -d "$dst" ] && [ ! -L "$dst" ]; then
+          echo "warning: $dst is a real directory, skipping" >&2
+          continue
+        fi
+        $DRY_RUN_CMD ln -sfn "$src" "$dst"
       done
     done
   '';
 
   syncCodexSkills = ''
     $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}/.agents/skills"
+    $DRY_RUN_CMD find "${config.home.homeDirectory}/.agents/skills" -maxdepth 1 -type l ! -exec test -e {} \; -delete
     for src in "${claudeRepo}/skills"/*; do
       [ -e "$src" ] || continue
       $DRY_RUN_CMD ln -sfn "$src" "${config.home.homeDirectory}/.agents/skills/$(basename "$src")"
