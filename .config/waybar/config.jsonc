@@ -6,6 +6,7 @@
   // Choose the order of the modules
   "modules-left": [
     "cpu",
+    "temperature",
     "memory",
     "tray"
   ],
@@ -30,9 +31,16 @@
     "tooltip": true,
     "on-click": "niri msg action spawn -- ghostty -e btop"
   },
+  "temperature": {
+    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+    "input-filename": "temp1_input",
+    "format": "{temperatureC}°C",
+    "on-click": "niri msg action spawn -- ghostty -e btop"
+  },
   "memory": {
     "format": "MEM {}%",
-    "tooltip": true
+    "tooltip": true,
+    "on-click": "niri msg action spawn -- ghostty -e btop"
   },
   "battery": {
     "states": {

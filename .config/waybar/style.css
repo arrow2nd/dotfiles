@@ -17,6 +17,7 @@ window#waybar.hidden {
 /* -- General rules for visible modules -- */
 #clock,
 #cpu,
+#temperature,
 #memory,
 #tray,
 #battery,
@@ -83,6 +84,7 @@ window#waybar.hidden {
 
 /* -- Hover effects -- */
 #cpu:hover,
+#temperature:hover,
 #memory:hover,
 #custom-lyrics:hover,
 #pulseaudio:hover,
