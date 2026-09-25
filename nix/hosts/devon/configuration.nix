@@ -175,33 +175,14 @@
     vim
     curl
     wget
-    mkcert
     less
     unzip
     usbutils
     pciutils
     cifs-utils # SMB クライアント
 
-    # Desktop env
-    waybar
-    mako
-    swaybg
-    swayidle
-    wl-clipboard
-    brightnessctl
-    playerctl
-    libnotify
-    polkit_gnome
-    vicinae
-
-    # GUI apps
-    grim # スクショ
-    slurp # 範囲選択
-    nautilus
+    # polkit の action ファイルを system 側に置く必要がある
     gparted
-    (android-studio.override { forceWayland = true; })
-    android-tools
-
   ];
 
   # nautilus

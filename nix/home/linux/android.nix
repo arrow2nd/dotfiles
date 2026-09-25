@@ -5,6 +5,8 @@
   };
 
   home.packages = with pkgs; [
+    (android-studio.override { forceWayland = true; })
+    android-tools
     scrcpy
   ];
 }
