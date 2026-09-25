@@ -1,9 +1,16 @@
 { ... }:
 {
-  nixpkgs.hostPlatform = "aarch64-darwin";
-  nixpkgs.config.allowUnfree = true;
+  imports = [ ../nix-settings.nix ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.hostPlatform = "aarch64-darwin";
+
+  # 実行日時は nix-darwin のデフォルト（毎週日曜 3:15）
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 30d";
+  };
+
+  nix.optimise.automatic = true;
 
   programs.zsh.enable = true;
 
