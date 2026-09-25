@@ -100,24 +100,6 @@
 
     animations = { };
 
-    window-rules = [
-      # WezTermの初期configure bug回避
-      {
-        matches = [
-          { app-id = "^org\\.wezfurlong\\.wezterm$"; }
-        ];
-        default-column-width = { };
-      }
-
-      # Firefox の PIP をフローティング
-      {
-        matches = [
-          { app-id = "firefox$"; title = "^Picture-in-Picture$"; }
-        ];
-        open-floating = true;
-      }
-    ];
-
     binds = with config.lib.niri.actions; {
       "Mod+E" = {
         hotkey-overlay.title = "Open a Filer";

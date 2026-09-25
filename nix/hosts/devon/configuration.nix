@@ -1,8 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -22,7 +18,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Hardware
-  hardware.cpu.amd.updateMicrocode = true;
+  # マイクロコード更新は hardware-configuration.nix 側でこれに連動して有効になる
   hardware.enableRedistributableFirmware = true;
 
   hardware.bluetooth = {
@@ -89,7 +85,6 @@
       "dialout"
     ];
     shell = pkgs.zsh;
-    initialPassword = "nixos";
   };
 
   # Shell
@@ -117,13 +112,6 @@
 
       takumiGuardToken = {
         reference = "op://nixos-devon/takumi_guard/token";
-        mode = "0600";
-        owner = "arrow2nd";
-        group = "users";
-      };
-
-      sakanaApiKey = {
-        reference = "op://nixos-devon/Sakana AI/api_key";
         mode = "0600";
         owner = "arrow2nd";
         group = "users";
