@@ -30,11 +30,10 @@ export PATH="$HOME/go/bin:$PATH"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# Linux
-if [[ $(uname) == "Linux" ]]; then
-  # 1Password SSH Agent
-  export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
-fi
+# home-manager の home.sessionVariables
+# zsh は home-manager で管理していないので自前で読み込む
+HM_SESSION_VARS="/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
+[ -r "$HM_SESSION_VARS" ] && . "$HM_SESSION_VARS"
 
 # macOS
 if [[ $(uname) == "Darwin" ]]; then

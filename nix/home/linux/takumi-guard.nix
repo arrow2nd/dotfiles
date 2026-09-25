@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ lib, osConfig, ... }:
 
 let
-  tokenPath = "/var/lib/opnix/secrets/takumiGuardToken";
+  tokenPath = osConfig.services.onepassword-secrets.secretPaths.takumiGuardToken;
 in
 {
   home.sessionVariables = {
@@ -15,46 +15,40 @@ in
     registry = "https://npm.flatt.tech/"
   '';
 
+  # トークンを store に入れないよう、opnix が展開したファイルから activation 時に生成する
   home.activation.takumiGuard = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    # opnix が展開したトークンファイルを読む
     if [ -r "${tokenPath}" ]; then
-      TOKEN=$(cat "${tokenPath}" | tr -d '\n')
+      TOKEN=$(tr -d '\n' < "${tokenPath}")
     else
       TOKEN=""
     fi
 
+    # 一時ファイルに組み立ててから install で置く（リダイレクトは dry-run でも実行されてしまうため）
+    tmp=$(mktemp -d)
+
     # npm / pnpm / yarn / deno
-    $DRY_RUN_CMD cat > $HOME/.npmrc <<EOF
-registry=https://npm.flatt.tech/
-EOF
+    echo "registry=https://npm.flatt.tech/" > "$tmp/npmrc"
     if [ -n "$TOKEN" ]; then
-      $DRY_RUN_CMD echo "//npm.flatt.tech/:_authToken=$TOKEN" >> $HOME/.npmrc
+      echo "//npm.flatt.tech/:_authToken=$TOKEN" >> "$tmp/npmrc"
     fi
-    $DRY_RUN_CMD chmod 600 $HOME/.npmrc
+    run install -m 600 "$tmp/npmrc" "$HOME/.npmrc"
 
     # pip
-    $DRY_RUN_CMD mkdir -p $HOME/.config/pip
     if [ -n "$TOKEN" ]; then
-      $DRY_RUN_CMD cat > $HOME/.config/pip/pip.conf <<EOF
-[global]
-index-url = https://token:$TOKEN@pypi.flatt.tech/simple/
-EOF
+      index="https://token:$TOKEN@pypi.flatt.tech/simple/"
     else
-      $DRY_RUN_CMD cat > $HOME/.config/pip/pip.conf <<EOF
-[global]
-index-url = https://pypi.flatt.tech/simple/
-EOF
+      index="https://pypi.flatt.tech/simple/"
     fi
-    $DRY_RUN_CMD chmod 600 $HOME/.config/pip/pip.conf
+    printf '[global]\nindex-url = %s\n' "$index" > "$tmp/pip.conf"
+    run install -D -m 600 "$tmp/pip.conf" "$HOME/.config/pip/pip.conf"
 
-    # Go (.netrc)
+    # Go (.netrc) は他のホストのエントリも入るので、golang.flatt.tech の行だけ差し替える
     if [ -n "$TOKEN" ]; then
-      $DRY_RUN_CMD touch $HOME/.netrc
-      $DRY_RUN_CMD chmod 600 $HOME/.netrc
-      $DRY_RUN_CMD grep -v "golang.flatt.tech" $HOME/.netrc > /tmp/netrc-new 2>/dev/null || touch /tmp/netrc-new
-      $DRY_RUN_CMD echo "machine golang.flatt.tech login token password $TOKEN" >> /tmp/netrc-new
-      $DRY_RUN_CMD mv /tmp/netrc-new $HOME/.netrc
-      $DRY_RUN_CMD chmod 600 $HOME/.netrc
+      grep -v "golang.flatt.tech" "$HOME/.netrc" > "$tmp/netrc" 2>/dev/null || true
+      echo "machine golang.flatt.tech login token password $TOKEN" >> "$tmp/netrc"
+      run install -m 600 "$tmp/netrc" "$HOME/.netrc"
     fi
+
+    rm -rf "$tmp"
   '';
 }
