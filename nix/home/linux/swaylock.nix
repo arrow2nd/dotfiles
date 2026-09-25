@@ -1,9 +1,9 @@
-{ ... }:
+{ wallpaper, ... }:
 {
   programs.swaylock = {
     enable = true;
     settings = {
-      image = "~/Pictures/Wallpapers/JpbRcFJRfiABMP3Lj1Cads1F.png";
+      image = wallpaper;
 
       color = "008080";
       show-failed-attempts = true;

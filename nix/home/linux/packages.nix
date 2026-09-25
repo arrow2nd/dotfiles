@@ -2,10 +2,8 @@
 {
   home.packages = with pkgs; [
     # Desktop env
-    waybar
+    # waybar / vicinae / swayidle は niri.nix の各モジュールで入る
     swaybg
-    swayidle
-    vicinae
     wl-clipboard
     brightnessctl
     playerctl

@@ -1,7 +1,33 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, wallpaper, ... }:
 
+let
+  niri = lib.getExe config.programs.niri.package;
+  swaylock = lib.getExe config.programs.swaylock.package;
+in
 {
   imports = [ inputs.niri.homeModules.niri ];
+
+  # spawn-at-startup だと落ちたときに復帰しないので systemd user サービスで常駐させる
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+  };
+
+  programs.vicinae = {
+    enable = true;
+    systemd.enable = true;
+  };
+
+  services.swayidle = {
+    enable = true;
+    timeouts = [
+      { timeout = 600; command = "${swaylock} -f"; }
+      { timeout = 601; command = "${niri} msg action power-off-monitors"; }
+    ];
+    events = {
+      before-sleep = "${swaylock} -f";
+    };
+  };
 
   # 設定検証に使う niri を NixOS 側の実行パッケージに揃える
   programs.niri.package = pkgs.niri;
@@ -76,22 +102,8 @@
     };
 
     spawn-at-startup = [
-      { command = [ "waybar" ]; }
-      { command = [
-          "swayidle" "-w"
-          "timeout" "601" "niri msg action power-off-monitors"
-          "timeout" "600" "swaylock -f"
-          "before-sleep" "swaylock -f"
-        ];
-      }
-      { command = [ "vicinae" "server" ]; }
       # 壁紙
-      { command = [
-          "swaybg"
-          "-i" "/home/arrow2nd/Pictures/Wallpapers/JpbRcFJRfiABMP3Lj1Cads1F.png"
-          "-m" "fill"
-        ];
-      }
+      { command = [ "swaybg" "-i" wallpaper "-m" "fill" ]; }
     ];
 
     screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
