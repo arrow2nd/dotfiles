@@ -32,8 +32,8 @@ let
   # ~/.claude.json は Claude Code 自身が書き換えるので初期値として CLI 経由で user スコープで登録
   syncClaudeMcpServers = lib.concatStringsSep "\n" (
     lib.mapAttrsToList (name: cfg: ''
-      $DRY_RUN_CMD ${claudeBin} mcp remove ${lib.escapeShellArg name} -s user >/dev/null 2>&1 || true
-      $DRY_RUN_CMD ${claudeBin} mcp add-json -s user ${lib.escapeShellArg name} ${lib.escapeShellArg (builtins.toJSON cfg)}
+      run ${claudeBin} mcp remove ${lib.escapeShellArg name} -s user >/dev/null 2>&1 || true
+      run ${claudeBin} mcp add-json -s user ${lib.escapeShellArg name} ${lib.escapeShellArg (builtins.toJSON cfg)}
     '') mcpServers
   );
 
@@ -44,14 +44,14 @@ let
         ++ lib.optionals pkgs.stdenv.isLinux [ ''--env XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR"'' ];
       command = lib.escapeShellArgs ([ cfg.command ] ++ cfg.args);
     in ''
-      $DRY_RUN_CMD ${codexBin} mcp remove ${lib.escapeShellArg name} >/dev/null 2>&1 || true
-      $DRY_RUN_CMD ${codexBin} mcp add ${lib.escapeShellArg name} ${lib.concatStringsSep " " envArgs} -- ${command}
+      run ${codexBin} mcp remove ${lib.escapeShellArg name} >/dev/null 2>&1 || true
+      run ${codexBin} mcp add ${lib.escapeShellArg name} ${lib.concatStringsSep " " envArgs} -- ${command}
     '') mcpServers
   );
 
   # これも同じく
   syncSettings = ''
-    $DRY_RUN_CMD install -D -m 644 \
+    run install -D -m 644 \
       ${claudeRepo}/settings.json \
       ${claudeHome}/settings.json
   '';
@@ -60,9 +60,9 @@ let
   syncStaticDirs = ''
     for subdir in agents commands hooks skills; do
       dst_dir="${claudeHome}/$subdir"
-      $DRY_RUN_CMD mkdir -p "$dst_dir"
+      run mkdir -p "$dst_dir"
       # リポジトリから消えた項目のリンク切れを掃除
-      $DRY_RUN_CMD find "$dst_dir" -maxdepth 1 -type l ! -exec test -e {} \; -delete
+      run find "$dst_dir" -maxdepth 1 -type l ! -exec test -e {} \; -delete
       for src in "${claudeRepo}/$subdir"/*; do
         [ -e "$src" ] || continue
         dst="$dst_dir/$(basename "$src")"
@@ -71,17 +71,17 @@ let
           echo "warning: $dst is a real directory, skipping" >&2
           continue
         fi
-        $DRY_RUN_CMD ln -sfn "$src" "$dst"
+        run ln -sfn "$src" "$dst"
       done
     done
   '';
 
   syncCodexSkills = ''
-    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}/.agents/skills"
-    $DRY_RUN_CMD find "${config.home.homeDirectory}/.agents/skills" -maxdepth 1 -type l ! -exec test -e {} \; -delete
+    run mkdir -p "${config.home.homeDirectory}/.agents/skills"
+    run find "${config.home.homeDirectory}/.agents/skills" -maxdepth 1 -type l ! -exec test -e {} \; -delete
     for src in "${claudeRepo}/skills"/*; do
       [ -e "$src" ] || continue
-      $DRY_RUN_CMD ln -sfn "$src" "${config.home.homeDirectory}/.agents/skills/$(basename "$src")"
+      run ln -sfn "$src" "${config.home.homeDirectory}/.agents/skills/$(basename "$src")"
     done
   '';
 in

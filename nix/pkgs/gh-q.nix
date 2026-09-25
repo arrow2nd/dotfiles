@@ -45,6 +45,8 @@ let
     '';
   };
 in
+# home-manager の programs.gh.extensions は p.pname をリンク名に使うが、
+# writeShellApplication の結果には pname が無いので mkDerivation で包み直す
 pkgs.stdenvNoCC.mkDerivation {
   pname = "gh-q";
   version = "0.1.0";
