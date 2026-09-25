@@ -45,16 +45,22 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
-    let
-      system = "x86_64-linux";
-    in
     {
       nixosConfigurations.devon = nixpkgs.lib.nixosSystem {
-        inherit system;
+        system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/devon/configuration.nix
           inputs.opnix.nixosModules.default
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; };
+              users.arrow2nd = import ./hosts/devon/home.nix;
+              backupFileExtension = "hm-backup";
+            };
+          }
         ];
       };
 
@@ -89,18 +95,6 @@
               backupFileExtension = "hm-backup";
             };
           }
-        ];
-      };
-
-      homeConfigurations."arrow2nd" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        extraSpecialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/devon/home.nix
-          inputs.niri.homeModules.niri
         ];
       };
     };

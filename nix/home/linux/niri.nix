@@ -1,6 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
+  imports = [ inputs.niri.homeModules.niri ];
+
   # 設定検証に使う niri を NixOS 側の実行パッケージに揃える
   programs.niri.package = pkgs.niri;
 
