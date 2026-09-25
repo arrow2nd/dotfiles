@@ -11,6 +11,9 @@
 
       # コーディング用
       plemoljp-nf
+
+      # UI 用 (GTK / mako / swaylock / sansSerif)
+      (callPackage ../../pkgs/x12y12px-maru-minya.nix { })
     ];
 
     fontconfig = {
