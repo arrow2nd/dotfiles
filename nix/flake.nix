@@ -45,6 +45,32 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let
+      # home-manager は全ホストで NixOS / nix-darwin のモジュールとして組み込む
+      homeManagerConfig = { host, user }: {
+        home-manager = {
+          useUserPackages = true;
+          extraSpecialArgs = { inherit inputs; };
+          users.${user} = import ./hosts/${host}/home.nix;
+          # install.sh が作った既存の symlink と衝突した場合は退避する
+          backupFileExtension = "hm-backup";
+        };
+      };
+
+      mkDarwin = { host, user }: inputs.nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./modules/darwin
+          ./hosts/${host}/configuration.nix
+          home-manager.darwinModules.home-manager
+          (homeManagerConfig { inherit host user; })
+          {
+            users.users.${user}.home = "/Users/${user}";
+            system.primaryUser = user;
+          }
+        ];
+      };
+    in
     {
       nixosConfigurations.devon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -53,49 +79,13 @@
           ./hosts/devon/configuration.nix
           inputs.opnix.nixosModules.default
           home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
-              users.arrow2nd = import ./hosts/devon/home.nix;
-              backupFileExtension = "hm-backup";
-            };
-          }
+          (homeManagerConfig { host = "devon"; user = "arrow2nd"; })
         ];
       };
 
-      darwinConfigurations."nyan-chot" = inputs.nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/nyan-chot/configuration.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
-              users.tanida = import ./hosts/nyan-chot/home.nix;
-              # install.sh が作った既存の symlink と衝突した場合は退避する
-              backupFileExtension = "hm-backup";
-            };
-          }
-        ];
-      };
-
-      darwinConfigurations."scottish" = inputs.nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/scottish/configuration.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
-              users.arrow2nd = import ./hosts/scottish/home.nix;
-              # install.sh が作った既存の symlink と衝突した場合は退避する
-              backupFileExtension = "hm-backup";
-            };
-          }
-        ];
+      darwinConfigurations = {
+        "nyan-chot" = mkDarwin { host = "nyan-chot"; user = "tanida"; };
+        "scottish" = mkDarwin { host = "scottish"; user = "arrow2nd"; };
       };
     };
 }

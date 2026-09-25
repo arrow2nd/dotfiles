@@ -9,9 +9,6 @@
     ../../home/linux/takumi-guard.nix
   ];
 
-  home.username = "arrow2nd";
-  home.homeDirectory = "/home/arrow2nd";
-
   xdg.configFile."1Password/ssh/agent.toml".text = ''
     [[ssh-keys]]
     item = "SSHキー (devon)"
