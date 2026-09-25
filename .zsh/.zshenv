@@ -10,25 +10,30 @@ export SHELL=$(which zsh)
 # fzf
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 
+# zsh が入れ子で起動されるたびに同じパスが積み重なるのを防ぐ
+# -U は配列への代入時にしか効かないので、以降は PATH ではなく path / fpath に足すこと
+typeset -U path fpath
+
 # 自作スクリプト
-export PATH="$HOME/.local/bin:$PATH"
+path=("$HOME/.local/bin" $path)
 
 # mise
-export PATH="$HOME/.local/share/mise/shims:$PATH"
+path=("$HOME/.local/share/mise/shims" $path)
 
 # Deno
-export PATH="$HOME/.deno/bin:$PATH"
+path=("$HOME/.deno/bin" $path)
 
 # Add deno completions to search path
 # ZDOTDIR は dotfiles リポジトリの symlink なので、生成物はリポジトリ外に置く
 ZSH_COMPLETIONS="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/completions"
-if [[ ":$FPATH:" != *":$ZSH_COMPLETIONS:"* ]]; then export FPATH="$ZSH_COMPLETIONS:$FPATH"; fi
+fpath=("$ZSH_COMPLETIONS" $fpath)
+export FPATH
 
 # Golang
-export PATH="$HOME/go/bin:$PATH"
+path=("$HOME/go/bin" $path)
 
 # Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+path=("$HOME/.cargo/bin" $path)
 
 # home-manager の home.sessionVariables
 # zsh は home-manager で管理していないので自前で読み込む
@@ -41,13 +46,13 @@ if [[ $(uname) == "Darwin" ]]; then
   setopt no_global_rcs
 
   # Homebrew
-  export PATH="/opt/homebrew/bin:$PATH"
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  path=("/opt/homebrew/bin" $path)
+  fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
 
   # PATH自体は nix-darwin 管理の /etc/zshenv が設定してくれる（no_global_rcs より先に読まれる）が、
   # ↑の Homebrew prepend で順序が逆転するため、重複コマンドが nix 優先になるよう先頭に戻す
   if [[ -d /run/current-system ]]; then
-    export PATH="/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin:$PATH"
+    path=("/etc/profiles/per-user/$USER/bin" "/run/current-system/sw/bin" $path)
   fi
 
   autoload -Uz compinit
