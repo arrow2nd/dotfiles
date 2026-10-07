@@ -41,7 +41,8 @@ let
     lib.mapAttrsToList (name: cfg: let
       envArgs = lib.mapAttrsToList (key: value: "--env ${lib.escapeShellArg "${key}=${value}"}") cfg.env
         # Linux で PulseAudio / PipeWire のソケットを見つけるために渡す。Mac には無い変数なので Linux 限定
-        ++ lib.optionals pkgs.stdenv.isLinux [ ''--env XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR"'' ];
+        # 起動時の activation はユーザーセッション前に走り XDG_RUNTIME_DIR が未定義で set -u に落ちるため、既定のパスにフォールバックする
+        ++ lib.optionals pkgs.stdenv.isLinux [ ''--env XDG_RUNTIME_DIR="''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"'' ];
       command = lib.escapeShellArgs ([ cfg.command ] ++ cfg.args);
     in ''
       run ${codexBin} mcp remove ${lib.escapeShellArg name} >/dev/null 2>&1 || true
