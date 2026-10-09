@@ -1,6 +1,11 @@
 local lsp = require("util.lsp")
 local h = require("util.helper")
 
+vim.lsp.config("*", {
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
+  on_init = lsp.on_init,
+})
+
 -- LTSのNodeを使うように
 local home_dir = vim.fn.expand("$HOME")
 local node_bin = "/.local/share/mise/installs/node/lts/bin"
@@ -42,10 +47,6 @@ require("mason-lspconfig").setup({
     "eslint",
     "typos_lsp",
   },
-})
-
-vim.lsp.config("*", {
-  on_init = lsp.on_init,
 })
 
 vim.lsp.enable("astro")

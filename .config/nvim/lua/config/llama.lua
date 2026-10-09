@@ -1,7 +1,7 @@
 vim.g.llama_config = {
   keymap_fim_accept_full = "<C-CR>",
 
-  -- <C-J> は skkeleton の起動キーと衝突するのと、n_cmpl = 1 なので潰す
+  -- <C-J> は SKK の起動キーと衝突するのと、n_cmpl = 1 なので潰す
   keymap_fim_next = "",
   keymap_fim_prev = "",
 
