@@ -24,8 +24,6 @@ require("skkelua").config({
   eggLikeNewline = true,
   registerConvertResult = true,
   globalDictionaries = dictionaries,
-  -- 既存の学習結果を引き継ぐため、skkeleton と同じ辞書を使う。
-  userDictionary = vim.fn.expand("~/.skkeleton"),
   completion = { enabled = true },
   indicator = { enabled = false },
 })
