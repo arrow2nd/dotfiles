@@ -91,6 +91,7 @@ in
     llm.claude-code
     codex
     llm.agent-browser
+    llm.orca
     pkgs.sox
   ];
 
