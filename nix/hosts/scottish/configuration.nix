@@ -13,6 +13,7 @@
       "android-platform-tools"
       "appcleaner"
       "discord"
+      "obs"
       "screen-studio"
       "tunnelblick"
     ];
