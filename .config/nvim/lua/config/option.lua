@@ -9,7 +9,6 @@ opt.fileencoding = "utf-8"
 opt.termguicolors = true
 
 -- statusline を下部に固定
--- NOTE: pum.vimのポップアップを出すとなんかチラつくのでやめてる
 opt.laststatus = 3
 
 -- ウィンドウのボーダー
@@ -98,6 +97,7 @@ opt.history = 512
 -- 補完
 opt.completeopt = "menuone,noinsert"
 opt.pumheight = 24
+opt.pumborder = "single"
 
 -- LTSのNodeを使うように
 ---NOTE: プロジェクトのNodeのバージョンが14.xとかだと、LSPによっては動かないことがあるため

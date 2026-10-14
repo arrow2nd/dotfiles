@@ -48,10 +48,6 @@
     trustedInterfaces = [ "tailscale0" ];
     allowedTCPPorts = [];
     allowedUDPPorts = [];
-    # 開発サーバーごとのポート追加を不要にし、接続元は自宅LANに限定する。
-    extraInputRules = ''
-      iifname "wlp194s0" ip saddr 192.168.11.0/24 meta l4proto tcp accept
-    '';
     checkReversePath = "loose";
   };
 
