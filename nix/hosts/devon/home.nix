@@ -21,6 +21,8 @@
   };
 
   home.packages = with pkgs; [
+    wineWow64Packages.stable
+
     # AMD Radeon 860M (Krackan) は Chrome の GPU blocklist で SwiftShader に
     # フォールバックされ WebGL が無効化されるため blocklist を無視する。
     # ANGLE は GL バックエンドにする。Vulkan バックエンド (--use-angle=vulkan)
