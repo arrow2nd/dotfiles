@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
   imports = [
     ../../home/common
@@ -19,6 +19,13 @@
     email = "44780846+arrow2nd@users.noreply.github.com";
     signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDY1VNUT5HxHowIXRVmBRK7LEkB5QmTrE2XMrQFSngG6";
   };
+
+  # Wine が更新するレジストリ全体を固定せず、日本語フォントの代替設定だけを適用する。
+  home.activation.wineFonts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run env WINEPREFIX=${lib.escapeShellArg "${config.home.homeDirectory}/.wine"} \
+      LC_ALL=ja_JP.UTF-8 WINEDEBUG=-all \
+      ${pkgs.wineWow64Packages.stable}/bin/wine regedit /S ${./wine-fonts.reg}
+  '';
 
   home.packages = with pkgs; [
     wineWow64Packages.stable
