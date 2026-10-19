@@ -10,9 +10,7 @@
     ];
 
     casks = [
-      "android-platform-tools"
-      "appcleaner"
-      "discord"
+      "aws-vpn-client"
       "obs"
       "screen-studio"
       "tunnelblick"

@@ -21,7 +21,7 @@
     enable = true;
     onActivation = {
       autoUpdate = false;
-      cleanup = "none";
+      cleanup = "zap";
     };
 
     taps = [
