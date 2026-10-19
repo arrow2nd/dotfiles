@@ -16,7 +16,6 @@
 
   # GUI アプリと nix に移さない CLI は Homebrew のまま
   # ホスト固有のものは各ホストの configuration.nix に足す（list なので結合される）
-  # cleanup = "none": 宣言外のパッケージは消さない（安定してから "zap" を検討）
   homebrew = {
     enable = true;
     onActivation = {
