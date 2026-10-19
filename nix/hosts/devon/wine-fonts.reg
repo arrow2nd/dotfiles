@@ -1,0 +1,6 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Wine\Fonts\Replacements]
+"MS Gothic"="BIZ UDGothic"
+"MS PGothic"="BIZ UDPGothic"
+"MS UI Gothic"="BIZ UDPGothic"
