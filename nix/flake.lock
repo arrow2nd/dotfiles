@@ -348,25 +348,7 @@
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-darwin": "nixpkgs-darwin",
-        "opnix": "opnix",
-        "ruru-bridge-src": "ruru-bridge-src"
-      }
-    },
-    "ruru-bridge-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1792500695,
-        "narHash": "sha256-QgVxasN0bcc/igtToHAxbeXA1N8+IoCenVzdCUZXrPY=",
-        "ref": "refs/heads/main",
-        "rev": "45f7b882be4d319367b7fdfc319b0f57d2bdbce7",
-        "revCount": 1079,
-        "type": "git",
-        "url": "file:///home/arrow2nd/workspace/github.com/arrow2nd/ruru-ai"
-      },
-      "original": {
-        "rev": "45f7b882be4d319367b7fdfc319b0f57d2bdbce7",
-        "type": "git",
-        "url": "file:///home/arrow2nd/workspace/github.com/arrow2nd/ruru-ai"
+        "opnix": "opnix"
       }
     },
     "systems": {
