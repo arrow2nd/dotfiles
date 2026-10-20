@@ -14,6 +14,8 @@ in
   home.file = {
     ".local/bin/ruru-bridge".source = "${bridge}/bin/ruru-bridge";
     ".local/bin/orca-ide".source = "${orca}/lib/Orca/resources/bin/orca-ide";
+    # Orcaが作った既存symlinkはHome Managerの自動退避対象外になる。
+    ".local/bin/orca-ide".force = true;
   };
 
   xdg.configFile."ruru-bridge/watch.json".text = builtins.toJSON {
@@ -21,6 +23,9 @@ in
     orca = orcaPath;
     workspaces = [];
   };
+
+  # systemctl enableが作ったリンクを、宣言したWantedByのリンクへ移管する。
+  xdg.configFile."systemd/user/default.target.wants/ruru-bridge.service".force = true;
 
   # 資格情報と *.sessions は実行時のデータなのでNix storeへコピーしない。
   systemd.user.services.ruru-bridge = {
