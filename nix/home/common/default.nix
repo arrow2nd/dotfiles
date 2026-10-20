@@ -12,6 +12,7 @@
     ./dotfiles-symlinks.nix
     ./llama-cpp.nix
     ./llm-agents.nix
+    ./trash-cleanup.nix
   ];
 
   home.stateVersion = "26.05";
