@@ -39,6 +39,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # shortcut: Bridgeのコミットは未公開のためローカルGitを固定する。公開後にGitHub URLへ移す。
+    ruru-bridge-src = {
+      url = "git+file:///home/arrow2nd/workspace/github.com/arrow2nd/ruru-ai?rev=45f7b882be4d319367b7fdfc319b0f57d2bdbce7";
+      flake = false;
+    };
+
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };

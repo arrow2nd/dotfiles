@@ -7,6 +7,7 @@
     ../../home/linux/niri.nix
     ../../home/linux/skk.nix
     ../../home/linux/takumi-guard.nix
+    ../../home/linux/ruru-bridge.nix
   ];
 
   xdg.configFile."1Password/ssh/agent.toml".text = ''
