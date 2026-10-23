@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # 月曜 09:17 JST。定時付近の混雑を避ける。
-    - cron: '17 0 * * 1'
+    - cron: "17 0 * * 1"
 
 permissions:
   contents: write
@@ -29,14 +29,10 @@ jobs:
         with:
           path-to-flake-dir: nix
           branch: automation/update-flake-lock
-          pr-title: 'chore(nix): flake inputsを更新する'
+          pr-title: "🆙 (nix): nix/flake.lock"
           pr-body: |
             全ホストで共有する `nix/flake.lock` の週次更新です。
 
             ```
             {{ env.GIT_COMMIT_MESSAGE }}
             ```
-
-            devonでこのPRのブランチを取得し、`docs/devon.md` の更新手順に従って
-            ビルド・動作確認してからマージしてください。GHAではOSのビルド・反映は行いません。
-            このPRはGITHUB_TOKENで作成するため、別のpull_requestワークフローは自動起動しません。
