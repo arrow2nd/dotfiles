@@ -119,7 +119,7 @@ in
       };
       "Mod+B" = {
         hotkey-overlay.title = "Open a Browser";
-        action = spawn "google-chrome-stable";
+        action = spawn "firefox";
       };
       "Mod+T" = {
         hotkey-overlay.title = "Open a Terminal";
