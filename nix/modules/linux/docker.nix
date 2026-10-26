@@ -1,8 +1,13 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   virtualisation.docker = {
+    # VOICEVOX はシステムサービスとして起動するため root 側も維持する。
     enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
     # 未使用イメージ/コンテナを定期的に掃除
     autoPrune = {
       enable = true;
@@ -20,7 +25,4 @@
       ports = [ "127.0.0.1:50021:50021" ];
     };
   };
-
-  # docker コマンドを sudo なしで使えるように
-  users.users.arrow2nd.extraGroups = [ "docker" ];
 }

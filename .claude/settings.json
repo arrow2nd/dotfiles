@@ -40,7 +40,16 @@
   },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": true,
+    "pstack@cursor-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "cursor-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "cursor/plugins"
+      }
+    }
   },
   "language": "japanese",
   "effortLevel": "high",

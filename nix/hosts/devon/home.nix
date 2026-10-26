@@ -10,6 +10,18 @@
     ../../home/linux/ruru-bridge.nix
   ];
 
+  home.sessionVariables.BROWSER = "firefox";
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = [ "firefox.desktop" ];
+      "application/xhtml+xml" = [ "firefox.desktop" ];
+      "x-scheme-handler/http" = [ "firefox.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" ];
+    };
+  };
+
   xdg.configFile."1Password/ssh/agent.toml".text = ''
     [[ssh-keys]]
     item = "SSHキー (devon)"
@@ -29,6 +41,7 @@
   '';
 
   home.packages = with pkgs; [
+    firefox
     wineWow64Packages.stable
 
     # AMD Radeon 860M (Krackan) は Chrome の GPU blocklist で SwiftShader に
