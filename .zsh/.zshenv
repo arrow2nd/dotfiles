@@ -10,6 +10,9 @@ export SHELL=$(which zsh)
 # fzf
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 
+# Claude Code
+export CLAUDE_CODE_CERT_STORE=bundled,system
+
 # zsh が入れ子で起動されるたびに同じパスが積み重なるのを防ぐ
 # -U は配列への代入時にしか効かないので、以降は PATH ではなく path / fpath に足すこと
 typeset -U path fpath
