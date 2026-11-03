@@ -5,3 +5,6 @@
 .zcompcache/
 
 nix/result
+
+# 再配布できないファイル (フォントなど) を手元にだけ置く
+assets/

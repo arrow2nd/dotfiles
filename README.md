@@ -11,6 +11,15 @@
 
 [PlemolJP (Nerd Fonts)](https://github.com/yuru7/PlemolJP)
 
+NixOS (devon) では UI フォントに x12y12pxMaruMinyaM を使う。Booth 配布で再配布できないので、リポジトリには含めていない。
+Booth からダウンロードして `~/dotfiles/assets/` (gitignore 済み) に置き、初回の switch の前に Nix store へ追加しておくこと。
+
+```sh
+nix-store --add-fixed sha256 ~/dotfiles/assets/x12y12pxMaruMinyaM.ttf
+```
+
+追加したファイルはシステムの closure に含めているので GC で消えない。store への追加は端末ごとに 1 回でよい。
+
 ## 手順
 
 ```sh
