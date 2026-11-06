@@ -62,7 +62,7 @@ function checkout-pr() {
   git fetch origin "pull/${pr_number}/head:${branch}" && git wt "$branch"
 }
 
-# メインブランチにマージ済みのworktree・ブランチを削除
+# worktree・ブランチをマージ状況を確認しながらfzfで選んで削除
 function cleanup-branches() {
   # リモートがない・オフラインでもローカルの判定は可能なため処理は継続する
   git fetch --prune || echo "git fetch に失敗しました（ローカルの情報で判定します）"
@@ -93,34 +93,87 @@ function cleanup-branches() {
     esac
   done < <(git worktree list --porcelain)
 
+  # squash mergeされたブランチはgitの履歴だけではマージ済みか判定できないため、PRの状態も表示する
+  # ghが使えない場合やGitHub以外のリポジトリでは、PRの状態を表示せずに進める
+  local -A pr_states
+  local pr_branch pr_state
+  if (( $+commands[gh] )); then
+    while IFS=$'\t' read -r pr_branch pr_state; do
+      # 同じブランチ名のPRが複数ある場合は、新しく作られたものを優先する
+      if [[ -z "${pr_states[$pr_branch]}" ]]; then
+        pr_states[$pr_branch]="$pr_state"
+      fi
+    done < <(gh pr list --state all --limit 200 --json headRefName,state -q '.[] | [.headRefName, .state] | @tsv' 2>/dev/null)
+  fi
+
   local current_branch=$(git branch --show-current)
-  local -a wt_targets normal_targets
-  local branch
-  for branch in ${(f)"$(git branch --merged "$main_branch" --format='%(refname:short)')"}; do
+  local -a merged_branches=(${(f)"$(git branch --merged "$main_branch" --format='%(refname:short)')"})
+  # 状態はNerd FontsのOcticonsで表示する
+  local -A icons=(
+    worktree     $'\uf413' # nf-oct-file_directory
+    pr_merged    $'\uf419' # nf-oct-git_merge
+    pr_closed    $'\uf4dc' # nf-oct-git_pull_request_closed
+    pr_open      $'\uf407' # nf-oct-git_pull_request
+    in_main      $'\uf42e' # nf-oct-check
+    unpushed     $'\uf4ad' # nf-oct-cloud_offline
+    remote_gone  $'\uf48e' # nf-oct-trash
+    ahead        $'\uf431' # nf-oct-arrow_up
+    dirty        $'\uf448' # nf-oct-pencil
+  )
+  local legend="${icons[pr_merged]} PRマージ済み  ${icons[pr_closed]} PRクローズ  ${icons[pr_open]} PRオープン  ${icons[in_main]} ${main_branch}に取り込み済み
+${icons[unpushed]} 未push  ${icons[remote_gone]} リモート削除済み  ${icons[ahead]} 未pushのコミットあり  ${icons[dirty]} 未コミットの変更あり  ${icons[worktree]} worktree"
+
+  local -a candidates labels
+  local branch upstream track
+  while IFS='|' read -r branch upstream track; do
     # メインブランチと作業中のブランチは削除できないため除外
     if [[ "$branch" == "$main_branch" || "$branch" == "$current_branch" ]]; then
       continue
     fi
-    if [[ -n "${wt_paths[$branch]}" ]]; then
-      wt_targets+=("$branch")
-    else
-      normal_targets+=("$branch")
+    labels=()
+    case "${pr_states[$branch]}" in
+      MERGED) labels+=("${icons[pr_merged]}") ;;
+      CLOSED) labels+=("${icons[pr_closed]}") ;;
+      OPEN) labels+=("${icons[pr_open]}") ;;
+    esac
+    # 作成直後でコミットのないブランチも、メインブランチと同じコミットを指すためここに含まれる
+    if (( ${merged_branches[(Ie)$branch]} )); then
+      labels+=("${icons[in_main]}")
     fi
-  done
+    if [[ -z "$upstream" ]]; then
+      labels+=("${icons[unpushed]}")
+    elif [[ "$track" == "[gone]" ]]; then
+      labels+=("${icons[remote_gone]}")
+    elif [[ "$track" == *ahead* ]]; then
+      labels+=("${icons[ahead]}")
+    fi
+    # git wt -D は未コミットの変更ごとworktreeを削除するため、変更の有無を示す
+    if [[ -n "${wt_paths[$branch]}" && -n "$(git -C "${wt_paths[$branch]}" status --porcelain)" ]]; then
+      labels+=("${icons[dirty]}")
+    fi
+    # fzfには3列目だけを表示し、1列目のブランチ名と2列目のworktreeのパスは削除処理とプレビューで使う
+    candidates+=("${branch}"$'\t'"${wt_paths[$branch]}"$'\t'"$(printf '%-1s %-40s %s' "${wt_paths[$branch]:+${icons[worktree]}}" "$branch" "${(j: :)labels}")")
+  done < <(git for-each-ref refs/heads --format='%(refname:short)|%(upstream:short)|%(upstream:track)')
 
-  if (( ${#wt_targets} + ${#normal_targets} == 0 )); then
-    echo "削除対象のブランチはありません"
+  if (( ${#candidates} == 0 )); then
+    echo "削除できるブランチはありません"
     return 0
   fi
 
-  echo "以下のブランチが ${main_branch} にマージ済みです"
-  for branch in $wt_targets; do
-    echo "  [worktree] ${branch} (${wt_paths[$branch]})"
-  done
-  for branch in $normal_targets; do
-    echo "  [branch]   ${branch}"
-  done
+  local -a selected
+  selected=(${(f)"$(printf '%s\n' $candidates | fzf --multi --delimiter=$'\t' --with-nth=3 \
+    --header="Tabで複数選択、Enterで決定
+${legend}" \
+    --preview="git log --oneline --color=always ${main_branch}..{1}; [ -n {2} ] && echo && git -C {2} status --short")"})
+  if (( ${#selected} == 0 )); then
+    return 1
+  fi
 
+  local entry
+  echo "以下のブランチを削除します"
+  for entry in $selected; do
+    echo "  ${entry##*$'\t'}"
+  done
   if ! read -q "?削除しますか? [y/N] "; then
     echo "\n中止しました"
     return 1
@@ -128,12 +181,15 @@ function cleanup-branches() {
   echo
 
   # -d のマージ判定はHEAD基準のため、別worktreeから実行すると失敗する
-  # ${main_branch} へのマージ済み判定は済んでいるので -D で削除する
-  for branch in $wt_targets; do
-    git wt -D "$branch"
-  done
-  for branch in $normal_targets; do
-    git branch -D "$branch"
+  # squash mergeされたブランチも -d では削除できないため、選択したものは -D で削除する
+  for entry in $selected; do
+    branch="${entry%%$'\t'*}"
+    wt_path="${${entry#*$'\t'}%%$'\t'*}"
+    if [[ -n "$wt_path" ]]; then
+      git wt -D "$branch"
+    else
+      git branch -D "$branch"
+    fi
   done
 }
 
