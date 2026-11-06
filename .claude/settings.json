@@ -64,5 +64,6 @@
     "commit": "",
     "pr": "",
     "sessionUrl": false
-  }
+  },
+  "outputStyle": "colleague"
 }

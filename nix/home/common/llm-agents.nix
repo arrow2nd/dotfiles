@@ -59,7 +59,7 @@ let
 
   # ディレクトリごと symlink すると終わるのでディレクトリを切ってファイルのリンクを貼る
   syncStaticDirs = ''
-    for subdir in agents commands hooks skills; do
+    for subdir in agents commands hooks output-styles rules skills; do
       dst_dir="${claudeHome}/$subdir"
       run mkdir -p "$dst_dir"
       # リポジトリから消えた項目のリンク切れを掃除
