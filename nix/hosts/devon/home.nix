@@ -37,12 +37,21 @@
   home.activation.wineFonts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     run env WINEPREFIX=${lib.escapeShellArg "${config.home.homeDirectory}/.wine"} \
       LC_ALL=ja_JP.UTF-8 WINEDEBUG=-all \
-      ${pkgs.wineWow64Packages.stable}/bin/wine regedit /S ${./wine-fonts.reg}
+      ${pkgs.wineWow64Packages.full}/bin/wine regedit /S ${./wine-fonts.reg}
   '';
+
+  # Wine の MIDI 出力先として、ALSA シーケンサーのポートを持つソフトウェアシンセを常駐させる。
+  services.fluidsynth = {
+    enable = true;
+    soundService = "pipewire-pulse";
+  };
 
   home.packages = with pkgs; [
     firefox
-    wineWow64Packages.stable
+    # stable は GStreamer 連携なしでビルドされており、DirectShow での音声や動画の再生に失敗するので full を使う。
+    wineWow64Packages.full
+
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.cursor-agent
 
     # AMD Radeon 860M (Krackan) は Chrome の GPU blocklist で SwiftShader に
     # フォールバックされ WebGL が無効化されるため blocklist を無視する。
