@@ -48,6 +48,7 @@
 
   home.packages = with pkgs; [
     firefox
+    discord
     # stable は GStreamer 連携なしでビルドされており、DirectShow での音声や動画の再生に失敗するので full を使う。
     wineWow64Packages.full
 

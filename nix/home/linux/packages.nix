@@ -13,6 +13,8 @@
 
     # GUI apps
     nautilus
+    loupe # 画像ビューア
+    satty # スクショの注釈とトリミング
 
     mkcert
     bluetuith
