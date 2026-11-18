@@ -31,6 +31,12 @@
         width = 4;
         radius = 0;
       };
+      key-bindings = {
+        prev = "Up Control+p Control+k";
+        next = "Down Control+n Control+j";
+        # Control+k は既定で delete-line-forward に割り当てられているため外す
+        delete-line-forward = "none";
+      };
     };
   };
 }
