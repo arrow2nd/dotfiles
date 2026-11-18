@@ -47,29 +47,30 @@
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       # home-manager は全ホストで NixOS / nix-darwin のモジュールとして組み込む
-      homeManagerConfig = { host, user }: {
+      homeManagerConfig = homeFilesByUser: {
         home-manager = {
           useUserPackages = true;
           extraSpecialArgs = { inherit inputs; };
-          users.${user} = import ./hosts/${host}/home.nix;
+          users = nixpkgs.lib.mapAttrs (_: import) homeFilesByUser;
           # install.sh が作った既存の symlink と衝突した場合は退避する
           backupFileExtension = "hm-backup";
         };
       };
 
-      mkDarwin = { host, user }: inputs.nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./modules/darwin
-          ./hosts/${host}/configuration.nix
-          home-manager.darwinModules.home-manager
-          (homeManagerConfig { inherit host user; })
-          {
-            users.users.${user}.home = "/Users/${user}";
-            system.primaryUser = user;
-          }
-        ];
-      };
+      mkDarwin = { host, primaryUser, homeFilesByUser ? { ${primaryUser} = ./hosts/${host}/home.nix; } }:
+        inputs.nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./modules/darwin
+            ./hosts/${host}/configuration.nix
+            home-manager.darwinModules.home-manager
+            (homeManagerConfig homeFilesByUser)
+            {
+              users.users = nixpkgs.lib.mapAttrs (name: _: { home = "/Users/${name}"; }) homeFilesByUser;
+              system.primaryUser = primaryUser;
+            }
+          ];
+        };
     in
     {
       nixosConfigurations.devon = nixpkgs.lib.nixosSystem {
@@ -79,13 +80,22 @@
           ./hosts/devon/configuration.nix
           inputs.opnix.nixosModules.default
           home-manager.nixosModules.home-manager
-          (homeManagerConfig { host = "devon"; user = "arrow2nd"; })
+          (homeManagerConfig { arrow2nd = ./hosts/devon/home.nix; })
         ];
       };
 
       darwinConfigurations = {
-        "nyan-chot" = mkDarwin { host = "nyan-chot"; user = "tanida"; };
-        "scottish" = mkDarwin { host = "scottish"; user = "arrow2nd"; };
+        "nyan-chot" = mkDarwin { host = "nyan-chot"; primaryUser = "tanida"; };
+        "scottish" = mkDarwin { host = "scottish"; primaryUser = "arrow2nd"; };
+
+        "bengal" = mkDarwin {
+          host = "bengal";
+          primaryUser = "arrow2nd";
+          homeFilesByUser = {
+            x000000 = ./hosts/bengal/x000000.nix;
+            x8ed1fc = ./hosts/bengal/x8ed1fc.nix;
+          };
+        };
       };
     };
 }

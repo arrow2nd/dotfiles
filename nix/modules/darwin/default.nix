@@ -23,32 +23,18 @@
       cleanup = "zap";
     };
 
-    taps = [
-      "arrow2nd/tap"
-      "ngrok/ngrok"
-    ];
-
-    brews = [
-      # nixpkgs に無い
-      "arrow2nd/tap/jisyo"
-    ];
-
     casks = [
       "1password"
       "1password-cli"
       "aquaskk"
       "figma"
-      "firealpaca"
       "firefox"
       "font-plemol-jp-nf"
       "font-udev-gothic-nf"
       "google-chrome"
-      "ngrok"
       "shottr"
       "slack"
       "visual-studio-code"
-      "zen"
-      "zoom"
     ];
   };
 
