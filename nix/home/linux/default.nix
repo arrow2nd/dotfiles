@@ -11,6 +11,7 @@
     ./android.nix
     ./swaylock.nix
     ./mako.nix
+    ./fuzzel.nix
   ];
 
   # 壁紙 (swaybg) とロック画面 (swaylock) で同じ画像を使う
