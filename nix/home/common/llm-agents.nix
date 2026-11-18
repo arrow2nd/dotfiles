@@ -91,8 +91,9 @@ in
     llm.claude-code
     codex
     llm.agent-browser
+    llm.antigravity-cli
     llm.orca
-    pkgs.sox
+    pkgs.sox # Claude Code のマイク用
   ];
 
   # 静的設定は直接 symlink
