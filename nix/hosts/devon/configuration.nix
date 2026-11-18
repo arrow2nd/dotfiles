@@ -7,6 +7,7 @@
     ../../modules/linux/fonts.nix
     ../../modules/linux/fcitx5-skk.nix
     ../../modules/linux/docker.nix
+    ../../modules/linux/clamav.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

@@ -13,9 +13,10 @@ in
     systemd.enable = true;
   };
 
-  programs.vicinae = {
+  # Nautilus から nvim などを開きたいので
+  xdg.terminal-exec = {
     enable = true;
-    systemd.enable = true;
+    settings.default = [ "com.mitchellh.ghostty.desktop" ];
   };
 
   services.swayidle = {
@@ -127,7 +128,7 @@ in
       };
       "Mod+D" = {
         hotkey-overlay.title = "Run an Application";
-        action = spawn "vicinae" "toggle";
+        action = spawn "fuzzel";
       };
       "Super+Alt+L" = {
         hotkey-overlay.title = "Lock the Screen";

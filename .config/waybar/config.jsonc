@@ -85,6 +85,7 @@
     "return-type": "json",
     "format": "{icon} {0}",
     "hide-empty-text": true,
+    "max-length": 40,
     "format-icons": {
       "default": "♪"
     },
