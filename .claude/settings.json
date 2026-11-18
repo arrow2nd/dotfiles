@@ -1,8 +1,6 @@
 {
   "permissions": {
-    "allow": [
-      "mcp__vv-mcp__say"
-    ],
+    "allow": [],
     "deny": [],
     "defaultMode": "auto"
   },

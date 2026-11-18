@@ -8,19 +8,6 @@ let
     source = config.lib.file.mkOutOfStoreSymlink "${claudeRepo}/${path}";
   };
 
-  mcpServers = {
-    vv-mcp = {
-      command = "npx";
-      args = [ "-y" "@arrow2nd/vv-mcp" ];
-      env = {
-        VOICEVOX_URL = "http://localhost:50021";
-        DEFAULT_VOICE_ID = "47";
-        DEFAULT_SPEED = "1.0";
-      };
-    };
-  };
-
-  claudeBin = "${llm.claude-code}/bin/claude";
   codexBin = "${llm.codex}/bin/codex";
   codex = pkgs.writeShellScriptBin "codex" ''
     exec ${codexBin} \
@@ -29,28 +16,7 @@ let
       "$@"
   '';
 
-  # ~/.claude.json は Claude Code 自身が書き換えるので初期値として CLI 経由で user スコープで登録
-  syncClaudeMcpServers = lib.concatStringsSep "\n" (
-    lib.mapAttrsToList (name: cfg: ''
-      run ${claudeBin} mcp remove ${lib.escapeShellArg name} -s user >/dev/null 2>&1 || true
-      run ${claudeBin} mcp add-json -s user ${lib.escapeShellArg name} ${lib.escapeShellArg (builtins.toJSON cfg)}
-    '') mcpServers
-  );
-
-  syncCodexMcpServers = lib.concatStringsSep "\n" (
-    lib.mapAttrsToList (name: cfg: let
-      envArgs = lib.mapAttrsToList (key: value: "--env ${lib.escapeShellArg "${key}=${value}"}") cfg.env
-        # Linux で PulseAudio / PipeWire のソケットを見つけるために渡す。Mac には無い変数なので Linux 限定
-        # 起動時の activation はユーザーセッション前に走り XDG_RUNTIME_DIR が未定義で set -u に落ちるため、既定のパスにフォールバックする
-        ++ lib.optionals pkgs.stdenv.isLinux [ ''--env XDG_RUNTIME_DIR="''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"'' ];
-      command = lib.escapeShellArgs ([ cfg.command ] ++ cfg.args);
-    in ''
-      run ${codexBin} mcp remove ${lib.escapeShellArg name} >/dev/null 2>&1 || true
-      run ${codexBin} mcp add ${lib.escapeShellArg name} ${lib.concatStringsSep " " envArgs} -- ${command}
-    '') mcpServers
-  );
-
-  # これも同じく
+  # settings.json は Claude Code 自身が書き換えるので、symlink ではなくコピーを初期値として置く
   syncSettings = ''
     run install -D -m 644 \
       ${claudeRepo}/settings.json \
@@ -104,10 +70,8 @@ in
   };
 
   home.activation = {
-    claudeMcpServers = lib.hm.dag.entryAfter [ "writeBoundary" ] syncClaudeMcpServers;
     claudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] syncSettings;
     claudeStaticDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] syncStaticDirs;
-    codexMcpServers = lib.hm.dag.entryAfter [ "writeBoundary" ] syncCodexMcpServers;
     codexSkills = lib.hm.dag.entryAfter [ "writeBoundary" ] syncCodexSkills;
   };
 }
