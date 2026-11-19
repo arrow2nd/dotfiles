@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [ ../nix-settings.nix ];
 
@@ -13,6 +13,11 @@
   nix.optimise.automatic = true;
 
   programs.zsh.enable = true;
+
+  fonts.packages = with pkgs; [
+    plemoljp-nf
+    udev-gothic-nf
+  ];
 
   # GUI アプリと nix に移さない CLI は Homebrew のまま
   # ホスト固有のものは各ホストの configuration.nix に足す（list なので結合される）
@@ -29,8 +34,6 @@
       "aquaskk"
       "figma"
       "firefox"
-      "font-plemol-jp-nf"
-      "font-udev-gothic-nf"
       "google-chrome"
       "shottr"
       "slack"
