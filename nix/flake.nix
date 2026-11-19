@@ -93,7 +93,6 @@
           primaryUser = "arrow2nd";
           homeFilesByUser = {
             x000000 = ./hosts/bengal/x000000.nix;
-            x8ed1fc = ./hosts/bengal/x8ed1fc.nix;
           };
         };
       };

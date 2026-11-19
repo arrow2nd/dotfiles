@@ -2,7 +2,7 @@
 let
   llm = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
 
-  claudeRepo = "${config.home.homeDirectory}/dotfiles/.claude";
+  claudeRepo = "${config.dotfiles.path}/.claude";
   claudeHome = "${config.home.homeDirectory}/.claude";
   linkRepo = path: {
     source = config.lib.file.mkOutOfStoreSymlink "${claudeRepo}/${path}";

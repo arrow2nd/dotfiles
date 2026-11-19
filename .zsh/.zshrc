@@ -211,7 +211,7 @@ abbrev-alias nvim-rebuild='make distclean && make CMAKE_BUILD_TYPE=Release CMAKE
 # 雑多
 abbrev-alias cls='clear'
 abbrev-alias zmv='noglob zmv -W'
-abbrev-alias dot='cd ~/dotfiles'
+abbrev-alias dot='cd $DOTFILES'
 
 # 天気予報
 alias wttr='(){ curl -H "Accept-Language: ${LANG%_*}" --compressed "wttr.in/${1:-Tokyo}" }'

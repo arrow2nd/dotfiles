@@ -1,6 +1,15 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
-  # store に入れたくない dotfiles を ~/dotfiles からの out-of-store symlink で張るヘルパー
-  _module.args.linkDotfile = path:
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/${path}";
+  options.dotfiles.path = lib.mkOption {
+    type = lib.types.str;
+    default = "${config.home.homeDirectory}/dotfiles";
+    description = "out-of-store symlink の参照先になる dotfiles リポジトリのパス";
+  };
+
+  config = {
+    _module.args.linkDotfile = path:
+      config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.path}/${path}";
+
+    home.sessionVariables.DOTFILES = config.dotfiles.path;
+  };
 }
