@@ -59,7 +59,7 @@ if [[ $(uname) == "Darwin" ]]; then
   fi
 
   autoload -Uz compinit
-  compinit -u
+  compinit -i
 fi
 
 # ローカル設定
