@@ -12,15 +12,80 @@
 
   home.sessionVariables.BROWSER = "firefox";
 
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = [ "firefox.desktop" ];
-      "application/xhtml+xml" = [ "firefox.desktop" ];
-      "x-scheme-handler/http" = [ "firefox.desktop" ];
-      "x-scheme-handler/https" = [ "firefox.desktop" ];
+  xdg.mimeApps =
+    let
+      associate = app: types: lib.genAttrs types (_: [ app ]);
+    in
+    {
+      enable = true;
+      defaultApplications = lib.mergeAttrsList [
+        (associate "firefox.desktop" [
+          "text/html"
+          "application/xhtml+xml"
+          "x-scheme-handler/http"
+          "x-scheme-handler/https"
+          "application/pdf"
+        ])
+
+        (associate "org.gnome.Nautilus.desktop" [ "inode/directory" ])
+
+        (associate "org.gnome.Loupe.desktop" [
+          "image/png"
+          "image/jpeg"
+          "image/gif"
+          "image/webp"
+          "image/avif"
+          "image/bmp"
+          "image/tiff"
+          "image/svg+xml"
+          "image/heic"
+          "image/vnd.microsoft.icon"
+        ])
+
+        (associate "nvim.desktop" [
+          "text/plain"
+          "text/markdown"
+          "text/x-log"
+          "text/csv"
+          "text/x-csrc"
+          "text/x-chdr"
+          "text/x-c++src"
+          "text/x-python"
+          "text/x-script.python"
+          "text/x-shellscript"
+          "application/x-shellscript"
+          "application/json"
+          "application/toml"
+          "application/x-yaml"
+          "application/xml"
+          "application/javascript"
+          "text/javascript"
+          "application/typescript"
+          "text/x-nix"
+        ])
+
+        (associate "mpv.desktop" [
+          "video/mp4"
+          "video/webm"
+          "video/x-matroska"
+          "video/quicktime"
+          "video/x-msvideo"
+          "video/mpeg"
+          "video/ogg"
+          "video/x-flv"
+          "video/mp2t"
+          "audio/mpeg"
+          "audio/mp4"
+          "audio/aac"
+          "audio/flac"
+          "audio/ogg"
+          "audio/opus"
+          "audio/x-wav"
+          "audio/x-m4a"
+          "audio/webm"
+        ])
+      ];
     };
-  };
 
   xdg.configFile."1Password/ssh/agent.toml".text = ''
     [[ssh-keys]]
@@ -49,6 +114,7 @@
   home.packages = with pkgs; [
     firefox
     discord
+    mpv
     # stable は GStreamer 連携なしでビルドされており、DirectShow での音声や動画の再生に失敗するので full を使う。
     wineWow64Packages.full
 
