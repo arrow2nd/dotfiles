@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
     fcitx5.addons = with pkgs; [
       fcitx5-skk
+      inputs.rinze.packages.${pkgs.stdenv.hostPlatform.system}.fcitx5-rinze
       qt6Packages.fcitx5-configtool
     ];
     fcitx5.waylandFrontend = true;
