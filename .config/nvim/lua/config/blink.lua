@@ -1,10 +1,4 @@
-local skk = require("skkelua")
-
 require("blink.cmp").setup({
-  -- SKK の候補確定・学習は組み込み補完が処理するため、二重に補完しない。
-  enabled = function()
-    return not skk.is_enabled()
-  end,
   keymap = {
     preset = "none",
     ["<C-n>"] = { "select_next", "fallback" },
@@ -54,9 +48,6 @@ require("blink.cmp").setup({
   cmdline = {
     keymap = { preset = "inherit" },
     sources = function()
-      if skk.is_enabled() then
-        return {}
-      end
       return vim.fn.getcmdtype() == ":" and { "cmdline", "buffer" } or { "buffer" }
     end,
     completion = {
@@ -64,11 +55,4 @@ require("blink.cmp").setup({
       ghost_text = { enabled = false },
     },
   },
-})
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = "skkelua-enable-pre",
-  callback = function()
-    require("blink.cmp").hide()
-  end,
 })

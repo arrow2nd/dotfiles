@@ -25,8 +25,12 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@3138316df39ed29be04236d7ffc686fa525866aa # v23
         with:
           determinate: false
+      # rinze は devon のローカルの clone を指していて取得できないので、更新の対象から外す
+      - id: inputs
+        run: echo "names=$(jq -r '.nodes.root.inputs | keys - ["rinze"] | join(" ")' nix/flake.lock)" >> "$GITHUB_OUTPUT"
       - uses: DeterminateSystems/update-flake-lock@da03c0f078bc4b2c37ee4f7e072d34bf8f188bb3 # v29
         with:
+          inputs: ${{ steps.inputs.outputs.names }}
           path-to-flake-dir: nix
           branch: automation/update-flake-lock
           pr-title: "🆙 (nix): nix/flake.lock"

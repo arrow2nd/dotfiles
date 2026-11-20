@@ -110,7 +110,7 @@ return {
   {
     "saghen/blink.cmp",
     version = "1.*",
-    dependencies = { "hrsh7th/vim-vsnip", "kjuq/skkelua.nvim" },
+    dependencies = { "hrsh7th/vim-vsnip" },
     config = function()
       require("config.blink")
     end,
@@ -126,9 +126,11 @@ return {
     end,
   },
   {
-    "kjuq/skkelua.nvim",
+    dir = require("util.rinze").dir,
+    name = "rinze",
+    cond = require("util.rinze").available,
     config = function()
-      require("config.skk")
+      require("config.rinze")
     end,
   },
   {

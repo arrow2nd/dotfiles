@@ -6,6 +6,7 @@
 
     ../../home/linux/niri.nix
     ../../home/linux/skk.nix
+    ../../home/linux/rinze.nix
     ../../home/linux/takumi-guard.nix
     ../../home/linux/ruru-bridge.nix
   ];
