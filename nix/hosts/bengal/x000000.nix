@@ -16,7 +16,6 @@
     glab
     httpie
     luarocks
-    mergiraf
     mkcert
     pdftk
     potrace

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   programs.git = {
     enable = true;
@@ -13,5 +13,11 @@
       pull.rebase = false;
       ghq.root = "${config.home.homeDirectory}/workspace";
     };
+  };
+
+  # 構文認識マージドライバ
+  programs.mergiraf = {
+    enable = lib.mkDefault true;
+    enableGitIntegration = lib.mkDefault true;
   };
 }

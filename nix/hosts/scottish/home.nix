@@ -23,7 +23,6 @@
     docker-client
     httpie
     luarocks
-    mergiraf
     mkcert
   ];
 }
