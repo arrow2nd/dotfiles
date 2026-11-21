@@ -8,6 +8,11 @@ _G.sidekick_last_prompt = nil
 require("sidekick").setup({
   nes = { enabled = false },
   cli = {
+    tools = {
+      antigravity = {
+        cmd = { "agy" },
+      },
+    },
     win = {
       keys = {
         stopinsert = { "<esc><esc>", "stopinsert", mode = "t" }, -- enter normal mode
@@ -34,10 +39,6 @@ require("sidekick").setup({
         },
       },
     },
-    -- mux = {
-    --   enabled = true,
-    --   backend = "zellij",
-    -- },
     picker = "fzf-lua",
   },
 })
