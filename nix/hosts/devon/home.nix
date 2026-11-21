@@ -65,7 +65,7 @@
           "text/x-nix"
         ])
 
-        (associate "mpv.desktop" [
+        (associate "vlc.desktop" [
           "video/mp4"
           "video/webm"
           "video/x-matroska"
@@ -84,6 +84,7 @@
           "audio/x-wav"
           "audio/x-m4a"
           "audio/webm"
+          "x-content/audio-cdda"
         ])
       ];
     };
@@ -115,7 +116,7 @@
   home.packages = with pkgs; [
     firefox
     discord
-    mpv
+    vlc
     # stable は GStreamer 連携なしでビルドされており、DirectShow での音声や動画の再生に失敗するので full を使う。
     wineWow64Packages.full
 

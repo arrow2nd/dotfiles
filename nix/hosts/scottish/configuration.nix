@@ -10,11 +10,7 @@
     ];
 
     casks = [
-      "aws-vpn-client"
-      "obs"
       "onyx"
-      "screen-studio"
-      "tunnelblick"
     ];
   };
 }
