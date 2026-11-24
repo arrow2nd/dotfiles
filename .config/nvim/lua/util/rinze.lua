@@ -1,4 +1,4 @@
--- rinze は devon だけに Nix で入れる（nix/home/linux/rinze.nix）。入っていない環境では読み込まない
+-- rinze は devon と scottish だけに Nix で入れる（nix/home/{linux,darwin}/rinze.nix）。入っていない環境では読み込まない
 local dir = vim.fn.stdpath("data") .. "/rinze"
 
 return {

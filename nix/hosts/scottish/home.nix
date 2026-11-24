@@ -3,6 +3,8 @@
   imports = [
     ../../home/common
     ../../home/darwin
+
+    ../../home/darwin/rinze.nix
   ];
 
   xdg.configFile."1Password/ssh/agent.toml".text = ''

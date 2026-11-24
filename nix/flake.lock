@@ -346,17 +346,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1795235877,
-        "narHash": "sha256-YkglDyfx+iRQXbpNc5CHOaaLMjvfULUkRP/H+6fL528=",
-        "ref": "refs/heads/main",
-        "rev": "f164ad716c6922fb1e35cd7789a592b7b8384f96",
-        "revCount": 23,
-        "type": "git",
-        "url": "file:///home/arrow2nd/workspace/github.com/arrow2nd/rinze"
+        "lastModified": 1795512304,
+        "narHash": "sha256-mVGxWCFPwNQy9vj60BS7d/me1OxFbAmxq04+re7/XbQ=",
+        "owner": "arrow2nd",
+        "repo": "rinze",
+        "rev": "9c59161b65be2b4d5fd38375188f9584ce5eaddd",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/arrow2nd/workspace/github.com/arrow2nd/rinze"
+        "owner": "arrow2nd",
+        "repo": "rinze",
+        "type": "github"
       }
     },
     "root": {

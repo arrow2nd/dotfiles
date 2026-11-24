@@ -43,9 +43,9 @@
       url = "github:numtide/llm-agents.nix";
     };
 
-    # 自作の IME。remote が無いので devon の clone を直接参照する（devon でだけ使う）
+    # 自作の IME（devon と scottish で使う）
     rinze = {
-      url = "git+file:///home/arrow2nd/workspace/github.com/arrow2nd/rinze";
+      url = "github:arrow2nd/rinze";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
