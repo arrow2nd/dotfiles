@@ -1,19 +1,9 @@
-{ config, ... }:
+{ pkgs, ... }:
 
-let
-  home = config.users.users.arrow2nd.home;
-  downloadsDir = "${home}/Downloads";
-in
 {
-  services.clamav = {
-    daemon.enable = true;
-    updater.enable = true;
+  # 常駐させると定義データベースだけで 1GB 前後のメモリを使うため、
+  # 定義の自動更新だけ行い、検査は必要なときに ClamTk から手動で実行する
+  services.clamav.updater.enable = true;
 
-    # ダウンロードしたファイルは開く前に検査しとく
-    clamonacc.enable = true;
-    daemon.settings = {
-      OnAccessPrevention = true;
-      OnAccessIncludePath = [ downloadsDir ];
-    };
-  };
+  environment.systemPackages = [ pkgs.clamtk ];
 }
