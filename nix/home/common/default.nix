@@ -6,6 +6,7 @@
     ./shell.nix
     ./cli-tools.nix
     ./nvim.nix
+    ./rinze.nix
     ./ssh.nix
     ./gh.nix
     ./ghostty.nix
