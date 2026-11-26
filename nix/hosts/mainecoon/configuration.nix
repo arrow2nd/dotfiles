@@ -54,16 +54,6 @@
     "TS_DEBUG_FIREWALL_MODE=nftables"
   ];
 
-  services.openssh = {
-    enable = true;
-    openFirewall = false;
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
-    };
-  };
-
   # Time & Locale
   time.timeZone = "Asia/Tokyo";
   time.hardwareClockInLocalTime = true;
@@ -87,10 +77,6 @@
       "kvm"
     ];
     shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [
-      # devon
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDY1VNUT5HxHowIXRVmBRK7LEkB5QmTrE2XMrQFSngG6"
-    ];
   };
 
   # Shell
