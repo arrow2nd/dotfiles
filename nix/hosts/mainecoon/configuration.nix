@@ -1,5 +1,7 @@
 { lib, pkgs, ... }:
-
+let
+  llamaCppRocm = pkgs.callPackage ./llama-cpp-rocm.nix { };
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -103,7 +105,7 @@
       Group = "users";
       SupplementaryGroups = [ "video" "render" ];
       ExecStart = lib.escapeShellArgs [
-        "${pkgs.llama-cpp-rocm}/bin/llama-server"
+        "${llamaCppRocm}/bin/llama-server"
         "--host" "0.0.0.0"
         "--port" "8080"
         "--models-dir" "/home/arrow2nd/models"
