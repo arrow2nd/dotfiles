@@ -79,15 +79,27 @@
         };
     in
     {
-      nixosConfigurations.devon = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/devon/configuration.nix
-          inputs.opnix.nixosModules.default
-          home-manager.nixosModules.home-manager
-          (homeManagerConfig { arrow2nd = ./hosts/devon/home.nix; })
-        ];
+      nixosConfigurations = {
+        devon = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/devon/configuration.nix
+            inputs.opnix.nixosModules.default
+            home-manager.nixosModules.home-manager
+            (homeManagerConfig { arrow2nd = ./hosts/devon/home.nix; })
+          ];
+        };
+
+        mainecoon = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/mainecoon/configuration.nix
+            home-manager.nixosModules.home-manager
+            (homeManagerConfig { arrow2nd = ./hosts/mainecoon/home.nix; })
+          ];
+        };
       };
 
       darwinConfigurations = {
