@@ -15,6 +15,8 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.kernelParams = [ "consoleblank=60" ];
+
   # Hardware (AMD Ryzen 7 5700X + Radeon RX 7800 XT / RDNA3 gfx1101)
   hardware.enableRedistributableFirmware = true;
 
