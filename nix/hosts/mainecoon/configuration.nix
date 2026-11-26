@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -86,6 +86,39 @@
 
   # ld-linux (Python / ROCm wheel 等の動的バイナリ実行用)
   programs.nix-ld.enable = true;
+
+  # llama-server
+  systemd.tmpfiles.rules = [
+    "d /home/arrow2nd/models 0755 arrow2nd users -"
+  ];
+
+  systemd.services.llama-server = {
+    description = "llama.cpp router server (ROCm)";
+    after = [ "network-online.target" "tailscaled.service" ];
+    wants = [ "network-online.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      User = "arrow2nd";
+      Group = "users";
+      SupplementaryGroups = [ "video" "render" ];
+      ExecStart = lib.escapeShellArgs [
+        "${pkgs.llama-cpp-rocm}/bin/llama-server"
+        "--host" "0.0.0.0"
+        "--port" "8080"
+        "--models-dir" "/home/arrow2nd/models"
+        "--models-max" "1"
+        "--sleep-idle-seconds" "600"
+        "-ngl" "99"
+        "--fit" "on"
+        "--flash-attn" "on"
+        "--cache-type-k" "q8_0"
+        "--cache-type-v" "q8_0"
+      ];
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+  };
 
   # Packages
   environment.systemPackages = with pkgs; [

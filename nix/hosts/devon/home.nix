@@ -112,6 +112,24 @@
     soundService = "pipewire-pulse";
   };
 
+  home.file.".pi/agent/models.json".text = builtins.toJSON {
+    providers = {
+      mainecoon = {
+        baseUrl = "http://mainecoon:8080/v1";
+        api = "openai-completions";
+        apiKey = "dummy";
+        models = [
+          {
+            id = "default";
+            name = "mainecoon (llama-server)";
+            contextWindow = 32768;
+            maxTokens = 8192;
+          }
+        ];
+      };
+    };
+  };
+
   home.packages = with pkgs; [
     firefox
     discord
@@ -120,6 +138,7 @@
     wineWow64Packages.full
 
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.cursor-agent
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
 
     # AMD Radeon 860M (Krackan) は Chrome の GPU blocklist で SwiftShader に
     # フォールバックされ WebGL が無効化されるため blocklist を無視する。
