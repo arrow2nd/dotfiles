@@ -42,7 +42,7 @@ github = "azu/ni.zsh"
 apply = ["defer"]
 
 [plugins.git-wt]
-inline = 'zsh-defer eval "$(git wt --init zsh)"'
+inline = 'command -v git-wt >/dev/null 2>&1 && zsh-defer eval "$(git wt --init zsh)"'
 
 [plugins.minimal]
 github = "subnixr/minimal"
