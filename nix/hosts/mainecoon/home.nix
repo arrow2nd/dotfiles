@@ -37,6 +37,7 @@
     fastfetch
 
     llama-cpp-rocm
+    python3Packages.huggingface-hub
     uv
   ];
 }
