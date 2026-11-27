@@ -1,8 +1,3 @@
-# Ghostty起動時にtmuxを自動起動（tmux内での二重起動を防ぐ）
-if [[ "$TERM_PROGRAM" == "ghostty" && -z "$TMUX" ]] && command -v tmux >/dev/null 2>&1; then
-  exec tmux -f ~/.config/tmux/tmux.conf new-session -A -s nyaan
-fi
-
 #
 # sheldon
 #

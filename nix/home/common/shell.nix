@@ -3,7 +3,6 @@
   home.packages = with pkgs; [
     sheldon
     mise
-    tmux
   ];
 
   # flakeのdevShellを普段のzshに自動注入するため（.envrcのあるリポジトリで使用）

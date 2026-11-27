@@ -6,7 +6,6 @@
     "mise".source = linkDotfile ".config/mise";
     "nvim".source = linkDotfile ".config/nvim";
     "sheldon".source = linkDotfile ".config/sheldon";
-    "tmux".source = linkDotfile ".config/tmux";
     "typos".source = linkDotfile ".config/typos";
   };
 

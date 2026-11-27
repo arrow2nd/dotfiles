@@ -53,7 +53,6 @@
 
       # Window
       window-decoration = lib.mkDefault "none";
-      scrollback-limit = 3500;
       window-theme = lib.mkDefault "ghostty";
       window-padding-x = 8;
       window-padding-y = 8;
@@ -68,8 +67,38 @@
         "ctrl+shift+c=copy_to_clipboard"
         "ctrl+shift+v=paste_from_clipboard"
         "global:alt+shift+r=reload_config"
-        # tmux 側で shift+enter を拾えるように
-        "shift+enter=text:\\x1b\\r"
+
+        # Tabs
+        "alt+t=new_tab"
+        "alt+comma=previous_tab"
+        "alt+period=next_tab"
+        "alt+shift+comma=move_tab:-1"
+        "alt+shift+period=move_tab:1"
+        "ctrl+shift+t=toggle_tab_overview"
+        "alt+r=prompt_tab_title"
+        "alt+1=goto_tab:1"
+        "alt+2=goto_tab:2"
+        "alt+3=goto_tab:3"
+        "alt+4=goto_tab:4"
+        "alt+5=goto_tab:5"
+
+        # Splits
+        "alt+v=new_split:right"
+        "alt+s=new_split:down"
+        "alt+x=close_surface"
+        "alt+h=goto_split:left"
+        "alt+j=goto_split:down"
+        "alt+k=goto_split:up"
+        "alt+l=goto_split:right"
+        "alt+z=toggle_split_zoom"
+        "alt+shift+h=resize_split:left,40"
+        "alt+shift+j=resize_split:down,40"
+        "alt+shift+k=resize_split:up,40"
+        "alt+shift+l=resize_split:right,40"
+        "alt+equal=equalize_splits"
+
+        # Search
+        "alt+slash=start_search"
       ];
 
       # Application
