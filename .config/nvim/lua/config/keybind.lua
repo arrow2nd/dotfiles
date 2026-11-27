@@ -42,4 +42,4 @@ h.nmap("<Leader>gp", "<CMD>Git pull origin HEAD<CR>")
 h.nmap("<Leader>gP", "<CMD>Git push origin HEAD<CR>")
 
 -- codediff
-h.nmap("<Leader>gd", "<CMD>CodeDiff file HEAD<CR>")
+h.nmap("<Leader>gd", "<CMD>CodeDiff<CR>")
