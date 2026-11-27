@@ -1,36 +1,23 @@
-require("translate").setup({
-  default = {
-    command = "google",
-    parse_before = "remember,trim,natural",
-    output = "replace_original",
-  },
-  parse_before = {
-    remember = {
-      cmd = function(lines, pos)
-        pos.buf = vim.api.nvim_get_current_buf()
-        pos.tick = vim.api.nvim_buf_get_changedtick(pos.buf)
-        return lines
-      end,
-    },
-  },
-  output = {
-    replace_original = {
-      cmd = function(lines, pos)
-        -- 非同期の翻訳中に別バッファへ移動・編集しても、無関係な内容を上書きしない
-        if not vim.api.nvim_buf_is_loaded(pos.buf) or vim.api.nvim_buf_get_changedtick(pos.buf) ~= pos.tick then
-          vim.notify(
-            "翻訳中にバッファが変更されたみたいなので、置換を中止しました",
-            vim.log.levels.WARN
-          )
-          return
-        end
-        vim.api.nvim_buf_call(pos.buf, function()
-          require("translate.preset.output.replace").cmd(lines, pos)
-        end)
-      end,
-    },
-  },
-  preset = { command = { google = { args = { "--fail", "--max-time", "30" } } } },
-})
+local translate = require("util.translate")
 
-vim.keymap.set("x", "<Leader>t", "<Cmd>Translate en -source=ja<CR>", { desc = "選択範囲を英訳して置換" })
+local function complete_lang(arg_lead)
+  return vim.tbl_filter(function(lang)
+    return vim.startswith(lang, arg_lead)
+  end, translate.languages)
+end
+
+vim.api.nvim_create_user_command("Translate", function(opts)
+  translate.replace(opts.args ~= "" and opts.args or "en")
+end, { nargs = "?", range = true, complete = complete_lang, desc = "選択範囲を翻訳して置換 (既定: en)" })
+
+vim.api.nvim_create_user_command("TranslatePopup", function(opts)
+  translate.popup(opts.args ~= "" and opts.args or "ja")
+end, { nargs = "?", range = true, complete = complete_lang, desc = "選択範囲を翻訳して表示 (既定: ja)" })
+
+-- 翻訳中も選択範囲が見えるように、ビジュアルモードを抜けずに呼ぶ
+vim.keymap.set("x", "<Leader>t", function()
+  translate.replace("en")
+end, { desc = "選択範囲を英訳して置換" })
+vim.keymap.set("x", "<Leader>T", function()
+  translate.popup("ja")
+end, { desc = "選択範囲を和訳して表示" })

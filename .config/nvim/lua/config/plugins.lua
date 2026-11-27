@@ -67,12 +67,6 @@ return {
     end,
   },
   {
-    "uga-rosa/translate.nvim",
-    config = function()
-      require("config.translate")
-    end,
-  },
-  {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreview", "MarkdownPreviewStop", "MarkdownPreviewToggle" },
     ft = { "markdown" },

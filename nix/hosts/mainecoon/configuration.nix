@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 let
-  llamaCppRocm = pkgs.callPackage ./llama-cpp-rocm.nix { };
+  llamaCppRocm = pkgs.callPackage ../../pkgs/llama-cpp.nix { package = pkgs.llama-cpp-rocm; };
 in
 {
   imports = [

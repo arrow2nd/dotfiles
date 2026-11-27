@@ -1,6 +1,11 @@
-{ lib, pkgs }:
-# nixpkgs の llama-cpp は inkling2_loop (b12xxx で追加) に未対応のため upstream のタグに差し替える
-pkgs.llama-cpp-rocm.overrideAttrs (
+# nixpkgs の llama-cpp は inkling2_loop (b12xxx で追加) や PLaMo 3 のトークナイザに未対応のため upstream のタグに差し替える
+# GPU バックエンドを選んだ llama-cpp を package として受け取る
+{
+  lib,
+  pkgs,
+  package,
+}:
+package.overrideAttrs (
   finalAttrs: old: {
     version = "12776";
     src = pkgs.fetchFromGitHub {
