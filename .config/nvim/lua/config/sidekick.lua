@@ -14,6 +14,9 @@ require("sidekick").setup({
       },
     },
     win = {
+      config = function(terminal)
+        require("util.sidekick_window").setup(terminal)
+      end,
       keys = {
         stopinsert = { "<esc><esc>", "stopinsert", mode = "t" }, -- enter normal mode
         hide_n = { "q", "hide", mode = "n" }, -- hide from normal mode
@@ -173,3 +176,11 @@ vim.api.nvim_create_autocmd({ "BufReadCmd" }, {
     end, { noremap = true, silent = true, buffer = true })
   end,
 })
+
+-- 選択範囲へレビューコメントのように質問する（タブを移動しない）
+h.xmap("<leader>ar", function()
+  require("util.sidekick_review").open()
+end, { desc = "Sidekick Review Comment" })
+h.nmap("<leader>ar", function()
+  require("util.sidekick_review").open()
+end, { desc = "Sidekick Review Comment" })
