@@ -18,7 +18,7 @@ in
       # コーディング用
       plemoljp-nf
 
-      # UI 用 (GTK / mako / swaylock / sansSerif)
+      # UI 用 (GTK / mako / fuzzel / sansSerif)
       x12y12px-maru-minya
     ];
 

@@ -137,7 +137,9 @@
 
   security.pam.services = {
     sudo.fprintAuth = true;
-    swaylock.fprintAuth = true;
+    # hyprlock は fprintd を直接使ってパスワードと並行して待つ。
+    # PAM 側にも pam_fprintd を入れると指紋の待機中にパスワードを受け付けなくなる
+    hyprlock.fprintAuth = false;
     polkit-1.fprintAuth = true;
     login.fprintAuth = true;
   };

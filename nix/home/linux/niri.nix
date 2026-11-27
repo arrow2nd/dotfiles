@@ -2,7 +2,10 @@
 
 let
   niri = lib.getExe config.programs.niri.package;
-  swaylock = lib.getExe config.programs.swaylock.package;
+  # hyprlock はデーモン化しないため、二重起動を避けるラッパーを介して起動する
+  lock = pkgs.writeShellScript "lock" ''
+    ${lib.getExe' pkgs.procps "pidof"} hyprlock || exec ${lib.getExe config.programs.hyprlock.package}
+  '';
 in
 {
   imports = [ inputs.niri.homeModules.niri ];
@@ -22,11 +25,12 @@ in
   services.swayidle = {
     enable = true;
     timeouts = [
-      { timeout = 600; command = "${swaylock} -f"; }
+      # swayidle -w がロック解除まで次のイベントを待たないよう、バックグラウンドで起動する
+      { timeout = 600; command = "${lock} &"; }
       { timeout = 601; command = "${niri} msg action power-off-monitors"; }
     ];
     events = {
-      before-sleep = "${swaylock} -f";
+      before-sleep = "${lock} &";
     };
   };
 
@@ -132,7 +136,7 @@ in
       };
       "Super+Alt+L" = {
         hotkey-overlay.title = "Lock the Screen";
-        action = spawn "swaylock" "-f";
+        action = spawn "${lock}";
       };
 
       # show-hotkey-overlay
