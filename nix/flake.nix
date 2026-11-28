@@ -13,6 +13,9 @@
     # darwin 向けの hotfix が先に入るブランチ（macOS ではこちらを使う）
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
 
+    # stable へのバックポートを待てないパッケージだけここから取る
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs-darwin";

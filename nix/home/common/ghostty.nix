@@ -4,7 +4,7 @@
     enable = true;
     # macOS では pkgs.ghostty が broken 扱いのためバイナリ配布版を使う
     # https://github.com/NixOS/nixpkgs/issues/388984
-    package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+    package = lib.mkDefault (if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty);
 
     # mkDefault の項目はプラットフォームで変わる（home/darwin/ghostty.nix で上書き）
     settings = {
